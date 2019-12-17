@@ -9,7 +9,7 @@ class Connection:
         host (str): Hostname or IP
         port (int): Port
 
-    >>> async def app():
+    >>> async def app():  # doctest: +SKIP
     ...    c = Connection()
     ...    await c.connect()
     ...    line = await c.read('WaterPressure press', circuit='bai')

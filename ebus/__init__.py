@@ -32,7 +32,7 @@ Value(field=Field(... title='Vorlauf Ist', ...), circuit='mc.4', value=35.31)
 >>> for item in decoder.decode('broadcast datetime = outsidetemp=4.500;time=20:47:01;date=14.12.2019'):
 ...     print(item)
 Value(field=Field(... title='OutsideTemp', ...), circuit='broadcast', value=4.5)
-Value(field=Field(... title='OutsideTemp', ...), circuit='broadcast', value=datetime.datetime(2019, 12, 14, 20, 47, 1))
+Value(field=Field(... title='DateTime', ...), circuit='broadcast', value=datetime.datetime(2019, 12, 14, 20, 47, 1))
 """
 
 __version__ = "0.0.1"
