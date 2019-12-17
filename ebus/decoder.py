@@ -1,6 +1,6 @@
 """Home-Assistant Friendly Decoder."""
-import re
 import collections
+import re
 
 Value = collections.namedtuple('Value', 'field circuit value')
 
