@@ -52,7 +52,12 @@ class Units:
         self._units = {}
 
     def add(self, unit):
+        """Add :any:`Unit`."""
         self._units[unit.name] = unit
+
+    def get(self, unitname):
+        """Retrieve unit name `unitname` if available."""
+        return self._units.get(unitname, None)
 
     def decode(self, unitname, value):
         """
@@ -67,7 +72,7 @@ class Units:
         datetime.datetime(2019, 12, 14, 20, 47, 1)
 
         """
-        unit = self._units.get(unitname, None)
+        unit = self.get(unitname)
         if unit:
             value = unit.decode(value)
         return value
