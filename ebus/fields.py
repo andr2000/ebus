@@ -1,5 +1,6 @@
 """Message Fields."""
 import collections
+import itertools
 
 Field = collections.namedtuple('Field', 'circuit title name unit sub icon')
 
@@ -14,9 +15,18 @@ class Fields:
 
         >>> fields = Fields()
         >>> fields.add('bai', 'Heating T0', 'Status01', sub='0', unit='temp')
+        >>> fields.add('hc', 'SumFlow', 'SumFlowSensor', 'temp', 'temp')
+        >>> fields.add('hc', 'Outside', 'DateTime', 'temp', 'temp2')
         >>> for field in fields:
         ...     print(field)
         Field(circuit='bai', title='Heating T0', name='Status01', unit='temp', sub='0', icon=None)
+        Field(circuit='hc', title='SumFlow', name='SumFlowSensor', unit='temp', sub='temp', icon=None)
+        Field(circuit='hc', title='Outside', name='DateTime', unit='temp', sub='temp2', icon=None)
+        >>> fields.get('hc', 'SumFlowSensor')
+        (Field(circuit='hc', ..., name='SumFlowSensor', ...),)
+        >>> fields.get('hc')
+        (Field(circuit='hc', ... name='SumFlowSensor', ...), Field(circuit='hc', ... name='DateTime', ...))
+
         """
         self._fields = collections.defaultdict(lambda: collections.defaultdict(list))
 
@@ -42,9 +52,9 @@ class Fields:
         if '.' in circuit:
             circuit = circuit.split('.')[0]
         if name:
-            return self._fields[circuit][name]
+            return tuple(self._fields[circuit][name])
         else:
-            return itertools.chain.from_iterable(self._fields[circuit].values())
+            return tuple(itertools.chain.from_iterable(self._fields[circuit].values()))
 
     def __iter__(self):
         for circuitfields in self._fields.values():
