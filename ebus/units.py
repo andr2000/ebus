@@ -4,7 +4,7 @@ import datetime
 
 class Unit:
 
-    def __init__(self, name, decode, icon=None):
+    def __init__(self, name, decode, icon=None, uom=None):
         """
         Unit Description.
 
@@ -14,10 +14,12 @@ class Unit:
 
         Keyword Args:
             icon (str): icon to use in hass.
+            uom (str): unit of measurement in hass
         """
         self._name = name
         self._decode = decode
         self._icon = icon
+        self._uom = uom
 
     @property
     def name(self):
@@ -31,11 +33,16 @@ class Unit:
 
     @property
     def icon(self):
-        """Icon."""
+        """Icon in HASS."""
         return self._icon
 
+    @property
+    def uom(self):
+        """Unit of Measurement in HASS."""
+        return self._uom
+
     def __repr__(self):
-        return f"{self.__class__.__qualname__}({self.name!r}, icon={self.icon!r})"
+        return f"{self.__class__.__qualname__}({self.name!r}, icon={self.icon!r}), uom={self.uom!r})"
 
 
 class Units:
@@ -73,19 +80,19 @@ class Units:
         >>> u.load()
         >>> for unit in u:
         ...     print(unit)
-        Unit('temp', icon='mdi:thermometer')
-        Unit('tempok', icon='mdi:thermometer')
-        Unit('onoff', icon='mdi:toggle-switch')
-        Unit('seconds', icon='mdi:av-timer')
-        Unit('pressure', icon='mdi:pipe')
-        Unit('timer', icon='mdi:timer')
-        Unit('date+time', icon=None)
+        Unit('temp', icon='mdi:thermometer'), uom='°C')
+        Unit('tempok', icon='mdi:thermometer'), uom='°C')
+        Unit('onoff', icon='mdi:toggle-switch'), uom=None)
+        Unit('seconds', icon='mdi:av-timer'), uom='seconds')
+        Unit('pressure', icon='mdi:pipe'), uom='bar')
+        Unit('timer', icon='mdi:timer'), uom=None)
+        Unit('date+time', icon=None), uom=None)
         """
-        self.add(Unit('temp', float, 'mdi:thermometer'))
-        self.add(Unit('tempok', _decode_floatok, 'mdi:thermometer'))
+        self.add(Unit('temp', float, 'mdi:thermometer', '°C'))
+        self.add(Unit('tempok', _decode_floatok, 'mdi:thermometer', '°C'))
         self.add(Unit('onoff', lambda value: True if value == 'on' else False, 'mdi:toggle-switch'))
-        self.add(Unit('seconds', float, 'mdi:av-timer'))
-        self.add(Unit('pressure', _decode_floatok, 'mdi:pipe'))
+        self.add(Unit('seconds', float, 'mdi:av-timer', 'seconds'))
+        self.add(Unit('pressure', _decode_floatok, 'mdi:pipe', 'bar'))
         self.add(Unit('timer', lambda value: value.replace(';-:-', ''), 'mdi:timer'))
         self.add(Unit('date+time', _decode_datetime))
 
