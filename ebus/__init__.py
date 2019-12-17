@@ -3,8 +3,6 @@
 """
 Python Client for EBUS daemon.
 
-Import the ebus module
-
 >>> import ebus
 
 EBUS Message Fields are stored in the Fields container
