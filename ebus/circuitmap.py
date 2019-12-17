@@ -1,10 +1,11 @@
 class CircuitMap:
 
-    def __init__(self):
+    def __init__(self, circuitmap=None):
         """
         Mapping of EBUS circuit names to human-readable names with some predefined names.
 
         >>> c = CircuitMap()
+        >>> c.load()
         >>> for ebusname, humanname in c:
         ...     print(ebusname, '=', humanname)
         broadcast = *
@@ -23,12 +24,10 @@ class CircuitMap:
         >>> c.get_humanname('mc.4')
         'Mixer Unit 2'
         """
-        self._map = {
-            'broadcast': '*',
-            'bai': 'Heater',
-            'mc': 'Mixer',
-            'hwc': 'Water'
-        }
+        self._map = {}
+        if circuitmap:
+            for ebusname, humanname in circuitmap.items():
+                self.add(ebusname, humanname)
 
     def add(self, ebusname, humanname):
         """Add mapping."""
@@ -51,3 +50,10 @@ class CircuitMap:
         if humanname is None:
             humanname = ebusname
         return humanname
+
+    def load(self):
+        """Load Defaults."""
+        self.add('broadcast', '*')
+        self.add('bai', 'Heater')
+        self.add('mc', 'Mixer')
+        self.add('hwc', 'Water')
