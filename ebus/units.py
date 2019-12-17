@@ -65,15 +65,15 @@ class Units:
 
         >>> u = Units()
         >>> u.load()
-        >>> u.decode('tempok', '45.9;ok')
-        45.9
+        >>> u.decode('tempok', '45.95;ok')
+        46.0
         >>> u.decode('tempok', '45.9;error')
         >>> u.decode('date+time', 'time=20:47:01;date=14.12.2019')
         datetime.datetime(2019, 12, 14, 20, 47, 1)
 
         """
         unit = self.get(unitname)
-        if unit:
+        if unit and unit.decode:
             value = unit.decode(value)
         return value
 
@@ -93,11 +93,11 @@ class Units:
         Unit('timer', icon='mdi:timer'), uom=None)
         Unit('date+time', icon=None), uom=None)
         """
-        self.add(Unit('temp', float, 'mdi:thermometer', '°C'))
-        self.add(Unit('tempok', _decode_floatok, 'mdi:thermometer', '°C'))
-        self.add(Unit('onoff', lambda value: True if value == 'on' else False, 'mdi:toggle-switch'))
-        self.add(Unit('seconds', float, 'mdi:av-timer', 'seconds'))
-        self.add(Unit('pressure', _decode_floatok, 'mdi:pipe', 'bar'))
+        self.add(Unit('temp', _decodefloatfab(digits=1), 'mdi:thermometer', '°C'))
+        self.add(Unit('tempok', _decodefloatfab(digits=1, checkok=True), 'mdi:thermometer', '°C'))
+        self.add(Unit('onoff', None, 'mdi:toggle-switch'))
+        self.add(Unit('seconds', int, 'mdi:av-timer', 'seconds'))
+        self.add(Unit('pressure', _decodefloatfab(digits=2, checkok=True), 'mdi:pipe', 'bar'))
         self.add(Unit('timer', lambda value: value.replace(';-:-', ''), 'mdi:timer'))
         self.add(Unit('date+time', _decode_datetime))
 
@@ -105,10 +105,18 @@ class Units:
         yield from self._units.values()
 
 
-def _decode_floatok(value):
-    parts = value.split(';')
-    if 'ok' in parts:
-        return float(parts[0])
+def _decodefloatfab(digits=None, checkok=False):
+    def decode(value):
+        parts = value.split(';')
+        value = float(parts[0])
+        # checkok
+        if checkok and 'ok' not in parts:
+            value = None
+        # digits
+        if digits is not None and value is not None:
+            value = float(("%%.%df" % digits) % value)
+        return value
+    return decode
 
 
 def _decode_datetime(value):

@@ -20,12 +20,12 @@ The :any:`Decoder` can process ebus output and transform the values
 ...     print(item)
 Value(field=Field(... title='T0', ...), circuit='bai', value=27.5)
 Value(field=Field(... title='T1', ...), circuit='bai', value=27.0)
-Value(field=Field(... title='Pump', ...), circuit='bai', value=False)
+Value(field=Field(... title='Pump', ...), circuit='bai', value='off')
 
 >>> for item in decoder.decode('mc.4 Status = temp0=32;onoff=off;temp=35.31;temp0=23'):
 ...     print(item)
 Value(field=Field(... title='Vorlauf Soll', ...), circuit='mc.4', value=32.0)
-Value(field=Field(... title='Vorlauf Ist', ...), circuit='mc.4', value=35.31)
+Value(field=Field(... title='Vorlauf Ist', ...), circuit='mc.4', value=35.3)
 
 >>> for item in decoder.decode('broadcast datetime = outsidetemp=4.500;time=20:47:01;date=14.12.2019'):
 ...     print(item)
