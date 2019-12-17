@@ -6,8 +6,8 @@ class CircuitMap:
 
         >>> c = CircuitMap()
         >>> c.load()
-        >>> for ebusname, humanname in c:
-        ...     print(ebusname, '=', humanname)
+        >>> for circuitname, humanname in c:
+        ...     print(circuitname, '=', humanname)
         broadcast = *
         bai = Heater
         mc = Mixer
@@ -26,29 +26,29 @@ class CircuitMap:
         """
         self._map = {}
         if circuitmap:
-            for ebusname, humanname in circuitmap.items():
-                self.add(ebusname, humanname)
+            for circuitname, humanname in circuitmap.items():
+                self.add(circuitname, humanname)
 
-    def add(self, ebusname, humanname):
+    def add(self, circuitname, humanname):
         """Add mapping."""
-        self._map[ebusname] = humanname
+        self._map[circuitname] = humanname
 
     def __iter__(self):
         yield from self._map.items()
 
-    def get_humanname(self, ebusname):
-        """Return human-readable name for `ebusname`."""
+    def get_humanname(self, circuitname):
+        """Return human-readable name for `circuitname`."""
         # lookup full name
-        humanname = self._map.get(ebusname, None)
+        humanname = self._map.get(circuitname, None)
         # loopup basename
-        if humanname is None and '.' in ebusname:
-            basename, suffix = ebusname.split('.')
+        if humanname is None and '.' in circuitname:
+            basename, suffix = circuitname.split('.')
             humanname = self._map.get(basename, None)
             if humanname is not None:
                 humanname = f'{humanname}#{suffix}'
-        # use ebusname as default
+        # use circuitname as default
         if humanname is None:
-            humanname = ebusname
+            humanname = circuitname
         return humanname
 
     def load(self):
