@@ -47,8 +47,6 @@ class Decoder:
                         else:
                             value = self.units.decode(field.unit, value)
                             yield Value(field, circuit, value)
-        else:
-            raise FormatError(line)
 
 
 class FormatError(RuntimeError):

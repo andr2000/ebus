@@ -30,6 +30,12 @@ class Connection:
         """Establish connection (required before first communication)."""
         self._reader, self._writer = await asyncio.open_connection(self._host, self._port)
 
+    async def disconnect(self):
+        """Disconnect."""
+        self._writer.close()
+        await self._writer.wait_closed()
+        self._reader, self._writer = None, None
+
     async def send(self, message):
         """Send `message`."""
         self._writer.write(f"{message}\n".encode())
@@ -38,7 +44,11 @@ class Connection:
     async def receive(self):
         """Receive one line."""
         line = await self._reader.readline()
-        return line.decode('utf-8').rstrip()
+        line = line.decode('utf-8').rstrip()
+        if line == "ERR: shutdown":
+            await self.disconnect()
+            raise Error('disconnect')
+        return line
 
     async def read(self, name, field=None, circuit=None, ttl=None):
         """Read `name` extracting `field` from `circuit` not older than `ttl` seconds."""
