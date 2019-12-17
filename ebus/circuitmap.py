@@ -36,6 +36,10 @@ class CircuitMap:
     def __iter__(self):
         yield from self._map.items()
 
+    def iter_circuits(self):
+        """Iterate over circuit names."""
+        yield from self._map
+
     def get_humanname(self, circuitname):
         """Return human-readable name for `circuitname`."""
         # lookup full name

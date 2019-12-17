@@ -37,7 +37,7 @@ class Decoder:
                 # sub handling
                 for field in fields:
                     if field.sub is None:
-                        value = self.units.decode(field.unit, valuestr)
+                        value = self.units.decode(field.unitname, valuestr)
                         yield Value(field, circuit, value)
                     else:
                         try:
@@ -45,7 +45,7 @@ class Decoder:
                         except KeyError:
                             yield Value(field, circuit, None)
                         else:
-                            value = self.units.decode(field.unit, value)
+                            value = self.units.decode(field.unitname, value)
                             yield Value(field, circuit, value)
 
 
