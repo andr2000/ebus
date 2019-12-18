@@ -67,16 +67,17 @@ class Fields:
     def load(self):
         """Load Fields."""
         # mc Status = temp0=32;onoff=off;temp=35.31;temp0=23
-        self.add('mc', 'Vorlauf Soll', 'Status', 'temp', '0')
-        self.add('mc', 'Vorlauf Ist', 'Status', 'temp', '2')
+        self.add('mc', 'Soll', 'Status', 'temp', '0')
+        self.add('mc', 'Ist', 'Status', 'temp', '2')
+        self.add('mc', 'Heizen', 'Status', 'onoff', 'onoff')
 
         # mc Mode = temp0=23;mcmode=auto;days=0;temp0=0;mcmode=low;mctype7=mixer;daynight=day
         self.add('mc', 'Mode', 'Mode', None, '1')
         self.add('mc', 'Day/Night', 'Mode', None, 'daynight')
 
         # bai Status01 = temp1=27.5;temp1=27.0;temp2=-;temp1=-;temp1=-;pumpstate=off
-        self.add('bai', 'T0', 'Status01', 'temp', '0')
-        self.add('bai', 'T1', 'Status01', 'temp', '1')
+        self.add('bai', 'VL', 'Status01', 'temp', '0')
+        self.add('bai', 'RL', 'Status01', 'temp', '1')
         self.add('bai', 'Pump', 'Status01', 'onoff', 'pumpstate')
         self.add('hwc', 'Soll', 'Status', 'temp', 'temp0')
         self.add('hwc', 'Ist', 'Status', 'temp', 'temp')
