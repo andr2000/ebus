@@ -95,7 +95,7 @@ class Connection:
             raise Error('disconnect')
         return line
 
-    async def read(self, name, field=None, circuit=None, ttl=None):
+    async def read(self, name, field=None, circuit=None, ttl=None, verbose=False):
         """
         Read `name` extracting `field` from `circuit` not older than `ttl` seconds.
 
@@ -110,6 +110,7 @@ class Connection:
             ('-c ', circuit),
             ('', name),
             ('', field),
+            ('-v ' if verbose else '', ''),
         ])
         return response
 
