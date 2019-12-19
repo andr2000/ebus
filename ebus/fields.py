@@ -30,7 +30,7 @@ class Fields:
         """
         self._fields = collections.defaultdict(lambda: collections.defaultdict(list))
 
-    def add(self, circuit, title, name, unitname=None, sub=None, icon=None):
+    def add(self, circuit, title, name, unitname=None, sub=0, icon=None):
         """
         Add decode Field.
 
