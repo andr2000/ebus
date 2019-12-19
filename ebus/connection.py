@@ -92,7 +92,7 @@ class Connection:
         line = line.decode('utf-8').rstrip()
         if line == "ERR: shutdown":
             await self.disconnect()
-            raise Error('disconnect')
+            raise ConnectionError('disconnect')
         return line
 
     async def read(self, name, field=None, circuit=None, ttl=None):
@@ -100,7 +100,7 @@ class Connection:
         Read `name` extracting `field` from `circuit` not older than `ttl` seconds.
 
         Raises:
-            Error: In case of an unknown command or command argument (response contains `ERR`)
+            CommandError: In case of an unknown command or command argument (response contains `ERR`)
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
             NotConnectedError: If not connected (`autoconnect==False`)
         """
@@ -118,7 +118,7 @@ class Connection:
         Write `value` to `name` in `circuit`.
 
         Raises:
-            Error: In case of an unknown command or command argument (response contains `ERR`)
+            CommandError: In case of an unknown command or command argument (response contains `ERR`)
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
             NotConnectedError: If not connected (`autoconnect==False`)
         """
@@ -165,5 +165,5 @@ class NotConnectedError(OSError):
     """Connection is not established."""
 
 
-class Error(RuntimeError):
+class CommandError(RuntimeError):
     """Exception raised in case of an error."""
