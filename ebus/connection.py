@@ -11,17 +11,6 @@ class Connection:
             host (str): Hostname or IP
             port (int): Port
             autoconnect (bool): Automatically connect and re-connect
-
-        >>> async def app():
-        ...    c = Connection()
-        ...    await c.connect()
-        ...    line = await c.read('WaterPressure press', circuit='bai')
-        ...    print(line)
-        ...
-        ...    await c.start_listening()
-        ...    while True:
-        ...        line = await c.receive()
-        ...        print(line)
         """
         self._host = host
         self._port = port
@@ -71,7 +60,7 @@ class Connection:
         """
         return self._writer and not self._writer.is_closing()
 
-    async def send(self, message):
+    async def write(self, message):
         """
         Send `message`.
 
@@ -83,7 +72,7 @@ class Connection:
         self._writer.write(f"{message}\n".encode())
         await self._writer.drain()
 
-    async def receive(self):
+    async def readline(self):
         """
         Receive one line.
 
@@ -94,56 +83,26 @@ class Connection:
         await self._ensure_connection()
         line = await self._reader.readline()
         line = line.decode('utf-8').rstrip()
-        if line.startswith("ERR: "):
-            await self.disconnect()
-            raise ConnectionError(line[len("ERR: ")])
+        await self._checkline(line)
         return line
 
-    async def read(self, name, field=None, circuit=None, ttl=None, verbose=False):
+    async def readlines(self):
         """
-        Read `name` extracting `field` from `circuit` not older than `ttl` seconds.
+        Receive lines until an empty one.
 
         Raises:
-            CommandError: In case of an unknown command or command argument (response contains `ERR`)
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
             ConnectionError: If not connected (`autoconnect==False`)
         """
         await self._ensure_connection()
-        response = await self._request('read', [
-            ('-v' if verbose else '', ''),
-            ('-m', ttl),
-            ('-c', circuit),
-            ('', name),
-            ('', field),
-        ])
-        await self.receive()  # empty line
-        return response
-
-    async def write(self, name, circuit, value):
-        """
-        Write `value` to `name` in `circuit`.
-
-        Raises:
-            CommandError: In case of an unknown command or command argument (response contains `ERR`)
-            IOError: If connection is broken or cannot be established (`autoconnect==True`)
-            ConnectionError: If not connected (`autoconnect==False`)
-        """
-        await self._ensure_connection()
-        await self._request('write', [
-            ('-c ', circuit),
-            ('', name),
-            ('', value),
-        ])
-
-    async def start_listening(self, verbose=False):
-        """Start Listening."""
-        await self._ensure_connection()
-        command = 'listen -v' if verbose else 'listen'
-        await self.send(command)
-        # consume 'listen started'
-        await self.receive()
-        await self.receive()
-        await self.receive()
+        while True:
+            line = await self._reader.readline()
+            line = line.decode('utf-8').rstrip()
+            await self._checkline(line)
+            if line:
+                yield line
+            else:
+                break
 
     async def _ensure_connection(self):
         if not self._writer or self._writer.is_closing():
@@ -152,20 +111,8 @@ class Connection:
             else:
                 raise ConnectionError('Not connected')
 
-    async def _request(self, command, options):
-        args = ''.join([f'{option} {value} '
-                        for option, value in options
-                        if value is not None])
-        await self.send(f'{command} {args}')
-        line = await self.receive()
-        self._checkresponse(line)
-        return line
-
-    @staticmethod
-    def _checkresponse(line):
-        if "ERR:" in line:
-            raise CommandError(line)
-
-
-class CommandError(RuntimeError):
-    """Exception raised in case of an error."""
+    async def _checkline(self, line):
+        if line.startswith("ERR: "):
+            detail = line[len("ERR: ")]
+            await self.disconnect()
+            raise ConnectionError(detail)
