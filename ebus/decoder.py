@@ -2,7 +2,6 @@
 import collections
 import re
 
-
 Value = collections.namedtuple('Value', 'field circuit value attrs')
 
 

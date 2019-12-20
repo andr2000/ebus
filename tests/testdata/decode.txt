@@ -52,13 +52,13 @@ bai OutdoorstempSensor temp=-60.44;sensor=cutoff
   * bai OutdoorsTemperature None {'status': 'cutoff'}
 
 bai PartloadHcKW power=30
-  * bai HeatingPartLoad 30 None
+  * bai HeatingPartLoad 30.0 None
 
 bai PrEnergySumHc1 =3733560671
-  * bai PowerEnergyConsumptionHeatingCircuit 3733560671 None
+  * bai PowerEnergyConsumptionHeatingCircuit 3733560671.0 None
 
 bai PrEnergySumHwc1 =1508187033
-  * bai PowerEnergyConsumptionHotWaterCircuit 1508187033 None
+  * bai PowerEnergyConsumptionHotWaterCircuit 1508187033.0 None
 
 bai ReturnTemp temp=30.25;tempmirror=65051;sensor=ok
   * bai ReturnTemperature 30.2 {'status': 'ok'}
@@ -90,13 +90,13 @@ bai FlowTemp = temp=38.44;sensor=ok
   * bai FlowTemperature 38.4 {'status': 'ok'}
 
 bai PartloadHcKW = power=30
-  * bai HeatingPartLoad 30 None
+  * bai HeatingPartLoad 30.0 None
 
 bai PrEnergySumHc1 = =3733560671
-  * bai PowerEnergyConsumptionHeatingCircuit 3733560671 None
+  * bai PowerEnergyConsumptionHeatingCircuit 3733560671.0 None
 
 bai PrEnergySumHwc1 = =1508187033
-  * bai PowerEnergyConsumptionHotWaterCircuit 1508187033 None
+  * bai PowerEnergyConsumptionHotWaterCircuit 1508187033.0 None
 
 bai Status01 = temp1=36.5;temp1=28.5;temp2=-;temp1=-;temp1=-;pumpstate=on
   * bai VL 36.5 None

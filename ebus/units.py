@@ -94,6 +94,8 @@ class Units:
         Unit('pressuresensor', icon='mdi:pipe'), uom='bar')
         Unit('date+time', icon=None), uom=None)
         Unit('modes', icon=None), uom=None)
+        Unit('kwh', icon=None), uom='kWh')
+        Unit('kw', icon=None), uom='kW')
         """
         self.add(Unit('temp', _float1, 'mdi:thermometer', '°C'))
         self.add(Unit('tempsensor', _sensorfab('temp'), 'mdi:thermometer', '°C'))
@@ -103,6 +105,8 @@ class Units:
         # self.add(Unit('timer', lambda value: value.replace(';-:-', ''), 'mdi:timer'))
         self.add(Unit('date+time', _datetime))
         self.add(Unit('modes', _modes))
+        self.add(Unit('kwh', _float1, uom='kWh'))
+        self.add(Unit('kw', _float1, uom='kW'))
 
     def __iter__(self):
         yield from self._units.values()
@@ -140,6 +144,7 @@ def _modes(valuestr, value):
     valuemap = dict(pair.split("=") for pair in valuestr.split(';'))
     value = "/".join(valuemap.values())
     return value, valuemap
+
 
 UNITS = Units()
 UNITS.load()

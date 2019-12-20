@@ -55,9 +55,13 @@ class Connection:
     async def disconnect(self):
         """Disconnect if not already done."""
         if self._writer:
-            self._writer.close()
-            await self._writer.wait_closed()
-            self._reader, self._writer = None, None
+            try:
+                self._writer.close()
+                await self._writer.wait_closed()
+            except BrokenPipeError:
+                pass
+            finally:
+                self._reader, self._writer = None, None
 
     def is_connected(self):
         """
@@ -112,6 +116,7 @@ class Connection:
             ('', name),
             ('', field),
         ])
+        await self.receive()  # empty line
         return response
 
     async def write(self, name, circuit, value):
