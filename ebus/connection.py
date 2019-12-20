@@ -2,27 +2,27 @@ import asyncio
 
 
 class Connection:
-    """
-    Ebus Connection.
-
-    Keyword Args:
-        host (str): Hostname or IP
-        port (int): Port
-        autoconnect (bool): Automatically connect and re-connect
-
-    >>> async def app():
-    ...    c = Connection()
-    ...    await c.connect()
-    ...    line = await c.read('WaterPressure press', circuit='bai')
-    ...    print(line)
-    ...
-    ...    await c.start_listening()
-    ...    while True:
-    ...        line = await c.receive()
-    ...        print(line)
-    """
 
     def __init__(self, host='127.0.0.1', port=8888, autoconnect=False):
+        """
+        Ebus Connection.
+
+        Keyword Args:
+            host (str): Hostname or IP
+            port (int): Port
+            autoconnect (bool): Automatically connect and re-connect
+
+        >>> async def app():
+        ...    c = Connection()
+        ...    await c.connect()
+        ...    line = await c.read('WaterPressure press', circuit='bai')
+        ...    print(line)
+        ...
+        ...    await c.start_listening()
+        ...    while True:
+        ...        line = await c.receive()
+        ...        print(line)
+        """
         self._host = host
         self._port = port
         self._autoconnect = autoconnect
@@ -77,7 +77,7 @@ class Connection:
 
         Raises:
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
-            NotConnectedError: If not connected (`autoconnect==False`)
+            ConnectionError: If not connected (`autoconnect==False`)
         """
         await self._ensure_connection()
         self._writer.write(f"{message}\n".encode())
@@ -89,14 +89,14 @@ class Connection:
 
         Raises:
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
-            NotConnectedError: If not connected (`autoconnect==False`)
+            ConnectionError: If not connected (`autoconnect==False`)
         """
         await self._ensure_connection()
         line = await self._reader.readline()
         line = line.decode('utf-8').rstrip()
-        if line == "ERR: shutdown":
+        if line.startswith("ERR: "):
             await self.disconnect()
-            raise ConnectionError('disconnect')
+            raise ConnectionError(line[len("ERR: ")])
         return line
 
     async def read(self, name, field=None, circuit=None, ttl=None, verbose=False):
@@ -106,7 +106,7 @@ class Connection:
         Raises:
             CommandError: In case of an unknown command or command argument (response contains `ERR`)
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
-            NotConnectedError: If not connected (`autoconnect==False`)
+            ConnectionError: If not connected (`autoconnect==False`)
         """
         await self._ensure_connection()
         response = await self._request('read', [
@@ -126,7 +126,7 @@ class Connection:
         Raises:
             CommandError: In case of an unknown command or command argument (response contains `ERR`)
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
-            NotConnectedError: If not connected (`autoconnect==False`)
+            ConnectionError: If not connected (`autoconnect==False`)
         """
         await self._ensure_connection()
         await self._request('write', [
@@ -150,7 +150,7 @@ class Connection:
             if self._autoconnect:
                 await self.connect()
             else:
-                raise NotConnectedError()
+                raise ConnectionError('Not connected')
 
     async def _request(self, command, options):
         args = ''.join([f'{option} {value} '
@@ -165,10 +165,6 @@ class Connection:
     def _checkresponse(line):
         if "ERR:" in line:
             raise CommandError(line)
-
-
-class NotConnectedError(OSError):
-    """Connection is not established."""
 
 
 class CommandError(RuntimeError):
