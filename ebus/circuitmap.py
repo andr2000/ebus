@@ -4,14 +4,20 @@ class CircuitMap:
         """
         Mapping of EBUS circuit names to human-readable names with some predefined names.
 
-        >>> c = CircuitMap()
-        >>> c.load()
+        >>> c = CircuitMap({
+        ...     'broadcast': '*',
+        ...     'bai': 'Heater',
+        ...     'mc': 'Mixer',
+        ...     'hwc': 'Water',
+        ... })
         >>> for circuitname, humanname in c:
         ...     print(circuitname, '=', humanname)
         broadcast = *
         bai = Heater
         mc = Mixer
         hwc = Water
+        >>> tuple(c.iter_circuits())
+        ('broadcast', 'bai', 'mc', 'hwc')
 
         Custom mappigns are added via :any:`add()`:
 
@@ -23,6 +29,8 @@ class CircuitMap:
         'Heater#3'
         >>> c.get_humanname('mc.4')
         'Mixer Unit 2'
+        >>> c.get_humanname('unknown')
+        'unknown'
         """
         self._map = {}
         if circuitmap:
@@ -54,10 +62,3 @@ class CircuitMap:
         if humanname is None:
             humanname = circuitname
         return humanname
-
-    def load(self):
-        """Load Defaults."""
-        self.add('broadcast', '*')
-        self.add('bai', 'Heater')
-        self.add('mc', 'Mixer')
-        self.add('hwc', 'Water')
