@@ -2,7 +2,7 @@
 import collections
 import itertools
 
-Field = collections.namedtuple('Field', 'circuit title name unitname sub icon')
+Field = collections.namedtuple('Field', 'circuit title name unitname sub icon status')
 
 
 class Fields:
@@ -14,12 +14,12 @@ class Fields:
         Fields Container.
 
         >>> fields = Fields()
-        >>> fields.add('bai', 'Heating T0', 'Status01', sub='0', unitname='temp')
+        >>> fields.add('bai', 'Heating T0', 'Status01', unitname='temp')
         >>> fields.add('hc', 'SumFlow', 'SumFlowSensor', 'temp', 'temp')
         >>> fields.add('hc', 'Outside', 'DateTime', 'temp', 'temp2')
         >>> for field in fields:
         ...     print(field)
-        Field(circuit='bai', title='Heating T0', name='Status01', unitname='temp', sub='0', icon=None)
+        Field(circuit='bai', title='Heating T0', name='Status01', unitname='temp', sub=None, icon=None)
         Field(circuit='hc', title='SumFlow', name='SumFlowSensor', unitname='temp', sub='temp', icon=None)
         Field(circuit='hc', title='Outside', name='DateTime', unitname='temp', sub='temp2', icon=None)
         >>> fields.get('hc', 'SumFlowSensor')
@@ -30,7 +30,7 @@ class Fields:
         """
         self._fields = collections.defaultdict(lambda: collections.defaultdict(list))
 
-    def add(self, circuit, title, name, unitname=None, sub=0, icon=None):
+    def add(self, circuit, title, name, unitname=None, sub=None, icon=None, status=False):
         """
         Add decode Field.
 
@@ -43,8 +43,9 @@ class Fields:
             unitname (str): Unitname name
             sub (str): name or index of the value within message
             icon (str): Icon if different from unitname icon.
+            status (bool): It is sufficient to monitor this signal, it occurs on changes automatically.
         """
-        field = Field(circuit, title, name, unitname, sub, icon)
+        field = Field(circuit, title, name, unitname, sub, icon, status)
         self._fields[circuit][name].append(field)
 
     def get(self, circuit, name=None):
@@ -67,27 +68,29 @@ class Fields:
     def load(self):
         """Load Fields."""
         # mc Status = temp0=32;onoff=off;temp=35.31;temp0=23
-        self.add('mc', 'Soll', 'Status', 'temp', '0')
-        self.add('mc', 'Ist', 'Status', 'temp', '2')
-        self.add('mc', 'Heizen', 'Status', 'onoff', 'onoff')
+        self.add('mc', 'Soll', 'Status', 'temp', '0', status=True)
+        self.add('mc', 'Ist', 'Status', 'temp', '2', status=True)
+        self.add('mc', 'Heizen', 'Status', 'onoff', 'onoff', status=True)
 
         # mc Mode = temp0=23;mcmode=auto;days=0;temp0=0;mcmode=low;mctype7=mixer;daynight=day
-        self.add('mc', 'Mode', 'Mode', None, '1')
-        self.add('mc', 'Day/Night', 'Mode', None, 'daynight')
+        self.add('mc', 'Mode', 'Mode', None, '1', status=True)
+        self.add('mc', 'Day/Night', 'Mode', None, 'daynight', status=True)
 
         # bai Status01 = temp1=27.5;temp1=27.0;temp2=-;temp1=-;temp1=-;pumpstate=off
-        self.add('bai', 'VL', 'Status01', 'temp', '0')
-        self.add('bai', 'RL', 'Status01', 'temp', '1')
-        self.add('bai', 'Pump', 'Status01', 'onoff', 'pumpstate')
-        self.add('hwc', 'Soll', 'Status', 'temp', 'temp0')
-        self.add('hwc', 'Ist', 'Status', 'temp', 'temp')
-        self.add('hwc', 'Heizen', 'Status', 'onoff', 'onoff')
+        self.add('bai', 'VL', 'Status01', 'temp', '0', status=True)
+        self.add('bai', 'RL', 'Status01', 'temp', '1', status=True)
+        self.add('bai', 'Pump', 'Status01', 'onoff', 'pumpstate', status=True)
+        self.add('hwc', 'Soll', 'Status', 'temp', 'temp0', status=True)
+        self.add('hwc', 'Ist', 'Status', 'temp', 'temp', status=True)
+        self.add('hwc', 'Heizen', 'Status', 'onoff', 'onoff', status=True)
         # hc SumFlowSensor = temp=29.69;sensor=ok
-        self.add('hc', 'SumFlow', 'SumFlowSensor', 'temp', 'temp')
-        self.add('hc', 'Outside', 'DateTime', 'temp', 'temp2')
+        self.add('hc', 'SumFlow', 'SumFlowSensor', 'temp', 'temp', status=True)
+        self.add('hc', 'Outside', 'DateTime', 'temp', 'temp2', status=True)
+
+        self.add('mc', 'OutsideTemp', 'Status16', 'temp', status=True)
         # broadcast datetime = outsidetemp=4.500;time=20:47:01;date=14.12.2019
-        self.add('broadcast', 'OutsideTemp', 'datetime', unitname='temp', sub='outsidetemp')
-        self.add('broadcast', 'DateTime', 'datetime', unitname='date+time')
+        self.add('broadcast', 'OutsideTemp', 'datetime', unitname='temp', sub='outsidetemp', status=True)
+        self.add('broadcast', 'DateTime', 'datetime', unitname='date+time', status=True)
 
         self.add('700', 'ActualFlowTemperatureDesired', 'Hc1ActualFlowTempDesired', unitname='temp'),
         self.add('700', 'MaxFlowTemperatureDesired', 'Hc1MaxFlowTempDesired', unitname='temp'),
@@ -103,7 +106,7 @@ class Fields:
         self.add('700', 'HWTimerFriday', 'hwcTimer.Friday', unitname='timer'),
         self.add('700', 'HWTimerSaturday', 'hwcTimer.Saturday', unitname='timer'),
         self.add('700', 'HWTimerSunday', 'hwcTimer.Sunday', unitname='timer'),
-        self.add('700', 'WaterPressure', 'WaterPressure', unitname='pressure'),
+        self.add('700', 'WaterPressure', 'WaterPressure', unitname='pressuresensor'),
         # self.add('700', 'Zone1RoomZoneMapping', 'z1RoomZoneMapping', None, 'mdi:label', 0),
         self.add('700', 'Zone1NightTemperature', 'z1NightTemp', unitname='temp', icon='mdi:weather-night'),
         self.add('700', 'Zone1DayTemperature', 'z1DayTemp', unitname='temp', icon='weather-sunny'),
@@ -121,23 +124,25 @@ class Fields:
         self.add('700', 'ContinuosHeating', 'ContinuosHeating', unitname='temp', icon='mdi:weather-snowy'),
         self.add('700', 'PowerEnergyConsumptionLastMonth', 'PrEnergySumHcLastMonth', unitname='kwh'),
         self.add('700', 'PowerEnergyConsumptionThisMonth', 'PrEnergySumHcThisMonth', unitname='kwh'),
-        self.add('ehp', 'HWTemperature', 'HwcTemp', unitname='tempok'),
-        self.add('ehp', 'OutsideTemp', 'OutsideTemp', unitname='tempok'),
-        self.add('bai', 'HotWaterTemperature', 'HwcTemp', unitname='tempok'),
-        self.add('bai', 'StorageTemperature', 'StorageTemp', unitname='tempok'),
+
+        self.add('ehp', 'HWTemperature', 'HwcTemp', unitname='tempsensor'),
+        self.add('ehp', 'OutsideTemp', 'OutsideTemp', unitname='tempsensor'),
+
+        self.add('bai', 'HotWaterTemperature', 'HwcTemp', unitname='tempsensor'),
+        self.add('bai', 'StorageTemperature', 'StorageTemp', unitname='tempsensor'),
         self.add('bai', 'DesiredStorageTemperature', 'StorageTempDesired', unitname='temp'),
-        self.add('bai', 'OutdoorsTemperature', 'OutdoorstempSensor', unitname='tempok'),
-        self.add('bai', 'WaterPreasure', 'WaterPressure', unitname='pressure'),
+        self.add('bai', 'OutdoorsTemperature', 'OutdoorstempSensor', unitname='tempsensor'),
+        self.add('bai', 'WaterPreasure', 'WaterPressure', unitname='pressuresensor'),
         self.add('bai', 'AverageIgnitionTime', 'averageIgnitiontime', unitname='seconds'),
         self.add('bai', 'MaximumIgnitionTime', 'maxIgnitiontime', unitname='seconds'),
         self.add('bai', 'MinimumIgnitionTime', 'minIgnitiontime', unitname='seconds'),
-        self.add('bai', 'ReturnTemperature', 'ReturnTemp', unitname='tempok'),
+        self.add('bai', 'ReturnTemperature', 'ReturnTemp', unitname='tempsensor'),
         self.add('bai', 'CentralHeatingPump', 'WP', unitname='onoff'),
         self.add('bai', 'HeatingSwitch', 'HeatingSwitch', unitname='onoff'),
         self.add('bai', 'DesiredFlowTemperature', 'FlowTempDesired', unitname='temp'),
-        self.add('bai', 'FlowTemperature', 'FlowTemp', unitname='tempok'),
-        self.add('bai', 'Flame', 'Flame', unitname='onoff'),
+        self.add('bai', 'FlowTemperature', 'FlowTemp', unitname='tempsensor'),
+        self.add('bai', 'Flame', 'Flame', unitname='onoff', status=True),
         self.add('bai', 'PowerEnergyConsumptionHeatingCircuit', 'PrEnergySumHc1', unitname='kwh'),
         self.add('bai', 'PowerEnergyConsumptionHotWaterCircuit', 'PrEnergySumHwc1', unitname='kwh'),
         self.add('bai', 'RoomThermostat', 'DCRoomthermostat', unitname='onoff'),
-        self.add('bai', 'HeatingPartLoad', 'PartloadHcKW', unitname='kwh'),
+        self.add('bai', 'HeatingPartLoad', 'PartloadHcKW', unitname='kw'),

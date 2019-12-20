@@ -4,7 +4,7 @@ import datetime
 
 class Unit:
 
-    def __init__(self, name, decode, icon=None, uom=None):
+    def __init__(self, name, decode=None, icon=None, uom=None):
         """
         Unit Description.
 
@@ -59,23 +59,25 @@ class Units:
         """Retrieve unit name `unitname` if available."""
         return self._units.get(unitname, None)
 
-    def decode(self, unitname, value):
+    def decode(self, unitname, valuestr, value=None):
         """
-        Decode `value` with `unit`.
+        Use unit with `unitname` to decode
 
         >>> u = Units()
         >>> u.load()
-        >>> u.decode('tempok', '45.95;ok')
-        46.0
-        >>> u.decode('tempok', '45.9;error')
-        >>> u.decode('date+time', 'time=20:47:01;date=14.12.2019')
-        datetime.datetime(2019, 12, 14, 20, 47, 1)
+        >>> u.decode('tempsensor', 'temp=45.95;sensor=ok', None)
+        (46.0, {'status': 'ok'})
+        >>> u.decode('tempsensor', 'temp=45.9;sensor=error', None)
+        (None, {'status': 'error'})
+        >>> u.decode('date+time', 'time=20:47:01;date=14.12.2019', None)
+        (datetime.datetime(2019, 12, 14, 20, 47, 1), None)
 
         """
         unit = self.get(unitname)
+        attrs = None
         if unit and unit.decode:
-            value = unit.decode(value)
-        return value
+            value, attrs = unit.decode(valuestr, value)
+        return value, attrs
 
     def load(self):
         """
@@ -86,44 +88,52 @@ class Units:
         >>> for unit in u:
         ...     print(unit)
         Unit('temp', icon='mdi:thermometer'), uom='°C')
-        Unit('tempok', icon='mdi:thermometer'), uom='°C')
+        Unit('tempsensor', icon='mdi:thermometer'), uom='°C')
         Unit('onoff', icon='mdi:toggle-switch'), uom=None)
         Unit('seconds', icon='mdi:av-timer'), uom='seconds')
-        Unit('pressure', icon='mdi:pipe'), uom='bar')
-        Unit('timer', icon='mdi:timer'), uom=None)
+        Unit('pressuresensor', icon='mdi:pipe'), uom='bar')
         Unit('date+time', icon=None), uom=None)
         """
-        self.add(Unit('temp', _decodefloatfab(digits=1), 'mdi:thermometer', '°C'))
-        self.add(Unit('tempok', _decodefloatfab(digits=1, checkok=True), 'mdi:thermometer', '°C'))
+        self.add(Unit('temp', _float1, 'mdi:thermometer', '°C'))
+        self.add(Unit('tempsensor', _sensorfab('temp'), 'mdi:thermometer', '°C'))
         self.add(Unit('onoff', None, 'mdi:toggle-switch'))
-        self.add(Unit('seconds', int, 'mdi:av-timer', 'seconds'))
-        self.add(Unit('pressure', _decodefloatfab(digits=2, checkok=True), 'mdi:pipe', 'bar'))
-        self.add(Unit('timer', lambda value: value.replace(';-:-', ''), 'mdi:timer'))
-        self.add(Unit('date+time', _decode_datetime))
+        self.add(Unit('seconds', _float1, 'mdi:av-timer', 'seconds'))
+        self.add(Unit('pressuresensor', _sensorfab('press'), 'mdi:pipe', 'bar'))
+        # self.add(Unit('timer', lambda value: value.replace(';-:-', ''), 'mdi:timer'))
+        self.add(Unit('date+time', _datetime))
+        self.add(Unit('kwh', _float1, uom='kWh'))
+        self.add(Unit('kw', _float1, uom='kW'))
 
     def __iter__(self):
         yield from self._units.values()
 
 
-def _decodefloatfab(digits=None, checkok=False):
-    def decode(value):
-        parts = value.split(';')
-        value = float(parts[0])
-        # checkok
-        if checkok and 'ok' not in parts:
+def _float1(valuestr, value):
+    if value is not None:
+        value = float("%.1f" % float(value))
+    return value, None
+
+
+def _sensorfab(name):
+    def decode(valuestr, value):
+        valuemap = dict(pair.split("=") for pair in valuestr.split(';'))
+        status = valuemap.get('sensor')
+        if 'ok' == status:
+            value = valuemap.get(name)
+        else:
             value = None
-        # digits
-        if digits is not None and value is not None:
-            value = float(("%%.%df" % digits) % value)
-        return value
+        if value is not None:
+            value = float("%.1f" % float(value))
+        return value, {'status': status}
     return decode
 
 
-def _decode_datetime(value):
-    values = dict(pair.split("=") for pair in value.split(';'))
-    hour, minute, second = values.get('time').split(":")
-    day, month, year = values.get('date').split(".")
-    return datetime.datetime(int(year), int(month), int(day), int(hour), int(minute), int(second))
+def _datetime(valuestr, value):
+    valuemap = dict(pair.split("=") for pair in valuestr.split(';'))
+    hour, minute, second = valuemap.get('time').split(":")
+    day, month, year = valuemap.get('date').split(".")
+    stamp = datetime.datetime(int(year), int(month), int(day), int(hour), int(minute), int(second))
+    return stamp, None
 
 
 UNITS = Units()
