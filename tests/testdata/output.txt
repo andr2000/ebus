@@ -1,11 +1,18 @@
+bai StorageTemp temp=-14.94;sensor=cutoff
+bai SetMode = hcmode=off;flowtempdesired=-;hwctempdesired=-;hwcflowtempdesired=-;disablehc=0;disablehwctapping=0;disablehwcload=0;remoteControlHcPump=0;releaseBackup=0;releaseCooling=0
+scan.25  = MF=Vaillant;ID=VR630;SW=0500;HW=6301
+scan.24  = MF=Vaillant;ID=VR630;SW=0500;HW=6301
+mc.4 RoomTempOffset = temp=0.00
+
+
 bai averageIgnitiontime =1.8
 bai DCRoomthermostat onoff=on
 bai Flame =on
 bai FlowTemp temp=38.44;sensor=ok
 bai FlowTempDesired temp=48.00
-bai FlowTempDesired temp=48.00
+bai FlowTempDesired temp=48.443
 bai HeatingSwitch onoff=on
-bai HeatingSwitch onoff=on
+bai HeatingSwitch onoff=off
 bai HwcTemp temp=116.06;sensor=circuit
 bai maxIgnitiontime =2.7
 bai minIgnitiontime =0.2

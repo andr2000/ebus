@@ -17,10 +17,10 @@ def test_examples():
         for line in outputtxt.read_text().splitlines():
             if line:
                 try:
-                    outfile.write(f"{line}\n")
+                    outfile.write(f"\n{line}\n")
                     for value in decoder.decode(line):
-                        outfile.write(f"  {value.circuit} {value.field.title} {value.value}\n")
-                except (ValueError, ebus.decoder.UnknownError) as err:
-                    outfile.write(f"  ERROR: {err}\n")
+                        outfile.write(f"  * {value.circuit} {value.field.title} {value.value} {value.attrs}\n")
+                except (ebus.decoder.UnknownError, ebus.decoder.FormatError) as err:
+                    outfile.write(f"  * {err!r}\n")
 
     cmp_(outfilepath, reffilepath)
