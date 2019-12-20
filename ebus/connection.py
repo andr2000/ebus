@@ -106,9 +106,9 @@ class Connection:
         """
         await self._ensure_connection()
         response = await self._request('read', [
-            ('-v ' if verbose else '', ''),
-            ('-m ', ttl),
-            ('-c ', circuit),
+            ('-v' if verbose else '', ''),
+            ('-m', ttl),
+            ('-c', circuit),
             ('', name),
             ('', field),
         ])
