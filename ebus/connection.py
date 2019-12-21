@@ -115,4 +115,8 @@ class Connection:
         if line.startswith("ERR: "):
             detail = line[len("ERR: ")]
             await self.disconnect()
-            raise ConnectionError(detail)
+            raise CommandError(detail)
+
+
+class CommandError(RuntimeError):
+    pass
