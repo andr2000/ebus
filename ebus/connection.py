@@ -113,7 +113,7 @@ class Connection:
 
     async def _checkline(self, line):
         if line.startswith("ERR: "):
-            detail = line[len("ERR: ")]
+            detail = line[len("ERR: "):]
             await self.disconnect()
             raise CommandError(detail)
 
