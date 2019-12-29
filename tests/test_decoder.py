@@ -21,6 +21,6 @@ def test_examples():
                     for value in decoder.decode(line):
                         outfile.write(f"  * {value.circuit} {value.field.title} {value.value} {value.attrs}\n")
                 except (ebus.decoder.UnknownError, ebus.decoder.FormatError) as err:
-                    outfile.write(f"  * {err!r}\n")
+                    outfile.write(f"  * {err.__class__.__name__}: {err!s}\n")
 
     cmp_(outfilepath, reffilepath)

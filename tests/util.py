@@ -14,7 +14,7 @@ def cmp_(out, ref):
     if _LEARN:
         shutil.copyfile(out, ref)
     else:
-        assert filecmp.cmp(out, ref)
+        assert filecmp.cmp(out, ref), out
     os.remove(out)
 
 
@@ -63,7 +63,7 @@ class DummyServer:
         async def _server():
             server = await asyncio.start_server(self, DummyServer.LOCALHOST, DummyServer.PORT)
             await server.serve_forever()
-        self.server = asyncio.create_task(_server())
+        self.server = asyncio.ensure_future(_server())
         await asyncio.sleep(.001)
 
     # async def __call__(self, reader, writer):
