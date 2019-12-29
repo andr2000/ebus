@@ -21,6 +21,8 @@ class CircuitMap:
 
         Custom mappigns are added via :any:`add()`:
 
+        >>> c = CircuitMap()
+        >>> c.add('bai', 'Heater')
         >>> c.add('boo', 'My Boo')
         >>> c.add('mc.4', 'Mixer Unit 2')
         >>> c.get_humanname('bai')
@@ -31,6 +33,8 @@ class CircuitMap:
         'Mixer Unit 2'
         >>> c.get_humanname('unknown')
         'unknown'
+        >>> c.get_humanname('unknown.4')
+        'unknown.4'
         """
         self._map = {}
         if circuitmap:

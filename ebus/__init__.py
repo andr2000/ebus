@@ -32,6 +32,12 @@ Value(field=Field(circuit='mc', title='Heizen', name='Status', unitname='onoff',
 ...     print(item)
 Value(field=Field(... title='OutsideTemp', ...), circuit='broadcast', value=4.5, attrs=None)
 Value(field=Field(... title='DateTime', ...), circuit='broadcast', value=datetime.datetime(2019, 12, 14, 20, 47, ...)
+
+>>> for item in decoder.decode('garbage'):
+...     print(item)
+Traceback (most recent call last):
+  ...
+ebus.decoder.FormatError: garbage
 """
 
 __version__ = "0.0.1"

@@ -47,7 +47,7 @@ class Connection:
             try:
                 self._writer.close()
                 await self._writer.wait_closed()
-            except BrokenPipeError:
+            except BrokenPipeError:  # pragma: no cover
                 pass
             finally:
                 self._reader, self._writer = None, None
@@ -58,7 +58,7 @@ class Connection:
 
         This does not check if the connection is still usable.
         """
-        return self._writer and not self._writer.is_closing()
+        return self._writer is not None and not self._writer.is_closing()
 
     async def write(self, message):
         """
