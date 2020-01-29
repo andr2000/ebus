@@ -1,7 +1,11 @@
-from nose.tools import eq_, assert_raises
 import asyncio
+
+from nose.tools import assert_raises
+from nose.tools import eq_
+
 from ebus import Connection
-from tests.util import run, DummyServer
+from tests.util import DummyServer
+from tests.util import run
 
 
 def test_connection():

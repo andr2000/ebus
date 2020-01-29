@@ -1,7 +1,8 @@
 """Python Client for EBUS daemon."""
 
-from setuptools import setup
 from os import path
+
+from setuptools import setup
 
 
 def _read_metainfo(filepath):

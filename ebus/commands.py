@@ -49,7 +49,6 @@ async def start_listening(connection, verbose=False):
 
 async def info(connection):
     """Retrieve Information."""
-
     lines = await request(connection, 'info')
     addresses = {}
     data = {'addresses': addresses}

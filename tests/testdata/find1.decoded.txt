@@ -1,0 +1,1822 @@
+
+('b7v', 'AdaptHeatCurve', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('b7v', 'BankHolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'BankHolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'ccTimer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ccTimer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ccTimer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ccTimer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ccTimer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ccTimer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ccTimer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ContinuosHeating', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'currenterror', True, None, False, False)
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'CylinderChargeHyst', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='calibrationv', types=('EXP',), dividervalues='', unit='K')
+
+('b7v', 'CylinderChargeOffset', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='calibrationv', types=('EXP',), dividervalues='', unit='K')
+
+('b7v', 'Date', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='date', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'DisplayedOutsideTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'errorhistory', True, None, False, False)
+    FieldDef(name='index', types=('UCH',), dividervalues='', unit='')
+    FieldDef(name='status', types=('UCH',), dividervalues='', unit='')
+    FieldDef(name='time2', types=('VTM',), dividervalues='', unit='')
+    FieldDef(name='date', types=('HDA',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'FrostOverRideTime', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hoursum2', types=('UIN',), dividervalues='', unit='h')
+
+('b7v', 'Hc1ActualFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc1AutoOffMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='offmode', types=('UIN',), dividervalues='0=eco;1=night', unit='')
+
+('b7v', 'Hc1CircuitType', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='mctype', types=('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', unit='')
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+
+('b7v', 'Hc1ExcessTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='calibrationv', types=('EXP',), dividervalues='', unit='K')
+
+('b7v', 'Hc1FlowTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc1HeatCurve', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc1HeatCurveAdaption', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc1MaxFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc1MinFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc1MixerMovement', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc1PumpStatus', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'Hc1RoomTempSwitchOn', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='rcmode', types=('UIN',), dividervalues='0=off;1=modulating;2=thermostat', unit='')
+
+('b7v', 'Hc1Status', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('b7v', 'Hc1SummerTempLimit', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc2ActualFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc2AutoOffMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='offmode', types=('UIN',), dividervalues='0=eco;1=night', unit='')
+
+('b7v', 'Hc2CircuitType', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='mctype', types=('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', unit='')
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+
+('b7v', 'Hc2ExcessTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='calibrationv', types=('EXP',), dividervalues='', unit='K')
+
+('b7v', 'Hc2FlowTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc2HeatCurve', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc2HeatCurveAdaption', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc2MaxFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc2MinFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc2MixerMovement', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc2PumpStatus', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'Hc2RoomTempSwitchOn', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='rcmode', types=('UIN',), dividervalues='0=off;1=modulating;2=thermostat', unit='')
+
+('b7v', 'Hc2Status', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('b7v', 'Hc2SummerTempLimit', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc3ActualFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc3AutoOffMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='offmode', types=('UIN',), dividervalues='0=eco;1=night', unit='')
+
+('b7v', 'Hc3CircuitType', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='mctype', types=('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', unit='')
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+
+('b7v', 'Hc3ExcessTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='calibrationv', types=('EXP',), dividervalues='', unit='K')
+
+('b7v', 'Hc3FlowTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc3HeatCurve', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc3HeatCurveAdaption', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc3MaxFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc3MinFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'Hc3MixerMovement', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('EXP',), dividervalues='', unit='')
+
+('b7v', 'Hc3PumpStatus', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'Hc3RoomTempSwitchOn', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='rcmode', types=('UIN',), dividervalues='0=off;1=modulating;2=thermostat', unit='')
+
+('b7v', 'Hc3Status', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('b7v', 'Hc3SummerTempLimit', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HcStorageTempBottom', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HcStorageTempTop', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'HolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'HolidayTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HwcBankHolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'HwcBankHolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'HwcFlowTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HwcHolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'HwcHolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'HwcLockTime', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='minutes2', types=('UIN',), dividervalues='', unit='min')
+
+('b7v', 'HwcMaxFlowTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HwcOpMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='opmode', types=('UIN',), dividervalues='0=off;1=auto;2=day;3=night', unit='')
+
+('b7v', 'HwcParallelLoading', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('b7v', 'HwcSFMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='sfmode', types=('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load', unit='')
+
+('b7v', 'HwcStorageTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HwcStorageTempBottom', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HwcStorageTempTop', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'HwcTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'hwcTimer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'hwcTimer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'hwcTimer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'hwcTimer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'hwcTimer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'hwcTimer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'hwcTimer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'HydraulicScheme', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'Installer1', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='shortname', types=('STR:6',), dividervalues='', unit='')
+
+('b7v', 'Installer2', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='shortname', types=('STR:6',), dividervalues='', unit='')
+
+('b7v', 'KeyCodeforConfigMenu', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'MaintenanceDate', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='date', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'MaintenanceDue', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('b7v', 'MaxCylinderChargeTime', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='minutes2', types=('UIN',), dividervalues='', unit='min')
+
+('b7v', 'MaxRoomHumidity', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('b7v', 'MultiRelaySetting', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='mamode', types=('UIN',), dividervalues='0=circulation;1=dryer;2=zone;3=legiopump', unit='')
+
+('b7v', 'noiseReductionTimer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'noiseReductionTimer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'noiseReductionTimer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'noiseReductionTimer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'noiseReductionTimer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'noiseReductionTimer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'noiseReductionTimer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'OpMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='opmode', types=('UIN',), dividervalues='0=off;1=auto;2=day;3=night', unit='')
+
+('b7v', 'OpModeEffect', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zonesel', types=('UIN',), dividervalues='0=alle;1=1;2=2;3=3;4=4;5=5;6=6', unit='')
+
+('b7v', 'OutsideTempAvg', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'PhoneNumber1', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='shortphone', types=('STR:6',), dividervalues='', unit='')
+
+('b7v', 'PhoneNumber2', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='shortphone', types=('STR:6',), dividervalues='', unit='')
+
+('b7v', 'PrEnergySum', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'PrEnergySumHc', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'PrEnergySumHcLastMonth', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'PrEnergySumHcThisMonth', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'PrEnergySumHwc', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'PrEnergySumHwcLastMonth', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'PrEnergySumHwcThisMonth', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'PumpAdditionalTime', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='minutes2', types=('UIN',), dividervalues='', unit='min')
+
+('b7v', 'SFMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='sfmode', types=('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load', unit='')
+
+('b7v', 'SolarYieldTotal', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'SystemFlowTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'tariffTimer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'tariffTimer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'tariffTimer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'tariffTimer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'tariffTimer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'tariffTimer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'tariffTimer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'Time', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('HTI',), dividervalues='', unit='')
+
+('b7v', 'ventilationTimer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ventilationTimer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ventilationTimer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ventilationTimer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ventilationTimer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ventilationTimer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'ventilationTimer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'WaterPressure', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='pressv', types=('EXP',), dividervalues='', unit='bar')
+
+('b7v', 'YieldTotal', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='energy4', types=('ULG',), dividervalues='', unit='kWh')
+
+('b7v', 'z1ActualRoomTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z1BankHolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z1BankHolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z1CoolingTimer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1CoolingTimer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1CoolingTimer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1CoolingTimer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1CoolingTimer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1CoolingTimer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1CoolingTimer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1DayTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z1HolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z1HolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z1HolidayTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z1Name1', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zname', types=('STR:5',), dividervalues='', unit='')
+
+('b7v', 'z1Name2', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zname', types=('STR:5',), dividervalues='', unit='')
+
+('b7v', 'z1NightTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z1OpMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='opmode', types=('UIN',), dividervalues='0=off;1=auto;2=day;3=night', unit='')
+
+('b7v', 'z1QuickVetoTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z1RoomTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z1RoomZoneMapping', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zmapping', types=('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3', unit='')
+
+('b7v', 'z1SFMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='sfmode', types=('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load', unit='')
+
+('b7v', 'z1Shortname', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='shortname', types=('STR:6',), dividervalues='', unit='')
+
+('b7v', 'z1Timer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1Timer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1Timer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1Timer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1Timer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1Timer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1Timer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z1ValveStatus', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('b7v', 'z2ActualRoomTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z2BankHolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z2BankHolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z2CoolingTimer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2CoolingTimer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2CoolingTimer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2CoolingTimer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2CoolingTimer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2CoolingTimer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2CoolingTimer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2DayTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z2HolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z2HolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z2HolidayTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z2Name1', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zname', types=('STR:5',), dividervalues='', unit='')
+
+('b7v', 'z2Name2', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zname', types=('STR:5',), dividervalues='', unit='')
+
+('b7v', 'z2NightTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z2OpMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='opmode', types=('UIN',), dividervalues='0=off;1=auto;2=day;3=night', unit='')
+
+('b7v', 'z2QuickVetoTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z2RoomTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z2RoomZoneMapping', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zmapping', types=('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3', unit='')
+
+('b7v', 'z2SFMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='sfmode', types=('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load', unit='')
+
+('b7v', 'z2Shortname', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='shortname', types=('STR:6',), dividervalues='', unit='')
+
+('b7v', 'z2Timer.Friday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2Timer.Monday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2Timer.Saturday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2Timer.Sunday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2Timer.Thursday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2Timer.Tuesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2Timer.Wednesday', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='from', types=('TTM',), dividervalues='', unit='')
+    FieldDef(name='to', types=('TTM',), dividervalues='', unit='')
+
+('b7v', 'z2ValveStatus', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('b7v', 'z3ActualRoomTempDesired', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z3BankHolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z3BankHolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z3DayTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z3HolidayEndPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hto', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z3HolidayStartPeriod', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='hfrom', types=('HDA',), dividervalues='', unit='')
+
+('b7v', 'z3HolidayTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z3Name1', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zname', types=('STR:5',), dividervalues='', unit='')
+
+('b7v', 'z3Name2', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zname', types=('STR:5',), dividervalues='', unit='')
+
+('b7v', 'z3NightTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z3OpMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='opmode', types=('UIN',), dividervalues='0=off;1=auto;2=day;3=night', unit='')
+
+('b7v', 'z3QuickVetoTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z3RoomTemp', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='tempv', types=('EXP',), dividervalues='', unit='°C')
+
+('b7v', 'z3RoomZoneMapping', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='zmapping', types=('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3', unit='')
+
+('b7v', 'z3SFMode', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='sfmode', types=('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load', unit='')
+
+('b7v', 'z3Shortname', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='shortname', types=('STR:6',), dividervalues='', unit='')
+
+('b7v', 'z3ValveStatus', True, None, False, False)
+    FieldDef(name='', types=('IGN:4',), dividervalues='', unit='')
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'AccessoriesOne', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol', unit='')
+
+('bai', 'AccessoriesTwo', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol', unit='')
+
+('bai', 'ACRoomthermostat', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'AntiCondensValue', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='kW / %')
+
+('bai', 'averageIgnitiontime', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='10', unit='s')
+
+('bai', 'BlockTimeHcMax', True, None, False, False)
+    FieldDef(name='minutes0', types=('UCH',), dividervalues='', unit='min')
+
+('bai', 'BoilerType', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'ChangesDSN', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'CirPump', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'CodingResistor', True, None, False, False)
+    FieldDef(name='', types=('HEX:3',), dividervalues='', unit='')
+
+('bai', 'CounterStartattempts1', True, None, False, False)
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+
+('bai', 'CounterStartattempts2', True, None, False, False)
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+
+('bai', 'CounterStartAttempts3', True, None, False, False)
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+
+('bai', 'CounterStartAttempts4', True, None, False, False)
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+
+('bai', 'currenterror', True, None, False, False)
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'DateTime', True, None, False, False)
+    FieldDef(name='dcfstate', types=('UCH',), dividervalues='0=nosignal;1=ok;2=sync;3=valid', unit='')
+    FieldDef(name='btime', types=('BTI',), dividervalues='', unit='')
+    FieldDef(name='bdate', types=('BDA',), dividervalues='', unit='')
+    FieldDef(name='temp2', types=('D2B',), dividervalues='', unit='°C')
+
+('bai', 'dcfState', True, None, False, False)
+    FieldDef(name='dcfstate', types=('UCH',), dividervalues='0=nosignal;1=ok;2=sync;3=valid', unit='')
+
+('bai', 'DCFTimeDate', True, None, False, False)
+    FieldDef(name='', types=('VTI',), dividervalues='', unit='')
+    FieldDef(name='', types=('HDA',), dividervalues='', unit='')
+
+('bai', 'DCRoomthermostat', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'DeactivationsIFC', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'DeactivationsTemplimiter', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'DeltaFlowReturnMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'DisplayMode', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'DSN', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'DSNOffset', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'DSNStart', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'EBusHeatcontrol', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'EbusSourceOn', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'EbusVoltage', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'errorhistory', True, None, False, False)
+    FieldDef(name='index', types=('UCH',), dividervalues='', unit='')
+    FieldDef(name='status', types=('UCH',), dividervalues='', unit='')
+    FieldDef(name='time2', types=('VTM',), dividervalues='', unit='')
+    FieldDef(name='date', types=('HDA',), dividervalues='', unit='')
+    FieldDef(name='error', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'ExternalFaultmessage', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'externalHwcSwitch', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'ExternGasvalve', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'ExtFlowTempDesiredMin', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'ExtStorageModulCon', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'extWP', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'FanHours', True, None, False, False)
+    FieldDef(name='hoursum2', types=('UIN',), dividervalues='', unit='h')
+
+('bai', 'FanMaxSpeedOperation', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='1/min')
+
+('bai', 'FanMinSpeedOperation', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='1/min')
+
+('bai', 'FanPWMSum', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'FanPWMTest', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'FanSpeed', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='1/min')
+
+('bai', 'FanSpeedOffsetMax', True, None, False, False)
+    FieldDef(name='', types=('SIN',), dividervalues='', unit='1/min')
+
+('bai', 'FanSpeedOffsetMin', True, None, False, False)
+    FieldDef(name='', types=('SIN',), dividervalues='', unit='1/min')
+
+('bai', 'FanStarts', True, None, False, False)
+    FieldDef(name='cntstarts2', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'Flame', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=on;240=off', unit='')
+
+('bai', 'FlameSensingASIC', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'FloorHeatingContact', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'FlowsetHcMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'FlowsetHwcMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'FlowTemp', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+    FieldDef(name='sensor', types=('UCH',), dividervalues='0=ok;85=circuit;170=cutoff', unit='')
+
+('bai', 'FlowTempDesired', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'FlowTempMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'Fluegasvalve', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'FluegasvalveOpen', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'Gasvalve3UC', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=on;240=off', unit='')
+
+('bai', 'GasvalveASICFeedback', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=on;240=off', unit='')
+
+('bai', 'GasvalveUC', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=on;240=off', unit='')
+
+('bai', 'GasvalveUCFeedback', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=on;240=off', unit='')
+
+('bai', 'HcHours', True, None, False, False)
+    FieldDef(name='hoursum2', types=('UIN',), dividervalues='', unit='h')
+
+('bai', 'HcPumpMode', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='0=post run;1=permanent;2=winter;3=eco', unit='')
+
+('bai', 'HcPumpStarts', True, None, False, False)
+    FieldDef(name='cntstarts2', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'HcStarts', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='-100', unit='')
+
+('bai', 'HcUnderHundredStarts', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'HeatingSwitch', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'HoursTillService', True, None, False, False)
+    FieldDef(name='hoursum2', types=('UIN',), dividervalues='', unit='h')
+
+('bai', 'HwcDemand', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'HwcHours', True, None, False, False)
+    FieldDef(name='hoursum2', types=('UIN',), dividervalues='', unit='h')
+
+('bai', 'HwcImpellorSwitch', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'HwcPostrunTime', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='-10', unit='s')
+
+('bai', 'HwcStarts', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='-100', unit='')
+
+('bai', 'HwcSwitch', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'HwcTemp', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+    FieldDef(name='sensor', types=('UCH',), dividervalues='0=ok;85=circuit;170=cutoff', unit='')
+
+('bai', 'HwcTempDesired', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'HwcTempMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'HwcTypes', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'HwcUnderHundredStarts', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'HwcWaterflow', True, None, False, False)
+    FieldDef(name='uin100', types=('UIN',), dividervalues='100', unit='')
+
+('bai', 'HwcWaterflowMax', True, None, False, False)
+    FieldDef(name='uin100', types=('UIN',), dividervalues='100', unit='')
+
+('bai', 'Ignitor', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=on;240=off', unit='')
+
+('bai', 'InitialisationEEPROM', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'IonisationVoltageLevel', True, None, False, False)
+    FieldDef(name='', types=('SIN',), dividervalues='10', unit='')
+
+('bai', 'maintenancedata_HwcTempMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'maxIgnitiontime', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='10', unit='s')
+
+('bai', 'minIgnitiontime', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='10', unit='s')
+
+('bai', 'ModulationTempDesired', True, None, False, False)
+    FieldDef(name='', types=('SIN',), dividervalues='10', unit='%')
+
+('bai', 'OptionalRelais', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol', unit='')
+
+('bai', 'OutdoorstempSensor', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+    FieldDef(name='sensor', types=('UCH',), dividervalues='0=ok;85=circuit;170=cutoff', unit='')
+
+('bai', 'OverflowCounter', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'ParamToken', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'PartloadHcKW', True, None, False, False)
+    FieldDef(name='power', types=('UCH',), dividervalues='', unit='kW')
+
+('bai', 'PartloadHwcKW', True, None, False, False)
+    FieldDef(name='power', types=('UCH',), dividervalues='', unit='kW')
+
+('bai', 'PartnumberBox', True, None, False, False)
+    FieldDef(name='', types=('HEX:5',), dividervalues='', unit='')
+
+('bai', 'PositionValveSet', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'PowerValue', True, None, False, False)
+    FieldDef(name='', types=('HEX:6',), dividervalues='', unit='')
+
+('bai', 'PrAPSCounter', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'PrAPSSum', True, None, False, False)
+    FieldDef(name='seconds2', types=('UIN',), dividervalues='', unit='s')
+
+('bai', 'PrEnergyCountHc1', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergyCountHc2', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergyCountHc3', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergyCountHwc1', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergyCountHwc2', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergyCountHwc3', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergySumHc1', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergySumHc2', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergySumHc3', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergySumHwc1', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergySumHwc2', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'PrEnergySumHwc3', True, None, False, False)
+    FieldDef(name='', types=('ULG',), dividervalues='', unit='')
+
+('bai', 'ProductionByte', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'PrVortexFlowSensorValue', True, None, False, False)
+    FieldDef(name='', types=('SIN',), dividervalues='', unit='ADC')
+
+('bai', 'PumpHours', True, None, False, False)
+    FieldDef(name='hoursum2', types=('UIN',), dividervalues='', unit='h')
+
+('bai', 'PumpHwcFlowNumber', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'PumpHwcFlowSum', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'PumpPower', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'PumpPowerDesired', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='0=auto;1=53;2=60;3=70;4=85;5=100', unit='%')
+
+('bai', 'RemainingBoilerblocktime', True, None, False, False)
+    FieldDef(name='minutes0', types=('UCH',), dividervalues='', unit='min')
+
+('bai', 'ReturnRegulation', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'ReturnTemp', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+    FieldDef(name='tempmirror', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='sensor', types=('UCH',), dividervalues='0=ok;85=circuit;170=cutoff', unit='')
+
+('bai', 'ReturnTempExternal', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+    FieldDef(name='sensor', types=('UCH',), dividervalues='0=ok;85=circuit;170=cutoff', unit='')
+
+('bai', 'ReturnTempMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'SecondPumpMode', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'SerialNumber', True, None, False, False)
+    FieldDef(name='', types=('HEX:8',), dividervalues='', unit='')
+
+('bai', 'SetFactoryValues', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'SetMode', False, None, True, True)
+    FieldDef(name='hcmode', types=('UCH',), dividervalues='0=auto;1=off;2=water', unit='')
+    FieldDef(name='flowtempdesired', types=('D1C',), dividervalues='', unit='°C')
+    FieldDef(name='hwctempdesired', types=('D1C',), dividervalues='', unit='°C')
+    FieldDef(name='hwcflowtempdesired', types=('UCH',), dividervalues='', unit='°C')
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='disablehc', types=('BI0:1',), dividervalues='', unit='')
+    FieldDef(name='disablehwctapping', types=('BI1:1',), dividervalues='', unit='')
+    FieldDef(name='disablehwcload', types=('BI2:1',), dividervalues='', unit='')
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='remoteControlHcPump', types=('BI0:1',), dividervalues='', unit='')
+    FieldDef(name='releaseBackup', types=('BI1:1',), dividervalues='', unit='')
+    FieldDef(name='releaseCooling', types=('BI2:1',), dividervalues='', unit='')
+
+('bai', 'SHEMaxDeltaHwcFlow', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'SHEMaxFlowTemp', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'SolPostHeat', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'SpecialAdj', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'Statenumber', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'Status01', True, None, False, False)
+    FieldDef(name='temp1', types=('D1C',), dividervalues='', unit='°C')
+    FieldDef(name='temp1', types=('D1C',), dividervalues='', unit='°C')
+    FieldDef(name='temp2', types=('D2B',), dividervalues='', unit='°C')
+    FieldDef(name='temp1', types=('D1C',), dividervalues='', unit='°C')
+    FieldDef(name='temp1', types=('D1C',), dividervalues='', unit='°C')
+    FieldDef(name='pumpstate', types=('UCH',), dividervalues='0=off;1=on;2=overrun', unit='')
+
+('bai', 'Status02', True, None, False, False)
+    FieldDef(name='hwcmode', types=('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto', unit='')
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+    FieldDef(name='temp1', types=('D1C',), dividervalues='', unit='°C')
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+    FieldDef(name='temp1', types=('D1C',), dividervalues='', unit='°C')
+
+('bai', 'Status16', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'Status', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+    FieldDef(name='press', types=('FLT',), dividervalues='', unit='bar')
+    FieldDef(name='press', types=('FLT',), dividervalues='', unit='bar')
+    FieldDef(name='hcmode2', types=('UCH',), dividervalues='0=off;3=heat;4=water', unit='')
+    FieldDef(name='', types=('HEX:1',), dividervalues='', unit='')
+
+('bai', 'StatusCirPump', False, None, True, True)
+    FieldDef(name='', types=('UCH',), dividervalues='0=off;100=on', unit='')
+
+('bai', 'Storageloadpump', True, None, False, False)
+    FieldDef(name='percent0', types=('UCH',), dividervalues='', unit='%')
+
+('bai', 'StorageLoadPumpHours', True, None, False, False)
+    FieldDef(name='hoursum2', types=('UIN',), dividervalues='', unit='h')
+
+('bai', 'StorageloadPumpStarts', True, None, False, False)
+    FieldDef(name='cntstarts2', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'StorageLoadTimeMax', True, None, False, False)
+    FieldDef(name='minutes0', types=('UCH',), dividervalues='', unit='min')
+
+('bai', 'StoragereleaseClock', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'StorageTemp', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+    FieldDef(name='sensor', types=('UCH',), dividervalues='0=ok;85=circuit;170=cutoff', unit='')
+
+('bai', 'StorageTempDesired', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'StorageTempMax', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'TargetFanSpeed', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='1/min')
+
+('bai', 'TargetFanSpeedOutput', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='1/min')
+
+('bai', 'TempDiffBlock', True, None, False, False)
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+
+('bai', 'TempDiffFailure', True, None, False, False)
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+
+('bai', 'TempGradientFailure', True, None, False, False)
+    FieldDef(name='temp0', types=('UCH',), dividervalues='', unit='°C')
+
+('bai', 'Templimiter', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=on;240=off', unit='')
+
+('bai', 'TemplimiterWithNTC', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=yes;240=no', unit='')
+
+('bai', 'TempMaxDiffExtTFT', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'Testbyte', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'TimerInputHc', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'ValveMode', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'ValveStarts', True, None, False, False)
+    FieldDef(name='cntstarts2', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'VolatileLockout', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=yes;240=no', unit='')
+
+('bai', 'VolatileLockoutIFCGV', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='15=yes;240=no', unit='')
+
+('bai', 'WarmstartDemand', True, None, False, False)
+    FieldDef(name='yesno', types=('UCH',), dividervalues='0=no;1=yes', unit='')
+
+('bai', 'WarmstartOffset', True, None, False, False)
+    FieldDef(name='temp', types=('D2C',), dividervalues='', unit='°C')
+
+('bai', 'WaterHcFlowMax', True, None, False, False)
+    FieldDef(name='', types=('UIN',), dividervalues='', unit='')
+
+('bai', 'WaterPressure', True, None, False, False)
+    FieldDef(name='press', types=('FLT',), dividervalues='', unit='bar')
+    FieldDef(name='sensor', types=('UCH',), dividervalues='0=ok;85=circuit;170=cutoff', unit='')
+
+('bai', 'WaterpressureBranchControlOff', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'WaterpressureMeasureCounter', True, None, False, False)
+    FieldDef(name='', types=('UCH',), dividervalues='', unit='')
+
+('bai', 'WaterpressureVariantSum', True, None, False, False)
+    FieldDef(name='pressm2', types=('UIN',), dividervalues='', unit='mbar')
+
+('bai', 'WP', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('bai', 'WPPostrunTime', True, None, False, False)
+    FieldDef(name='minutes0', types=('UCH',), dividervalues='', unit='min')
+
+('bai', 'WPSecondStage', True, None, False, False)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('broadcast', 'datetime', False, None, False, True)
+    FieldDef(name='outsidetemp', types=('D2B',), dividervalues='', unit='°C')
+    FieldDef(name='time', types=('BTI',), dividervalues='', unit='')
+    FieldDef(name='date', types=('BDA',), dividervalues='', unit='')
+
+('broadcast', 'error', False, None, False, True)
+    FieldDef(name='error', types=('STR:10',), dividervalues='', unit='')
+
+('broadcast', 'hwcStatus', False, None, False, True)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+    FieldDef(name='VF1', types=('UCH',), dividervalues='', unit='°C')
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('broadcast', 'id', False, None, False, True)
+    FieldDef(name='manufacturer', types=('UCH',), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu', unit='')
+    FieldDef(name='id', types=('STR:5',), dividervalues='', unit='')
+    FieldDef(name='software', types=('PIN',), dividervalues='', unit='')
+    FieldDef(name='hardware', types=('PIN',), dividervalues='', unit='')
+
+('broadcast', 'id', True, None, False, False)
+    FieldDef(name='manufacturer', types=('UCH',), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu', unit='')
+    FieldDef(name='id', types=('STR:5',), dividervalues='', unit='')
+    FieldDef(name='software', types=('PIN',), dividervalues='', unit='')
+    FieldDef(name='hardware', types=('PIN',), dividervalues='', unit='')
+
+('broadcast', 'load', False, None, False, True)
+    FieldDef(name='onoff', types=('UCH',), dividervalues='0=off;1=on', unit='')
+
+('broadcast', 'outsidetemp', False, None, False, True)
+    FieldDef(name='temp2', types=('D2B',), dividervalues='', unit='°C')
+
+('broadcast', 'signoflife', False, None, False, True)
+
+('broadcast', 'vdatetime', False, None, False, True)
+    FieldDef(name='time', types=('BTI',), dividervalues='', unit='')
+    FieldDef(name='date', types=('BDA',), dividervalues='', unit='')
+
+('general', 'valuerange', True, None, False, False)
+    FieldDef(name='id', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='', types=('IGN:2',), dividervalues='', unit='')
+    FieldDef(name='cur', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='min', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='max', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='def', types=('UIN',), dividervalues='', unit='')
+
+('memory', 'eeprom', True, None, False, False)
+    FieldDef(name='address', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='count', types=('UCH',), dividervalues='', unit='')
+    FieldDef(name='data', types=('HEX:*',), dividervalues='', unit='')
+
+('memory', 'ram', True, None, False, False)
+    FieldDef(name='address', types=('UIN',), dividervalues='', unit='')
+    FieldDef(name='count', types=('UCH',), dividervalues='', unit='')
+    FieldDef(name='data', types=('HEX:*',), dividervalues='', unit='')
+
+('scan', 'id', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='prefix', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='year', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='week', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='product', types=('STR:10',), dividervalues='', unit='')
+    FieldDef(name='supplier', types=('STR:4',), dividervalues='', unit='')
+    FieldDef(name='counter', types=('STR:6',), dividervalues='', unit='')
+    FieldDef(name='suffix', types=('STR:2',), dividervalues='', unit='')
+
+('scan.08', '', True, None, False, False)
+    FieldDef(name='MF', types=('UCH',), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu', unit='')
+    FieldDef(name='ID', types=('STR:5',), dividervalues='', unit='')
+    FieldDef(name='SW', types=('PIN',), dividervalues='', unit='')
+    FieldDef(name='HW', types=('PIN',), dividervalues='', unit='')
+
+('scan.08', 'id', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='prefix', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='year', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='week', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='product', types=('STR:10',), dividervalues='', unit='')
+    FieldDef(name='supplier', types=('STR:4',), dividervalues='', unit='')
+    FieldDef(name='counter', types=('STR:6',), dividervalues='', unit='')
+    FieldDef(name='suffix', types=('STR:2',), dividervalues='', unit='')
+
+('scan.15', '', True, None, False, False)
+    FieldDef(name='MF', types=('UCH',), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu', unit='')
+    FieldDef(name='ID', types=('STR:5',), dividervalues='', unit='')
+    FieldDef(name='SW', types=('PIN',), dividervalues='', unit='')
+    FieldDef(name='HW', types=('PIN',), dividervalues='', unit='')
+
+('scan.15', 'id', True, None, False, False)
+    FieldDef(name='', types=('IGN:1',), dividervalues='', unit='')
+    FieldDef(name='prefix', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='year', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='week', types=('STR:2',), dividervalues='', unit='')
+    FieldDef(name='product', types=('STR:10',), dividervalues='', unit='')
+    FieldDef(name='supplier', types=('STR:4',), dividervalues='', unit='')
+    FieldDef(name='counter', types=('STR:6',), dividervalues='', unit='')
+    FieldDef(name='suffix', types=('STR:2',), dividervalues='', unit='')
