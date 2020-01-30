@@ -30,10 +30,7 @@ config["classifiers"] = [
 ]
 config["keywords"] = "ebus, ebusd, ebus client"
 config["packages"] = ["ebus"]
-config["extras_require"] = {
-    "test": ["coverage"],
-}
-config["tests_require"] = ["nose"]
+config["tests_require"] = ["nose", "pydocstyle", "pycodestype", "black", "isort"]
 config["test_suite"] = "nose.collector"
 
 # Get the long description from the README file
