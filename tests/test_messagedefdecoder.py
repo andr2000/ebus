@@ -1,6 +1,6 @@
 import pathlib
 
-from ebus.messagedefdecoder import decode
+from ebus.msgdefdecoder import decode
 from tests.util import cmp_
 
 TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
@@ -23,8 +23,8 @@ def _test(basename):
     with outfilepath.open('w') as outfile:
         for line in infilepath.read_text().splitlines():
             if line:
-                messagedef = decode(line)
-                outfile.write(f"\n{messagedef[:-1]}\n")
-                for field in messagedef.fields:
+                msgdef = decode(line)
+                outfile.write(f"\n{msgdef[:-1]}\n")
+                for field in msgdef.fields:
                     outfile.write(f"    {field}\n")
     cmp_(outfilepath, reffilepath)
