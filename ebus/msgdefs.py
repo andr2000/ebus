@@ -1,8 +1,5 @@
 import collections
 
-MsgDef = collections.namedtuple("MsgDef", "circuit name read prio write update fields")
-FieldDef = collections.namedtuple("FieldDef", "uname name types dividervalues unit")
-
 
 class MsgDefs:
 
@@ -12,6 +9,7 @@ class MsgDefs:
         """
         Message Defs Container.
 
+        >>> from .msgdef import MsgDef, FieldDef
         >>> msgdefs = MsgDefs()
         >>> msgdefs.add(MsgDef('mc', 'Status0a', True, None, False, False, (
         ...     FieldDef('temp', 'temp', ('D2C',), None, '°C'),

@@ -1,8 +1,8 @@
 import collections
 import re
 
-from .msgdefs import FieldDef
-from .msgdefs import MsgDef
+from .msgdef import FieldDef
+from .msgdef import MsgDef
 
 # https://github.com/john30/ebusd/wiki/4.1.-Message-definition#message-definition
 
