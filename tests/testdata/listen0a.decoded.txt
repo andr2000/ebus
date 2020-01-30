@@ -1,0 +1,120 @@
+
+bai WarmstartDemand = no
+  bai WarmstartDemand ("yesno='no'",)
+
+bai WaterHcFlowMax = 3063
+  bai WaterHcFlowMax ("='3063'",)
+
+bai WaterPressure = 2.125;ok
+  bai WaterPressure ("press='2.125'", "sensor='ok'")
+
+mc.3 Status = 40;off;38.31;26
+  mc.3 Status ("temp0-0='40'", "onoff='off'", "temp='38.31'", "temp0-1='26'")
+
+mc.4 Status = 0;off;36.50;24
+  mc.4 Status ("temp0-0='0'", "onoff='off'", "temp='36.50'", "temp0-1='24'")
+
+mc.5 Status = 0;off;30.31;23
+  mc.5 Status ("temp0-0='0'", "onoff='off'", "temp='30.31'", "temp0-1='23'")
+
+bai WaterpressureBranchControlOff = off
+  bai WaterpressureBranchControlOff ("onoff='off'",)
+
+bai WaterpressureMeasureCounter = 105
+  bai WaterpressureMeasureCounter ("='105'",)
+
+bai WaterpressureVariantSum = 65440
+  bai WaterpressureVariantSum ("pressm2='65440'",)
+
+bai WPPostrunTime = 5
+  bai WPPostrunTime ("minutes0='5'",)
+
+bai WPSecondStage = on
+  bai WPSecondStage ("onoff='on'",)
+
+cc currenterror = -;-;-;-;-
+  cc currenterror ("error-0='-'", "error-1='-'", "error-2='-'", "error-3='-'", "error-4='-'")
+
+cc DateTime = valid;20:57:48;30.01.2020;2.500
+  cc DateTime ("dcfstate='valid'", "btime='20:57:48'", 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', "temp2='2.500'")
+
+cc Params = 30;6;22;15;75
+  cc Params ("temp0='30'", "-0='6'", "mctype7='22'", "temps-0='15'", "-1='75'")
+
+cc Stat15MinBusTimeout = 0
+  cc Stat15MinBusTimeout ("='0'",)
+
+cc StatMonthOfInstallation = 3
+  cc StatMonthOfInstallation ("='3'",)
+
+cc StatOperatingHours = 16610
+  cc StatOperatingHours ("='16610'",)
+
+cc StatPowerOn = 31
+  cc StatPowerOn ("='31'",)
+
+mc.5 Status = 0;off;30.94;23
+  mc.5 Status ("temp0-0='0'", "onoff='off'", "temp='30.94'", "temp0-1='23'")
+
+cc StatRestarts = 0
+  cc StatRestarts ("='0'",)
+
+cc StatRTOSErrorcode = 0
+  cc StatRTOSErrorcode ("='0'",)
+
+cc StatRTOSErrorCounter = 0
+  cc StatRTOSErrorCounter ("='0'",)
+
+cc Status0a = -;off;on;on;0
+  cc Status0a ("temp='-'", "mixer='off'", "onoff-0='on'", "onoff-1='on'", "temp0='0'")
+
+cc Status16 = 2.50
+  cc Status16 ("temp='2.50'",)
+
+cc Status = 0;off;-;0
+  cc Status ("temp0-0='0'", "onoff='off'", "temp='-'", "temp0-1='0'")
+
+cc StatYearOfInstallation = 18
+  cc StatYearOfInstallation ("='18'",)
+
+cc Timer.Friday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Friday ("from-0='04:30'", "to-0='22:30'", "from-1='-:-'", "to-1='-:-'", "from-2='-:-'", "to-2='-:-'", "daysel='Mo-So'")
+
+cc Timer.Monday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Monday ("from-0='04:30'", "to-0='22:30'", "from-1='-:-'", "to-1='-:-'", "from-2='-:-'", "to-2='-:-'", "daysel='Mo-So'")
+
+cc Timer.Saturday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Saturday ("from-0='04:30'", "to-0='22:30'", "from-1='-:-'", "to-1='-:-'", "from-2='-:-'", "to-2='-:-'", "daysel='Mo-So'")
+
+cc Timer.Sunday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Sunday ("from-0='04:30'", "to-0='22:30'", "from-1='-:-'", "to-1='-:-'", "from-2='-:-'", "to-2='-:-'", "daysel='Mo-So'")
+
+cc Timer.Thursday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Thursday ("from-0='04:30'", "to-0='22:30'", "from-1='-:-'", "to-1='-:-'", "from-2='-:-'", "to-2='-:-'", "daysel='Mo-So'")
+
+cc Timer.Tuesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Tuesday ("from-0='04:30'", "to-0='22:30'", "from-1='-:-'", "to-1='-:-'", "from-2='-:-'", "to-2='-:-'", "daysel='Mo-So'")
+
+cc Timer.Wednesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
+  cc Timer.Wednesday ("from-0='04:30'", "to-0='22:30'", "from-1='-:-'", "to-1='-:-'", "from-2='-:-'", "to-2='-:-'", "daysel='Mo-So'")
+
+qhc BoilerCircuitDisabled = yes
+  UnknownMsgError('circuit=qhc, name=BoilerCircuitDisabled')
+
+hc CleaningLady = 0
+  hc CleaningLady ("='0'",)
+
+hc FlowTempDesired = 0.0
+  hc FlowTempDesired ("temp1='0.0'",)
+
+hc FlowTempMax = 90
+  hc FlowTempMax ("temp0='90'",)
+
+hc FlowTempMin = 15
+  hc FlowTempMin ("temp0='15'",)
+
+hc Hc1PumpPort = off
+  hc Hc1PumpPort ("onoff='off'",)
+
+mc.4 Status = 0;off;36.62;24
+  mc.4 Status ("temp0-0='0'", "onoff='off'", "temp='36.62'", "temp0-1='24'")

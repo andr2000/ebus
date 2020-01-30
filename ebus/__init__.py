@@ -11,5 +11,7 @@ __url__ = "https://github.com/c0fec0de/ebus"
 from . import commands  # noqa
 from .circuitmap import CircuitMap  # noqa
 from .connection import Connection  # noqa
+from .msgdecoder import MsgDecoder  # noqa
+from .msgdecoder import UnknownMsgError  # noqa
 from .msgdefdecoder import decode_msgdef  # noqa
 from .msgdefs import MsgDefs  # noqa
