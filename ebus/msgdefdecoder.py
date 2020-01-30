@@ -8,7 +8,7 @@ from .msgdefs import MsgDef
 # https://github.com/john30/ebusd/wiki/4.1.-Message-definition#message-definition
 
 
-def decode(line):
+def decode_msgdef(line):
     """
     Decode Message and Field Definition retrieved from ebusd.
 
@@ -17,13 +17,13 @@ def decode(line):
     The resulting lines are decoded by this method and retrieve a proper
     :any:`MsgDef` instance per `str`.
 
-    >>> m = decode('r,mc.4,OtShutdownLimit,temp,s,UCH,,°C,"text, text"')
+    >>> m = decode_msgdef('r,mc.4,OtShutdownLimit,temp,s,UCH,,°C,"text, text"')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('mc.4', 'OtShutdownLimit', True, None, False, False)
     >>> m.fields
     (FieldDef(uname='temp', name='temp', types=('UCH',), dividervalues=None, unit='°C'),)
 
-    >>> m = decode('w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur')
+    >>> m = decode_msgdef('w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
     >>> m.fields
