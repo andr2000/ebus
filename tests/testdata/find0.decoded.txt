@@ -2944,6 +2944,7 @@
 
 ('ui', 'Time', True, None, False, False)
     FieldDef(uname='time', name='time', types=('VTI',), dividervalues=None, unit=None)
+Invalid message definition 'r,ui,FormatError,,'
 
 ('ui', 'TurnOffDelay', True, None, False, False)
     FieldDef(uname='', name='', types=('UCH',), dividervalues=None, unit=None)

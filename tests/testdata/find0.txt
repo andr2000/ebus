@@ -693,7 +693,9 @@ r,ui,SystemTempGradient,temp,s,D2C,,°C,gradient of the system temperature (VF1)
 r,ui,TempFailDetectTime,temp0,s,UCH,,°C,Temperatur
 r,ui,TempIncrease,temp,s,D2C,,°C,Temperatur
 r,ui,Time,time,s,VTI,,,Zeit
+r,ui,FormatError,,
 r,ui,TurnOffDelay,,s,UCH,,,
+
 r,ui,TurnOnDelay,,s,UCH,,,
 r,ui,WaterstationModulDetected,,s,UCH,,,detected VPM-W (bit counted)
 r,ui,YieldLastYear,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,

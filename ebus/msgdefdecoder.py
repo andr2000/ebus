@@ -29,10 +29,13 @@ def decode_msgdef(line):
     >>> m.fields
     (FieldDef(uname='temp', name='temp', types=('D2C',), dividervalues=None, unit='°C'),)
     """
-    values = _split(line)
-    type_, circuit, name = values[:3]
-    read, prio, write, update = _decodetype(type_)
-    fields = _decodefields(values[3:])
+    try:
+        values = _split(line)
+        type_, circuit, name = values[:3]
+        read, prio, write, update = _decodetype(type_)
+        fields = _decodefields(values[3:])
+    except ValueError:
+        raise ValueError(f'Invalid message definition {line!r}') from None
     return MsgDef(circuit, name, read, prio, write, update, fields)
 
 
@@ -63,7 +66,7 @@ def _decodefields(values):
         chunks = _chunks(values, 6)
         return tuple(_createfields(chunks))
     else:
-        raise ValueError(values)
+        raise ValueError()
 
 
 def _createfields(chunks):
