@@ -6,6 +6,7 @@ from .typehandler import TypeHandler
 
 Msg = collections.namedtuple('Msg', 'circuit msgdef fields')
 Field = collections.namedtuple('Field', 'fielddef value')
+Error = collections.namedtuple('Error', 'msg')
 
 
 class MsgDecoder:
@@ -45,7 +46,10 @@ class MsgDecoder:
     def _decodefields(self, fielddefs, values):
         typehandler = self.typehandler
         for fielddef, value in zip(fielddefs, values):
-            yield Field(fielddef, typehandler(fielddef, value.strip()))
+            if not value.startswith("ERR: "):
+                yield Field(fielddef, typehandler(fielddef, value.strip()))
+            else:
+                yield Field(fielddef, Error(value.lstrip("ERR: ")))
 
 
 class UnknownMsgError(RuntimeError):
