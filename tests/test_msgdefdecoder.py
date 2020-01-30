@@ -8,19 +8,19 @@ TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 
 def test_find0():
     """Process `find0.txt`."""
-    _test(TESTDATAPATH / 'find0')
+    _test(TESTDATAPATH / "find0")
 
 
 def test_find1():
     """Process `find1.txt`."""
-    _test(TESTDATAPATH / 'find1')
+    _test(TESTDATAPATH / "find1")
 
 
 def _test(basepath):
     infilepath = basepath.with_suffix(".txt")
     outfilepath = basepath.with_suffix(".decoded.gen.txt")
     reffilepath = basepath.with_suffix(".decoded.txt")
-    with outfilepath.open('w') as outfile:
+    with outfilepath.open("w") as outfile:
         for line in infilepath.read_text().splitlines():
             if line:
                 try:

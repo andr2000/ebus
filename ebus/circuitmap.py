@@ -1,5 +1,4 @@
 class CircuitMap:
-
     def __init__(self, circuitmap=None):
         """
         Mapping of EBUS circuit names to human-readable names with some predefined names.
@@ -57,11 +56,11 @@ class CircuitMap:
         # lookup full name
         humanname = self._map.get(circuitname, None)
         # loopup basename
-        if humanname is None and '.' in circuitname:
-            basename, suffix = circuitname.split('.')
+        if humanname is None and "." in circuitname:
+            basename, suffix = circuitname.split(".")
             humanname = self._map.get(basename, None)
             if humanname is not None:
-                humanname = f'{humanname}#{suffix}'
+                humanname = f"{humanname}#{suffix}"
         # use circuitname as default
         if humanname is None:
             humanname = circuitname

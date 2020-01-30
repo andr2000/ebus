@@ -27,7 +27,9 @@ class MsgDefs:
         >>> list(msgdefs)
         [MsgDef(circuit='mc', name='Status0a', ...), MsgDef(... unit='°C')))]
         """
-        self._msgdefs = collections.defaultdict(lambda: collections.defaultdict(lambda: None))
+        self._msgdefs = collections.defaultdict(
+            lambda: collections.defaultdict(lambda: None)
+        )
 
     def add(self, msgdef):
         """Add Message Definition."""

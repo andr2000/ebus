@@ -34,7 +34,7 @@ def decode_msgdef(line):
         read, prio, write, update = _decodetype(type_)
         fields = _decodefields(values[3:])
     except ValueError:
-        raise ValueError(f'Invalid message definition {line!r}') from None
+        raise ValueError(f"Invalid message definition {line!r}") from None
     return MsgDef(circuit, name, read, prio, write, update, fields)
 
 
@@ -48,14 +48,14 @@ def _split(line):
 
 
 def _decodetype(type_):
-    r = re.compile(r'\A(r)([1-9]?)\Z')
+    r = re.compile(r"\A(r)([1-9]?)\Z")
     m = r.match(type_)
     if m:
         read = m.group(1) is not None
         prio = int(m.group(2)) if m.group(2) else None
     else:
         read, prio = False, None
-    write = 'w' in type_
+    write = "w" in type_
     update = not read and len(type_) > (1 if write else 0)
     return read, prio, write, update
 
@@ -88,10 +88,11 @@ def _createfields(chunks):
 
 
 def _createfield(uname, name, part, datatype, dividervalues=None, unit=None, *args):
-    types = tuple(datatype.split(','))
+    types = tuple(datatype.split(","))
     return FieldDef(uname, name, types, dividervalues or None, unit or None)
 
 
 def _chunks(list_or_tuple, maxsize):
-    return [list_or_tuple[i:i + maxsize]
-            for i in range(0, len(list_or_tuple), maxsize)]
+    return [
+        list_or_tuple[i : i + maxsize] for i in range(0, len(list_or_tuple), maxsize)
+    ]

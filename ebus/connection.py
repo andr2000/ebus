@@ -2,8 +2,7 @@ import asyncio
 
 
 class Connection:
-
-    def __init__(self, host='127.0.0.1', port=8888, autoconnect=False):
+    def __init__(self, host="127.0.0.1", port=8888, autoconnect=False):
         """
         Ebus Connection.
 
@@ -39,7 +38,9 @@ class Connection:
         Raises:
             IOError: If connection cannot be established
         """
-        self._reader, self._writer = await asyncio.open_connection(self._host, self._port)
+        self._reader, self._writer = await asyncio.open_connection(
+            self._host, self._port
+        )
 
     async def disconnect(self):
         """Disconnect if not already done."""
@@ -82,7 +83,7 @@ class Connection:
         """
         await self._ensure_connection()
         line = await self._reader.readline()
-        line = line.decode('utf-8').rstrip()
+        line = line.decode("utf-8").rstrip()
         await self._checkline(line)
         return line
 
@@ -97,7 +98,7 @@ class Connection:
         await self._ensure_connection()
         while True:
             line = await self._reader.readline()
-            line = line.decode('utf-8').rstrip()
+            line = line.decode("utf-8").rstrip()
             await self._checkline(line)
             if line:
                 yield line
@@ -109,11 +110,11 @@ class Connection:
             if self._autoconnect:
                 await self.connect()
             else:
-                raise ConnectionError('Not connected')
+                raise ConnectionError("Not connected")
 
     async def _checkline(self, line):
         if line.startswith("ERR: "):
-            detail = line[len("ERR: "):]
+            detail = line.lstrip("ERR: ")
             await self.disconnect()
             raise CommandError(detail)
 

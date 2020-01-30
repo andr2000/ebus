@@ -8,12 +8,12 @@ TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 
 def test_listen0a():
     """Process `listen0a.txt`."""
-    _test(TESTDATAPATH / 'find0.txt', TESTDATAPATH / 'listen0a')
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0a")
 
 
 def test_listen0b():
     """Process `listen0b.txt`."""
-    _test(TESTDATAPATH / 'find0.txt', TESTDATAPATH / 'listen0b')
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0b")
 
 
 def _test(deffilepath, basepath):
@@ -32,7 +32,7 @@ def _test(deffilepath, basepath):
 
     # decode
     decoder = ebus.MsgDecoder(msgdefs)
-    with outfilepath.open('w') as outfile:
+    with outfilepath.open("w") as outfile:
         for line in infilepath.read_text().splitlines():
             if line:
                 try:
@@ -48,5 +48,5 @@ def _test(deffilepath, basepath):
 
 
 def _formatfield(field):
-    unit = field.fielddef.unit or '' if field.value is not None else ''
+    unit = field.fielddef.unit or "" if field.value is not None else ""
     return f"{field.fielddef.uname}={field.value!r}{unit}"

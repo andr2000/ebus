@@ -10,7 +10,7 @@ class MsgDecoder:
 
     """Message Decoder."""
 
-    _re_decode = re.compile(r'(([A-z0-9]+)(\.[A-z0-9]+)?) ([^\s]*) (= )?(.*)')
+    _re_decode = re.compile(r"(([A-z0-9]+)(\.[A-z0-9]+)?) ([^\s]*) (= )?(.*)")
 
     def __init__(self, msgdefs):
         """
@@ -36,7 +36,7 @@ class MsgDecoder:
         circuit, circuitbasename, _, name, _, valuestr = match.groups()
         msgdef = self.msgdefs.get(circuitbasename, name)
         if not msgdef:
-            raise UnknownMsgError(f'circuit={circuit}, name={name}')
+            raise UnknownMsgError(f"circuit={circuit}, name={name}")
         fields = tuple(self._decodefields(msgdef.fields, valuestr.split(";")))
         return Msg(circuit, msgdef, fields)
 

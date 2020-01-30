@@ -19,7 +19,6 @@ def cmp_(out, ref):
 
 
 class DummyConnection:
-
     def __init__(self, rxlines=None, txlines=None):
         self.rxlines = collections.deque(rxlines or [])
         self.txlines = collections.deque(txlines or [])
@@ -46,7 +45,7 @@ class DummyConnection:
 
 class DummyServer:
 
-    LOCALHOST = '127.0.0.1'
+    LOCALHOST = "127.0.0.1"
     PORT = 12344
 
     def __init__(self):
@@ -61,10 +60,13 @@ class DummyServer:
 
     async def start(self):
         async def _server():
-            server = await asyncio.start_server(self, DummyServer.LOCALHOST, DummyServer.PORT)
+            server = await asyncio.start_server(
+                self, DummyServer.LOCALHOST, DummyServer.PORT
+            )
             await server.serve_forever()
+
         self.server = asyncio.ensure_future(_server())
-        await asyncio.sleep(.001)
+        await asyncio.sleep(0.001)
 
     # async def __call__(self, reader, writer):
     #     while self.queue:

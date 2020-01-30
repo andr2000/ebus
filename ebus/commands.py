@@ -7,13 +7,19 @@ async def read(connection, name, field=None, circuit=None, ttl=None, verbose=Fal
         IOError: If connection is broken or cannot be established (`autoconnect==True`)
         ConnectionError: If not connected (`autoconnect==False`)
     """
-    lines = tuple(await request(connection, 'read', [
-        ('-v' if verbose else '', ''),
-        ('-m', ttl),
-        ('-c', circuit),
-        ('', name),
-        ('', field),
-    ]))
+    lines = tuple(
+        await request(
+            connection,
+            "read",
+            [
+                ("-v" if verbose else "", ""),
+                ("-m", ttl),
+                ("-c", circuit),
+                ("", name),
+                ("", field),
+            ],
+        )
+    )
     return lines[0]
 
 
@@ -26,37 +32,33 @@ async def write(connection, name, circuit, value):
         IOError: If connection is broken or cannot be established (`autoconnect==True`)
         ConnectionError: If not connected (`autoconnect==False`)
     """
-    await request(connection, 'write', [
-        ('-c ', circuit),
-        ('', name),
-        ('', value),
-    ])
+    await request(connection, "write", [("-c ", circuit), ("", name), ("", value),])
 
 
 async def request(connection, command, options=None):
     """Assemble request, send and readlines."""
-    args = ''.join([f'{option} {value} '
-                    for option, value in (options or [])
-                    if value is not None])
-    await connection.write(f'{command} {args}')
+    args = "".join(
+        [f"{option} {value} " for option, value in (options or []) if value is not None]
+    )
+    await connection.write(f"{command} {args}")
     return await connection.readlines()
 
 
 async def start_listening(connection, verbose=False):
     """Start Listening."""
-    await request(connection, 'listen -v')
+    await request(connection, "listen -v")
 
 
 async def info(connection):
     """Retrieve Information."""
-    lines = await request(connection, 'info')
+    lines = await request(connection, "info")
     addresses = {}
-    data = {'addresses': addresses}
+    data = {"addresses": addresses}
     for line in lines:
-        name, value = line.split(': ', 1)
-        if name.startswith('address '):
-            address = int(name[len('address '):], 16)
-            parts = value.split(', ')
+        name, value = line.split(": ", 1)
+        if name.startswith("address "):
+            address = int(name[len("address ") :], 16)
+            parts = value.split(", ")
             addresses[address] = parts
         else:
             data[name] = value.strip()

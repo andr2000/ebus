@@ -11,12 +11,12 @@ from tests.util import run
 def test_connection():
     """Connection Class Properties."""
     c = Connection()
-    eq_(c.host, '127.0.0.1')
+    eq_(c.host, "127.0.0.1")
     eq_(c.port, 8888)
     eq_(c.autoconnect, False)
 
-    c = Connection(host='foo', port=DummyServer.PORT, autoconnect=True)
-    eq_(c.host, 'foo')
+    c = Connection(host="foo", port=DummyServer.PORT, autoconnect=True)
+    eq_(c.host, "foo")
     eq_(c.port, DummyServer.PORT)
     eq_(c.autoconnect, True)
 
@@ -30,6 +30,7 @@ def test_connect_fails():
         with assert_raises(ConnectionRefusedError):
             await c.connect()
         eq_(c.is_connected(), False)
+
     run(test)
 
 
@@ -47,6 +48,7 @@ def test_connect():
         eq_(c.is_connected(), False)
         await c.disconnect()
         eq_(c.is_connected(), False)
+
     run(test)
     s.kill()
 
