@@ -2,7 +2,7 @@
 import collections
 import re
 
-from .typehandler import TypeHandler
+from .typedecoder import TypeDecoder
 
 Msg = collections.namedtuple('Msg', 'circuit msgdef fields')
 Field = collections.namedtuple('Field', 'fielddef value')
@@ -23,7 +23,7 @@ class MsgDecoder:
             msgdefs (MsgDefs): Message Definitions
         """
         self.msgdefs = msgdefs
-        self.typehandler = TypeHandler()
+        self.typedecoder = TypeDecoder()
 
     def decode(self, line):
         """
@@ -44,10 +44,10 @@ class MsgDecoder:
         return Msg(circuit, msgdef, fields)
 
     def _decodefields(self, fielddefs, values):
-        typehandler = self.typehandler
+        typedecoder = self.typedecoder
         for fielddef, value in zip(fielddefs, values):
             if not value.startswith("ERR: "):
-                yield Field(fielddef, typehandler(fielddef, value.strip()))
+                yield Field(fielddef, typedecoder(fielddef, value.strip()))
             else:
                 yield Field(fielddef, Error(value.lstrip("ERR: ")))
 

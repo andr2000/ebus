@@ -2,7 +2,7 @@
 import collections
 
 MsgDef = collections.namedtuple("MsgDef", "circuit name read prio write update fields")
-FieldDef = collections.namedtuple("FieldDef", "uname name types unit")
+FieldDef = collections.namedtuple("FieldDef", "uname name types dividervalues unit")
 
 
 class MsgDefs:
@@ -15,15 +15,15 @@ class MsgDefs:
 
         >>> msgdefs = MsgDefs()
         >>> msgdefs.add(MsgDef('mc', 'Status0a', True, None, False, False, (
-        ...     FieldDef('temp', 'temp', ('D2C',), '°C'),
-        ...     FieldDef('mixer', 'mixer', ('UCH',), None),
-        ...     FieldDef('onoff-0', 'onoff', ('UCH',), None),
-        ...     FieldDef('onoff-1', 'onoff', ('UCH',), None),
-        ...     FieldDef('temp0', 'temp0', ('UCH',), '°C'),
+        ...     FieldDef('temp', 'temp', ('D2C',), None, '°C'),
+        ...     FieldDef('mixer', 'mixer', ('UCH',), None, None),
+        ...     FieldDef('onoff-0', 'onoff', ('UCH',), None, None),
+        ...     FieldDef('onoff-1', 'onoff', ('UCH',), None, None),
+        ...     FieldDef('temp0', 'temp0', ('UCH',), None, '°C'),
         ... )))
         >>> msgdefs.add(MsgDef('hc', 'Status0', True, None, False, False, (
-        ...     FieldDef('temp', 'temp', ('D2C',), '°C'),
-        ...     FieldDef('temp0', 'temp0', ('UCH',), '°C'),
+        ...     FieldDef('temp', 'temp', ('D2C',), None, '°C'),
+        ...     FieldDef('temp0', 'temp0', ('UCH',), None, '°C'),
         ... )))
         >>> msgdefs.get('mc', 'Status0a')
         MsgDef(circuit='mc', name='Status0a', ..., unit='°C')))
