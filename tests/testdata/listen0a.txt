@@ -35,6 +35,7 @@ qhc BoilerCircuitDisabled = yes
 hc CleaningLady = 0
 hc FlowTempDesired = 0.0
 hc FlowTempMax = 90
-hc FlowTempMin = 15
+hc FlowTempMin 15
+hc FlowTempMin
 hc Hc1PumpPort = off
 mc.4 Status = 0;off;36.62;24

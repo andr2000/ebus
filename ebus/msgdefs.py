@@ -14,16 +14,21 @@ class MsgDefs:
         Message Defs Container.
 
         >>> msgdefs = MsgDefs()
-        >>> msgdef = MsgDef('mc', 'Status0a', True, None, False, False, (
+        >>> msgdefs.add(MsgDef('mc', 'Status0a', True, None, False, False, (
         ...     FieldDef('temp', 'temp', ('D2C',), '°C'),
         ...     FieldDef('mixer', 'mixer', ('UCH',), None),
         ...     FieldDef('onoff-0', 'onoff', ('UCH',), None),
         ...     FieldDef('onoff-1', 'onoff', ('UCH',), None),
         ...     FieldDef('temp0', 'temp0', ('UCH',), '°C'),
-        ... ))
-        >>> msgdefs.add(msgdef)
+        ... )))
+        >>> msgdefs.add(MsgDef('hc', 'Status0', True, None, False, False, (
+        ...     FieldDef('temp', 'temp', ('D2C',), '°C'),
+        ...     FieldDef('temp0', 'temp0', ('UCH',), '°C'),
+        ... )))
         >>> msgdefs.get('mc', 'Status0a')
         MsgDef(circuit='mc', name='Status0a', ..., unit='°C')))
+        >>> list(msgdefs)
+        [MsgDef(circuit='mc', name='Status0a', ...), MsgDef(... unit='°C')))]
         """
         self._msgdefs = collections.defaultdict(lambda: collections.defaultdict(lambda: None))
 
@@ -42,3 +47,6 @@ class MsgDefs:
     def __iter__(self):
         for circuitmsgdefs in self._msgdefs.values():
             yield from circuitmsgdefs.values()
+
+    def __len__(self):
+        return sum(len(defs) for defs in self._msgdefs)

@@ -110,8 +110,11 @@ hc FlowTempDesired = 0.0
 hc FlowTempMax = 90
   hc FlowTempMax ("temp0='90'",)
 
-hc FlowTempMin = 15
+hc FlowTempMin 15
   hc FlowTempMin ("temp0='15'",)
+
+hc FlowTempMin
+  ValueError('hc FlowTempMin')
 
 hc Hc1PumpPort = off
   hc Hc1PumpPort ("onoff='off'",)
