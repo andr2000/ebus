@@ -1,4 +1,3 @@
-"""EBUSD Message Definition Decoder."""
 import collections
 import re
 

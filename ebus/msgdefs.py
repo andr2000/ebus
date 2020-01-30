@@ -1,4 +1,3 @@
-"""MsgDefs."""
 import collections
 
 MsgDef = collections.namedtuple("MsgDef", "circuit name read prio write update fields")

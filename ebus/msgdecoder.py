@@ -1,12 +1,9 @@
-# """Home-Assistant Friendly Decoder."""
-import collections
 import re
 
+from .msg import Error
+from .msg import Field
+from .msg import Msg
 from .typedecoder import TypeDecoder
-
-Msg = collections.namedtuple('Msg', 'circuit msgdef fields')
-Field = collections.namedtuple('Field', 'fielddef value')
-Error = collections.namedtuple('Error', 'msg')
 
 
 class MsgDecoder:

@@ -38,11 +38,15 @@ def _test(deffilepath, basepath):
                 try:
                     outfile.write(f"\n{line}\n")
                     msg = decoder.decode(line)
-                    values = tuple(f"{field.fielddef.uname}={field.value!r}"
-                                   for field in msg.fields)
+                    values = tuple(_formatfield(field) for field in msg.fields)
                     outfile.write(f"  {msg.circuit} {msg.msgdef.name} {values}\n")
                 except (ebus.UnknownMsgError, ValueError) as err:
                     outfile.write(f"  {err!r}\n")
 
     # compare
     cmp_(outfilepath, reffilepath)
+
+
+def _formatfield(field):
+    unit = field.fielddef.unit or '' if field.value is not None else ''
+    return f"{field.fielddef.uname}={field.value!r}{unit}"

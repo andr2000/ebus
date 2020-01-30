@@ -6,16 +6,16 @@ bai WaterHcFlowMax = 3063
   bai WaterHcFlowMax ('=3063',)
 
 bai WaterPressure = 2.125;ok
-  bai WaterPressure ('press=2.125', "sensor='ok'")
+  bai WaterPressure ('press=2.125bar', "sensor='ok'")
 
 mc.3 Status = 40;off;38.31;26
-  mc.3 Status ('temp0-0=40', "onoff='off'", 'temp=38.31', 'temp0-1=26')
+  mc.3 Status ('temp0-0=40°C', "onoff='off'", 'temp=38.31°C', 'temp0-1=26°C')
 
 mc.4 Status = 0;off;36.50;24
-  mc.4 Status ('temp0-0=0', "onoff='off'", 'temp=36.5', 'temp0-1=24')
+  mc.4 Status ('temp0-0=0°C', "onoff='off'", 'temp=36.5°C', 'temp0-1=24°C')
 
 mc.5 Status = 0;off;30.31;23
-  mc.5 Status ('temp0-0=0', "onoff='off'", 'temp=30.31', 'temp0-1=23')
+  mc.5 Status ('temp0-0=0°C', "onoff='off'", 'temp=30.31°C', 'temp0-1=23°C')
 
 bai WaterpressureBranchControlOff = off
   bai WaterpressureBranchControlOff ("onoff='off'",)
@@ -24,10 +24,10 @@ bai WaterpressureMeasureCounter = 105
   bai WaterpressureMeasureCounter ('=105',)
 
 bai WaterpressureVariantSum = 65440
-  bai WaterpressureVariantSum ('pressm2=65440',)
+  bai WaterpressureVariantSum ('pressm2=65440mbar',)
 
 bai WPPostrunTime = 5
-  bai WPPostrunTime ('minutes0=5',)
+  bai WPPostrunTime ('minutes0=5min',)
 
 bai WPSecondStage = on
   bai WPSecondStage ("onoff='on'",)
@@ -36,10 +36,10 @@ cc currenterror = -;-;-;-;-
   cc currenterror ('error-0=None', 'error-1=None', 'error-2=None', 'error-3=None', 'error-4=None')
 
 cc DateTime = valid;20:57:48;30.01.2020;2.500
-  cc DateTime ("dcfstate='valid'", 'btime=datetime.datetime(1900, 1, 1, 20, 57, 48)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', 'temp2=2.5')
+  cc DateTime ("dcfstate='valid'", 'btime=datetime.datetime(1900, 1, 1, 20, 57, 48)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', 'temp2=2.5°C')
 
 cc Params = 30;6;22;15;75
-  cc Params ('temp0=30', "-0='6'", "mctype7='22'", 'temps-0=15', "-1='75'")
+  cc Params ('temp0=30°C', "-0='6'", "mctype7='22'", 'temps-0=15°C', "-1='75'")
 
 cc Stat15MinBusTimeout = 0
   cc Stat15MinBusTimeout ('=0',)
@@ -54,7 +54,7 @@ cc StatPowerOn = 31
   cc StatPowerOn ('=31',)
 
 mc.5 Status = 0;off;30.94;23
-  mc.5 Status ('temp0-0=0', "onoff='off'", 'temp=30.94', 'temp0-1=23')
+  mc.5 Status ('temp0-0=0°C', "onoff='off'", 'temp=30.94°C', 'temp0-1=23°C')
 
 cc StatRestarts = 0
   cc StatRestarts ('=0',)
@@ -66,13 +66,13 @@ cc StatRTOSErrorCounter = 0
   cc StatRTOSErrorCounter ('=0',)
 
 cc Status0a = -;off;on;on;0
-  cc Status0a ('temp=None', "mixer='off'", "onoff-0='on'", "onoff-1='on'", 'temp0=0')
+  cc Status0a ('temp=None', "mixer='off'", "onoff-0='on'", "onoff-1='on'", 'temp0=0°C')
 
 cc Status16 = 2.50
-  cc Status16 ('temp=2.5',)
+  cc Status16 ('temp=2.5°C',)
 
 cc Status = 0;off;-;0
-  cc Status ('temp0-0=0', "onoff='off'", 'temp=None', 'temp0-1=0')
+  cc Status ('temp0-0=0°C', "onoff='off'", 'temp=None', 'temp0-1=0°C')
 
 cc StatYearOfInstallation = 18
   cc StatYearOfInstallation ('=18',)
@@ -105,13 +105,13 @@ hc CleaningLady = 0
   hc CleaningLady ('=0',)
 
 hc FlowTempDesired = 0.0
-  hc FlowTempDesired ('temp1=0.0',)
+  hc FlowTempDesired ('temp1=0.0°C',)
 
 hc FlowTempMax = 90
-  hc FlowTempMax ('temp0=90',)
+  hc FlowTempMax ('temp0=90°C',)
 
 hc FlowTempMin 15
-  hc FlowTempMin ('temp0=15',)
+  hc FlowTempMin ('temp0=15°C',)
 
 hc FlowTempMin
   ValueError('hc FlowTempMin')
@@ -120,4 +120,4 @@ hc Hc1PumpPort = off
   hc Hc1PumpPort ("onoff='off'",)
 
 mc.4 Status = 0;off;36.62;24
-  mc.4 Status ('temp0-0=0', "onoff='off'", 'temp=36.62', 'temp0-1=24')
+  mc.4 Status ('temp0-0=0°C', "onoff='off'", 'temp=36.62°C', 'temp0-1=24°C')
