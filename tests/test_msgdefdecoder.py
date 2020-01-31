@@ -25,7 +25,17 @@ def _test(basepath):
             if line:
                 try:
                     msgdef = ebus.decode_msgdef(line)
-                    outfile.write(f"\n{msgdef[:-1]}\n")
+                    msgdefrepr = ebus.util.repr_(
+                        msgdef,
+                        (msgdef.circuit, msgdef.name),
+                        [
+                            ("read", msgdef.read, False),
+                            ("prio", msgdef.prio, None),
+                            ("write", msgdef.write, False),
+                            ("update", msgdef.update, False),
+                        ],
+                    )
+                    outfile.write(f"\n{msgdefrepr}\n")
                     for field in msgdef.fields:
                         outfile.write(f"    {field}\n")
                 except ValueError as e:

@@ -11,25 +11,23 @@ class MsgDefs:
 
         >>> from .msgdef import MsgDef, FieldDef
         >>> msgdefs = MsgDefs()
-        >>> msgdefs.add(MsgDef('mc', 'Status0a', True, None, False, False, (
+        >>> msgdefs.add(MsgDef('mc', 'Status0a', (
         ...     FieldDef('temp', 'temp', ('D2C',), None, '°C'),
         ...     FieldDef('mixer', 'mixer', ('UCH',), None, None),
         ...     FieldDef('onoff-0', 'onoff', ('UCH',), None, None),
         ...     FieldDef('onoff-1', 'onoff', ('UCH',), None, None),
         ...     FieldDef('temp0', 'temp0', ('UCH',), None, '°C'),
-        ... )))
-        >>> msgdefs.add(MsgDef('hc', 'Status0', True, None, False, False, (
+        ... ), read=True))
+        >>> msgdefs.add(MsgDef('hc', 'Status0', (
         ...     FieldDef('temp', 'temp', ('D2C',), None, '°C'),
         ...     FieldDef('temp0', 'temp0', ('UCH',), None, '°C'),
-        ... )))
+        ... ), read=True))
         >>> msgdefs.get('mc', 'Status0a')
-        MsgDef(circuit='mc', name='Status0a', ..., unit='°C')))
+        MsgDef('mc', 'Status0a', (FieldDef('temp', ...'°C'), FieldDef('mixer', ..., ('UCH',), unit='°C')), read=True)
         >>> list(msgdefs)
-        [MsgDef(circuit='mc', name='Status0a', ...), MsgDef(... unit='°C')))]
+        [MsgDef('mc', 'Status0a', (FieldDef('temp', ...'°C'), FieldDef('mixer', ..., ('UCH',), unit='°C')), read=True)]
         """
-        self._msgdefs = collections.defaultdict(
-            lambda: collections.defaultdict(lambda: None)
-        )
+        self._msgdefs = collections.defaultdict(lambda: collections.defaultdict(lambda: None))
 
     def add(self, msgdef):
         """Add Message Definition."""

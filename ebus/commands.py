@@ -9,15 +9,7 @@ async def read(connection, name, field=None, circuit=None, ttl=None, verbose=Fal
     """
     lines = tuple(
         await request(
-            connection,
-            "read",
-            [
-                ("-v" if verbose else "", ""),
-                ("-m", ttl),
-                ("-c", circuit),
-                ("", name),
-                ("", field),
-            ],
+            connection, "read", [("-v" if verbose else "", ""), ("-m", ttl), ("-c", circuit), ("", name), ("", field)],
         )
     )
     return lines[0]
@@ -37,9 +29,7 @@ async def write(connection, name, circuit, value):
 
 async def request(connection, command, options=None):
     """Assemble request, send and readlines."""
-    args = "".join(
-        [f"{option} {value} " for option, value in (options or []) if value is not None]
-    )
+    args = "".join([f"{option} {value} " for option, value in (options or []) if value is not None])
     await connection.write(f"{command} {args}")
     return await connection.readlines()
 

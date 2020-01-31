@@ -20,13 +20,13 @@ def decode_msgdef(line):
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('mc.4', 'OtShutdownLimit', True, None, False, False)
     >>> m.fields
-    (FieldDef(uname='temp', name='temp', types=('UCH',), dividervalues=None, unit='°C'),)
+    (FieldDef('temp', 'temp', ('UCH',), unit='°C'),)
 
     >>> m = decode_msgdef('w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
     >>> m.fields
-    (FieldDef(uname='temp', name='temp', types=('D2C',), dividervalues=None, unit='°C'),)
+    (FieldDef('temp', 'temp', ('D2C',), unit='°C'),)
     """
     try:
         values = _split(line)
@@ -35,7 +35,7 @@ def decode_msgdef(line):
         fields = _decodefields(values[3:])
     except ValueError:
         raise ValueError(f"Invalid message definition {line!r}") from None
-    return MsgDef(circuit, name, read, prio, write, update, fields)
+    return MsgDef(circuit, name, fields, read, prio, write, update)
 
 
 def _split(line):
@@ -93,6 +93,4 @@ def _createfield(uname, name, part, datatype, dividervalues=None, unit=None, *ar
 
 
 def _chunks(list_or_tuple, maxsize):
-    return [
-        list_or_tuple[i : i + maxsize] for i in range(0, len(list_or_tuple), maxsize)
-    ]
+    return [list_or_tuple[i : i + maxsize] for i in range(0, len(list_or_tuple), maxsize)]

@@ -6,23 +6,17 @@ from tests.util import run
 
 
 def test_read():
-    connection = DummyConnection(
-        rxlines=["blub", "",], txlines=["read   -m TTL -c CIRCUIT  NAME  FIELD ",]
-    )
+    connection = DummyConnection(rxlines=["blub", "",], txlines=["read   -m TTL -c CIRCUIT  NAME  FIELD ",])
 
     async def test():
-        data = await commands.read(
-            connection, "NAME", field="FIELD", circuit="CIRCUIT", ttl="TTL"
-        )
+        data = await commands.read(connection, "NAME", field="FIELD", circuit="CIRCUIT", ttl="TTL")
         eq_(data, "blub")
 
     run(test)
 
 
 def test_write():
-    connection = DummyConnection(
-        rxlines=["blub", "",], txlines=["write -c  CIRCUIT  NAME  VALUE ",]
-    )
+    connection = DummyConnection(rxlines=["blub", "",], txlines=["write -c  CIRCUIT  NAME  VALUE ",])
 
     async def test():
         data = await commands.write(connection, "NAME", "CIRCUIT", "VALUE")
@@ -101,11 +95,7 @@ def test_info():
                         '"vaillant/08.bai.csv"',
                     ],
                     16: ["master #2"],
-                    21: [
-                        "slave #2",
-                        'scanned "MF=Vaillant;ID=UI   ;SW=0508;HW=6201"',
-                        'loaded "vaillant/15.ui.csv"',
-                    ],
+                    21: ["slave #2", 'scanned "MF=Vaillant;ID=UI   ;SW=0508;HW=6201"', 'loaded "vaillant/15.ui.csv"',],
                     23: ["master #17"],
                     28: [
                         "slave #17",
@@ -162,10 +152,7 @@ def test_info():
                         'loaded "vaillant/75.rcc.csv"',
                     ],
                     127: ["master #24"],
-                    132: [
-                        "slave #24",
-                        'scanned "MF=Vaillant;ID=VR630;SW=0500;HW=6301"',
-                    ],
+                    132: ["slave #24", 'scanned "MF=Vaillant;ID=VR630;SW=0500;HW=6301"',],
                     240: ["master #5"],
                     245: [
                         "slave #5",

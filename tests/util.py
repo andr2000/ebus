@@ -60,9 +60,7 @@ class DummyServer:
 
     async def start(self):
         async def _server():
-            server = await asyncio.start_server(
-                self, DummyServer.LOCALHOST, DummyServer.PORT
-            )
+            server = await asyncio.start_server(self, DummyServer.LOCALHOST, DummyServer.PORT)
             await server.serve_forever()
 
         self.server = asyncio.ensure_future(_server())

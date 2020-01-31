@@ -1,4 +1,7 @@
 import pathlib
+import sys
+
+from nose.tools import eq_
 
 import ebus
 from tests.util import cmp_
@@ -8,15 +11,15 @@ TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 
 def test_listen0a():
     """Process `listen0a.txt`."""
-    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0a")
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0a", 161)
 
 
 def test_listen0b():
     """Process `listen0b.txt`."""
-    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0b")
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0b", 161)
 
 
-def _test(deffilepath, basepath):
+def _test(deffilepath, basepath, num):
     infilepath = basepath.with_suffix(".txt")
     outfilepath = basepath.with_suffix(".decoded.gen.txt")
     reffilepath = basepath.with_suffix(".decoded.txt")
@@ -29,6 +32,8 @@ def _test(deffilepath, basepath):
                 msgdefs.add(ebus.decode_msgdef(line))
             except ValueError as e:
                 print(e)
+
+    eq_(len(msgdefs), num)
 
     # decode
     decoder = ebus.MsgDecoder(msgdefs)

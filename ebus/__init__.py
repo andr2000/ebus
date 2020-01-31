@@ -16,5 +16,7 @@ from .msg import Field  # noqa
 from .msg import Msg  # noqa
 from .msgdecoder import MsgDecoder  # noqa
 from .msgdecoder import UnknownMsgError  # noqa
+from .msgdef import FieldDef  # noqa
+from .msgdef import MsgDef  # noqa
 from .msgdefdecoder import decode_msgdef  # noqa
 from .msgdefs import MsgDefs  # noqa

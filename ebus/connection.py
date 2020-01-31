@@ -38,9 +38,7 @@ class Connection:
         Raises:
             IOError: If connection cannot be established
         """
-        self._reader, self._writer = await asyncio.open_connection(
-            self._host, self._port
-        )
+        self._reader, self._writer = await asyncio.open_connection(self._host, self._port)
 
     async def disconnect(self):
         """Disconnect if not already done."""
