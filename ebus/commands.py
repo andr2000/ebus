@@ -32,7 +32,7 @@ async def write(connection, name, circuit, value):
         IOError: If connection is broken or cannot be established (`autoconnect==True`)
         ConnectionError: If not connected (`autoconnect==False`)
     """
-    await request(connection, "write", [("-c ", circuit), ("", name), ("", value),])
+    await request(connection, "write", [("-c ", circuit), ("", name), ("", value)])
 
 
 async def request(connection, command, options=None):
@@ -57,7 +57,7 @@ async def info(connection):
     for line in lines:
         name, value = line.split(": ", 1)
         if name.startswith("address "):
-            address = int(name[len("address ") :], 16)
+            address = int(name.lstrip("address "), 16)
             parts = value.split(", ")
             addresses[address] = parts
         else:
