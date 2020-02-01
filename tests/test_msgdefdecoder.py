@@ -1,7 +1,8 @@
 import pathlib
 
 import ebus
-from tests.util import cmp_
+
+from .util import cmp_
 
 TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 

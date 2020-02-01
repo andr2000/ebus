@@ -1,8 +1,9 @@
 from nose.tools import eq_
 
 from ebus import commands
-from tests.util import DummyConnection
-from tests.util import run
+
+from .util import DummyConnection
+from .util import run
 
 
 def test_read():

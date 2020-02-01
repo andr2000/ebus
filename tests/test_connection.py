@@ -4,8 +4,9 @@ from nose.tools import assert_raises
 from nose.tools import eq_
 
 from ebus import Connection
-from tests.util import DummyServer
-from tests.util import run
+
+from .util import DummyServer
+from .util import run
 
 
 def test_connection():
