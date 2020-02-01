@@ -32,6 +32,7 @@ config["keywords"] = "ebus, ebusd, ebus client"
 config["packages"] = ["ebus"]
 config["tests_require"] = ["nose", "pydocstyle", "pycodestyle", "black", "isort"]
 config["test_suite"] = "nose.collector"
+config["entry_points"] = {"console_scripts": ["ebustool = ebus.cli:main",]}
 
 # Get the long description from the README file
 here = path.abspath(path.dirname(__file__))

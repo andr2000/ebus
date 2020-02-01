@@ -27,6 +27,10 @@ class MsgDefs:
         >>> list(msgdefs)
         [MsgDef('mc', 'Status0a', (FieldDef('temp', ...'°C'), FieldDef('mixer', ..., ('UCH',), unit='°C')), read=True)]
         """
+        self.clear()
+
+    def clear(self):
+        """Clear."""
         self._msgdefs = collections.defaultdict(lambda: collections.defaultdict(lambda: None))
 
     def add(self, msgdef):

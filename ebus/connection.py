@@ -85,7 +85,7 @@ class Connection:
         await self._checkline(line)
         return line
 
-    async def readlines(self):
+    async def readlines(self, infinite=False):
         """
         Receive lines until an empty one.
 
@@ -98,9 +98,8 @@ class Connection:
             line = await self._reader.readline()
             line = line.decode("utf-8").rstrip()
             await self._checkline(line)
-            if line:
-                yield line
-            else:
+            yield line
+            if not line and not infinite:
                 break
 
     async def _ensure_connection(self):
