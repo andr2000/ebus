@@ -4,13 +4,16 @@ python:
 
 install:
   - "python setup.py install"
-  - "pip install nose==1.3.7"
-  - "pip install coverage==4.3.4"
-  - "pip install coveralls"
+  - "pip install nose==1.3.7 coverage==4.3.4 coveralls"
+  - "pip install pydocstyle pycodestyle black isort"
   - "pip list"
 
 script:
   - nosetests
+  - pycodestyle ebus
+  - pydocstyle ebus
+  - black . --check
+  - isort
 
 after_success:
   coveralls
