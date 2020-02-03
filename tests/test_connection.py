@@ -102,11 +102,12 @@ def test_readlines():
 
 
 def test_command_error():
-    """Cone."""
+    """Command Error."""
     s = DummyServer()
     c = ebus.Connection(port=s.port, autoconnect=True)
 
     s.add_tx("ERR: msg\n")
+    s.add_tx("\n")
 
     async def test():
         await s.start()

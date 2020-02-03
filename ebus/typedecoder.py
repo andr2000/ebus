@@ -53,8 +53,7 @@ class TypeDecoder:
     def __call__(self, fielddef, value):
         """Convert `value` to python value."""
         name = fielddef.types[0].split(":")[0].lower()
-        dividervalues = fielddef.dividervalues or ""
-        if "=" not in dividervalues:
+        if fielddef.values is None:
             methodname = self._remap.get(name, name)
             method = getattr(self, "_" + methodname, None)
             if method:

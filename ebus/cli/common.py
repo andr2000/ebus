@@ -12,7 +12,15 @@ def add_ebus_args(parser):
 def add_msgdef_args(parser):
     """Load arguments related to :any:`load_msgdef`."""
     parser.add_argument(
-        "--scanwait", "-w", default=False, action="store_true", help="Wait for EBUSD scan to complete before listening."
+        "--scanwait",
+        "-w",
+        default=False,
+        action="store_true",
+        help=(
+            "EBUSD scans the bus for available devices. "
+            "Wait until this scan does not find any new messages. "
+            "Specify this option, if EBUSD was started within the last minutes."
+        ),
     )
 
 

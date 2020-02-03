@@ -32,7 +32,7 @@ class Ebus:
         while True:
             cnt = sum([1 async for line in self.request("find -a -F type,circuit,name,fields")])
             cnts.append(cnt)
-            if len(cnts) < 3 or cnts[-4] != cnts[-3] or cnts[-3] != cnts[-2] or cnts[-2] != cnts[-1]:
+            if len(cnts) < 4 or cnts[-4] != cnts[-3] or cnts[-3] != cnts[-2] or cnts[-2] != cnts[-1]:
                 yield cnt
             else:
                 break
@@ -74,7 +74,7 @@ class Ebus:
             try:
                 yield await self.read(msgdef)
             except CommandError as e:
-                _LOGGER.warn(f"{msgdef}: {e!r}")
+                _LOGGER.warn(f"CommandError: {msgdef}: {e!r}")
 
     async def listen(self):
         """Listen."""

@@ -2,6 +2,7 @@ import asyncio
 
 
 class Connection:
+
     def __init__(self, host="127.0.0.1", port=8888, autoconnect=False):
         """
         Ebus Connection.

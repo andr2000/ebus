@@ -76,3 +76,10 @@ class FieldDef(_FieldDef):
             if divider < 0:
                 divider = 1 / -divider
             return divider
+
+    @property
+    def values(self):
+        """Return valuemap."""
+        dividervalues = self.dividervalues
+        if dividervalues and "=" in dividervalues:
+            return dict([pair.split("=", 1) for pair in dividervalues.split(";")])

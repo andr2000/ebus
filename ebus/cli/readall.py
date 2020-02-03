@@ -9,7 +9,7 @@ from .common import load_msgdefs
 
 def parse_args(subparsers):
     """Parse Arguments."""
-    parser = subparsers.add_parser("readall", help="Read all known messages.")
+    parser = subparsers.add_parser("readall", help="Read all known messages once, decode, print and exit.")
     add_ebus_args(parser)
     add_msgdef_args(parser)
     parser.set_defaults(main=main)
