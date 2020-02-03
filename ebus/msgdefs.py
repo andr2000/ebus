@@ -45,9 +45,17 @@ class MsgDefs:
             if name in circuitmsgdefs:
                 return circuitmsgdefs[name]
 
+    def get_info(self):
+        """Human Information."""
+        total = len(self)
+        read = sum([1 for msgdef in self if msgdef.read])
+        update = sum([1 for msgdef in self if msgdef.update])
+        write = sum([1 for msgdef in self if msgdef.write])
+        return f"{total} message definitions found ({read} read, {update} update, {write} write)"
+
     def __iter__(self):
         for circuitmsgdefs in self._msgdefs.values():
             yield from circuitmsgdefs.values()
 
     def __len__(self):
-        return sum(len(defs) for defs in self._msgdefs)
+        return sum(len(defs) for defs in self._msgdefs.values())

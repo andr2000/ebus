@@ -22,13 +22,13 @@ class MsgDecoder:
         self.msgdefs = msgdefs
         self.typedecoder = TypeDecoder()
 
-    def decode(self, line):
+    def decode_line(self, line):
         """
-        Decode `line` and yield :any:`Msg` instances.
+        Decode `line` and yield :any:`Msg` instance.
 
         Raises:
-            FormatError: if `line` does not match expected format.
-            UnknownError: if `line` is not covered by fields.
+            ValueError: if `line` does not match expected format.
+            UnknownMsgError: if `line` is not covered by fields.
         """
         match = self._re_decode.match(line)
         if not match:
@@ -37,16 +37,26 @@ class MsgDecoder:
         msgdef = self.msgdefs.get(circuitbasename, name)
         if not msgdef:
             raise UnknownMsgError(f"circuit={circuit}, name={name}")
-        fields = tuple(self._decodefields(msgdef.fields, valuestr.split(";")))
-        return Msg(circuit, msgdef, fields)
+        return self.decode_value(msgdef, valuestr, circuit=circuit)
+
+    def decode_value(self, msgdef, valuestr, circuit=None):
+        """Decode message `msgdef` valuestr `valuestr`."""
+        if valuestr:
+            circuit = circuit or msgdef.circuit
+            fields = tuple(self._decodefields(msgdef.fields, valuestr.split(";")))
+            return Msg(circuit, msgdef, fields)
 
     def _decodefields(self, fielddefs, values):
         typedecoder = self.typedecoder
         for fielddef, value in zip(fielddefs, values):
             if not value.startswith("ERR: "):
-                yield Field(fielddef, typedecoder(fielddef, value.strip()))
+                try:
+                    fieldvalue = typedecoder(fielddef, value.strip())
+                except ValueError:
+                    fieldvalue = None
             else:
-                yield Field(fielddef, Error(value.lstrip("ERR: ")))
+                fieldvalue = Error(value)
+            yield Field(fielddef, fieldvalue)
 
 
 class UnknownMsgError(RuntimeError):

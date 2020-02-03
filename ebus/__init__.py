@@ -9,6 +9,7 @@ __description__ = """Python Client for EBUS daemon."""
 __url__ = "https://github.com/c0fec0de/ebus"
 
 from .circuitmap import CircuitMap  # noqa
+from .connection import CommandError  # noqa
 from .connection import Connection  # noqa
 from .ebus import Ebus  # noqa
 from .msg import Error  # noqa

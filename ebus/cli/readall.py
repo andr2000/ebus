@@ -9,13 +9,9 @@ from .common import load_msgdefs
 
 def parse_args(subparsers):
     """Parse Arguments."""
-    parser = subparsers.add_parser("listen", help="Listen on the bus")
+    parser = subparsers.add_parser("readall", help="Read all known messages.")
     add_ebus_args(parser)
     add_msgdef_args(parser)
-
-    # parser.add_argument(
-    #     "--all", default=False, action="store_true", help="Listen to all message, set EBUSD polling priority to 9"
-    # )
     parser.set_defaults(main=main)
 
 
@@ -23,7 +19,7 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    async for line in e.listen():
+    async for line in e.readall():
         print(line)
 
 

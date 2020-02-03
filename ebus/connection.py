@@ -80,8 +80,7 @@ class Connection:
             ConnectionError: If not connected (`autoconnect==False`)
         """
         await self._ensure_connection()
-        line = await self._reader.readline()
-        line = line.decode("utf-8").rstrip()
+        line = await self._readline()
         await self._checkline(line)
         return line
 
@@ -95,12 +94,15 @@ class Connection:
         """
         await self._ensure_connection()
         while True:
-            line = await self._reader.readline()
-            line = line.decode("utf-8").rstrip()
+            line = await self._readline()
             await self._checkline(line)
             yield line
             if not line and not infinite:
                 break
+
+    async def _readline(self):
+        line = await self._reader.readline()
+        return line.decode("utf-8").rstrip()
 
     async def _ensure_connection(self):
         if not self._writer or self._writer.is_closing():
@@ -111,9 +113,10 @@ class Connection:
 
     async def _checkline(self, line):
         if line.startswith("ERR: "):
-            detail = line.lstrip("ERR: ")
-            await self.disconnect()
-            raise CommandError(detail)
+            # consume everything until newline
+            while await self._readline():
+                pass
+            raise CommandError(line)
 
 
 class CommandError(RuntimeError):

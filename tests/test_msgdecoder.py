@@ -12,12 +12,12 @@ TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 
 def test_listen0a():
     """Process `listen0a.txt`."""
-    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0a", 161)
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0a", 699)
 
 
 def test_listen0b():
     """Process `listen0b.txt`."""
-    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0b", 161)
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0b", 699)
 
 
 def _test(deffilepath, basepath, num):
@@ -43,7 +43,7 @@ def _test(deffilepath, basepath, num):
             if line:
                 try:
                     outfile.write(f"\n{line}\n")
-                    msg = decoder.decode(line)
+                    msg = decoder.decode_line(line)
                     values = tuple(_formatfield(field) for field in msg.fields)
                     outfile.write(f"  {msg.circuit} {msg.msgdef.name} {values}\n")
                 except (ebus.UnknownMsgError, ValueError) as err:
