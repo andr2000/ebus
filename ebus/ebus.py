@@ -15,6 +15,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class Ebus:
+
     def __init__(self, host, port, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.
@@ -72,15 +73,17 @@ class Ebus:
                 except ValueError as e:
                     _LOGGER.warn(f"Cannot decode message definition ({e})")
 
-    async def read(self, msgdef, prio=None):
+    async def read(self, msgdef, prio=None, ttl=None):
         """
         Read Message.
 
         Raises:
             ValueError: on decoder error
         """
+        if not msgdef.read:
+            raise ValueError(f"Message is not readable '{msgdef}'")
         try:
-            lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio)])
+            lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio, m=ttl)])
         except CommandError as e:
             _LOGGER.warn(f"{e!r}: {msgdef}")
         else:
@@ -92,6 +95,16 @@ class Ebus:
             if not msgdef.read:
                 continue
             yield await self.read(msgdef)
+
+    async def write(self, msgdef, value):
+        """Write Message."""
+        if not msgdef.write:
+            raise ValueError(f"Message is not writeable '{msgdef}'")
+        try:
+            async for line in self.request("write", msgdef.name, value, c=msgdef.circuit):
+                pass
+        except CommandError as e:
+            _LOGGER.warn(f"{e!r}: {msgdef}")
 
     async def listen(self):
         """Listen to EBUSD, decode and yield."""

@@ -4,8 +4,11 @@ import sys
 from .. import __version__
 from . import cmd
 from . import listen
+from . import ls
 from . import observe
+from . import read
 from . import readall
+from . import write
 
 
 def argvhandler(argv):
@@ -18,8 +21,11 @@ def argvhandler(argv):
     subparsers = parser.add_subparsers(help="Sub Commands")
     cmd.parse_args(subparsers)
     listen.parse_args(subparsers)
-    readall.parse_args(subparsers)
+    ls.parse_args(subparsers)
     observe.parse_args(subparsers)
+    read.parse_args(subparsers)
+    readall.parse_args(subparsers)
+    write.parse_args(subparsers)
 
     args = parser.parse_args(argv)
     args.main(args)

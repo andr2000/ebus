@@ -1,4 +1,5 @@
 import collections
+from fnmatch import fnmatchcase
 
 
 class MsgDefs:
@@ -44,6 +45,28 @@ class MsgDefs:
             circuitmsgdefs = msgdefs[circuit]
             if name in circuitmsgdefs:
                 return circuitmsgdefs[name]
+
+    def find(self, circuit, name):
+        """Find Message Definitions."""
+        for msgdef in self:
+            if fnmatchcase(msgdef.circuit, circuit) and fnmatchcase(msgdef.name, name):
+                yield msgdef
+
+    def resolve(self, path, nomsg=False):
+        """Resolve path."""
+        parts = path.split("/")
+        if len(parts) == 2 and not nomsg:
+            circuit, name = parts
+            for msgdef in self.find(circuit, name):
+                yield msgdef, None
+        elif len(parts) == 3:
+            circuit, name, fieldname = parts
+            for msgdef in self.find(circuit, name):
+                for fielddef in msgdef.fields:
+                    if fnmatchcase(fielddef.name, fieldname):
+                        yield msgdef, fielddef
+        else:
+            raise ValueError(f"Invalid path {path!r}")
 
     def get_info(self):
         """Human Information."""

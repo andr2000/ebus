@@ -26,6 +26,9 @@ class MsgDef(_MsgDef):
         """
         return _MsgDef.__new__(cls, circuit, name, fields, read, prio, write, update)
 
+    def __str__(self):
+        return f"{self.circuit}/{self.name}"
+
     def __repr__(self):
         args = (self.circuit, self.name, self.fields)
         kwargs = [
@@ -35,6 +38,18 @@ class MsgDef(_MsgDef):
             ("update", self.update, False),
         ]
         return repr_(self, args, kwargs)
+
+    @property
+    def type_(self):
+        if self.read:
+            if self.prio is not None:
+                return f"R{self.prio}"
+            else:
+                return "R"
+        elif self.write:
+            return "W"
+        elif self.update:
+            return "U"
 
 
 _FieldDef = collections.namedtuple("_FieldDef", "uname name types dividervalues unit")

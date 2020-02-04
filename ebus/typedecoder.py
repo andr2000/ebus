@@ -1,5 +1,51 @@
 import datetime
 
+_PYTYPEMAP = {
+    "bda": "date",
+    "hda": "date",
+    "day": "date",
+    "bti": "hhmmss",
+    "hti": "hhmmss",
+    "vti": "hhmmss",
+    "btm": "hhmm",
+    "htm": "hhmm",
+    "vtm": "hhmm",
+    "min": "hhmm",
+    "ttm": "hhmm",
+    "tth": "hhmm",
+    "ttq": "hhmm",
+    "bcd": "int",
+    "uch": "int",
+    "sch": "int",
+    "d1b": "int",
+    "d1c": "float",
+    "d2b": "float",
+    "d2c": "float",
+    "flt": "float",
+    "flr": "float",
+    "exp": "float",
+    "exr": "float",
+    "uin": "int",
+    "uir": "int",
+    "sin": "int",
+    "sir": "int",
+    "u3n": "int",
+    "u3r": "int",
+    "s3n": "int",
+    "s3r": "int",
+    "ulg": "int",
+    "ulr": "int",
+    "slg": "int",
+    "slr": "int",
+    "bi0": "bool",
+}
+
+
+def get_pytype(type_):
+    """Get Python Type `type`."""
+    name = type_.split(":")[0].lower()
+    return _PYTYPEMAP.get(name, None)
+
 
 class TypeDecoder:
     """
@@ -10,56 +56,10 @@ class TypeDecoder:
     String types are just kept as is. Simple casts are stored in `_casts`
     """
 
-    _remap = {
-        "bda": "date",
-        "hda": "date",
-        "day": "date",
-        "bti": "hhmmss",
-        "hti": "hhmmss",
-        "vti": "hhmmss",
-        "btm": "hhmm",
-        "htm": "hhmm",
-        "vtm": "hhmm",
-        "min": "hhmm",
-        "ttm": "hhmm",
-        "tth": "hhmm",
-        "ttq": "hhmm",
-        "bcd": "int",
-        "uch": "int",
-        "sch": "int",
-        "d1b": "int",
-        "d1c": "float",
-        "d2b": "float",
-        "d2c": "float",
-        "flt": "float",
-        "flr": "float",
-        "exp": "float",
-        "exr": "float",
-        "uin": "int",
-        "uir": "int",
-        "sin": "int",
-        "sir": "int",
-        "u3n": "int",
-        "u3r": "int",
-        "s3n": "int",
-        "s3r": "int",
-        "ulg": "int",
-        "ulr": "int",
-        "slg": "int",
-        "slr": "int",
-        "bi0": "bool",
-    }
-
-    @classmethod
-    def get_pytype(cls, type_):
-        """Get Python Type `type`."""
-        name = type_.split(":")[0].lower()
-        return cls._remap.get(name, None)
-
     def __call__(self, fielddef, value):
         """Convert `value` to python value."""
         if fielddef.values is None:
-            pytype = self.get_pytype(fielddef.types[0])
+            pytype = get_pytype(fielddef.types[0])
             if pytype:
                 method = getattr(self, "_" + pytype, None)
                 if method:
