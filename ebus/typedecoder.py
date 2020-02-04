@@ -50,14 +50,20 @@ class TypeDecoder:
         "bi0": "bool",
     }
 
+    @classmethod
+    def get_pytype(cls, type_):
+        """Get Python Type `type`."""
+        name = type_.split(":")[0].lower()
+        return cls._remap.get(name, None)
+
     def __call__(self, fielddef, value):
         """Convert `value` to python value."""
-        name = fielddef.types[0].split(":")[0].lower()
         if fielddef.values is None:
-            methodname = self._remap.get(name, name)
-            method = getattr(self, "_" + methodname, None)
-            if method:
-                value = method(fielddef, value)
+            pytype = self.get_pytype(fielddef.types[0])
+            if pytype:
+                method = getattr(self, "_" + pytype, None)
+                if method:
+                    value = method(fielddef, value)
         return value
 
     @staticmethod
