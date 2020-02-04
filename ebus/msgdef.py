@@ -41,6 +41,7 @@ class MsgDef(_MsgDef):
 
     @property
     def type_(self):
+        """Message Type."""
         if self.read:
             if self.prio is not None:
                 return f"R{self.prio}"

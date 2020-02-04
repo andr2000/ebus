@@ -15,7 +15,6 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class Ebus:
-
     def __init__(self, host, port, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.
@@ -89,12 +88,12 @@ class Ebus:
         else:
             return self.msgdecoder.decode_value(msgdef, lines[0])
 
-    async def readall(self):
+    async def readall(self, prio=None):
         """Iterate over a all known messages, read from EBUSD, decode and yield."""
         for msgdef in self.msgdefs:
             if not msgdef.read:
                 continue
-            yield await self.read(msgdef)
+            yield await self.read(msgdef, p=prio)
 
     async def write(self, msgdef, value):
         """Write Message."""
@@ -115,7 +114,7 @@ class Ebus:
             if msg:
                 yield msg
 
-    async def observe(self):
+    async def observe(self, prio=None):
         """
         Observe.
 
@@ -129,7 +128,7 @@ class Ebus:
         for msgdef in self.msgdefs:
             if not msgdef.read:
                 continue
-            msg = await self.read(msgdef)
+            msg = await self.read(msgdef, prio=prio)
             if msg:
                 data[msgdef] = msg
                 yield msg

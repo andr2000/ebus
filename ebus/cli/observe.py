@@ -2,6 +2,7 @@ import asyncio
 
 from .common import add_ebus_args
 from .common import add_msgdef_args
+from .common import add_read_args
 from .common import create_ebus
 from .common import disable_stdout_buffering
 from .common import load_msgdefs
@@ -18,6 +19,7 @@ def parse_args(subparsers):
     )
     add_ebus_args(parser)
     add_msgdef_args(parser)
+    add_read_args(parser)
     parser.set_defaults(main=main)
 
 
@@ -25,7 +27,7 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    async for msg in e.observe():
+    async for msg in e.observe(prio=args.prio):
         for field in msg.fields:
             print(field)
 

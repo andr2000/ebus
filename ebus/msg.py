@@ -19,7 +19,7 @@ class Field(collections.namedtuple("_Field", "msgdef fielddef value")):
     def __str__(self):
         fielddef = self.fielddef
         unit = fielddef.unit if self.value is not None and fielddef.unit else ""
-        return f"{self.msgdef}/{fielddef.uname}={self.value}{unit}"
+        return f"{self.msgdef}/{fielddef.uname} {self.value}{unit}"
 
     def __repr__(self):
         args = (self.fielddef.uname, self.value)

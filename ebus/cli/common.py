@@ -6,7 +6,7 @@ import ebus
 def add_ebus_args(parser):
     """Load arguments related to :any:`create_ebus`."""
     parser.add_argument("--host", "-H", default="127.0.0.1", help="EBUSD address. Default is '172.0.0.1'.")
-    parser.add_argument("--port", "-p", default=8888, type=int, help="EBUSD port. Default is 8888.")
+    parser.add_argument("--port", "-P", default=8888, type=int, help="EBUSD port. Default is 8888.")
 
 
 def add_msgdef_args(parser):
@@ -22,6 +22,11 @@ def add_msgdef_args(parser):
             "Specify this option, if EBUSD was started within the last minutes."
         ),
     )
+
+
+def add_read_args(parser):
+    """Read Arguments."""
+    parser.add_argument("--prio", "-p", default=None, type=int, help="Set poll priority")
 
 
 def disable_stdout_buffering():
