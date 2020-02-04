@@ -37,11 +37,11 @@ class MsgDecoder:
         msgdef = self.msgdefs.get(circuitbasename, name)
         if not msgdef:
             raise UnknownMsgError(f"circuit={circuit}, name={name}")
-        return self.decode_value(msgdef, valuestr, circuit=circuit)
+        return self.decode_value(msgdef, valuestr.strip(), circuit=circuit)
 
     def decode_value(self, msgdef, valuestr, circuit=None):
         """Decode message `msgdef` valuestr `valuestr`."""
-        if valuestr:
+        if valuestr and valuestr != "no data stored" and not valuestr.startswith("(ERR: "):
             circuit = circuit or msgdef.circuit
             fields = tuple(self._decodefields(msgdef.fields, valuestr.split(";")))
             return Msg(circuit, msgdef, fields)

@@ -4,6 +4,7 @@ import sys
 from .. import __version__
 from . import cmd
 from . import listen
+from . import observe
 from . import readall
 
 
@@ -18,6 +19,7 @@ def argvhandler(argv):
     cmd.parse_args(subparsers)
     listen.parse_args(subparsers)
     readall.parse_args(subparsers)
+    observe.parse_args(subparsers)
 
     args = parser.parse_args(argv)
     args.main(args)
@@ -33,5 +35,5 @@ def main():  # pragma: no cover
     try:
         argvhandler(sys.argv[1:])
     except RuntimeError as e:
-        print("ERROR: %s" % e)
+        print("ERROR: %r" % e)
         sys.exit(1)

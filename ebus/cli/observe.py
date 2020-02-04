@@ -9,7 +9,13 @@ from .common import load_msgdefs
 
 def parse_args(subparsers):
     """Parse Arguments."""
-    parser = subparsers.add_parser("readall", help="Read all known messages once, decode, print and exit.")
+    parser = subparsers.add_parser(
+        "observe",
+        help=(
+            "Read all known messages once and continue listening so that ALL EBUS values are available, "
+            "decode every message and print."
+        ),
+    )
     add_ebus_args(parser)
     add_msgdef_args(parser)
     parser.set_defaults(main=main)
@@ -19,7 +25,7 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    async for msg in e.readall():
+    async for msg in e.observe():
         print(msg)
 
 

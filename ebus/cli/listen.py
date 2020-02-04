@@ -19,8 +19,8 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    async for line in e.listen():
-        print(line)
+    async for msg in e.listen():
+        print(msg)
 
 
 def main(args):
