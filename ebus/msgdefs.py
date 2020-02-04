@@ -52,14 +52,14 @@ class MsgDefs:
             if fnmatchcase(msgdef.circuit, circuit) and fnmatchcase(msgdef.name, name):
                 yield msgdef
 
-    def resolve(self, path, nomsg=False):
+    def resolve(self, path, nomsg=False, nofield=False):
         """Resolve path."""
         parts = path.split("/")
         if len(parts) == 2 and not nomsg:
             circuit, name = parts
             for msgdef in self.find(circuit, name):
                 yield msgdef, None
-        elif len(parts) == 3:
+        elif len(parts) == 3 and not nofield:
             circuit, name, fieldname = parts
             for msgdef in self.find(circuit, name):
                 for fielddef in msgdef.fields:
