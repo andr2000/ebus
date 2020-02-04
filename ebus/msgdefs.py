@@ -52,9 +52,17 @@ class MsgDefs:
             if fnmatchcase(msgdef.circuit, circuit) and fnmatchcase(msgdef.name, name):
                 yield msgdef
 
-    def resolve(self, path, nomsg=False, nofield=False):
-        """Resolve path."""
-        parts = path.split("/")
+    def resolve(self, patterns, nomsg=False, nofield=False):
+        """Resolve patterns."""
+        items = []
+        for pattern in patterns.split(";"):
+            for item in self._resolve(pattern.strip(), nomsg, nofield):
+                if item not in items:
+                    items.append(item)
+                    yield item
+
+    def _resolve(self, pattern, nomsg, nofield):
+        parts = pattern.split("/")
         if len(parts) == 2 and not nomsg:
             circuit, name = parts
             for msgdef in self.find(circuit, name):
@@ -66,7 +74,7 @@ class MsgDefs:
                     if fnmatchcase(fielddef.name, fieldname):
                         yield msgdef, fielddef
         else:
-            raise ValueError(f"Invalid path {path!r}")
+            raise ValueError(f"Invalid pattern {pattern!r}")
 
     def get_info(self):
         """Human Information."""

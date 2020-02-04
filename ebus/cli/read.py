@@ -14,7 +14,7 @@ def parse_args(subparsers):
     add_ebus_args(parser)
     add_msgdef_args(parser)
     add_read_args(parser, ttl=0)
-    parser.add_argument("msg", help="Message (i.e. 'ui/OutsideTemp')")
+    parser.add_argument("patterns", help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp')")
     parser.set_defaults(main=main)
 
 
@@ -22,7 +22,7 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    for msgdef, fielddef in e.msgdefs.resolve(args.msg):
+    for msgdef, fielddef in e.msgdefs.resolve(args.patterns):
         msg = await e.read(msgdef, prio=args.prio, ttl=args.ttl)
         if msg:
             for field in msg.fields:
