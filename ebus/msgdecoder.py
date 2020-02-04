@@ -10,7 +10,7 @@ class MsgDecoder:
 
     """Message Decoder."""
 
-    _re_decode = re.compile(r"(([A-z0-9]+)(\.[A-z0-9]+)?) ([^\s]*) (= )?(.*)")
+    _re_decode = re.compile(r"([A-z0-9]+(\.[A-z0-9]+)?) ([^\s]*) (= )?(.*)")
 
     def __init__(self, msgdefs):
         """
@@ -33,8 +33,8 @@ class MsgDecoder:
         match = self._re_decode.match(line)
         if not match:
             raise ValueError(line)
-        circuit, circuitbasename, _, name, _, valuestr = match.groups()
-        msgdef = self.msgdefs.get(circuitbasename, name)
+        circuit, _, name, _, valuestr = match.groups()
+        msgdef = self.msgdefs.get(circuit, name)
         if not msgdef:
             raise UnknownMsgError(f"circuit={circuit}, name={name}")
         return self.decode_value(msgdef, valuestr.strip(), circuit=circuit)
@@ -42,13 +42,12 @@ class MsgDecoder:
     def decode_value(self, msgdef, valuestr, circuit=None):
         """Decode message `msgdef` valuestr `valuestr`."""
         if valuestr and valuestr != "no data stored" and not valuestr.startswith("(ERR: "):
-            circuit = circuit or msgdef.circuit
-            fields = tuple(self._decodefields(msgdef.fields, valuestr.split(";")))
-            return Msg(circuit, msgdef, fields)
+            fields = tuple(self._decodefields(msgdef, valuestr.split(";")))
+            return Msg(msgdef, fields)
 
-    def _decodefields(self, fielddefs, values):
+    def _decodefields(self, msgdef, values):
         typedecoder = self.typedecoder
-        for fielddef, value in zip(fielddefs, values):
+        for fielddef, value in zip(msgdef.fields, values):
             if not value.startswith("ERR: "):
                 try:
                     fieldvalue = typedecoder(fielddef, value.strip())
@@ -56,7 +55,7 @@ class MsgDecoder:
                     fieldvalue = None
             else:
                 fieldvalue = Error(value)
-            yield Field(fielddef, fieldvalue)
+            yield Field(msgdef, fielddef, fieldvalue)
 
 
 class UnknownMsgError(RuntimeError):

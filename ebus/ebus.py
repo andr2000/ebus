@@ -27,7 +27,21 @@ class Ebus:
         self.msgdecoder = MsgDecoder(self.msgdefs)
 
     def __repr__(self):
-        return repr_(self, args=(self.connection.host, self.connection.port))
+        return repr_(
+            self,
+            args=(self.connection.host, self.connection.port),
+            kwargs=(("scanwaitinterval", self.scanwaitinterval, 3),),
+        )
+
+    @property
+    def host(self):
+        """Host Name or IP."""
+        return self.connection.host
+
+    @property
+    def port(self):
+        """Port."""
+        return self.connection.port
 
     async def wait_scancompleted(self):
         """Wait until scan is completed."""
@@ -66,7 +80,7 @@ class Ebus:
             ValueError: on decoder error
         """
         try:
-            lines = tuple([line async for line in self.request("read", "msgdef.name", c=msgdef.circuit, p=prio)])
+            lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio)])
         except CommandError as e:
             _LOGGER.warn(f"{e!r}: {msgdef}")
         else:
@@ -108,7 +122,7 @@ class Ebus:
                 yield msg
 
         # find
-        async for line in self.request("find -a -d"):
+        async for line in self.request("find -d"):
             msg = self._decode_line(line)
             if msg:
                 if msg != data[msg.msgdef]:
@@ -116,16 +130,15 @@ class Ebus:
                 data[msg.msgdef] = msg
 
         # listen
-        async for msg in self.listen:
+        async for msg in self.listen():
             yield msg
 
     async def request(self, cmd, *args, infinite=False, **kwargs):
         """Assemble request, send and readlines."""
-        args = [cmd]
-        args += [f"{option} {value}" for option, value in kwargs.items() if value is not None]
-        args += [str(arg) for arg in args]
-        cmd = " ".join(args)
-        await self.connection.write(cmd)
+        parts = [cmd]
+        parts += [f"-{option} {value}" for option, value in kwargs.items() if value is not None]
+        parts += [str(arg) for arg in args]
+        await self.connection.write(" ".join(parts))
         async for line in self.connection.readlines(infinite=infinite):
             yield line
 
@@ -141,5 +154,7 @@ class Ebus:
                 return self.msgdecoder.decode_line(line)
             except UnknownMsgError:
                 return None
+            except ValueError as e:
+                _LOGGER.warn(f"Cannot decode message in {line!r}: {e}")
         else:
             return None

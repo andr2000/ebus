@@ -8,6 +8,7 @@ __author_email__ = "c0fec0de@gmail.com"
 __description__ = """Python Client for EBUS daemon."""
 __url__ = "https://github.com/c0fec0de/ebus"
 
+from . import cli  # noqa
 from .circuitmap import CircuitMap  # noqa
 from .connection import CommandError  # noqa
 from .connection import Connection  # noqa

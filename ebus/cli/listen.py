@@ -20,7 +20,8 @@ async def _main(args):
     e = create_ebus(args)
     await load_msgdefs(e, args)
     async for msg in e.listen():
-        print(msg)
+        for field in msg.fields:
+            print(field)
 
 
 def main(args):

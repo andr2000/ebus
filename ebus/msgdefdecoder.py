@@ -81,7 +81,7 @@ def _createfields(chunks):
             if dups[name]:
                 cnt = cnts[name]
                 cnts[name] = cnt + 1
-                uname = f"{name}-{cnt}"
+                uname = f"{name}.{cnt}"
             else:
                 uname = name
             yield _createfield(uname, *chunk)
