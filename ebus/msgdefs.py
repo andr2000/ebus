@@ -62,12 +62,13 @@ class MsgDefs:
                     yield item
 
     def _resolve(self, pattern, nomsg, nofield):
-        parts = pattern.split("/")
-        if len(parts) == 2 and not nomsg:
+        parts = [item.strip() for item in pattern.split("/")]
+        notempty = all(parts[:2])
+        if notempty and len(parts) == 2 and not nomsg:
             circuit, name = parts
             for msgdef in self.find(circuit, name):
                 yield msgdef, None
-        elif len(parts) == 3 and not nofield:
+        elif notempty and len(parts) == 3 and not nofield:
             circuit, name, fieldname = parts
             for msgdef in self.find(circuit, name):
                 for fielddef in msgdef.fields:

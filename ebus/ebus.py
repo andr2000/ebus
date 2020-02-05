@@ -94,7 +94,7 @@ class Ebus:
         for msgdef in self.msgdefs:
             if not msgdef.read:
                 continue
-            yield await self.read(msgdef, p=prio, m=ttl)
+            yield await self.read(msgdef, prio=prio, ttl=ttl)
 
     async def write(self, msgdef, value):
         """Write Message."""
@@ -126,7 +126,7 @@ class Ebus:
         if patterns:
             msgdefs = [msgdef for msgdef, _ in self.msgdefs.resolve(patterns)]
         else:
-            msgdefs = self.msgdefs
+            msgdefs = tuple(self.msgdefs)
         data = collections.defaultdict(lambda: None)
 
         # read all
@@ -148,7 +148,7 @@ class Ebus:
 
         # listen
         async for msg in self.listen():
-            if msg and msg in msgdefs:
+            if msg and msg.msgdef in msgdefs:
                 yield msg
 
     async def request(self, cmd, *args, infinite=False, **kwargs):

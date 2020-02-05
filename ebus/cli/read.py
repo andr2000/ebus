@@ -2,6 +2,7 @@ import asyncio
 
 from .common import add_ebus_args
 from .common import add_msgdef_args
+from .common import add_patterns_arg
 from .common import add_read_args
 from .common import create_ebus
 from .common import disable_stdout_buffering
@@ -14,7 +15,7 @@ def parse_args(subparsers):
     add_ebus_args(parser)
     add_msgdef_args(parser)
     add_read_args(parser, ttl=0)
-    parser.add_argument("patterns", help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp')")
+    add_patterns_arg(parser)
     parser.set_defaults(main=main)
 
 

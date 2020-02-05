@@ -3,6 +3,7 @@ import asyncio
 from ..typedecoder import get_pytype
 from .common import add_ebus_args
 from .common import add_msgdef_args
+from .common import add_patterns_arg
 from .common import create_ebus
 from .common import disable_stdout_buffering
 from .common import load_msgdefs
@@ -13,6 +14,7 @@ def parse_args(subparsers):
     parser = subparsers.add_parser("ls", help="List all messages")
     add_ebus_args(parser)
     add_msgdef_args(parser)
+    add_patterns_arg(parser, opt=True)
     parser.set_defaults(main=main)
 
 
@@ -20,7 +22,11 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    for msgdef in e.msgdefs:
+    if args.patterns:
+        msgdefs = [msgdef for msgdef, _ in e.msgdefs.resolve(args.patterns)]
+    else:
+        msgdefs = e.msgdefs
+    for msgdef in msgdefs:
         for field in msgdef.fields:
             values = field.values
             if values:

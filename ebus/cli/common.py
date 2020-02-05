@@ -30,6 +30,14 @@ def add_read_args(parser, prio=None, ttl=None):
     parser.add_argument("--ttl", "-t", default=ttl, type=int, help="Maximum age of value in seconds")
 
 
+def add_patterns_arg(parser, opt=False):
+    """Add patterns option."""
+    if not opt:
+        parser.add_argument("patterns", help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp')")
+    else:
+        parser.add_argument("patterns", nargs="?", help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp')")
+
+
 def disable_stdout_buffering():
     """Disable STDOUT buffering."""
     sys.stdout = ebus.util.UnbufferedStream(sys.stdout)
