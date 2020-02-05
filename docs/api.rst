@@ -8,9 +8,15 @@ Submodules
 
    ebus.circuitmap
    ebus.connection
-   ebus.decoder
-   ebus.fields
-   ebus.units
+   ebus.const
+   ebus.ebus
+   ebus.msg
+   ebus.msgdecoder
+   ebus.msgdef
+   ebus.msgdefdecoder
+   ebus.msgdefs
+   ebus.typedecoder
+   ebus.util
 
 Module contents
 ---------------

@@ -16,7 +16,7 @@ help:
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	sphinx-apidoc --output-dir apidoc.tmp .. docs tests $(wildcard ../*.py) --separate --force
+	sphinx-apidoc --output-dir apidoc.tmp .. ../ebus/cli/*.py ../docs ../tests ../*.py --separate --force
 	rsync -rvct apidoc.tmp/ ./ --exclude modules.rst
 	rm -rf apidoc.tmp
 	mv ebus.rst api.rst
