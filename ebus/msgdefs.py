@@ -46,34 +46,34 @@ class MsgDefs:
             if name in circuitmsgdefs:
                 return circuitmsgdefs[name]
 
-    def find(self, circuit, name):
+    def find(self, circuit, name="*"):
         """Find Message Definitions."""
         for msgdef in self:
             if fnmatchcase(msgdef.circuit, circuit) and fnmatchcase(msgdef.name, name):
                 yield msgdef
 
-    def resolve(self, patterns, nomsg=False, nofield=False):
+    def resolve(self, patterns, nomsg=False):
         """Resolve patterns."""
         items = []
         for pattern in patterns.split(";"):
-            for item in self._resolve(pattern.strip(), nomsg, nofield):
+            for item in self._resolve(pattern.strip(), nomsg):
                 if item not in items:
                     items.append(item)
                     yield item
 
-    def _resolve(self, pattern, nomsg, nofield):
+    def _resolve(self, pattern, nomsg):
         parts = [item.strip() for item in pattern.split("/")]
         notempty = all(parts[:2])
         if notempty and len(parts) == 2 and not nomsg:
             circuit, name = parts
             for msgdef in self.find(circuit, name):
-                yield msgdef, None
-        elif notempty and len(parts) == 3 and not nofield:
+                yield msgdef, msgdef.fields
+        elif notempty and len(parts) == 3:
             circuit, name, fieldname = parts
             for msgdef in self.find(circuit, name):
-                for fielddef in msgdef.fields:
-                    if fnmatchcase(fielddef.name, fieldname):
-                        yield msgdef, fielddef
+                fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.name, fieldname))
+                if fields:
+                    yield msgdef, fields
         else:
             raise ValueError(f"Invalid pattern {pattern!r}")
 
