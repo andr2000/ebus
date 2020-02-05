@@ -38,7 +38,7 @@ def _test(basepath):
                     )
                     outfile.write(f"\n{msgdefrepr}\n")
                     for field in msgdef.fields:
-                        outfile.write(f"    {field}\n")
+                        outfile.write(f"    {field!r}\n")
                 except ValueError as e:
                     outfile.write(f"{e}\n")
     cmp_(outfilepath, reffilepath)

@@ -42,15 +42,11 @@ class MsgDef(_MsgDef):
     @property
     def type_(self):
         """Message Type."""
-        if self.read:
-            if self.prio is not None:
-                return f"r{self.prio}"
-            else:
-                return "r"
-        elif self.write:
-            return "w"
-        elif self.update:
-            return "u"
+        r = "r" if self.read else "-"
+        p = f"{self.prio}" if self.prio else "-"
+        w = "w" if self.write else "-"
+        u = "u" if self.update else "-"
+        return "".join((r, p, w, u))
 
 
 _FieldDef = collections.namedtuple("_FieldDef", "uname name types dividervalues unit")
@@ -74,6 +70,9 @@ class FieldDef(_FieldDef):
             unit (str): Unit of the field value
         """
         return _FieldDef.__new__(cls, uname, name, types, dividervalues, unit)
+
+    def __str__(self):
+        return self.uname
 
     def __repr__(self):
         args = (self.uname, self.name, self.types)

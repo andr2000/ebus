@@ -39,3 +39,5 @@ hc FlowTempMin 15
 hc FlowTempMin
 hc Hc1PumpPort = off
 mc.4 Status = 0;off;36.62;24
+
+hc FlowTempMax no data stored

@@ -54,6 +54,23 @@ class TypeDecoder:
     See https://github.com/john30/ebusd/wiki/4.3.-Builtin-data-types
 
     String types are just kept as is. Simple casts are stored in `_casts`
+
+    >>> import ebus
+    >>> typedecoder = ebus.TypeDecoder()
+    >>> fielddef = ebus.FieldDef("uname", "name", ("uin",), None, None)
+    >>> typedecoder(fielddef, '7')
+    7
+
+    Unknown types are just handled as strings:
+
+    >>> fielddef = ebus.FieldDef("uname", "name", ("foo",), None, None)
+    >>> typedecoder(fielddef, '7')
+    '7'
+
+    Unknown values become `None`:
+
+    >>> fielddef = ebus.FieldDef("uname", "name", ("bi0",), None, None)
+    >>> typedecoder(fielddef, '-')
     """
 
     def __call__(self, fielddef, value):
@@ -61,9 +78,8 @@ class TypeDecoder:
         if fielddef.values is None:
             pytype = get_pytype(fielddef.types[0])
             if pytype:
-                method = getattr(self, "_" + pytype, None)
-                if method:
-                    value = method(fielddef, value)
+                method = getattr(self, "_" + pytype)
+                value = method(fielddef, value)
         return value
 
     @staticmethod
