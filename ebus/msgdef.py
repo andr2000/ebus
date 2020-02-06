@@ -1,11 +1,13 @@
 import collections
 
+from anytree import NodeMixin
+
 from .util import repr_
 
-_MsgDef = collections.namedtuple("_MsgDef", "circuit name fields read prio write update")
+_MsgDef = collections.namedtuple("_MsgDef", "circuit name read prio write update")
 
 
-class MsgDef(_MsgDef):
+class MsgDef(_MsgDef, NodeMixin):
 
     __slots__ = tuple()
 
@@ -24,7 +26,10 @@ class MsgDef(_MsgDef):
             write (bool): Message intend to be written
             updated (bool): Message intent to be seen automatically on every value change
         """
-        return _MsgDef.__new__(cls, circuit, name, fields, read, prio, write, update)
+        msgdef = _MsgDef.__new__(cls, circuit, name, read, prio, write, update)
+        if fields:
+            msgdef.children = fields
+        return msgdef
 
     def __repr__(self):
         args = (self.circuit, self.name, self.fields)
@@ -35,6 +40,16 @@ class MsgDef(_MsgDef):
             ("update", self.update, False),
         ]
         return repr_(self, args, kwargs)
+
+    @property
+    def fields(self):
+        """Fields."""
+        return self.children
+
+    @property
+    def ident(self):
+        """Identifier."""
+        return f"{self.circuit}/{self.name}"
 
     @property
     def type_(self):
@@ -49,7 +64,7 @@ class MsgDef(_MsgDef):
 _FieldDef = collections.namedtuple("_FieldDef", "uname name types dividervalues unit")
 
 
-class FieldDef(_FieldDef):
+class FieldDef(_FieldDef, NodeMixin):
 
     __slots__ = tuple()
 
@@ -77,6 +92,11 @@ class FieldDef(_FieldDef):
         return repr_(self, args, kwargs)
 
     @property
+    def ident(self):
+        """Identifier."""
+        return f"{self.parent.ident}/{self.uname}"
+
+    @property
     def divider(self):
         """Divider if given."""
         dividervalues = self.dividervalues
@@ -92,11 +112,3 @@ class FieldDef(_FieldDef):
         dividervalues = self.dividervalues
         if dividervalues and "=" in dividervalues:
             return dict([pair.split("=", 1) for pair in dividervalues.split(";")])
-
-
-def get_path(msgdef, fielddef=None):
-    """Path of `msgdef` and `fielddef`."""
-    if fielddef:
-        return f"{msgdef.circuit}/{msgdef.name}/{fielddef.uname}"
-    else:
-        return f"{msgdef.circuit}/{msgdef.name}"

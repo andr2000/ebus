@@ -30,6 +30,7 @@ config["classifiers"] = [
 ]
 config["keywords"] = "ebus, ebusd, ebus client"
 config["packages"] = ["ebus"]
+config["install_requires"] = ["anytree>=2.8.0"]
 config["tests_require"] = ["nose", "pydocstyle", "pycodestyle", "black", "isort"]
 config["test_suite"] = "nose.collector"
 config["entry_points"] = {"console_scripts": ["ebustool = ebus.cli:main", "ebt = ebus.cli:main"]}

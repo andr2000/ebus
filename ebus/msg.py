@@ -12,6 +12,11 @@ class Msg(collections.namedtuple("_Msg", "msgdef fields")):
         args = (self.msgdef.name, self.fields)
         return repr_(self, args)
 
+    @property
+    def ident(self):
+        """Identifier."""
+        return self.msgdef.ident
+
 
 class Field(collections.namedtuple("_Field", "fielddef value")):
     __slots__ = tuple()
@@ -19,6 +24,11 @@ class Field(collections.namedtuple("_Field", "fielddef value")):
     def __repr__(self):
         args = (self.fielddef.uname, self.value)
         return repr_(self, args)
+
+    @property
+    def ident(self):
+        """Identifier."""
+        return self.fielddef.ident
 
     @property
     def unitvalue(self):

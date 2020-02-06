@@ -9,7 +9,6 @@ from .msg import Msg
 from .msg import filter_msg
 from .msgdecoder import MsgDecoder
 from .msgdecoder import UnknownMsgError
-from .msgdef import get_path
 from .msgdefdecoder import decode_msgdef
 from .msgdefs import MsgDefs
 from .util import repr_
@@ -18,6 +17,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class Ebus:
+
     def __init__(self, host, port, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.
@@ -88,8 +88,7 @@ class Ebus:
         try:
             lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio, m=ttl)])
         except CommandError as e:
-            path = get_path(msgdef)
-            _LOGGER.warn(f"{path}: {e!r}")
+            _LOGGER.warn(f"{msgdef.ident}: {e!r}")
         else:
             return self.msgdecoder.decode_value(msgdef, lines[0])
 
@@ -101,8 +100,7 @@ class Ebus:
             async for line in self.request("write", msgdef.name, value, c=msgdef.circuit):
                 pass
         except CommandError as e:
-            path = get_path(msgdef)
-            _LOGGER.warn(f"{path}: {e!r}")
+            _LOGGER.warn(f"{msgdef.ident}: {e!r}")
 
     async def listen(self, msgdefs=None):
         """Listen to EBUSD, decode and yield."""
