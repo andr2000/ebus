@@ -92,3 +92,11 @@ class FieldDef(_FieldDef):
         dividervalues = self.dividervalues
         if dividervalues and "=" in dividervalues:
             return dict([pair.split("=", 1) for pair in dividervalues.split(";")])
+
+
+def get_path(msgdef, fielddef=None):
+    """Path of `msgdef` and `fielddef`."""
+    if fielddef:
+        return f"{msgdef.circuit}/{msgdef.name}/{fielddef.uname}"
+    else:
+        return f"{msgdef.circuit}/{msgdef.name}"

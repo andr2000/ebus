@@ -1,6 +1,7 @@
 import asyncio
 import logging
 
+from ..msgdef import get_path
 from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import add_patterns_arg
@@ -29,8 +30,8 @@ async def _main(args):
             msg = await e.read(msgdef, prio=args.prio, ttl=args.ttl)
             if msg:
                 for field in msg.fields:
-                    if field.fielddef in msgdef.fields:
-                        print(field)
+                    path = get_path(msg.msgdef, field.fielddef)
+                    print(f"{path:<40s} {field.unitvalue}")
 
 
 def main(args):

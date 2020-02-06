@@ -1,5 +1,6 @@
 import asyncio
 
+from ..msgdef import get_path
 from ..typedecoder import get_pytype
 from .common import add_ebus_args
 from .common import add_msgdef_args
@@ -24,13 +25,13 @@ async def _main(args):
     await load_msgdefs(e, args)
     for msgdef in e.msgdefs.resolve(args.patterns):
         for fielddef in msgdef.fields:
-            name = f"{msgdef}/{fielddef.uname}"
+            path = get_path(msgdef, fielddef)
             values = fielddef.values
             if values:
                 details = ";".join(fielddef.values.values())
             else:
                 details = get_pytype(fielddef.types[0]) or ""
-            print(f"{name:<40s} {msgdef.type_} {details}")
+            print(f"{path:<40s} {msgdef.type_} {details}")
 
 
 def main(args):

@@ -9,6 +9,7 @@ from .msg import Msg
 from .msg import filter_msg
 from .msgdecoder import MsgDecoder
 from .msgdecoder import UnknownMsgError
+from .msgdef import get_path
 from .msgdefdecoder import decode_msgdef
 from .msgdefs import MsgDefs
 from .util import repr_
@@ -87,7 +88,8 @@ class Ebus:
         try:
             lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio, m=ttl)])
         except CommandError as e:
-            _LOGGER.warn(f"{e!r}: {msgdef}")
+            path = get_path(msgdef)
+            _LOGGER.warn(f"{path}: {e!r}")
         else:
             return self.msgdecoder.decode_value(msgdef, lines[0])
 
@@ -99,7 +101,8 @@ class Ebus:
             async for line in self.request("write", msgdef.name, value, c=msgdef.circuit):
                 pass
         except CommandError as e:
-            _LOGGER.warn(f"{e!r}: {msgdef}")
+            path = get_path(msgdef)
+            _LOGGER.warn(f"{path}: {e!r}")
 
     async def listen(self, msgdefs=None):
         """Listen to EBUSD, decode and yield."""
@@ -125,14 +128,15 @@ class Ebus:
 
         # read all
         for msgdef in msgdefs:
-            if not msgdef.read:
-                continue
-            msg = await self.read(msgdef, prio=prio, ttl=ttl)
-            if msg:
-                msg = filter_msg(msg, msgdefs)
-            if msg:
-                yield msg
-                data[msg.msgdef] = msg
+            if msgdef.read:
+                msg = await self.read(msgdef, prio=prio, ttl=ttl)
+                if msg:
+                    msg = filter_msg(msg, msgdefs)
+                if msg:
+                    yield msg
+                    data[msgdef] = msg
+            elif msgdef.update:
+                data[msgdef] = None
 
         # find new values (which got updated while we where reading)
         async for line in self.request("find -d"):

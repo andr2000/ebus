@@ -20,6 +20,17 @@ class Field(collections.namedtuple("_Field", "fielddef value")):
         args = (self.fielddef.uname, self.value)
         return repr_(self, args)
 
+    @property
+    def unitvalue(self):
+        """Unitized Value."""
+        if self.value is not None:
+            if self.fielddef.unit:
+                return f"{self.value}{self.fielddef.unit}"
+            else:
+                return self.value
+        else:
+            return None
+
 
 def filter_msg(msg, msgdefs):
     """Strip Down Message."""
