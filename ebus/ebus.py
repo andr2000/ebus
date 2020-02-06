@@ -5,6 +5,8 @@ import logging
 from .connection import CommandError
 from .connection import Connection
 from .const import CMD_FINDMSGDEFS
+from .msg import Msg
+from .msg import filter_msg
 from .msgdecoder import MsgDecoder
 from .msgdecoder import UnknownMsgError
 from .msgdefdecoder import decode_msgdef
@@ -63,14 +65,17 @@ class Ebus:
             scanwait (bool): Wait for EBUSD scan to complete
         """
         self.msgdefs.clear()
+        msgdefs = []
         async for line in self.request(CMD_FINDMSGDEFS):
             if line:
                 try:
                     msgdef = decode_msgdef(line)
                     if not msgdef.circuit.startswith("scan"):
-                        self.msgdefs.add(msgdef)
+                        msgdefs.append(msgdef)
                 except ValueError as e:
                     _LOGGER.warn(f"Cannot decode message definition ({e})")
+        for msgdef in sorted(msgdefs, key=lambda msgdef: (msgdef.circuit, msgdef.name)):
+            self.msgdefs.add(msgdef)
 
     async def read(self, msgdef, prio=None, ttl=None):
         """
@@ -79,22 +84,12 @@ class Ebus:
         Raises:
             ValueError: on decoder error
         """
-        if msgdef.read:
-            try:
-                lines = tuple(
-                    [line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio, m=ttl)]
-                )
-            except CommandError as e:
-                _LOGGER.warn(f"{e!r}: {msgdef}")
-            else:
-                return self.msgdecoder.decode_value(msgdef, lines[0])
-
-    async def readall(self, prio=None, ttl=None):
-        """Iterate over a all known messages, read from EBUSD, decode and yield."""
-        for msgdef in self.msgdefs:
-            if not msgdef.read:
-                continue
-            yield await self.read(msgdef, prio=prio, ttl=ttl)
+        try:
+            lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio, m=ttl)])
+        except CommandError as e:
+            _LOGGER.warn(f"{e!r}: {msgdef}")
+        else:
+            return self.msgdecoder.decode_value(msgdef, lines[0])
 
     async def write(self, msgdef, value):
         """Write Message."""
@@ -106,16 +101,18 @@ class Ebus:
         except CommandError as e:
             _LOGGER.warn(f"{e!r}: {msgdef}")
 
-    async def listen(self):
+    async def listen(self, msgdefs=None):
         """Listen to EBUSD, decode and yield."""
         async for line in self.request("listen", infinite=True):
             if line == "listen started":
                 continue
             msg = self._decode_line(line)
+            if msg and msgdefs:
+                msg = filter_msg(msg, msgdefs)
             if msg:
                 yield msg
 
-    async def observe(self, patterns=None, prio=None, ttl=None):
+    async def observe(self, msgdefs=None, prio=None, ttl=None):
         """
         Observe.
 
@@ -123,10 +120,7 @@ class Ebus:
         Use `find` to get the latest data, if me missed any updates in the
         meantime and start listening
         """
-        if patterns:
-            msgdefs = [msgdef for msgdef, _ in self.msgdefs.resolve(patterns)]
-        else:
-            msgdefs = tuple(self.msgdefs)
+        msgdefs = msgdefs or self.msgdefs
         data = collections.defaultdict(lambda: None)
 
         # read all
@@ -135,21 +129,23 @@ class Ebus:
                 continue
             msg = await self.read(msgdef, prio=prio, ttl=ttl)
             if msg:
-                data[msgdef] = msg
+                msg = filter_msg(msg, msgdefs)
+            if msg:
                 yield msg
+                data[msg.msgdef] = msg
 
-        # find
+        # find new values (which got updated while we where reading)
         async for line in self.request("find -d"):
             msg = self._decode_line(line)
-            if msg and msg in msgdefs:
-                if msg != data[msg.msgdef]:
-                    yield msg
+            if msg:
+                msg = filter_msg(msg, msgdefs)
+            if msg and msg != data[msg.msgdef]:
+                yield msg
                 data[msg.msgdef] = msg
 
         # listen
-        async for msg in self.listen():
-            if msg and msg.msgdef in msgdefs:
-                yield msg
+        async for msg in self.listen(msgdefs=msgdefs):
+            yield msg
 
     async def request(self, cmd, *args, infinite=False, **kwargs):
         """Assemble request, send and readlines."""

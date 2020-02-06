@@ -22,7 +22,7 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    for msgdef, fielddef in e.msgdefs.resolve(args.field, nomsg=True):
+    for msgdef in e.msgdefs.resolve(args.field):
         await e.write(msgdef, args.value)
 
 

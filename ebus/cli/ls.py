@@ -22,18 +22,15 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    if args.patterns:
-        msgdefs = [msgdef for msgdef, _ in e.msgdefs.resolve(args.patterns)]
-    else:
-        msgdefs = e.msgdefs
-    for msgdef in msgdefs:
-        for field in msgdef.fields:
-            values = field.values
+    for msgdef in e.msgdefs.resolve(args.patterns):
+        for fielddef in msgdef.fields:
+            name = f"{msgdef}/{fielddef.uname}"
+            values = fielddef.values
             if values:
-                details = ";".join(field.values.values())
+                details = ";".join(fielddef.values.values())
             else:
-                details = get_pytype(field.types[0])
-            print(f"{msgdef.type_:<2s} {msgdef}/{field.uname} {details}")
+                details = get_pytype(fielddef.types[0]) or ""
+            print(f"{name:<40s} {msgdef.type_} {details}")
 
 
 def main(args):

@@ -24,3 +24,8 @@ class Field(collections.namedtuple("_Field", "msgdef fielddef value")):
     def __repr__(self):
         args = (self.fielddef.uname, self.value)
         return repr_(self, args)
+
+
+def filter_msg(msg, msgdefs):
+    """Strip Down Message."""
+    return msg

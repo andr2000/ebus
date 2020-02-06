@@ -45,47 +45,15 @@ def test_msgdefs():
     eq_(
         list(msgdefs.resolve("*/FlowTempDesired/temp1;cc/StatPowerOn;hc/FlowTemp*")),
         [
-            (
-                ebus.MsgDef(
-                    "hc", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True
-                ),
-                (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),),
-            ),
-            (
-                ebus.MsgDef(
-                    "mc", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True
-                ),
-                (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),),
-            ),
-            (
-                ebus.MsgDef(
-                    "mc.3", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True
-                ),
-                (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),),
-            ),
-            (
-                ebus.MsgDef(
-                    "mc.4", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True
-                ),
-                (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),),
-            ),
-            (
-                ebus.MsgDef(
-                    "mc.5", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True
-                ),
-                (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),),
-            ),
-            (
-                ebus.MsgDef("cc", "StatPowerOn", (ebus.FieldDef("", "", ("UIN",)),), read=True),
-                (ebus.FieldDef("", "", ("UIN",)),),
-            ),
-            (
-                ebus.MsgDef("hc", "FlowTempMax", (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),), read=True),
-                (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),),
-            ),
-            (
-                ebus.MsgDef("hc", "FlowTempMin", (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),), read=True),
-                (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),),
-            ),
+            ebus.MsgDef("bai", "FlowTempDesired", (), read=True),
+            ebus.MsgDef("hc", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            ebus.MsgDef("mc", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            ebus.MsgDef("mc.3", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            ebus.MsgDef("mc.4", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            ebus.MsgDef("mc.5", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            ebus.MsgDef("ui", "FlowTempDesired", (), read=True),
+            ebus.MsgDef("cc", "StatPowerOn", (ebus.FieldDef("", "", ("UIN",)),), read=True),
+            ebus.MsgDef("hc", "FlowTempMax", (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),), read=True),
+            ebus.MsgDef("hc", "FlowTempMin", (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),), read=True),
         ],
     )

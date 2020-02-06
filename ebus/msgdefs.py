@@ -1,6 +1,8 @@
 import collections
 from fnmatch import fnmatchcase
 
+from .msgdef import MsgDef
+
 
 class MsgDefs:
 
@@ -67,13 +69,24 @@ class MsgDefs:
         if notempty and len(parts) == 2 and not nomsg:
             circuit, name = parts
             for msgdef in self.find(circuit, name):
-                yield msgdef, msgdef.fields
+                yield msgdef
         elif notempty and len(parts) == 3:
             circuit, name, fieldname = parts
             for msgdef in self.find(circuit, name):
-                fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.name, fieldname))
-                if fields:
-                    yield msgdef, fields
+                fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.uname, fieldname))
+                if fields == msgdef.fields:
+                    yield msgdef
+                else:
+                    yield MsgDef(
+                        msgdef.circuit,
+                        msgdef.name,
+                        fields,
+                        read=msgdef.read,
+                        prio=msgdef.prio,
+                        write=msgdef.write,
+                        update=msgdef.update,
+                    )
+
         else:
             raise ValueError(f"Invalid pattern {pattern!r}")
 

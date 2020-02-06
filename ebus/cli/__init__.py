@@ -1,4 +1,5 @@
 import argparse
+import logging
 import sys
 
 from .. import __version__
@@ -7,7 +8,6 @@ from . import listen
 from . import ls
 from . import observe
 from . import read
-from . import readall
 from . import write
 
 
@@ -24,7 +24,6 @@ def argvhandler(argv):
     ls.parse_args(subparsers)
     observe.parse_args(subparsers)
     read.parse_args(subparsers)
-    readall.parse_args(subparsers)
     write.parse_args(subparsers)
 
     args = parser.parse_args(argv)
@@ -38,8 +37,9 @@ def _print_help(parser):
 
 def main():  # pragma: no cover
     """Command Line Hookup."""
+    logging.basicConfig(format="%(levelname)s:%(message)s")
     try:
         argvhandler(sys.argv[1:])
-    except RuntimeError as e:
+    except (RuntimeError, ValueError) as e:
         print("ERROR: %r" % e)
         sys.exit(1)

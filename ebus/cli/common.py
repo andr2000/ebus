@@ -35,7 +35,12 @@ def add_patterns_arg(parser, opt=False):
     if not opt:
         parser.add_argument("patterns", help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp')")
     else:
-        parser.add_argument("patterns", nargs="?", help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp')")
+        parser.add_argument(
+            "patterns",
+            nargs="?",
+            default="*/*",
+            help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp'). Default is '*/*' for all.",
+        )
 
 
 def disable_stdout_buffering():
