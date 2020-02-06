@@ -26,9 +26,6 @@ class MsgDef(_MsgDef):
         """
         return _MsgDef.__new__(cls, circuit, name, fields, read, prio, write, update)
 
-    def __str__(self):
-        return f"{self.circuit}/{self.name}"
-
     def __repr__(self):
         args = (self.circuit, self.name, self.fields)
         kwargs = [
@@ -70,9 +67,6 @@ class FieldDef(_FieldDef):
             unit (str): Unit of the field value
         """
         return _FieldDef.__new__(cls, uname, name, types, dividervalues, unit)
-
-    def __str__(self):
-        return self.uname
 
     def __repr__(self):
         args = (self.uname, self.name, self.types)

@@ -55,7 +55,7 @@ class MsgDecoder:
                     fieldvalue = None
             else:
                 fieldvalue = Error(value)
-            yield Field(msgdef, fielddef, fieldvalue)
+            yield Field(fielddef, fieldvalue)
 
 
 class UnknownMsgError(RuntimeError):

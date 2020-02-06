@@ -50,18 +50,20 @@ class MsgDefs:
 
     def find(self, circuit, name="*"):
         """Find Message Definitions."""
+        msgdefs = MsgDefs()
         for msgdef in self:
             if fnmatchcase(msgdef.circuit, circuit) and fnmatchcase(msgdef.name, name):
-                yield msgdef
+                msgdefs.add(msgdef)
+        return msgdefs
 
     def resolve(self, patterns, nomsg=False):
         """Resolve patterns."""
-        items = []
+        msgdefs = MsgDefs()
         for pattern in patterns.split(";"):
-            for item in self._resolve(pattern.strip(), nomsg):
-                if item not in items:
-                    items.append(item)
-                    yield item
+            for msgdef in self._resolve(pattern.strip(), nomsg):
+                if msgdef not in msgdefs:
+                    msgdefs.add(msgdef)
+        return msgdefs
 
     def _resolve(self, pattern, nomsg):
         parts = [item.strip() for item in pattern.split("/")]
@@ -76,7 +78,7 @@ class MsgDefs:
                 fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.uname, fieldname))
                 if fields == msgdef.fields:
                     yield msgdef
-                else:
+                elif fields:
                     yield MsgDef(
                         msgdef.circuit,
                         msgdef.name,

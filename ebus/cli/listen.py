@@ -21,7 +21,7 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    msgdefs = tuple(e.msgdefs.resolve(args.patterns))
+    msgdefs = e.msgdefs.resolve(args.patterns)
     async for msg in e.listen(msgdefs=msgdefs):
         for field in msg.fields:
             print(field)

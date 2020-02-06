@@ -17,7 +17,6 @@ def test_msgdef0():
     eq_(m.fields, ("field0",))
     eq_(m.type_, "r5--")
     eq_(sys.getsizeof(m), 104)
-    eq_(str(m), "circuit/name")
     eq_(
         repr(m), "MsgDef('circuit', 'name', ('field0',), read=True, prio=5)",
     )
@@ -35,7 +34,6 @@ def test_msgdef1():
     eq_(m.fields, ("field0",))
     eq_(m.type_, "--w-")
     eq_(sys.getsizeof(m), 104)
-    eq_(str(m), "circuit/name")
     eq_(
         repr(m), "MsgDef('circuit', 'name', ('field0',), write=True)",
     )
@@ -53,7 +51,6 @@ def test_msgdef2():
     eq_(m.fields, ("field0",))
     eq_(m.type_, "---u")
     eq_(sys.getsizeof(m), 104)
-    eq_(str(m), "circuit/name")
     eq_(
         repr(m), "MsgDef('circuit', 'name', ('field0',), update=True)",
     )
@@ -70,7 +67,6 @@ def test_fielddef0():
     eq_(f.values, None)
     eq_(f.unit, "unit")
     eq_(sys.getsizeof(f), 88)
-    eq_(str(f), "uname")
     eq_(
         repr(f), "FieldDef('uname', 'name', ('uin',), dividervalues='4', unit='unit')",
     )

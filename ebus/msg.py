@@ -13,13 +13,8 @@ class Msg(collections.namedtuple("_Msg", "msgdef fields")):
         return repr_(self, args)
 
 
-class Field(collections.namedtuple("_Field", "msgdef fielddef value")):
+class Field(collections.namedtuple("_Field", "fielddef value")):
     __slots__ = tuple()
-
-    def __str__(self):
-        fielddef = self.fielddef
-        unit = fielddef.unit if self.value is not None and fielddef.unit else ""
-        return f"{self.msgdef}/{fielddef.uname} {self.value}{unit}"
 
     def __repr__(self):
         args = (self.fielddef.uname, self.value)
@@ -28,4 +23,13 @@ class Field(collections.namedtuple("_Field", "msgdef fielddef value")):
 
 def filter_msg(msg, msgdefs):
     """Strip Down Message."""
-    return msg
+    k = (msg.msgdef.circuit, msg.msgdef.name)
+    for msgdef in msgdefs:
+        if k == (msgdef.circuit, msgdef.name):
+            if msg.msgdef == msgdef:
+                return msg
+            else:
+                fields = tuple(
+                    Field(field.fielddef, field.value) for field in msg.fields if field.fielddef in msgdef.fields
+                )
+                return Msg(msgdef, fields)
