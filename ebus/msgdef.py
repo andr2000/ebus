@@ -41,6 +41,14 @@ class MsgDef(_MsgDef, NodeMixin):
         ]
         return repr_(self, args, kwargs)
 
+    def __eq__(self, other):
+        if isinstance(other, MsgDef):
+            s = (self.circuit, self.name, self.fields, self.read, self.prio, self.write, self.update)
+            o = (other.circuit, other.name, other.fields, other.read, other.prio, other.write, other.update)
+            return s == o
+        else:
+            return False
+
     @property
     def fields(self):
         """Fields."""
@@ -91,10 +99,19 @@ class FieldDef(_FieldDef, NodeMixin):
         ]
         return repr_(self, args, kwargs)
 
+    def _pre_detach(self, parent):
+        # it is forbidden to remove fields from their message - create new one
+        assert False, f"{self!r} is already used by {parent!r}"  # pragma: no cover
+
     @property
     def ident(self):
         """Identifier."""
-        return f"{self.parent.ident}/{self.uname}"
+        return f"{self.parent.ident}/{self.uname}" if self.parent else None
+
+    def __copy__(self):
+        return FieldDef(
+            uname=self.uname, name=self.name, types=self.types, dividervalues=self.dividervalues, unit=self.unit,
+        )
 
     @property
     def divider(self):

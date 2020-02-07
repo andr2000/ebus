@@ -1,4 +1,5 @@
 import collections
+import copy
 from fnmatch import fnmatchcase
 
 from .msgdef import MsgDef
@@ -82,7 +83,7 @@ class MsgDefs:
                     yield MsgDef(
                         msgdef.circuit,
                         msgdef.name,
-                        fields,
+                        tuple(copy.copy(fielddef) for fielddef in fields),
                         read=msgdef.read,
                         prio=msgdef.prio,
                         write=msgdef.write,

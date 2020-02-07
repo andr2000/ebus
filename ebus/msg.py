@@ -44,9 +44,9 @@ class Field(collections.namedtuple("_Field", "fielddef value")):
 
 def filter_msg(msg, msgdefs):
     """Strip Down Message."""
-    k = (msg.msgdef.circuit, msg.msgdef.name)
+    ident = msg.msgdef.ident
     for msgdef in msgdefs:
-        if k == (msgdef.circuit, msgdef.name):
+        if ident == msgdef.ident:
             if msg.msgdef == msgdef:
                 return msg
             else:
