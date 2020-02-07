@@ -81,15 +81,15 @@ def _createfields(chunks):
             if dups[name]:
                 cnt = cnts[name]
                 cnts[name] = cnt + 1
-                uname = f"{name}.{cnt}"
+                name = f"{name}.{cnt}"
             else:
-                uname = name
-            yield _createfield(uname, *chunk)
+                name = name
+            yield _createfield(name, *chunk)
 
 
-def _createfield(uname, name, part, datatype, dividervalues=None, unit=None, *args):
+def _createfield(name, ename, part, datatype, dividervalues=None, unit=None, *args):
     types = tuple(datatype.split(","))
-    return FieldDef(uname, name, types, dividervalues or None, unit or None)
+    return FieldDef(name, ename, types, dividervalues or None, unit or None)
 
 
 def _chunks(list_or_tuple, maxsize):

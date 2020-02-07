@@ -22,7 +22,7 @@ class Field(collections.namedtuple("_Field", "fielddef value")):
     __slots__ = tuple()
 
     def __repr__(self):
-        args = (self.fielddef.uname, self.value)
+        args = (self.fielddef.name, self.value)
         return repr_(self, args)
 
     @property

@@ -76,7 +76,7 @@ class MsgDefs:
         elif notempty and len(parts) == 3:
             circuit, name, fieldname = parts
             for msgdef in self.find(circuit, name):
-                fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.uname, fieldname))
+                fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.name, fieldname))
                 if fields == msgdef.fields:
                     yield msgdef
                 elif fields:

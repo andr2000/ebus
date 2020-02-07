@@ -69,30 +69,30 @@ class MsgDef(_MsgDef, NodeMixin):
         return "".join((r, p, w, u))
 
 
-_FieldDef = collections.namedtuple("_FieldDef", "uname name types dividervalues unit")
+_FieldDef = collections.namedtuple("_FieldDef", "name ename types dividervalues unit")
 
 
 class FieldDef(_FieldDef, NodeMixin):
 
     __slots__ = tuple()
 
-    def __new__(cls, uname, name, types, dividervalues=None, unit=None):
+    def __new__(cls, name, ename, types, dividervalues=None, unit=None):
         """
         Field Definition.
 
         Args:
-            uname (str): Unique name (as `name` may be used multiple times by ebus)
-            name (str): Name
+            name (str): Unique name (as `name` may be used multiple times by ebus)
+            ename (str): Ebus Name
             types (tuple): Tuple of type idenfifier
 
         Keywords Args:
             dividervalues (str): EBUS Divider or value specification
             unit (str): Unit of the field value
         """
-        return _FieldDef.__new__(cls, uname, name, types, dividervalues, unit)
+        return _FieldDef.__new__(cls, name, ename, types, dividervalues, unit)
 
     def __repr__(self):
-        args = (self.uname, self.name, self.types)
+        args = (self.name, self.ename, self.types)
         kwargs = [
             ("dividervalues", self.dividervalues, None),
             ("unit", self.unit, None),
@@ -106,11 +106,11 @@ class FieldDef(_FieldDef, NodeMixin):
     @property
     def ident(self):
         """Identifier."""
-        return f"{self.parent.ident}/{self.uname}" if self.parent else None
+        return f"{self.parent.ident}/{self.name}" if self.parent else None
 
     def __copy__(self):
         return FieldDef(
-            uname=self.uname, name=self.name, types=self.types, dividervalues=self.dividervalues, unit=self.unit,
+            name=self.name, ename=self.ename, types=self.types, dividervalues=self.dividervalues, unit=self.unit,
         )
 
     @property

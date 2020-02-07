@@ -45,7 +45,7 @@ def _test(deffilepath, basepath, num):
                     outfile.write(f"\n{line}\n")
                     msg = decoder.decode_line(line)
                     if msg:
-                        values = tuple(f"{field.fielddef.uname}={field.unitvalue!r}" for field in msg.fields)
+                        values = tuple(f"{field.fielddef.name}={field.unitvalue!r}" for field in msg.fields)
                         outfile.write(f"  {msg.msgdef.circuit} {msg.msgdef.name} {values}\n")
                 except (ebus.UnknownMsgError, ValueError) as err:
                     outfile.write(f"  {err!r}\n")
