@@ -41,20 +41,21 @@ class MsgDecoder:
 
     def decode_value(self, msgdef, valuestr, circuit=None):
         """Decode message `msgdef` valuestr `valuestr`."""
-        if valuestr and valuestr != "no data stored" and not valuestr.startswith("(ERR: "):
+        if valuestr and valuestr != "no data stored" and "ERR: " not in valuestr:
             fields = tuple(self._decodefields(msgdef, valuestr.split(";")))
             return Msg(msgdef, fields)
 
     def _decodefields(self, msgdef, values):
         typedecoder = self.typedecoder
-        for fielddef, value in zip(msgdef.fields, values):
-            if not value.startswith("ERR: "):
-                try:
-                    fieldvalue = typedecoder(fielddef, value.strip())
-                except ValueError:
-                    fieldvalue = None
-            else:
-                fieldvalue = Error(value)
+        for fielddef in msgdef.fields:
+            try:
+                value = values[fielddef.idx]
+            except IndexError:
+                continue
+            try:
+                fieldvalue = typedecoder(fielddef, value.strip())
+            except ValueError:
+                fieldvalue = None
             yield Field(fielddef, fieldvalue)
 
 

@@ -7,7 +7,7 @@ import ebus
 
 def test_msgdef0():
     """MsgDef Example 0"""
-    fielddef = ebus.FieldDef("uname", "name", ("uin",), "4", "unit")
+    fielddef = ebus.FieldDef(0, "uname", "name", ("uin",), "4", "unit")
     msgdef = ebus.MsgDef("circuit", "name", (fielddef,), True, 5, False, False)
 
     fields = (ebus.Field(fielddef, "5"),)
@@ -22,10 +22,10 @@ def test_msgdef0():
 
 def test_filter_msg():
     """Message Filtering."""
-    fielddef0 = ebus.FieldDef("uname.0", "name", ("uin",), "4", "unit")
-    fielddef1 = ebus.FieldDef("uname.1", "name", ("uin",), "4", "unit")
-    fielddef0_ = ebus.FieldDef("uname.0", "name", ("uin",), "4", "unit")
-    fielddef5 = ebus.FieldDef("uname", "name", ("uin",), "4", "unit")
+    fielddef0 = ebus.FieldDef(0, "uname.0", "name", ("uin",), "4", "unit")
+    fielddef1 = ebus.FieldDef(0, "uname.1", "name", ("uin",), "4", "unit")
+    fielddef0_ = ebus.FieldDef(0, "uname.0", "name", ("uin",), "4", "unit")
+    fielddef5 = ebus.FieldDef(0, "uname", "name", ("uin",), "4", "unit")
     msgdef01 = ebus.MsgDef("circuit0", "name", (fielddef0, fielddef1), True, 5, False, False)
     msgdef0 = ebus.MsgDef("circuit0", "name", (fielddef0_,), True, 5, False, False)
     msgdef5 = ebus.MsgDef("circuit5", "name", (fielddef5,), True, 5, False, False)

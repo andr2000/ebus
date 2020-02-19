@@ -4,6 +4,8 @@ from nose.tools import assert_raises
 from nose.tools import eq_
 
 import ebus
+from ebus import FieldDef
+from ebus import MsgDef
 
 from .util import cmp_
 
@@ -32,7 +34,7 @@ def test_msgdefs():
     eq_(len(msgdefs.find("?c")), 110)
     eq_(
         list(msgdefs.find("cc", "StatPowerOn")),
-        [ebus.MsgDef("cc", "StatPowerOn", (ebus.FieldDef("", "", ("UIN",)),), read=True)],
+        [MsgDef("cc", "StatPowerOn", (FieldDef(0, "", "", ("UIN",)),), read=True)],
     )
 
     with assert_raises(ValueError):
@@ -45,87 +47,87 @@ def test_msgdefs():
     eq_(
         list(msgdefs.resolve("*/FlowTempDesired/temp1;cc/StatPowerOn;hc/FlowTemp*")),
         [
-            ebus.MsgDef("hc", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            ebus.MsgDef("hc", "FlowTempMax", (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),), read=True),
-            ebus.MsgDef("hc", "FlowTempMin", (ebus.FieldDef("temp0", "temp0", ("UCH",), unit="°C"),), read=True),
-            ebus.MsgDef("mc", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            ebus.MsgDef("mc.3", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            ebus.MsgDef("mc.4", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            ebus.MsgDef("mc.5", "FlowTempDesired", (ebus.FieldDef("temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            ebus.MsgDef("cc", "StatPowerOn", (ebus.FieldDef("", "", ("UIN",)),), read=True),
+            MsgDef("hc", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("hc", "FlowTempMax", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True),
+            MsgDef("hc", "FlowTempMin", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True),
+            MsgDef("mc", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("mc.3", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("mc.4", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("mc.5", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("cc", "StatPowerOn", (FieldDef(0, "", "", ("UIN",)),), read=True),
         ],
     )
     eq_(list(msgdefs.resolve("mc.5/Timer.*/foo")), [])
     eq_(
         list(msgdefs.resolve("mc.5/Timer.*/to*")),
         [
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Friday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
             ),
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Monday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
             ),
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Saturday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
             ),
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Sunday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
             ),
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Thursday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
             ),
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Tuesday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
             ),
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Wednesday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
             ),
@@ -134,13 +136,13 @@ def test_msgdefs():
     eq_(
         list(msgdefs.resolve("mc.5/Timer.Friday#3/to*")),
         [
-            ebus.MsgDef(
+            MsgDef(
                 "mc.5",
                 "Timer.Friday",
                 (
-                    ebus.FieldDef("to.0", "to", ("TTM",)),
-                    ebus.FieldDef("to.1", "to", ("TTM",)),
-                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                    FieldDef(1, "to.0", "to", ("TTM",)),
+                    FieldDef(3, "to.1", "to", ("TTM",)),
+                    FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
                 prio=3,

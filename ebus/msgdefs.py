@@ -19,20 +19,20 @@ class MsgDefs:
         >>> from .msgdef import MsgDef, FieldDef
         >>> msgdefs = MsgDefs()
         >>> msgdefs.add(MsgDef('mc', 'Status0a', (
-        ...     FieldDef('temp', 'temp', ('D2C',), None, '°C'),
-        ...     FieldDef('mixer', 'mixer', ('UCH',), None, None),
-        ...     FieldDef('onoff-0', 'onoff', ('UCH',), None, None),
-        ...     FieldDef('onoff-1', 'onoff', ('UCH',), None, None),
-        ...     FieldDef('temp0', 'temp0', ('UCH',), None, '°C'),
+        ...     FieldDef(0, 'temp', 'temp', ('D2C',), None, '°C'),
+        ...     FieldDef(1, 'mixer', 'mixer', ('UCH',), None, None),
+        ...     FieldDef(2, 'onoff-0', 'onoff', ('UCH',), None, None),
+        ...     FieldDef(3, 'onoff-1', 'onoff', ('UCH',), None, None),
+        ...     FieldDef(4, 'temp0', 'temp0', ('UCH',), None, '°C'),
         ... ), read=True))
         >>> msgdefs.add(MsgDef('hc', 'Status0', (
-        ...     FieldDef('temp', 'temp', ('D2C',), None, '°C'),
-        ...     FieldDef('temp0', 'temp0', ('UCH',), None, '°C'),
+        ...     FieldDef(0, 'temp', 'temp', ('D2C',), None, '°C'),
+        ...     FieldDef(1, 'temp0', 'temp0', ('UCH',), None, '°C'),
         ... ), read=True))
         >>> msgdefs.get('mc', 'Status0a')
-        MsgDef('mc', 'Status0a', (FieldDef('temp', ...'°C'), FieldDef('mixer', ..., ('UCH',), unit='°C')), read=True)
+        MsgDef('mc', 'Status0a', (FieldDef(0, 'temp', ...'°C'), FieldDef(1, 'mixer', ..., unit='°C')), read=True)
         >>> list(msgdefs)
-        [MsgDef('mc', 'Status0a', (FieldDef('temp', ...'°C'), FieldDef('mixer', ..., ('UCH',), unit='°C')), read=True)]
+        [MsgDef('mc', 'Status0a', (FieldDef(0, 'temp', ...'°C'), FieldDef(1, 'mixer', ..., unit='°C')), read=True)]
         """
         self.clear()
 

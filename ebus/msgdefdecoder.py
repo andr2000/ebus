@@ -20,13 +20,13 @@ def decode_msgdef(line):
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('mc.4', 'OtShutdownLimit', True, None, False, False)
     >>> m.fields
-    (FieldDef('temp', 'temp', ('UCH',), unit='°C', comment='text, text'),)
+    (FieldDef(0, 'temp', 'temp', ('UCH',), unit='°C', comment='text, text'),)
 
     >>> m = decode_msgdef('w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
     >>> m.fields
-    (FieldDef('temp', 'temp', ('D2C',), unit='°C'),)
+    (FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C'),)
     """
     try:
         values = _split(line)
@@ -76,7 +76,7 @@ def _createfields(chunks):
             dups[name] += 1
         # create fields
         cnts = collections.defaultdict(lambda: 0)
-        for chunk in chunks:
+        for idx, chunk in enumerate(chunks):
             name = chunk[0]
             if dups[name]:
                 cnt = cnts[name]
@@ -84,12 +84,12 @@ def _createfields(chunks):
                 name = f"{name}.{cnt}"
             else:
                 name = name
-            yield _createfield(name, *chunk)
+            yield _createfield(idx, name, *chunk)
 
 
-def _createfield(name, ename, part, datatype, dividervalues=None, unit=None, comment=None):
+def _createfield(idx, name, ename, part, datatype, dividervalues=None, unit=None, comment=None):
     types = tuple(datatype.split(","))
-    return FieldDef(name, ename, types, dividervalues, unit, comment)
+    return FieldDef(idx, name, ename, types, dividervalues, unit, comment)
 
 
 def _chunks(list_or_tuple, maxsize):

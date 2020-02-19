@@ -81,7 +81,6 @@ bai EbusVoltage = on
   bai EbusVoltage ("onoff='on'",)
 
 bai errorhistory = ERR: end of input reached
-  bai errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 bai ExternalFaultmessage = off
   bai ExternalFaultmessage ("onoff='off'",)
@@ -366,7 +365,6 @@ bai Statenumber = 4
   bai Statenumber ('=4',)
 
 bai Status = ERR: invalid position
-  bai Status ('temp="Error(msg=\'ERR: invalid position\')°C"',)
 
 bai Status01 = 40.5;33.0;-;-;-;on
   bai Status01 ("temp1.0='40.5°C'", "temp1.1='33.0°C'", 'temp2=None', 'temp1.2=None', 'temp1.3=None', "pumpstate='on'")
@@ -375,10 +373,8 @@ bai Status02 = auto;60;75.0;70;70.0
   bai Status02 ("hwcmode='auto'", "temp0.0='60°C'", "temp1.0='75.0°C'", "temp0.1='70°C'", "temp1.1='70.0°C'")
 
 bai Status16 = ERR: invalid position in decode
-  bai Status16 ('temp="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 bai StatusCirPump = ERR: no data stored
-  bai StatusCirPump ("=Error(msg='ERR: no data stored')",)
 
 bai StorageDelay = 0
   bai StorageDelay ("minutes0='0min'",)
@@ -477,22 +473,17 @@ broadcast datetime = 2.500;20:57:00;30.01.2020
   broadcast datetime ("outsidetemp='2.5°C'", 'time=datetime.time(20, 57)', 'date=datetime.date(2020, 1, 30)')
 
 broadcast error = ERR: no data stored
-  broadcast error ("error=Error(msg='ERR: no data stored')",)
 
 broadcast hwcStatus = ERR: no data stored
-  broadcast hwcStatus ("onoff.0=Error(msg='ERR: no data stored')",)
 
 broadcast id = ERR: invalid address
-  broadcast id ("manufacturer=Error(msg='ERR: invalid address')",)
 
 broadcast load = ERR: no data stored
-  broadcast load ("onoff=Error(msg='ERR: no data stored')",)
 
 broadcast outsidetemp = 2.500
   broadcast outsidetemp ("temp2='2.5°C'",)
 
 broadcast signoflife = ERR: no data stored
-  broadcast signoflife ()
 
 broadcast vdatetime = 20:56:04;30.01.2020
   broadcast vdatetime ('time=datetime.time(20, 56, 4)', 'date=datetime.date(2020, 1, 30)')
@@ -504,7 +495,6 @@ cc DateTime = valid;20:57:48;30.01.2020;2.500
   cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 cc errorhistory = ERR: end of input reached
-  cc errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 cc Mode = 30;auto;off;6;00;day
   cc Mode ("temp0='30°C'", "hwcmode.0='auto'", ".0='off'", "hwcmode.1='6'", "mctype7='00'", ".1='day'")
@@ -567,7 +557,6 @@ cc Timer.Wednesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
   cc Timer.Wednesday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 general valuerange = ERR: invalid address
-  general valuerange ("id=Error(msg='ERR: invalid address')",)
 
 hc BoilerCircuitDisabled = yes
   hc BoilerCircuitDisabled ("yesno='yes'",)
@@ -582,7 +571,6 @@ hc DateTime = valid;20:56:54;30.01.2020;2.500
   hc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 56, 54)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 hc errorhistory = ERR: end of input reached
-  hc errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 hc FlowTempDesired = 0.0
   hc FlowTempDesired ("temp1='0.0°C'",)
@@ -621,7 +609,6 @@ hc OutsideTemp = 2.50;ok
   hc OutsideTemp ("temp='2.5°C'", "sensor='ok'")
 
 hc SetMode = ERR: no data stored
-  hc SetMode ("hcmode=Error(msg='ERR: no data stored')",)
 
 hc Stat15MinBusTimeout = 0
   hc Stat15MinBusTimeout ('=0',)
@@ -645,19 +632,15 @@ hc StatRTOSErrorCounter = 0
   hc StatRTOSErrorCounter ('=0',)
 
 hc Status = ERR: read timeout
-  hc Status ('temp="Error(msg=\'ERR: read timeout\')°C"',)
 
 hc Status01 = ERR: read timeout
-  hc Status01 ('temp1.0="Error(msg=\'ERR: read timeout\')°C"',)
 
 hc Status02 = ERR: read timeout
-  hc Status02 ("hwcmode=Error(msg='ERR: read timeout')",)
 
 hc Status16 = 2.50
   hc Status16 ("temp='2.5°C'",)
 
 hc StatusCirPump = ERR: no data stored
-  hc StatusCirPump ("=Error(msg='ERR: no data stored')",)
 
 hc StatYearOfInstallation = 18
   hc StatYearOfInstallation ('=18',)
@@ -708,7 +691,6 @@ hwc DateTime = valid;20:58:45;30.01.2020;2.500
   hwc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 58, 45)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 hwc errorhistory = ERR: end of input reached
-  hwc errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 hwc FlowTempDesired2 = 0.0
   hwc FlowTempDesired2 ("temp1='0.0°C'",)
@@ -828,7 +810,6 @@ mc.3 DateTime = valid;20:59:00;30.01.2020;2.500
   mc.3 DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 59)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 mc.3 errorhistory = ERR: end of input reached
-  mc.3 errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 mc.3 FloorPavingDryingDay = 0
   mc.3 FloorPavingDryingDay ('=0',)
@@ -1017,7 +998,6 @@ mc.4 EfficiencyHysteresisMin = 1.0
   mc.4 EfficiencyHysteresisMin ('=1.0',)
 
 mc.4 errorhistory = ERR: end of input reached
-  mc.4 errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 mc.4 FloorPavingDryingDay = 0
   mc.4 FloorPavingDryingDay ('=0',)
@@ -1182,7 +1162,6 @@ mc DateTime = ok;21:00:39;30.01.2020;2.500
   mc DateTime ("dcfstate='ok'", 'btime=datetime.time(21, 0, 39)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 mc errorhistory = ERR: end of input reached
-  mc errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 mc FloorPavingDryingDay = 0
   mc FloorPavingDryingDay ('=0',)
@@ -1302,10 +1281,8 @@ mc Timer.Wednesday = 05:00;22:20;22:20;22:20;-:-;-:-;Mo-Fr
   mc Timer.Wednesday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 20)', 'from.1=datetime.time(22, 20)', 'to.1=datetime.time(22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
 
 memory eeprom = ERR: invalid address
-  memory eeprom ("address=Error(msg='ERR: invalid address')",)
 
 memory ram = ERR: invalid address
-  memory ram ("address=Error(msg='ERR: invalid address')",)
 
 rcc.3 HolidayPeriod = 01.01.2007;01.01.2007;01.01.2007;01.01.2007
   rcc.3 HolidayPeriod ('hfrom.0=datetime.date(2007, 1, 1)', 'hto.0=datetime.date(2007, 1, 1)', 'hfrom.1=datetime.date(2007, 1, 1)', 'hto.1=datetime.date(2007, 1, 1)')
@@ -1467,79 +1444,57 @@ ui DesiredDegreeB1 = -
   ui DesiredDegreeB1 ('percent0=None',)
 
 ui DesiredDegreeB2 = ERR: invalid position in decode
-  ui DesiredDegreeB2 ('percent0="Error(msg=\'ERR: invalid position in decode\')%"',)
 
 ui DesiredDegreeB3 = ERR: invalid position in decode
-  ui DesiredDegreeB3 ('percent0="Error(msg=\'ERR: invalid position in decode\')%"',)
 
 ui DesiredDegreeB4 = ERR: invalid position in decode
-  ui DesiredDegreeB4 ('percent0="Error(msg=\'ERR: invalid position in decode\')%"',)
 
 ui DesiredDegreeB5 = ERR: invalid position in decode
-  ui DesiredDegreeB5 ('percent0="Error(msg=\'ERR: invalid position in decode\')%"',)
 
 ui DesiredDegreeB6 = ERR: invalid position in decode
-  ui DesiredDegreeB6 ('percent0="Error(msg=\'ERR: invalid position in decode\')%"',)
 
 ui DesiredDegreeB7 = ERR: invalid position in decode
-  ui DesiredDegreeB7 ('percent0="Error(msg=\'ERR: invalid position in decode\')%"',)
 
 ui DesiredDegreeB8 = ERR: invalid position in decode
-  ui DesiredDegreeB8 ('percent0="Error(msg=\'ERR: invalid position in decode\')%"',)
 
 ui DesiredStateB1 = forcewater
   ui DesiredStateB1 ("='forcewater'",)
 
 ui DesiredStateB2 = ERR: invalid position in decode
-  ui DesiredStateB2 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui DesiredStateB3 = ERR: invalid position in decode
-  ui DesiredStateB3 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui DesiredStateB4 = ERR: invalid position in decode
-  ui DesiredStateB4 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui DesiredStateB5 = ERR: invalid position in decode
-  ui DesiredStateB5 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui DesiredStateB6 = ERR: invalid position in decode
-  ui DesiredStateB6 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui DesiredStateB7 = ERR: invalid position in decode
-  ui DesiredStateB7 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui DesiredStateB8 = ERR: invalid position in decode
-  ui DesiredStateB8 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui DisplayType = 112
   ui DisplayType ('=112',)
 
 ui errorhistory = ERR: end of input reached
-  ui errorhistory ("index=Error(msg='ERR: end of input reached')",)
 
 ui FlagsB1 = 0
   ui FlagsB1 ('=0',)
 
 ui FlagsB2 = ERR: invalid position in decode
-  ui FlagsB2 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui FlagsB3 = ERR: invalid position in decode
-  ui FlagsB3 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui FlagsB4 = ERR: invalid position in decode
-  ui FlagsB4 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui FlagsB5 = ERR: invalid position in decode
-  ui FlagsB5 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui FlagsB6 = ERR: invalid position in decode
-  ui FlagsB6 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui FlagsB7 = ERR: invalid position in decode
-  ui FlagsB7 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui FlagsB8 = ERR: invalid position in decode
-  ui FlagsB8 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui FlowTemp = 38.81;ok
   ui FlowTemp ("temp='38.81°C'", "sensor='ok'")
@@ -1557,25 +1512,18 @@ ui FlowTempDesiredB1 = 85
   ui FlowTempDesiredB1 ("temp0='85°C'",)
 
 ui FlowTempDesiredB2 = ERR: invalid position in decode
-  ui FlowTempDesiredB2 ('temp0="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 ui FlowTempDesiredB3 = ERR: invalid position in decode
-  ui FlowTempDesiredB3 ('temp0="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 ui FlowTempDesiredB4 = ERR: invalid position in decode
-  ui FlowTempDesiredB4 ('temp0="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 ui FlowTempDesiredB5 = ERR: invalid position in decode
-  ui FlowTempDesiredB5 ('temp0="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 ui FlowTempDesiredB6 = ERR: invalid position in decode
-  ui FlowTempDesiredB6 ('temp0="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 ui FlowTempDesiredB7 = ERR: invalid position in decode
-  ui FlowTempDesiredB7 ('temp0="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 ui FlowTempDesiredB8 = ERR: invalid position in decode
-  ui FlowTempDesiredB8 ('temp0="Error(msg=\'ERR: invalid position in decode\')°C"',)
 
 ui FrostOverRideTime = 1
   ui FrostOverRideTime ("hours='1h'",)
@@ -1632,25 +1580,18 @@ ui HcPumpB1 = off
   ui HcPumpB1 ("onoff='off'",)
 
 ui HcPumpB2 = ERR: invalid position in decode
-  ui HcPumpB2 ("onoff=Error(msg='ERR: invalid position in decode')",)
 
 ui HcPumpB3 = ERR: invalid position in decode
-  ui HcPumpB3 ("onoff=Error(msg='ERR: invalid position in decode')",)
 
 ui HcPumpB4 = ERR: invalid position in decode
-  ui HcPumpB4 ("onoff=Error(msg='ERR: invalid position in decode')",)
 
 ui HcPumpB5 = ERR: invalid position in decode
-  ui HcPumpB5 ("onoff=Error(msg='ERR: invalid position in decode')",)
 
 ui HcPumpB6 = ERR: invalid position in decode
-  ui HcPumpB6 ("onoff=Error(msg='ERR: invalid position in decode')",)
 
 ui HcPumpB7 = ERR: invalid position in decode
-  ui HcPumpB7 ("onoff=Error(msg='ERR: invalid position in decode')",)
 
 ui HcPumpB8 = ERR: invalid position in decode
-  ui HcPumpB8 ("onoff=Error(msg='ERR: invalid position in decode')",)
 
 ui HcRequestAsc = on
   ui HcRequestAsc ("onoff='on'",)
@@ -1677,25 +1618,18 @@ ui LoadingPumpB1 = 100
   ui LoadingPumpB1 ('=100',)
 
 ui LoadingPumpB2 = ERR: invalid position in decode
-  ui LoadingPumpB2 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui LoadingPumpB3 = ERR: invalid position in decode
-  ui LoadingPumpB3 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui LoadingPumpB4 = ERR: invalid position in decode
-  ui LoadingPumpB4 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui LoadingPumpB5 = ERR: invalid position in decode
-  ui LoadingPumpB5 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui LoadingPumpB6 = ERR: invalid position in decode
-  ui LoadingPumpB6 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui LoadingPumpB7 = ERR: invalid position in decode
-  ui LoadingPumpB7 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui LoadingPumpB8 = ERR: invalid position in decode
-  ui LoadingPumpB8 ("=Error(msg='ERR: invalid position in decode')",)
 
 ui MixerDetected = 1
   ui MixerDetected ('=1',)

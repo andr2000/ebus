@@ -57,19 +57,19 @@ class TypeDecoder:
 
     >>> import ebus
     >>> typedecoder = ebus.TypeDecoder()
-    >>> fielddef = ebus.FieldDef("uname", "name", ("uin",), None, None)
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("uin",), None, None)
     >>> typedecoder(fielddef, '7')
     7
 
     Unknown types are just handled as strings:
 
-    >>> fielddef = ebus.FieldDef("uname", "name", ("foo",), None, None)
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("foo",), None, None)
     >>> typedecoder(fielddef, '7')
     '7'
 
     Unknown values become `None`:
 
-    >>> fielddef = ebus.FieldDef("uname", "name", ("bi0",), None, None)
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("bi0",), None, None)
     >>> typedecoder(fielddef, '-')
     """
 

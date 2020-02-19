@@ -75,18 +75,19 @@ class MsgDef(_MsgDef, NodeMixin):
         return "".join((r, p, w, u))
 
 
-_FieldDef = collections.namedtuple("_FieldDef", "name ename types dividervalues unit comment")
+_FieldDef = collections.namedtuple("_FieldDef", "idx name ename types dividervalues unit comment")
 
 
 class FieldDef(_FieldDef, NodeMixin):
 
     __slots__ = tuple()
 
-    def __new__(cls, name, ename, types, dividervalues=None, unit=None, comment=None):
+    def __new__(cls, idx, name, ename, types, dividervalues=None, unit=None, comment=None):
         """
         Field Definition.
 
         Args:
+            idx (str): Index within Message
             name (str): Unique name (as `name` may be used multiple times by ebus)
             ename (str): Ebus Name
             types (tuple): Tuple of type idenfifier
@@ -96,10 +97,10 @@ class FieldDef(_FieldDef, NodeMixin):
             unit (str): Unit of the field value
             comment (str): Comment.
         """
-        return _FieldDef.__new__(cls, name, ename, types, dividervalues or None, unit or None, comment or None)
+        return _FieldDef.__new__(cls, idx, name, ename, types, dividervalues or None, unit or None, comment or None)
 
     def __repr__(self):
-        args = (self.name, self.ename, self.types)
+        args = (self.idx, self.name, self.ename, self.types)
         kwargs = [
             ("dividervalues", self.dividervalues, None),
             ("unit", self.unit, None),
@@ -118,7 +119,12 @@ class FieldDef(_FieldDef, NodeMixin):
 
     def __copy__(self):
         return FieldDef(
-            name=self.name, ename=self.ename, types=self.types, dividervalues=self.dividervalues, unit=self.unit,
+            idx=self.idx,
+            name=self.name,
+            ename=self.ename,
+            types=self.types,
+            dividervalues=self.dividervalues,
+            unit=self.unit,
         )
 
     @property
