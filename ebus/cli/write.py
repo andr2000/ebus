@@ -14,7 +14,6 @@ def parse_args(subparsers):
     add_msgdef_args(parser)
     parser.add_argument("field", help="Field (i.e. 'ui/OutsideTemp/temp')")
     parser.add_argument("value", help="Value (i.e. '5')")
-
     parser.set_defaults(main=main)
 
 
