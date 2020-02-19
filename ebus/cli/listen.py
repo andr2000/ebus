@@ -23,9 +23,10 @@ async def _main(args):
     await load_msgdefs(e, args)
     msgdefs = e.msgdefs.resolve(args.patterns)
     print(f"Listening to {msgdefs.get_info()}")
-    async for msg in e.listen(msgdefs=msgdefs):
-        for field in msg.fields:
-            print(f"{field.ident:<40s} {field.unitvalue}")
+    if msgdefs:
+        async for msg in e.listen(msgdefs=msgdefs):
+            for field in msg.fields:
+                print(f"{field.ident:<40s} {field.unitvalue}")
 
 
 def main(args):

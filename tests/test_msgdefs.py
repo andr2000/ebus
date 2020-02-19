@@ -24,7 +24,7 @@ def test_msgdefs():
                 pass
 
     eq_(len(msgdefs), 699)
-    eq_(msgdefs.get_info(), "699 message definitions found (688 read, 11 update, 4 write)")
+    eq_(msgdefs.get_info(), "699 messages (688 read, 12 update, 4 write)")
 
     eq_(msgdefs.get("bai", "foo"), None)
     eq_(msgdefs.get("bar", "foo"), None)

@@ -35,11 +35,11 @@ class MsgDefs:
 
     def clear(self):
         """Clear."""
-        self._msgdefs = collections.defaultdict(lambda: collections.defaultdict(lambda: None))
+        self._msgdefs = collections.defaultdict(lambda: collections.defaultdict(list))
 
     def add(self, msgdef):
         """Add Message Definition."""
-        self._msgdefs[msgdef.circuit][msgdef.name] = msgdef
+        self._msgdefs[msgdef.circuit][msgdef.name].append(msgdef)
 
     def get(self, circuit, name):
         """Retrieve circuit message."""
@@ -47,7 +47,7 @@ class MsgDefs:
         if circuit in msgdefs:
             circuitmsgdefs = msgdefs[circuit]
             if name in circuitmsgdefs:
-                return circuitmsgdefs[name]
+                return circuitmsgdefs[name][0]
 
     def find(self, circuit, name="*"):
         """Find Message Definitions."""
@@ -77,7 +77,7 @@ class MsgDefs:
             circuit, name, fieldname = parts
             for msgdef in self.find(circuit, name):
                 fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.name, fieldname))
-                if fields == msgdef.fields:
+                if fields and fields == msgdef.fields:
                     yield msgdef
                 elif fields:
                     yield MsgDef(
@@ -103,7 +103,8 @@ class MsgDefs:
 
     def __iter__(self):
         for circuitmsgdefs in self._msgdefs.values():
-            yield from circuitmsgdefs.values()
+            for msgdefs in circuitmsgdefs.values():
+                yield from msgdefs
 
     def __len__(self):
         return sum(len(defs) for defs in self._msgdefs.values())

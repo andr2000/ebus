@@ -17,7 +17,6 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class Ebus:
-
     def __init__(self, host, port, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.

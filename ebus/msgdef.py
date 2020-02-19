@@ -41,11 +41,15 @@ class MsgDef(_MsgDef, NodeMixin):
         ]
         return repr_(self, args, kwargs)
 
+    def __ident(self):
+        return (self.circuit, self.name, self.fields, self.read, self.prio, self.write, self.update)
+
+    def __hash__(self):
+        return hash(self.__ident())
+
     def __eq__(self, other):
         if isinstance(other, MsgDef):
-            s = (self.circuit, self.name, self.fields, self.read, self.prio, self.write, self.update)
-            o = (other.circuit, other.name, other.fields, other.read, other.prio, other.write, other.update)
-            return s == o
+            return self.__ident() == other.__ident()
         else:
             return False
 
