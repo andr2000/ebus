@@ -26,7 +26,7 @@ async def _main(args):
         for fielddef in msgdef.fields:
             values = fielddef.values
             if values:
-                details = ";".join(fielddef.values.values())
+                details = "/".join(fielddef.values.values())
             else:
                 details = get_pytype(fielddef.types[0]) or ""
             print(f"{fielddef.ident:<40s} {msgdef.type_} {details}")

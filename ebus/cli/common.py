@@ -63,5 +63,4 @@ async def load_msgdefs(e, args):
 
     print("Loading Message Definitions ... ", end="")
     await e.load_msgdefs()
-    info = e.msgdefs.get_info()
-    print(f"{info} DONE.")
+    print(f"{e.msgdefs.get_info()} DONE.")

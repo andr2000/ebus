@@ -17,6 +17,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class Ebus:
+
     def __init__(self, host, port, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.
@@ -107,7 +108,7 @@ class Ebus:
             if line == "listen started":
                 continue
             msg = self._decode_line(line)
-            if msg and msgdefs:
+            if msg is not None and msgdefs is not None:
                 msg = filter_msg(msg, msgdefs)
             if msg:
                 yield msg
