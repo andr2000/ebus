@@ -26,6 +26,8 @@ class MsgDef(_MsgDef, NodeMixin):
             write (bool): Message intend to be written
             updated (bool): Message intent to be seen automatically on every value change
         """
+        if not read:
+            prio = None
         msgdef = _MsgDef.__new__(cls, circuit, name, read, prio, write, update)
         if fields:
             msgdef.children = fields

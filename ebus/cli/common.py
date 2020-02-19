@@ -24,9 +24,9 @@ def add_msgdef_args(parser):
     )
 
 
-def add_read_args(parser, prio=None, ttl=None):
+def add_read_args(parser, ttl=None):
     """Read Arguments."""
-    parser.add_argument("--prio", "-p", default=prio, type=int, help="Set poll priority")
+    parser.add_argument("--prio", "-p", default=False, action="store_true", help="Set poll priority")
     parser.add_argument("--ttl", "-t", default=ttl, type=int, help="Maximum age of value in seconds")
 
 

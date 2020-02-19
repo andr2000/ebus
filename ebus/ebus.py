@@ -77,15 +77,16 @@ class Ebus:
         for msgdef in sorted(msgdefs, key=lambda msgdef: (msgdef.circuit, msgdef.name)):
             self.msgdefs.add(msgdef)
 
-    async def read(self, msgdef, prio=None, ttl=None):
+    async def read(self, msgdef, prio=False, ttl=None):
         """
         Read Message.
 
         Raises:
             ValueError: on decoder error
         """
+        p = msgdef.prio if prio else None
         try:
-            lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=prio, m=ttl)])
+            lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=p, m=ttl)])
         except CommandError as e:
             _LOGGER.warn(f"{msgdef.ident}: {e!r}")
         else:
@@ -112,7 +113,7 @@ class Ebus:
             if msg:
                 yield msg
 
-    async def observe(self, msgdefs=None, prio=None, ttl=None):
+    async def observe(self, msgdefs=None, prio=False, ttl=None):
         """
         Observe.
 

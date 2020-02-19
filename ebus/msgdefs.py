@@ -1,5 +1,6 @@
 import collections
 import copy
+import re
 from fnmatch import fnmatchcase
 
 from .msgdef import MsgDef
@@ -8,6 +9,8 @@ from .msgdef import MsgDef
 class MsgDefs:
 
     """Message Defs Container."""
+
+    _re_resolve = re.compile(r"\A([^/#]+)/([^/#]+)(#(\d))?(/([^/#]*))?\Z")
 
     def __init__(self):
         """
@@ -57,39 +60,40 @@ class MsgDefs:
                 msgdefs.add(msgdef)
         return msgdefs
 
-    def resolve(self, patterns, nomsg=False):
+    def resolve(self, patterns):
         """Resolve patterns."""
         msgdefs = MsgDefs()
         for pattern in patterns.split(";"):
-            for msgdef in self._resolve(pattern.strip(), nomsg):
+            for msgdef in self._resolve(pattern.strip()):
                 if msgdef not in msgdefs:
                     msgdefs.add(msgdef)
         return msgdefs
 
-    def _resolve(self, pattern, nomsg):
-        parts = [item.strip() for item in pattern.split("/")]
-        notempty = all(parts[:2])
-        if notempty and len(parts) == 2 and not nomsg:
-            circuit, name = parts
+    def _resolve(self, pattern):
+        m = self._re_resolve.fullmatch(pattern)
+        if m:
+            circuit, name, _, prio, _, fieldname = m.groups()
             for msgdef in self.find(circuit, name):
-                yield msgdef
-        elif notempty and len(parts) == 3:
-            circuit, name, fieldname = parts
-            for msgdef in self.find(circuit, name):
-                fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.name, fieldname))
-                if fields and fields == msgdef.fields:
+                if fieldname is None:
+                    fields = msgdef.fields
+                else:
+                    fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.name, fieldname))
+                if not fields:
+                    continue
+                if fields == msgdef.fields and (prio is None or not msgdef.read):
                     yield msgdef
-                elif fields:
+                else:
+                    if prio is None:
+                        prio = msgdef.prio
                     yield MsgDef(
                         msgdef.circuit,
                         msgdef.name,
                         tuple(copy.copy(fielddef) for fielddef in fields),
                         read=msgdef.read,
-                        prio=msgdef.prio,
+                        prio=prio,
                         write=msgdef.write,
                         update=msgdef.update,
                     )
-
         else:
             raise ValueError(f"Invalid pattern {pattern!r}")
 

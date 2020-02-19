@@ -120,7 +120,8 @@ def test_eq():
 
     m0 = ebus.MsgDef("circuit", "name", (f0,), False, None, False, True)
     m1 = ebus.MsgDef("circuit", "name", (f1,), False, None, False, True)
-    n1 = ebus.MsgDef("circuit", "name", (g1,), False, 7, False, True)
+    n1 = ebus.MsgDef("circuit", "name", (g1,), True, None, False, True)
+    eq_(m0 == m1, True)
     eq_(m0 == n1, False)
 
 
