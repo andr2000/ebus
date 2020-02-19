@@ -60,12 +60,12 @@ class MsgDefs:
                 msgdefs.add(msgdef)
         return msgdefs
 
-    def resolve(self, patterns):
+    def resolve(self, patterns, filter_=None):
         """Resolve patterns."""
         msgdefs = MsgDefs()
         for pattern in patterns.split(";"):
             for msgdef in self._resolve(pattern.strip()):
-                if msgdef not in msgdefs:
+                if (filter_ is None or filter_(msgdef)) and msgdef not in msgdefs:
                     msgdefs.add(msgdef)
         return msgdefs
 
@@ -114,4 +114,6 @@ class MsgDefs:
                 yield from msgdefs
 
     def __len__(self):
-        return sum(len(defs) for defs in self._msgdefs.values())
+        return sum(
+            sum(len(msgdefs) for msgdefs in circuitmsgdefs.values()) for circuitmsgdefs in self._msgdefs.values()
+        )
