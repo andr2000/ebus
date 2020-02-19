@@ -29,6 +29,8 @@ async def _main(args):
                 details = "/".join(fielddef.values.values())
             else:
                 details = get_pytype(fielddef.types[0]) or ""
+            if fielddef.comment:
+                details += f"[{fielddef.comment}]"
             print(f"{fielddef.ident:<40s} {msgdef.type_} {details}")
 
 

@@ -64,3 +64,10 @@ async def load_msgdefs(e, args):
     print("Loading Message Definitions ... ", end="")
     await e.load_msgdefs()
     print(f"{e.msgdefs.get_info()} DONE.")
+
+
+def format_field(field):
+    """Format Field Value."""
+    comment = field.fielddef.comment
+    details = f" [{comment}]" if comment else ""
+    return f"{field.ident:<40s} {field.unitvalue}{details}"

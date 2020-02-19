@@ -71,7 +71,7 @@ def test_fielddef0():
     eq_(f.values, None)
     eq_(f.unit, "unit")
     eq_(f.ident, "circuit/name/name")
-    eq_(sys.getsizeof(f), 96)
+    eq_(sys.getsizeof(f), 104)
     eq_(
         repr(f), "FieldDef('name', 'ename', ('uin',), dividervalues='4', unit='unit')",
     )
@@ -88,7 +88,7 @@ def test_fielddef1():
     eq_(f.values, None)
     eq_(f.unit, "unit")
     eq_(f.ident, None)
-    eq_(sys.getsizeof(f), 96)
+    eq_(sys.getsizeof(f), 104)
     eq_(
         repr(f), "FieldDef('name', 'ename', ('uin',), dividervalues='-4', unit='unit')",
     )
@@ -105,7 +105,7 @@ def test_fielddef2():
     eq_(f.values, {"0": "off", "1": "on"})
     eq_(f.unit, "unit")
     eq_(f.ident, None)
-    eq_(sys.getsizeof(f), 96)
+    eq_(sys.getsizeof(f), 104)
     eq_(
         repr(f), "FieldDef('name', 'ename', ('uin',), dividervalues='0=off;1=on', unit='unit')",
     )

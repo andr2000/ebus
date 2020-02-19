@@ -73,14 +73,14 @@ class MsgDef(_MsgDef, NodeMixin):
         return "".join((r, p, w, u))
 
 
-_FieldDef = collections.namedtuple("_FieldDef", "name ename types dividervalues unit")
+_FieldDef = collections.namedtuple("_FieldDef", "name ename types dividervalues unit comment")
 
 
 class FieldDef(_FieldDef, NodeMixin):
 
     __slots__ = tuple()
 
-    def __new__(cls, name, ename, types, dividervalues=None, unit=None):
+    def __new__(cls, name, ename, types, dividervalues=None, unit=None, comment=None):
         """
         Field Definition.
 
@@ -92,14 +92,16 @@ class FieldDef(_FieldDef, NodeMixin):
         Keywords Args:
             dividervalues (str): EBUS Divider or value specification
             unit (str): Unit of the field value
+            comment (str): Comment.
         """
-        return _FieldDef.__new__(cls, name, ename, types, dividervalues, unit)
+        return _FieldDef.__new__(cls, name, ename, types, dividervalues or None, unit or None, comment or None)
 
     def __repr__(self):
         args = (self.name, self.ename, self.types)
         kwargs = [
             ("dividervalues", self.dividervalues, None),
             ("unit", self.unit, None),
+            ("comment", self.comment, None),
         ]
         return repr_(self, args, kwargs)
 

@@ -5,6 +5,7 @@ from .common import add_msgdef_args
 from .common import add_patterns_arg
 from .common import create_ebus
 from .common import disable_stdout_buffering
+from .common import format_field
 from .common import load_msgdefs
 
 
@@ -26,7 +27,7 @@ async def _main(args):
     if msgdefs:
         async for msg in e.listen(msgdefs=msgdefs):
             for field in msg.fields:
-                print(f"{field.ident:<40s} {field.unitvalue}")
+                print(format_field(field))
 
 
 def main(args):
