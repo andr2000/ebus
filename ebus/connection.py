@@ -95,7 +95,6 @@ class Connection:
         await self._ensure_connection()
         while True:
             line = await self._readline()
-            await self._checkline(line)
             yield line
             if not line and not infinite:
                 break
