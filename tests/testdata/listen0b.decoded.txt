@@ -48,7 +48,7 @@ bai dcfState = nosignal
   bai dcfState ("dcfstate='nosignal'",)
 
 bai DCFTimeDate = 20:53:00;30.01.2020
-  bai DCFTimeDate ('.0=datetime.datetime(1900, 1, 1, 20, 53)', '.1=datetime.datetime(2020, 1, 30, 0, 0)')
+  bai DCFTimeDate ('.0=datetime.time(20, 53)', '.1=datetime.date(2020, 1, 30)')
 
 bai DCRoomthermostat = on
   bai DCRoomthermostat ("onoff='on'",)
@@ -474,7 +474,7 @@ bai WPSecondStage = on
   bai WPSecondStage ("onoff='on'",)
 
 broadcast datetime = 2.500;20:57:00;30.01.2020
-  broadcast datetime ("outsidetemp='2.5°C'", 'time=datetime.datetime(1900, 1, 1, 20, 57)', 'date=datetime.datetime(2020, 1, 30, 0, 0)')
+  broadcast datetime ("outsidetemp='2.5°C'", 'time=datetime.time(20, 57)', 'date=datetime.date(2020, 1, 30)')
 
 broadcast error = ERR: no data stored
   broadcast error ("error=Error(msg='ERR: no data stored')",)
@@ -495,13 +495,13 @@ broadcast signoflife = ERR: no data stored
   broadcast signoflife ()
 
 broadcast vdatetime = 20:56:04;30.01.2020
-  broadcast vdatetime ('time=datetime.datetime(1900, 1, 1, 20, 56, 4)', 'date=datetime.datetime(2020, 1, 30, 0, 0)')
+  broadcast vdatetime ('time=datetime.time(20, 56, 4)', 'date=datetime.date(2020, 1, 30)')
 
 cc currenterror = -;-;-;-;-
   cc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 cc DateTime = valid;20:57:48;30.01.2020;2.500
-  cc DateTime ("dcfstate='valid'", 'btime=datetime.datetime(1900, 1, 1, 20, 57, 48)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', "temp2='2.5°C'")
+  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 cc errorhistory = ERR: end of input reached
   cc errorhistory ("index=Error(msg='ERR: end of input reached')",)
@@ -546,25 +546,25 @@ cc StatYearOfInstallation = 18
   cc StatYearOfInstallation ('=18',)
 
 cc Timer.Friday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Friday ('from.0=datetime.datetime(1900, 1, 1, 4, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Friday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Monday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Monday ('from.0=datetime.datetime(1900, 1, 1, 4, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Monday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Saturday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Saturday ('from.0=datetime.datetime(1900, 1, 1, 4, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Saturday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Sunday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Sunday ('from.0=datetime.datetime(1900, 1, 1, 4, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Sunday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Thursday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Thursday ('from.0=datetime.datetime(1900, 1, 1, 4, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Thursday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Tuesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Tuesday ('from.0=datetime.datetime(1900, 1, 1, 4, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Tuesday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Wednesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Wednesday ('from.0=datetime.datetime(1900, 1, 1, 4, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Wednesday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 general valuerange = ERR: invalid address
   general valuerange ("id=Error(msg='ERR: invalid address')",)
@@ -579,7 +579,7 @@ hc currenterror = -;-;-;-;-
   hc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 hc DateTime = valid;20:56:54;30.01.2020;2.500
-  hc DateTime ("dcfstate='valid'", 'btime=datetime.datetime(1900, 1, 1, 20, 56, 54)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', "temp2='2.5°C'")
+  hc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 56, 54)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 hc errorhistory = ERR: end of input reached
   hc errorhistory ("index=Error(msg='ERR: end of input reached')",)
@@ -678,25 +678,25 @@ hc TempDesiredLow = 15.0
   hc TempDesiredLow ("temp1='15.0°C'",)
 
 hc Timer.Friday = 06:00;22:00;22:00;22:00;22:00;22:00;Mo-Fr
-  hc Timer.Friday ('from.0=datetime.datetime(1900, 1, 1, 6, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  hc Timer.Friday ('from.0=datetime.time(6, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 hc Timer.Monday = 06:00;22:00;22:00;22:00;22:00;22:00;Mo-Fr
-  hc Timer.Monday ('from.0=datetime.datetime(1900, 1, 1, 6, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  hc Timer.Monday ('from.0=datetime.time(6, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 hc Timer.Saturday = 07:30;23:30;23:30;23:30;23:30;23:30;selected
-  hc Timer.Saturday ('from.0=datetime.datetime(1900, 1, 1, 7, 30)', 'to.0=datetime.datetime(1900, 1, 1, 23, 30)', 'from.1=datetime.datetime(1900, 1, 1, 23, 30)', 'to.1=datetime.datetime(1900, 1, 1, 23, 30)', 'from.2=datetime.datetime(1900, 1, 1, 23, 30)', 'to.2=datetime.datetime(1900, 1, 1, 23, 30)', "daysel='selected'")
+  hc Timer.Saturday ('from.0=datetime.time(7, 30)', 'to.0=datetime.time(23, 30)', 'from.1=datetime.time(23, 30)', 'to.1=datetime.time(23, 30)', 'from.2=datetime.time(23, 30)', 'to.2=datetime.time(23, 30)', "daysel='selected'")
 
 hc Timer.Sunday = 07:30;22:00;22:00;22:00;22:00;22:00;selected
-  hc Timer.Sunday ('from.0=datetime.datetime(1900, 1, 1, 7, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='selected'")
+  hc Timer.Sunday ('from.0=datetime.time(7, 30)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='selected'")
 
 hc Timer.Thursday = 06:00;22:00;22:00;22:00;22:00;22:00;Mo-Fr
-  hc Timer.Thursday ('from.0=datetime.datetime(1900, 1, 1, 6, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  hc Timer.Thursday ('from.0=datetime.time(6, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 hc Timer.Tuesday = 06:00;22:00;22:00;22:00;22:00;22:00;Mo-Fr
-  hc Timer.Tuesday ('from.0=datetime.datetime(1900, 1, 1, 6, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  hc Timer.Tuesday ('from.0=datetime.time(6, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 hc Timer.Wednesday = 06:00;22:00;22:00;22:00;22:00;22:00;Mo-Fr
-  hc Timer.Wednesday ('from.0=datetime.datetime(1900, 1, 1, 6, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  hc Timer.Wednesday ('from.0=datetime.time(6, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 hwc CirPump2 = on
   hwc CirPump2 ("onoff='on'",)
@@ -705,7 +705,7 @@ hwc currenterror = -;-;-;-;-
   hwc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 hwc DateTime = valid;20:58:45;30.01.2020;2.500
-  hwc DateTime ("dcfstate='valid'", 'btime=datetime.datetime(1900, 1, 1, 20, 58, 45)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', "temp2='2.5°C'")
+  hwc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 58, 45)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 hwc errorhistory = ERR: end of input reached
   hwc errorhistory ("index=Error(msg='ERR: end of input reached')",)
@@ -795,25 +795,25 @@ hwc ThreeWayValveLoadingPump1 = off
   hwc ThreeWayValveLoadingPump1 ("onoff='off'",)
 
 hwc Timer.Friday = 04:00;-:-;-:-;-:-;-:-;-:-;Mo-So
-  hwc Timer.Friday ('from.0=datetime.datetime(1900, 1, 1, 4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  hwc Timer.Friday ('from.0=datetime.time(4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 hwc Timer.Monday = 04:00;-:-;-:-;-:-;-:-;-:-;Mo-So
-  hwc Timer.Monday ('from.0=datetime.datetime(1900, 1, 1, 4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  hwc Timer.Monday ('from.0=datetime.time(4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 hwc Timer.Saturday = 04:00;-:-;-:-;-:-;-:-;-:-;Mo-So
-  hwc Timer.Saturday ('from.0=datetime.datetime(1900, 1, 1, 4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  hwc Timer.Saturday ('from.0=datetime.time(4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 hwc Timer.Sunday = 04:00;-:-;-:-;-:-;-:-;-:-;Mo-So
-  hwc Timer.Sunday ('from.0=datetime.datetime(1900, 1, 1, 4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  hwc Timer.Sunday ('from.0=datetime.time(4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 hwc Timer.Thursday = 04:00;-:-;-:-;-:-;-:-;-:-;Mo-So
-  hwc Timer.Thursday ('from.0=datetime.datetime(1900, 1, 1, 4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  hwc Timer.Thursday ('from.0=datetime.time(4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 hwc Timer.Tuesday = 04:00;-:-;-:-;-:-;-:-;-:-;Mo-So
-  hwc Timer.Tuesday ('from.0=datetime.datetime(1900, 1, 1, 4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  hwc Timer.Tuesday ('from.0=datetime.time(4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 hwc Timer.Wednesday = 04:00;-:-;-:-;-:-;-:-;-:-;Mo-So
-  hwc Timer.Wednesday ('from.0=datetime.datetime(1900, 1, 1, 4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  hwc Timer.Wednesday ('from.0=datetime.time(4, 0)', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 mc.3 CfgHeatSinkType = mixer
   mc.3 CfgHeatSinkType ("='mixer'",)
@@ -825,7 +825,7 @@ mc.3 currenterror = -;-;-;-;-
   mc.3 currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc.3 DateTime = valid;20:59:00;30.01.2020;2.500
-  mc.3 DateTime ("dcfstate='valid'", 'btime=datetime.datetime(1900, 1, 1, 20, 59)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', "temp2='2.5°C'")
+  mc.3 DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 59)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 mc.3 errorhistory = ERR: end of input reached
   mc.3 errorhistory ("index=Error(msg='ERR: end of input reached')",)
@@ -927,25 +927,25 @@ mc.3 TempDesiredLow = 18.0
   mc.3 TempDesiredLow ("temp1='18.0°C'",)
 
 mc.3 Timer.Friday = 05:30;22:00;22:00;22:00;22:00;22:00;selected
-  mc.3 Timer.Friday ('from.0=datetime.datetime(1900, 1, 1, 5, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='selected'")
+  mc.3 Timer.Friday ('from.0=datetime.time(5, 30)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='selected'")
 
 mc.3 Timer.Monday = 05:00;22:00;22:00;22:00;22:00;22:00;selected
-  mc.3 Timer.Monday ('from.0=datetime.datetime(1900, 1, 1, 5, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='selected'")
+  mc.3 Timer.Monday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='selected'")
 
 mc.3 Timer.Saturday = 07:00;22:30;23:30;23:30;23:30;23:30;selected
-  mc.3 Timer.Saturday ('from.0=datetime.datetime(1900, 1, 1, 7, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 30)', 'from.1=datetime.datetime(1900, 1, 1, 23, 30)', 'to.1=datetime.datetime(1900, 1, 1, 23, 30)', 'from.2=datetime.datetime(1900, 1, 1, 23, 30)', 'to.2=datetime.datetime(1900, 1, 1, 23, 30)', "daysel='selected'")
+  mc.3 Timer.Saturday ('from.0=datetime.time(7, 0)', 'to.0=datetime.time(22, 30)', 'from.1=datetime.time(23, 30)', 'to.1=datetime.time(23, 30)', 'from.2=datetime.time(23, 30)', 'to.2=datetime.time(23, 30)', "daysel='selected'")
 
 mc.3 Timer.Sunday = 07:00;22:00;22:00;22:00;22:00;22:00;selected
-  mc.3 Timer.Sunday ('from.0=datetime.datetime(1900, 1, 1, 7, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='selected'")
+  mc.3 Timer.Sunday ('from.0=datetime.time(7, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='selected'")
 
 mc.3 Timer.Thursday = 05:30;22:00;22:00;22:00;22:00;22:00;selected
-  mc.3 Timer.Thursday ('from.0=datetime.datetime(1900, 1, 1, 5, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='selected'")
+  mc.3 Timer.Thursday ('from.0=datetime.time(5, 30)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='selected'")
 
 mc.3 Timer.Tuesday = 05:00;22:00;22:00;22:00;22:00;22:00;selected
-  mc.3 Timer.Tuesday ('from.0=datetime.datetime(1900, 1, 1, 5, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='selected'")
+  mc.3 Timer.Tuesday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='selected'")
 
 mc.3 Timer.Wednesday = 05:30;22:00;22:00;22:00;22:00;22:00;selected
-  mc.3 Timer.Wednesday ('from.0=datetime.datetime(1900, 1, 1, 5, 30)', 'to.0=datetime.datetime(1900, 1, 1, 22, 0)', 'from.1=datetime.datetime(1900, 1, 1, 22, 0)', 'to.1=datetime.datetime(1900, 1, 1, 22, 0)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='selected'")
+  mc.3 Timer.Wednesday ('from.0=datetime.time(5, 30)', 'to.0=datetime.time(22, 0)', 'from.1=datetime.time(22, 0)', 'to.1=datetime.time(22, 0)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='selected'")
 
 mc.4 AutocoolTestModeActive = no
   mc.4 AutocoolTestModeActive ("yesno='no'",)
@@ -1005,7 +1005,7 @@ mc.4 currenterror = -;-;-;-;-
   mc.4 currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc.4 DateTime = nosignal;20:59:30;30.01.2020;-69.000
-  mc.4 DateTime ("dcfstate='nosignal'", 'btime=datetime.datetime(1900, 1, 1, 20, 59, 30)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', "temp2='-69.0°C'")
+  mc.4 DateTime ("dcfstate='nosignal'", 'btime=datetime.time(20, 59, 30)', 'bdate=datetime.date(2020, 1, 30)', "temp2='-69.0°C'")
 
 mc.4 DWMOffToCoolingDelay = 6
   mc.4 DWMOffToCoolingDelay ('=6',)
@@ -1143,25 +1143,25 @@ mc.4 TempDiffInOutdoor = 20.0
   mc.4 TempDiffInOutdoor ('=20.0',)
 
 mc.4 Timer.Friday = 05:40;21:00;21:20;21:20;22:00;22:00;Mo-Fr
-  mc.4 Timer.Friday ('from.0=datetime.datetime(1900, 1, 1, 5, 40)', 'to.0=datetime.datetime(1900, 1, 1, 21, 0)', 'from.1=datetime.datetime(1900, 1, 1, 21, 20)', 'to.1=datetime.datetime(1900, 1, 1, 21, 20)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  mc.4 Timer.Friday ('from.0=datetime.time(5, 40)', 'to.0=datetime.time(21, 0)', 'from.1=datetime.time(21, 20)', 'to.1=datetime.time(21, 20)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 mc.4 Timer.Monday = 05:40;21:00;21:20;21:20;22:00;22:00;Mo-Fr
-  mc.4 Timer.Monday ('from.0=datetime.datetime(1900, 1, 1, 5, 40)', 'to.0=datetime.datetime(1900, 1, 1, 21, 0)', 'from.1=datetime.datetime(1900, 1, 1, 21, 20)', 'to.1=datetime.datetime(1900, 1, 1, 21, 20)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  mc.4 Timer.Monday ('from.0=datetime.time(5, 40)', 'to.0=datetime.time(21, 0)', 'from.1=datetime.time(21, 20)', 'to.1=datetime.time(21, 20)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 mc.4 Timer.Saturday = 07:30;21:30;23:30;23:30;23:30;23:30;Sa-So
-  mc.4 Timer.Saturday ('from.0=datetime.datetime(1900, 1, 1, 7, 30)', 'to.0=datetime.datetime(1900, 1, 1, 21, 30)', 'from.1=datetime.datetime(1900, 1, 1, 23, 30)', 'to.1=datetime.datetime(1900, 1, 1, 23, 30)', 'from.2=datetime.datetime(1900, 1, 1, 23, 30)', 'to.2=datetime.datetime(1900, 1, 1, 23, 30)', "daysel='Sa-So'")
+  mc.4 Timer.Saturday ('from.0=datetime.time(7, 30)', 'to.0=datetime.time(21, 30)', 'from.1=datetime.time(23, 30)', 'to.1=datetime.time(23, 30)', 'from.2=datetime.time(23, 30)', 'to.2=datetime.time(23, 30)', "daysel='Sa-So'")
 
 mc.4 Timer.Sunday = 07:30;21:30;23:30;23:30;23:30;23:30;Sa-So
-  mc.4 Timer.Sunday ('from.0=datetime.datetime(1900, 1, 1, 7, 30)', 'to.0=datetime.datetime(1900, 1, 1, 21, 30)', 'from.1=datetime.datetime(1900, 1, 1, 23, 30)', 'to.1=datetime.datetime(1900, 1, 1, 23, 30)', 'from.2=datetime.datetime(1900, 1, 1, 23, 30)', 'to.2=datetime.datetime(1900, 1, 1, 23, 30)', "daysel='Sa-So'")
+  mc.4 Timer.Sunday ('from.0=datetime.time(7, 30)', 'to.0=datetime.time(21, 30)', 'from.1=datetime.time(23, 30)', 'to.1=datetime.time(23, 30)', 'from.2=datetime.time(23, 30)', 'to.2=datetime.time(23, 30)', "daysel='Sa-So'")
 
 mc.4 Timer.Thursday = 05:40;21:00;21:20;21:20;22:00;22:00;Mo-Fr
-  mc.4 Timer.Thursday ('from.0=datetime.datetime(1900, 1, 1, 5, 40)', 'to.0=datetime.datetime(1900, 1, 1, 21, 0)', 'from.1=datetime.datetime(1900, 1, 1, 21, 20)', 'to.1=datetime.datetime(1900, 1, 1, 21, 20)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  mc.4 Timer.Thursday ('from.0=datetime.time(5, 40)', 'to.0=datetime.time(21, 0)', 'from.1=datetime.time(21, 20)', 'to.1=datetime.time(21, 20)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 mc.4 Timer.Tuesday = 05:40;21:00;21:20;21:20;22:00;22:00;Mo-Fr
-  mc.4 Timer.Tuesday ('from.0=datetime.datetime(1900, 1, 1, 5, 40)', 'to.0=datetime.datetime(1900, 1, 1, 21, 0)', 'from.1=datetime.datetime(1900, 1, 1, 21, 20)', 'to.1=datetime.datetime(1900, 1, 1, 21, 20)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  mc.4 Timer.Tuesday ('from.0=datetime.time(5, 40)', 'to.0=datetime.time(21, 0)', 'from.1=datetime.time(21, 20)', 'to.1=datetime.time(21, 20)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 mc.4 Timer.Wednesday = 05:40;21:00;21:20;21:20;22:00;22:00;Mo-Fr
-  mc.4 Timer.Wednesday ('from.0=datetime.datetime(1900, 1, 1, 5, 40)', 'to.0=datetime.datetime(1900, 1, 1, 21, 0)', 'from.1=datetime.datetime(1900, 1, 1, 21, 20)', 'to.1=datetime.datetime(1900, 1, 1, 21, 20)', 'from.2=datetime.datetime(1900, 1, 1, 22, 0)', 'to.2=datetime.datetime(1900, 1, 1, 22, 0)', "daysel='Mo-Fr'")
+  mc.4 Timer.Wednesday ('from.0=datetime.time(5, 40)', 'to.0=datetime.time(21, 0)', 'from.1=datetime.time(21, 20)', 'to.1=datetime.time(21, 20)', 'from.2=datetime.time(22, 0)', 'to.2=datetime.time(22, 0)', "daysel='Mo-Fr'")
 
 mc.4 Tot24h = 4.88
   mc.4 Tot24h ("temp='4.88°C'",)
@@ -1179,7 +1179,7 @@ mc currenterror = -;-;-;-;-
   mc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc DateTime = ok;21:00:39;30.01.2020;2.500
-  mc DateTime ("dcfstate='ok'", 'btime=datetime.datetime(1900, 1, 1, 21, 0, 39)', 'bdate=datetime.datetime(2020, 1, 30, 0, 0)', "temp2='2.5°C'")
+  mc DateTime ("dcfstate='ok'", 'btime=datetime.time(21, 0, 39)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
 
 mc errorhistory = ERR: end of input reached
   mc errorhistory ("index=Error(msg='ERR: end of input reached')",)
@@ -1281,25 +1281,25 @@ mc TempDesiredLow = 17.0
   mc TempDesiredLow ("temp1='17.0°C'",)
 
 mc Timer.Friday = 05:00;22:20;22:20;22:20;-:-;-:-;Mo-Fr
-  mc Timer.Friday ('from.0=datetime.datetime(1900, 1, 1, 5, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 20)', 'from.1=datetime.datetime(1900, 1, 1, 22, 20)', 'to.1=datetime.datetime(1900, 1, 1, 22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
+  mc Timer.Friday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 20)', 'from.1=datetime.time(22, 20)', 'to.1=datetime.time(22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
 
 mc Timer.Monday = 05:00;22:20;22:20;22:20;-:-;-:-;Mo-Fr
-  mc Timer.Monday ('from.0=datetime.datetime(1900, 1, 1, 5, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 20)', 'from.1=datetime.datetime(1900, 1, 1, 22, 20)', 'to.1=datetime.datetime(1900, 1, 1, 22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
+  mc Timer.Monday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 20)', 'from.1=datetime.time(22, 20)', 'to.1=datetime.time(22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
 
 mc Timer.Saturday = 06:00;23:00;23:50;23:50;23:50;23:50;Sa-So
-  mc Timer.Saturday ('from.0=datetime.datetime(1900, 1, 1, 6, 0)', 'to.0=datetime.datetime(1900, 1, 1, 23, 0)', 'from.1=datetime.datetime(1900, 1, 1, 23, 50)', 'to.1=datetime.datetime(1900, 1, 1, 23, 50)', 'from.2=datetime.datetime(1900, 1, 1, 23, 50)', 'to.2=datetime.datetime(1900, 1, 1, 23, 50)', "daysel='Sa-So'")
+  mc Timer.Saturday ('from.0=datetime.time(6, 0)', 'to.0=datetime.time(23, 0)', 'from.1=datetime.time(23, 50)', 'to.1=datetime.time(23, 50)', 'from.2=datetime.time(23, 50)', 'to.2=datetime.time(23, 50)', "daysel='Sa-So'")
 
 mc Timer.Sunday = 06:00;23:00;23:10;23:10;23:10;23:10;Sa-So
-  mc Timer.Sunday ('from.0=datetime.datetime(1900, 1, 1, 6, 0)', 'to.0=datetime.datetime(1900, 1, 1, 23, 0)', 'from.1=datetime.datetime(1900, 1, 1, 23, 10)', 'to.1=datetime.datetime(1900, 1, 1, 23, 10)', 'from.2=datetime.datetime(1900, 1, 1, 23, 10)', 'to.2=datetime.datetime(1900, 1, 1, 23, 10)', "daysel='Sa-So'")
+  mc Timer.Sunday ('from.0=datetime.time(6, 0)', 'to.0=datetime.time(23, 0)', 'from.1=datetime.time(23, 10)', 'to.1=datetime.time(23, 10)', 'from.2=datetime.time(23, 10)', 'to.2=datetime.time(23, 10)', "daysel='Sa-So'")
 
 mc Timer.Thursday = 05:00;22:20;22:20;22:20;-:-;-:-;Mo-Fr
-  mc Timer.Thursday ('from.0=datetime.datetime(1900, 1, 1, 5, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 20)', 'from.1=datetime.datetime(1900, 1, 1, 22, 20)', 'to.1=datetime.datetime(1900, 1, 1, 22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
+  mc Timer.Thursday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 20)', 'from.1=datetime.time(22, 20)', 'to.1=datetime.time(22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
 
 mc Timer.Tuesday = 05:00;22:20;22:20;22:20;-:-;-:-;Mo-Fr
-  mc Timer.Tuesday ('from.0=datetime.datetime(1900, 1, 1, 5, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 20)', 'from.1=datetime.datetime(1900, 1, 1, 22, 20)', 'to.1=datetime.datetime(1900, 1, 1, 22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
+  mc Timer.Tuesday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 20)', 'from.1=datetime.time(22, 20)', 'to.1=datetime.time(22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
 
 mc Timer.Wednesday = 05:00;22:20;22:20;22:20;-:-;-:-;Mo-Fr
-  mc Timer.Wednesday ('from.0=datetime.datetime(1900, 1, 1, 5, 0)', 'to.0=datetime.datetime(1900, 1, 1, 22, 20)', 'from.1=datetime.datetime(1900, 1, 1, 22, 20)', 'to.1=datetime.datetime(1900, 1, 1, 22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
+  mc Timer.Wednesday ('from.0=datetime.time(5, 0)', 'to.0=datetime.time(22, 20)', 'from.1=datetime.time(22, 20)', 'to.1=datetime.time(22, 20)', 'from.2=None', 'to.2=None', "daysel='Mo-Fr'")
 
 memory eeprom = ERR: invalid address
   memory eeprom ("address=Error(msg='ERR: invalid address')",)
@@ -1308,7 +1308,7 @@ memory ram = ERR: invalid address
   memory ram ("address=Error(msg='ERR: invalid address')",)
 
 rcc.3 HolidayPeriod = 01.01.2007;01.01.2007;01.01.2007;01.01.2007
-  rcc.3 HolidayPeriod ('hfrom.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hto.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hfrom.1=datetime.datetime(2007, 1, 1, 0, 0)', 'hto.1=datetime.datetime(2007, 1, 1, 0, 0)')
+  rcc.3 HolidayPeriod ('hfrom.0=datetime.date(2007, 1, 1)', 'hto.0=datetime.date(2007, 1, 1)', 'hfrom.1=datetime.date(2007, 1, 1)', 'hto.1=datetime.date(2007, 1, 1)')
 
 rcc.3 LcdContrastPwmValue = 11
   rcc.3 LcdContrastPwmValue ('=11',)
@@ -1326,7 +1326,7 @@ rcc.3 RoomTempOffsetSelfWarming = -2.00
   rcc.3 RoomTempOffsetSelfWarming ("temp='-2.0°C'",)
 
 rcc.4 HolidayPeriod = 01.01.2019;01.01.2007;01.01.2019;01.01.2007
-  rcc.4 HolidayPeriod ('hfrom.0=datetime.datetime(2019, 1, 1, 0, 0)', 'hto.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hfrom.1=datetime.datetime(2019, 1, 1, 0, 0)', 'hto.1=datetime.datetime(2007, 1, 1, 0, 0)')
+  rcc.4 HolidayPeriod ('hfrom.0=datetime.date(2019, 1, 1)', 'hto.0=datetime.date(2007, 1, 1)', 'hfrom.1=datetime.date(2019, 1, 1)', 'hto.1=datetime.date(2007, 1, 1)')
 
 rcc.4 LcdContrastPwmValue = 11
   rcc.4 LcdContrastPwmValue ('=11',)
@@ -1344,7 +1344,7 @@ rcc.4 RoomTempOffsetSelfWarming = -2.00
   rcc.4 RoomTempOffsetSelfWarming ("temp='-2.0°C'",)
 
 rcc.5 HolidayPeriod = 01.01.2019;01.01.2007;01.01.2020;01.01.2007
-  rcc.5 HolidayPeriod ('hfrom.0=datetime.datetime(2019, 1, 1, 0, 0)', 'hto.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hfrom.1=datetime.datetime(2020, 1, 1, 0, 0)', 'hto.1=datetime.datetime(2007, 1, 1, 0, 0)')
+  rcc.5 HolidayPeriod ('hfrom.0=datetime.date(2019, 1, 1)', 'hto.0=datetime.date(2007, 1, 1)', 'hfrom.1=datetime.date(2020, 1, 1)', 'hto.1=datetime.date(2007, 1, 1)')
 
 rcc.5 LcdContrastPwmValue = 7
   rcc.5 LcdContrastPwmValue ('=7',)
@@ -1362,7 +1362,7 @@ rcc.5 RoomTempOffsetSelfWarming = -2.00
   rcc.5 RoomTempOffsetSelfWarming ("temp='-2.0°C'",)
 
 rcc HolidayPeriod = 01.01.2007;01.01.2007;01.01.2007;01.01.2007
-  rcc HolidayPeriod ('hfrom.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hto.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hfrom.1=datetime.datetime(2007, 1, 1, 0, 0)', 'hto.1=datetime.datetime(2007, 1, 1, 0, 0)')
+  rcc HolidayPeriod ('hfrom.0=datetime.date(2007, 1, 1)', 'hto.0=datetime.date(2007, 1, 1)', 'hfrom.1=datetime.date(2007, 1, 1)', 'hto.1=datetime.date(2007, 1, 1)')
 
 rcc LcdContrastPwmValue = 11
   rcc LcdContrastPwmValue ('=11',)
@@ -1458,7 +1458,7 @@ ui currenterror = -;-;-;-;-
   ui currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 ui Date = 30.01.2020
-  ui Date ('date=datetime.datetime(2020, 1, 30, 0, 0)',)
+  ui Date ('date=datetime.date(2020, 1, 30)',)
 
 ui Day = Thu
   ui Day ("bday='Thu'",)
@@ -1656,7 +1656,7 @@ ui HcRequestAsc = on
   ui HcRequestAsc ("onoff='on'",)
 
 ui HolidayPeriod = 01.01.2007;01.01.2007;01.01.2007;01.01.2007
-  ui HolidayPeriod ('hfrom.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hto.0=datetime.datetime(2007, 1, 1, 0, 0)', 'hfrom.1=datetime.datetime(2007, 1, 1, 0, 0)', 'hto.1=datetime.datetime(2007, 1, 1, 0, 0)')
+  ui HolidayPeriod ('hfrom.0=datetime.date(2007, 1, 1)', 'hto.0=datetime.date(2007, 1, 1)', 'hfrom.1=datetime.date(2007, 1, 1)', 'hto.1=datetime.date(2007, 1, 1)')
 
 ui HwcRequestAsc = off
   ui HwcRequestAsc ("onoff='off'",)
@@ -1743,7 +1743,7 @@ ui SequenceOfBoiler = 01 00 00 00 00 00 00 00
   ui SequenceOfBoiler ("='01 00 00 00 00 00 00 00'",)
 
 ui ServicePeriod = 01.01.2001
-  ui ServicePeriod ('date=datetime.datetime(2001, 1, 1, 0, 0)',)
+  ui ServicePeriod ('date=datetime.date(2001, 1, 1)',)
 
 ui SolLoadingDelayHc = 0
   ui SolLoadingDelayHc ("minutes0='0min'",)
@@ -1794,7 +1794,7 @@ ui TempIncrease = 0.00
   ui TempIncrease ("temp='0.0°C'",)
 
 ui Time = 21:04:10
-  ui Time ('time=datetime.datetime(1900, 1, 1, 21, 4, 10)',)
+  ui Time ('time=datetime.time(21, 4, 10)',)
 
 ui TurnOffDelay = 5
   ui TurnOffDelay ('=5',)

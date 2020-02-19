@@ -85,17 +85,17 @@ class TypeDecoder:
     @staticmethod
     def _date(fielddef, value):
         if value != "-.-.-":
-            return datetime.datetime.strptime(value, "%d.%m.%Y")
+            return datetime.datetime.strptime(value, "%d.%m.%Y").date()
 
     @staticmethod
     def _hhmm(fielddef, value):
         if value != "-:-":
-            return datetime.datetime.strptime(value, "%H:%M")
+            return datetime.datetime.strptime(value, "%H:%M").time()
 
     @staticmethod
     def _hhmmss(fielddef, value):
         if value != "-:-:-":
-            return datetime.datetime.strptime(value, "%H:%M:%S")
+            return datetime.datetime.strptime(value, "%H:%M:%S").time()
 
     @staticmethod
     def _int(fielddef, value):
