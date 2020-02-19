@@ -31,6 +31,7 @@ async def _main(args):
     e = create_ebus(args)
     await load_msgdefs(e, args)
     msgdefs = e.msgdefs.resolve(args.patterns)
+    print(f"Observing {msgdefs.get_info()}")
     async for msg in e.observe(msgdefs=msgdefs, prio=args.prio, ttl=args.ttl):
         for field in msg.fields:
             print(format_field(field))

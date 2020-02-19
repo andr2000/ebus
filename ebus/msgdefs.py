@@ -100,10 +100,11 @@ class MsgDefs:
     def get_info(self):
         """Human Information."""
         total = len(self)
+        fields = sum(len(msgdef.fields) for msgdef in self)
         read = sum([1 for msgdef in self if msgdef.read])
         update = sum([1 for msgdef in self if msgdef.update])
         write = sum([1 for msgdef in self if msgdef.write])
-        return f"{total} messages ({read} read, {update} update, {write} write)"
+        return f"{total} messages ({read} read, {update} update, {write} write) with {fields} fields"
 
     def __iter__(self):
         for circuitmsgdefs in self._msgdefs.values():

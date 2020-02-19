@@ -24,7 +24,9 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    for msgdef in e.msgdefs.resolve(args.patterns):
+    msgdefs = e.msgdefs.resolve(args.patterns)
+    print(f"Reading to {msgdefs.get_info()}")
+    for msgdef in msgdefs:
         if msgdef.read:
             msg = await e.read(msgdef, prio=args.prio, ttl=args.ttl)
             if msg:
