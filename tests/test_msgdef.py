@@ -123,6 +123,9 @@ def test_eq():
     n1 = ebus.MsgDef("circuit", "name", (g1,), True, None, False, True)
     eq_(m0 == m1, True)
     eq_(m0 == n1, False)
+    eq_(m0 == None, False)
+    eq_(hash(m0) == hash(m1), True)
+    eq_(hash(m0) == hash(n1), False)
 
 
 def test_hash():

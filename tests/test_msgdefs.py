@@ -131,3 +131,19 @@ def test_msgdefs():
             ),
         ],
     )
+    eq_(
+        list(msgdefs.resolve("mc.5/Timer.Friday#3/to*")),
+        [
+            ebus.MsgDef(
+                "mc.5",
+                "Timer.Friday",
+                (
+                    ebus.FieldDef("to.0", "to", ("TTM",)),
+                    ebus.FieldDef("to.1", "to", ("TTM",)),
+                    ebus.FieldDef("to.2", "to", ("TTM",)),
+                ),
+                read=True,
+                prio=3,
+            )
+        ],
+    )

@@ -85,6 +85,8 @@ class MsgDefs:
                 else:
                     if prio is None:
                         prio = msgdef.prio
+                    else:
+                        prio = int(prio)
                     yield MsgDef(
                         msgdef.circuit,
                         msgdef.name,
