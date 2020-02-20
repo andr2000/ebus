@@ -1,6 +1,7 @@
 r,bai,AccessoriesOne,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 1
 r,bai,AccessoriesTwo,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 2
 r,bai,AntiCondensValue,power,s,UCH,,kW,Anhebung der minimalen Leistung
+[SW>=413]r,bai,APCLegioProtection,,s,UCH,,,Legionellenschutz für internen Speicher
 r,bai,averageIgnitiontime,,s,UCH,10,s,Mittlere Zündzeit
 r,bai,BlockTimeHcMax,minutes0,s,UCH,,min,Max. Brennersperrzeit bei einem Vorlaufsollwert von 20°C
 r,bai,BoilerType,,s,UCH,,,Boiler typ of the bmu
@@ -161,8 +162,10 @@ u,broadcast,error,error,m,STR:10,,,
 u,broadcast,hwcStatus,onoff,m,UCH,0=off;1=on,,,VF1,m,UCH,,°C,Temperatur,onoff,m,UCH,0=off;1=on,,
 u,broadcast,id,manufacturer,m,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,Geräte-Hersteller,id,m,STR:5,,,Geräte-ID,software,m,PIN,,,Software-Version,hardware,m,PIN,,,Hardware-Version
 r,broadcast,id,manufacturer,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,Geräte-Hersteller,id,s,STR:5,,,Geräte-ID,software,s,PIN,,,Software-Version,hardware,s,PIN,,,Hardware-Version
+w,broadcast,id,
 u,broadcast,load,onoff,m,UCH,0=off;1=on,,
 u,broadcast,outsidetemp,temp2,m,D2B,,°C,Temperatur
+w,broadcast,queryexistence,
 u,broadcast,signoflife,
 u,broadcast,vdatetime,time,m,BTI,,,,date,m,BDA,,,
 r,cc,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
@@ -170,6 +173,10 @@ r,cc,DateTime,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatu
 r,cc,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 r,cc,Mode,temp0,s,UCH,,°C,Temperatur,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,,s,IGN:2,,,,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,HEX:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
 r,cc,Params,temp0,s,UCH,,°C,Temperatur,,s,IGN:3,,,,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,
+w,cc,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+w,cc,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+w,cc,SetMode,hwcmode,m,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus
+w,cc,SetTempDesired,temp0,m,UCH,,°C,Temperatur
 r,cc,Stat15MinBusTimeout,,s,UCH,,,
 r,cc,StatMonthOfInstallation,,s,UCH,,,
 r,cc,StatOperatingHours,,s,UIN,,,
@@ -182,12 +189,19 @@ r,cc,Status16,temp,s,D2C,,°C,Temperatur
 r,cc,Status,temp0,s,UCH,,°C,Temperatur,onoff,s,UCH,0=off;1=on,,,temp,s,D2C,,°C,Temperatur,temp0,s,UCH,,°C,Temperatur
 r,cc,StatYearOfInstallation,,s,UCH,,,
 r,cc,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,cc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,cc,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,cc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,cc,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,cc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,cc,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,cc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,cc,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,cc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,cc,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,cc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,cc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,cc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,general,valuerange,id,m,UIN,,,Registernummer,,s,IGN:2,,,,cur,s,UIN,,,aktueller Wert,min,s,UIN,,,minimaler Wert,max,s,UIN,,,maximaler Wert,def,s,UIN,,,default Wert
 r,hc,BoilerCircuitDisabled,yesno,s,UCH,0=no;1=yes,,
 r,hc,CleaningLady,,s,UCH,,,
@@ -196,15 +210,22 @@ r,hc,DateTime,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatu
 r,hc,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 r,hc,FlowTempDesired,temp1,s,D1C,,°C,Temperatur
 r,hc,FlowTempMax,temp0,s,UCH,,°C,Temperatur
+w,hc,FlowTempMax,temp0,m,UCH,,°C,Temperatur
 r,hc,FlowTempMin,temp0,s,UCH,,°C,Temperatur
+w,hc,FlowTempMin,temp0,m,UCH,,°C,Temperatur
 r,hc,Hc1PumpPort,onoff,s,UCH,0=off;1=on,,
-r,hc,HcMaxPreHeating,,s,UCH,,min / 5,
+[SW<=400]r,hc,HcMaxPreHeating,hours,s,UCH,,h,Stunden
+[SW>=401]r,hc,HcMaxPreHeating,,s,UCH,,min / 5,
+[SW<=400]w,hc,HcMaxPreHeating,hours,m,UCH,,h,Stunden
 r,hc,HeatingCurve,curve,s,UIN,100,,Heizkurve
+w,hc,HeatingCurve,curve,m,UIN,100,,Heizkurve
 r,hc,IsInHoliday,,s,UCH,,,
 r,hc,IsInParty,,s,UCH,,,
 r,hc,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,
 r,hc,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,hc,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,hc,OtShutdownLimit,desiredtemp,s,UCH,,°C,Solltemperatur
+w,hc,OtShutdownLimit,desiredtemp,m,UCH,,°C,Solltemperatur
 r,hc,OutsideTemp,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 uw,hc,SetMode,hcmode,m,UCH,0=auto;1=off;2=water,,Boiler Modus,flowtempdesired,m,D1C,,°C,Temperatur,hwctempdesired,m,D1C,,°C,Temperatur,hwcflowtempdesired,m,UCH,,°C,Temperatur,,m,IGN:1,,,,disablehc,m,BI0:1,,,,disablehwctapping,m,BI1:1,,,,disablehwcload,m,BI2:1,,,,,m,IGN:1,,,,remoteControlHcPump,m,BI0:1,,,,releaseBackup,m,BI1:1,,,,releaseCooling,m,BI2:1,,,
 r,hc,Stat15MinBusTimeout,,s,UCH,,,
@@ -223,31 +244,50 @@ r,hc,StatYearOfInstallation,,s,UCH,,,
 r,hc,SumFlowSensor,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,hc,TeleSwitch,onoff,s,UCH,0=off;1=on,,
 r,hc,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,hc,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,hc,TempDesired,temp1,s,D1C,,°C,Temperatur
+w,hc,TempDesired,temp1,m,D1C,,°C,Temperatur
 r,hc,TempDesiredLow,temp1,s,D1C,,°C,Temperatur
+w,hc,TempDesiredLow,temp1,m,D1C,,°C,Temperatur
 r,hc,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hc,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hc,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hc,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hc,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hc,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hwc,CirPump2,onoff,s,UCH,0=off;1=on,,
 r,hwc,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
 r,hwc,DateTime,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatus,btime,s,BTI,,,Uhrzeit,bdate,s,BDA,,,Datum,temp2,s,D2B,,°C,Temperatur
 r,hwc,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 r,hwc,FlowTempDesired2,temp1,s,D1C,,°C,Temperatur
 r,hwc,HcParallelStorageFillingEnabled2,yesno,s,UCH,0=no;1=yes,,
+w,hwc,HcParallelStorageFillingEnabled2,yesno,m,UCH,0=no;1=yes,,
 r,hwc,HwcLaggingTime2,minutes0,s,UCH,,min,Minuten
+w,hwc,HwcLaggingTime2,minutes0,m,UCH,,min,Minuten
 r,hwc,HwcLoadingDelay2,minutes0,s,UCH,,min,Minuten
+w,hwc,HwcLoadingDelay2,minutes0,m,UCH,,min,Minuten
 r,hwc,IsInHoliday,,s,UCH,,,
 r,hwc,IsInParty,,s,UCH,,,
 r,hwc,LegioPump2,onoff,s,UCH,0=off;1=on,,
 r,hwc,LegioStartDay2,,s,UCH,,,
+w,hwc,LegioStartDay2,,m,UCH,,,
 r,hwc,Mode,temp0,s,UCH,,°C,Temperatur,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,,s,IGN:2,,,,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,HEX:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
 r,hwc,OneTimeCirSwitch,onoff,s,UCH,0=off;1=on,,non-recurring circulation pump running period
 r,hwc,OperatingMode2,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,hwc,OperatingMode2,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,hwc,Params,temp0,s,UCH,,°C,Temperatur,,s,IGN:3,,,,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,
+w,hwc,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+w,hwc,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+w,hwc,SetMode,hwcmode,m,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus
+w,hwc,SetTempDesired,temp0,m,UCH,,°C,Temperatur
 r,hwc,Stat15MinBusTimeout,,s,UCH,,,
 r,hwc,StatMonthOfInstallation,,s,UCH,,,
 r,hwc,StatOperatingHours,,s,UIN,,,
@@ -262,15 +302,24 @@ r,hwc,StatYearOfInstallation,,s,UCH,,,
 r,hwc,Storage1Sensor2,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,hwc,TeleSwitch,onoff,s,UCH,0=off;1=on,,
 r,hwc,TeleswitchOperatingMode2,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,hwc,TeleswitchOperatingMode2,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,hwc,TempDesired2,temp1,s,D1C,,°C,Temperatur
+w,hwc,TempDesired2,temp1,m,D1C,,°C,Temperatur
 r,hwc,ThreeWayValveLoadingPump1,onoff,s,UCH,0=off;1=on,,
 r,hwc,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hwc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hwc,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hwc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hwc,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hwc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hwc,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hwc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hwc,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hwc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hwc,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hwc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,hwc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,hwc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc,CfgHeatSinkType,,s,UCH,0=disabled;1=mixer;2=water;3=fixvalue;4=backflow,,
 r,mc,CleaningLady,,s,UCH,,,
 r,mc,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
@@ -280,19 +329,43 @@ r,mc,FloorPavingDryingDay,,s,UCH,,,
 r,mc,FlowTemp,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,mc,FlowTempDesired,temp1,s,D1C,,°C,Temperatur
 r,mc,FlowTempMax,temp0,s,UCH,,°C,Temperatur
+w,mc,FlowTempMax,temp0,m,UCH,,°C,Temperatur
 r,mc,FlowTempMin,temp0,s,UCH,,°C,Temperatur
-r,mc,HcMaxPreHeating,,s,UCH,,min / 5,
+w,mc,FlowTempMin,temp0,m,UCH,,°C,Temperatur
+[SW<=400]r,mc,HcMaxPreHeating,hours,s,UCH,,h,Stunden
+[SW>=401]r,mc,HcMaxPreHeating,,s,UCH,,min / 5,
+[SW<=400]w,mc,HcMaxPreHeating,hours,m,UCH,,h,Stunden
 r,mc,HcPumpIdlePeriod,minutes0,s,UCH,,min,Minuten
+w,mc,HcPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
 r,mc,HcPumpPort,onoff,s,UCH,0=off;1=on,,
 r,mc,HeatingCurve,curve,s,UIN,100,,Heizkurve
+w,mc,HeatingCurve,curve,m,UIN,100,,Heizkurve
 r,mc,IsInHoliday,,s,UCH,,,
 r,mc,IsInParty,,s,UCH,,,
 r,mc,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,
+w,mc,load,onoff,m,UCH,0=off;1=on,,
 r,mc,MixerDutyCycle,,s,SCH,,,
 r,mc,Mode,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,days,s,UCH,,,Tage,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,IGN:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
 r,mc,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,mc,OtShutdownLimit,desiredtemp,s,UCH,,°C,Solltemperatur
+w,mc,OtShutdownLimit,desiredtemp,m,UCH,,°C,Solltemperatur
 r,mc,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
+w,mc,party,onoff,m,UCH,0=off;1=on,,
+w,mc,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+w,mc,save,,m,TTH,,,
+w,mc,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+w,mc,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+w,mc,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+w,mc,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+w,mc,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+w,mc,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+w,mc,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+w,mc,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+w,mc,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+w,mc,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+w,mc,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
 r,mc,Stat15MinBusTimeout,,s,UCH,,,
 r,mc,StatMonthOfInstallation,,s,UCH,,,
 r,mc,StatOperatingHours,,s,UIN,,,
@@ -306,15 +379,25 @@ r,mc,Status,temp0,s,UCH,,°C,Temperatur,onoff,s,UCH,0=off;1=on,,,temp,s,D2C,,°C
 r,mc,StatYearOfInstallation,,s,UCH,,,
 r,mc,TeleSwitch,onoff,s,UCH,0=off;1=on,,
 r,mc,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,mc,TempDesired,temp1,s,D1C,,°C,Temperatur
+w,mc,TempDesired,temp1,m,D1C,,°C,Temperatur
 r,mc,TempDesiredLow,temp1,s,D1C,,°C,Temperatur
+w,mc,TempDesiredLow,temp1,m,D1C,,°C,Temperatur
 r,mc,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.3,CfgHeatSinkType,,s,UCH,0=disabled;1=mixer;2=water;3=fixvalue;4=backflow,,
 r,mc.3,CleaningLady,,s,UCH,,,
 r,mc.3,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
@@ -324,19 +407,43 @@ r,mc.3,FloorPavingDryingDay,,s,UCH,,,Current day of floor paving drying routine
 r,mc.3,FlowTemp,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,mc.3,FlowTempDesired,temp1,s,D1C,,°C,Temperatur
 r,mc.3,FlowTempMax,temp0,s,UCH,,°C,Temperatur
+w,mc.3,FlowTempMax,temp0,m,UCH,,°C,Temperatur
 r,mc.3,FlowTempMin,temp0,s,UCH,,°C,Temperatur
-r,mc.3,HcMaxPreHeating,,s,UCH,,min / 5,
+w,mc.3,FlowTempMin,temp0,m,UCH,,°C,Temperatur
+[SW<=400]r,mc.3,HcMaxPreHeating,hours,s,UCH,,h,Stunden
+[SW>=401]r,mc.3,HcMaxPreHeating,,s,UCH,,min / 5,
+[SW<=400]w,mc.3,HcMaxPreHeating,hours,m,UCH,,h,Stunden
 r,mc.3,HcPumpIdlePeriod,minutes0,s,UCH,,min,Minuten
+w,mc.3,HcPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
 r,mc.3,HcPumpPort,onoff,s,UCH,0=off;1=on,,
 r,mc.3,HeatingCurve,curve,s,UIN,100,,Heizkurve
+w,mc.3,HeatingCurve,curve,m,UIN,100,,Heizkurve
 r,mc.3,IsInHoliday,,s,UCH,,,
 r,mc.3,IsInParty,,s,UCH,,,
 r,mc.3,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,
+w,mc.3,load,onoff,m,UCH,0=off;1=on,,
 r,mc.3,MixerDutyCycle,,s,SCH,,,
 r,mc.3,Mode,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,days,s,UCH,,,Tage,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,IGN:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
 r,mc.3,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc.3,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,mc.3,OtShutdownLimit,desiredtemp,s,UCH,,°C,Solltemperatur
+w,mc.3,OtShutdownLimit,desiredtemp,m,UCH,,°C,Solltemperatur
 r,mc.3,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
+w,mc.3,party,onoff,m,UCH,0=off;1=on,,
+w,mc.3,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+w,mc.3,save,,m,TTH,,,
+w,mc.3,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+w,mc.3,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+w,mc.3,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+w,mc.3,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+w,mc.3,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+w,mc.3,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+w,mc.3,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc.3,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+w,mc.3,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+w,mc.3,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+w,mc.3,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+w,mc.3,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
 r,mc.3,Stat15MinBusTimeout,,s,UCH,,,
 r,mc.3,StatMonthOfInstallation,,s,UCH,,,
 r,mc.3,StatOperatingHours,,s,UIN,,,
@@ -350,62 +457,105 @@ r,mc.3,Status,temp0,s,UCH,,°C,Temperatur,onoff,s,UCH,0=off;1=on,,,temp,s,D2C,,�
 r,mc.3,StatYearOfInstallation,,s,UCH,,,
 r,mc.3,TeleSwitch,onoff,s,UCH,0=off;1=on,,
 r,mc.3,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc.3,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 r,mc.3,TempDesired,temp1,s,D1C,,°C,Temperatur
+w,mc.3,TempDesired,temp1,m,D1C,,°C,Temperatur
 r,mc.3,TempDesiredLow,temp1,s,D1C,,°C,Temperatur
+w,mc.3,TempDesiredLow,temp1,m,D1C,,°C,Temperatur
 r,mc.3,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.3,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.3,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.3,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.3,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.3,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.3,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.3,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.3,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.3,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.3,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.3,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.3,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.3,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,AutocoolTestModeActive,yesno,s,UCH,0=no;1=yes,,
 r,mc.4,CfgHeatSinkType,,s,UCH,0=disabled;1=mixer;2=water;3=fixvalue;4=backflow,,Type of the configurable mixer circuit
 r,mc.4,CleaningLady,,s,UCH,,,saving function is activated until read value * 1/2 h
 r,mc.4,CoolingEfficiencyState,,s,UCH,,,
 r,mc.4,CoolingModeAutomaticState,,s,UCH,,,
 r,mc.4,CoolingOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of cooling circuit
+w,mc.4,CoolingOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of cooling circuit
 r,mc.4,CoolingOpmodeAutoState,,s,UCH,,,
 r,mc.4,CoolingRequest,yesno,s,UCH,0=no;1=yes,,
 r,mc.4,CoolingStartOffset,,s,D1C,2,,
+w,mc.4,CoolingStartOffset,,m,D1C,2,,
 r,mc.4,CoolingSupported,yesno,s,UCH,0=no;1=yes,,
 r,mc.4,coolingTimer.Friday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,coolingTimer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,coolingTimer.Monday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,coolingTimer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,coolingTimer.Saturday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,coolingTimer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,coolingTimer.Sunday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,coolingTimer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,coolingTimer.Thursday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,coolingTimer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,coolingTimer.Tuesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,coolingTimer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,coolingTimer.Wednesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,coolingTimer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,CoolingWhileHolidaySupported,,s,UCH,,,
 r,mc.4,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
 r,mc.4,DateTime,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatus,btime,s,BTI,,,Uhrzeit,bdate,s,BDA,,,Datum,temp2,s,D2B,,°C,Temperatur
 r,mc.4,DWMOffToCoolingDelay,,s,UCH,,,
 r,mc.4,DWMOffToHeatingDelay,,s,UCH,,,
 r,mc.4,EfficiencyHysteresisMin,,s,D1C,2,,
+w,mc.4,EfficiencyHysteresisMin,,m,D1C,2,,
 r,mc.4,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 r,mc.4,FloorPavingDryingDay,,s,UCH,,,Current day of floor paving drying routine
 r,mc.4,FlowTemp,temp,s,D2C,,°C,Vorlauftemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,mc.4,FlowTempDesired,temp1,s,D1C,,°C,Desired flow temperature of MK1
 r,mc.4,FlowTempMax,temp0,s,UCH,,°C,For a heat demand the desired flow temperature will maximal be this value
+w,mc.4,FlowTempMax,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will maximal be this value
 r,mc.4,FlowTempMin,temp0,s,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
+w,mc.4,FlowTempMin,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
 r,mc.4,HcManualWorkingModeTriggeringActive,,s,UCH,,,
 r,mc.4,HcMaxPreHeating,hours,s,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
+w,mc.4,HcMaxPreHeating,hours,m,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
 r,mc.4,HcMode,,s,UCH,,,
 r,mc.4,HcModeAutomaticState,,s,UCH,,,
 r,mc.4,HcModeManualState,,s,UCH,,,
 r,mc.4,HcPumpIdlePeriod,minutes0,s,UCH,,min,Time pump is not running in a pause at least
+w,mc.4,HcPumpIdlePeriod,minutes0,m,UCH,,min,Time pump is not running in a pause at least
 r,mc.4,HcPumpPort,onoff,s,UCH,0=off;1=on,,Status of mixer cicuit pump on MK1P
 r,mc.4,HeatingCurve,curve,s,UIN,100,,Heating curve
+w,mc.4,HeatingCurve,curve,m,UIN,100,,Heating curve
 r,mc.4,IsInHoliday,,s,UCH,,,Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit
 r,mc.4,IsInParty,,s,UCH,,,Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC
 r,mc.4,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,heating circuit is locked because of ongoing tank loading unless parallel loading has been activated
+w,mc.4,load,onoff,m,UCH,0=off;1=on,,
 r,mc.4,MixerDutyCycle,percents,s,SCH,,%,"Teleswitch,Pumpe,Zirkulationspumpe,WW Anforderung,WW Freigabe"
 r,mc.4,Mode,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,days,s,UCH,,,Tage,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,IGN:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
 r,mc.4,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of mixer circuit
+w,mc.4,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of mixer circuit
 r,mc.4,OtShutdownLimit,desiredtemp,s,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
+w,mc.4,OtShutdownLimit,desiredtemp,m,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
 r,mc.4,OutsideTemp,temp,s,D2C,,°C,current outside temperature (valid only if a sensor is connected to the VR60),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,mc.4,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
+w,mc.4,party,onoff,m,UCH,0=off;1=on,,
 r,mc.4,RcRoomTemp,temp,s,D2C,,°C,Temperatur
+w,mc.4,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+w,mc.4,save,,m,TTH,,,
+w,mc.4,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+w,mc.4,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+w,mc.4,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+w,mc.4,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+w,mc.4,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+w,mc.4,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+w,mc.4,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc.4,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+w,mc.4,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+w,mc.4,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+w,mc.4,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+w,mc.4,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
 r,mc.4,Stat15MinBusTimeout,,s,UCH,,,
 r,mc.4,StatMonthOfInstallation,,s,UCH,,,
 r,mc.4,StatOperatingHours,,s,UIN,,,
@@ -421,16 +571,26 @@ r,mc.4,SystemMode,,s,UCH,,,
 r,mc.4,SystemWithCooling,yesno,s,UCH,0=no;1=yes,,
 r,mc.4,TeleSwitch,onoff,s,UCH,0=off;1=on,,State of the Teleswitch
 r,mc.4,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,If the tele switch port is activated the mixer circuit operates in this mode
+w,mc.4,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,If the tele switch port is activated the mixer circuit operates in this mode
 r,mc.4,TempDesired,temp1,s,D1C,,°C,Day temperature setpoint of the circuit
+w,mc.4,TempDesired,temp1,m,D1C,,°C,Day temperature setpoint of the circuit
 r,mc.4,TempDesiredLow,temp1,s,D1C,,°C,Night temperature setpoint of the circuit
+w,mc.4,TempDesiredLow,temp1,m,D1C,,°C,Night temperature setpoint of the circuit
 r,mc.4,TempDiffInOutdoor,,s,D1C,2,,
 r,mc.4,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.4,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.4,Tot24h,temp,s,D2C,,°C,Outside temperature mean value over 24 hours
 r,mc.4,TotAverageTime,,s,UCH,,,
 r,mc.5,CfgHeatSinkType,,s,UCH,0=disabled;1=mixer;2=water;3=fixvalue;4=backflow,,Type of the configurable mixer circuit
@@ -441,14 +601,22 @@ r,mc.5,CoolingModeStateCounter,,s,UCH,,,
 r,mc.5,CoolingOpmodeAutoState,,s,UCH,,,
 r,mc.5,CoolingRequest,yesno,s,UCH,0=no;1=yes,,
 r,mc.5,CoolingStartOffset,,s,D1C,2,,
+w,mc.5,CoolingStartOffset,,m,D1C,2,,
 r,mc.5,CoolingSupported,yesno,s,UCH,0=no;1=yes,,
 r,mc.5,coolingTimer.Friday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,coolingTimer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,coolingTimer.Monday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,coolingTimer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,coolingTimer.Saturday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,coolingTimer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,coolingTimer.Sunday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,coolingTimer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,coolingTimer.Thursday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,coolingTimer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,coolingTimer.Tuesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,coolingTimer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,coolingTimer.Wednesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,coolingTimer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,CoolingWhileHolidaySupported,,s,UCH,,,
 r,mc.5,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
 r,mc.5,DateTime,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatus,btime,s,BTI,,,Uhrzeit,bdate,s,BDA,,,Datum,temp2,s,D2B,,°C,Temperatur
@@ -460,25 +628,48 @@ r,mc.5,FloorPavingDryingDay,,s,UCH,,,Current day of floor paving drying routine
 r,mc.5,FlowTemp,temp,s,D2C,,°C,Vorlauftemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,mc.5,FlowTempDesired,temp1,s,D1C,,°C,Desired flow temperature of MK2
 r,mc.5,FlowTempMax,temp0,s,UCH,,°C,For a heat demand the desired flow temperature will maximal be this value
+w,mc.5,FlowTempMax,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will maximal be this value
 r,mc.5,FlowTempMin,temp0,s,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
+w,mc.5,FlowTempMin,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
 r,mc.5,HcManualWorkingModeTriggeringActive,,s,UCH,,,
 r,mc.5,HcMaxPreHeating,hours,s,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
+w,mc.5,HcMaxPreHeating,hours,m,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
 r,mc.5,HcMode,,s,UCH,,,
 r,mc.5,HcModeAutomaticState,,s,UCH,,,
 r,mc.5,HcModeManualState,,s,UCH,,,
 r,mc.5,HcPumpIdlePeriod,minutes0,s,UCH,,min,Time pump is not running in a pause at least
+w,mc.5,HcPumpIdlePeriod,minutes0,m,UCH,,min,Time pump is not running in a pause at least
 r,mc.5,HcPumpPort,onoff,s,UCH,0=off;1=on,,Status of mixer cicuit pump on MK1P
 r,mc.5,HeatingCurve,curve,s,UIN,100,,Heating curve
+w,mc.5,HeatingCurve,curve,m,UIN,100,,Heating curve
 r,mc.5,IsInHoliday,,s,UCH,,,Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit
 r,mc.5,IsInParty,,s,UCH,,,Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC
 r,mc.5,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,heating circuit is locked because of ongoing tank loading unless parallel loading has been activated
+w,mc.5,load,onoff,m,UCH,0=off;1=on,,
 r,mc.5,MixerDutyCycle,percents,s,SCH,,%,"Teleswitch,Pumpe,Zirkulationspumpe,WW Anforderung,WW Freigabe"
 r,mc.5,Mode,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,days,s,UCH,,,Tage,temp0,s,UCH,,°C,Temperatur,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,IGN:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
 r,mc.5,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of mixer circuit
+w,mc.5,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of mixer circuit
 r,mc.5,OtShutdownLimit,desiredtemp,s,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
+w,mc.5,OtShutdownLimit,desiredtemp,m,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
 r,mc.5,OutsideTemp,temp,s,D2C,,°C,current outside temperature (valid only if a sensor is connected to the VR60),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,mc.5,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
+w,mc.5,party,onoff,m,UCH,0=off;1=on,,
 r,mc.5,RcRoomTemp,temp,s,D2C,,°C,Temperatur
+w,mc.5,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+w,mc.5,save,,m,TTH,,,
+w,mc.5,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+w,mc.5,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+w,mc.5,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+w,mc.5,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+w,mc.5,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+w,mc.5,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+w,mc.5,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+w,mc.5,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+w,mc.5,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+w,mc.5,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+w,mc.5,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+w,mc.5,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
 r,mc.5,Stat15MinBusTimeout,,s,UCH,,,
 r,mc.5,StatMonthOfInstallation,,s,UCH,,,
 r,mc.5,StatOperatingHours,,s,UIN,,,
@@ -492,40 +683,58 @@ r,mc.5,Status,temp0,s,UCH,,°C,Temperatur,onoff,s,UCH,0=off;1=on,,,temp,s,D2C,,�
 r,mc.5,StatYearOfInstallation,,s,UCH,,,
 r,mc.5,TeleSwitch,onoff,s,UCH,0=off;1=on,,State of the Teleswitch
 r,mc.5,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,If the tele switch port is activated the mixer circuit operates in this mode
+w,mc.5,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,If the tele switch port is activated the mixer circuit operates in this mode
 r,mc.5,TempDesired,temp1,s,D1C,,°C,Day temperature setpoint of the circuit
+w,mc.5,TempDesired,temp1,m,D1C,,°C,Day temperature setpoint of the circuit
 r,mc.5,TempDesiredLow,temp1,s,D1C,,°C,Night temperature setpoint of the circuit
+w,mc.5,TempDesiredLow,temp1,m,D1C,,°C,Night temperature setpoint of the circuit
 r,mc.5,TempDiffInOutdoor,,s,D1C,2,,
 r,mc.5,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,mc.5,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+w,mc.5,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 r,memory,eeprom,address,m,UIN,,,Startadresse,count,m,UCH,,,number of bytes,data,s,HEX:*,,,Datenbytes
 r,memory,ram,address,m,UIN,,,Startadresse,count,m,UCH,,,number of bytes,data,s,HEX:*,,,Datenbytes
 r,rcc,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
+w,rcc,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
 r,rcc,LcdContrastPwmValue,,s,UCH,,,Displaykontrast
 r,rcc,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,rcc,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
+w,rcc,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
 r,rcc,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 r,rcc,RoomTempOffsetSelfWarming,temp,s,D2C,,°C,Temperatur
 r,rcc.3,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
+w,rcc.3,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
 r,rcc.3,LcdContrastPwmValue,,s,UCH,,,Displaykontrast
 r,rcc.3,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,rcc.3,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
+w,rcc.3,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
 r,rcc.3,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 r,rcc.3,RoomTempOffsetSelfWarming,temp,s,D2C,,°C,Temperatur
 r,rcc.4,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
+w,rcc.4,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
 r,rcc.4,LcdContrastPwmValue,,s,UCH,,,Displaykontrast
 r,rcc.4,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,rcc.4,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
+w,rcc.4,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
 r,rcc.4,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 r,rcc.4,RoomTempOffsetSelfWarming,temp,s,D2C,,°C,Temperatur
 r,rcc.5,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
+w,rcc.5,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
 r,rcc.5,LcdContrastPwmValue,,s,UCH,,,Displaykontrast
 r,rcc.5,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,rcc.5,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
+w,rcc.5,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
 r,rcc.5,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 r,rcc.5,RoomTempOffsetSelfWarming,temp,s,D2C,,°C,Temperatur
 r,scan,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
@@ -579,6 +788,7 @@ r,ui,BufferFlowThresholdOff,temp,s,D2C,,°C,Temperatur
 r,ui,BufferFlowThresholdOn,temp,s,D2C,,°C,Temperatur
 r,ui,ClockSwitchSummerWinterDone,onoff,s,UCH,0=off;1=on,,
 r,ui,ContinuousHeatingLimit,,s,SCH,,,"-128=off, Unterhalb der hier eingestellten Temperatur wird die Nachtabsenkung unterdrückt. Die Kreise arbeiten mit dem eingestellten Tagsollwert weiter."
+w,ui,ContinuousHeatingLimit,,m,SCH,,,"-128=off, Unterhalb der hier eingestellten Temperatur wird die Nachtabsenkung unterdrückt. Die Kreise arbeiten mit dem eingestellten Tagsollwert weiter."
 r,ui,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
 r,ui,Date,date,s,HDA,,,Datum
 r,ui,Day,bday,s,BDY,0=Mon;1=Tue;2=Wed;3=Thu;4=Fri;5=Sat;6=Sun,,Wochentag
@@ -621,22 +831,38 @@ r,ui,FlowTempDesiredB6,temp0,s,UCH,,°C,Temperatur
 r,ui,FlowTempDesiredB7,temp0,s,UCH,,°C,Temperatur
 r,ui,FlowTempDesiredB8,temp0,s,UCH,,°C,Temperatur
 r,ui,FrostOverRideTime,hours,s,UCH,,h,Stunden
+w,ui,FrostOverRideTime,hours,m,UCH,,h,Stunden
 r,ui,HcForceMode,,s,UCH,,,"ForceComsumDisable=0, ForceComsumNoHeating=1, ForceComsumMaxHeating=2"
 r,ui,HcName10,hcname,s,STR:11,,,Name für den 2. Heizkreis
+w,ui,HcName10,hcname,m,STR:11,,,Name für den 2. Heizkreis
 r,ui,HcName11,hcname,s,STR:11,,,Name für den 11. Heizkreis
+w,ui,HcName11,hcname,m,STR:11,,,Name für den 11. Heizkreis
 r,ui,HcName12,hcname,s,STR:11,,,Name für den 12. Heizkreis
+w,ui,HcName12,hcname,m,STR:11,,,Name für den 12. Heizkreis
 r,ui,HcName13,hcname,s,STR:11,,,Name für den 13. Heizkreis
+w,ui,HcName13,hcname,m,STR:11,,,Name für den 13. Heizkreis
 r,ui,HcName14,hcname,s,STR:11,,,Name für den 14. Heizkreis
+w,ui,HcName14,hcname,m,STR:11,,,Name für den 14. Heizkreis
 r,ui,HcName15,hcname,s,STR:11,,,Name für den 15. Heizkreis
+w,ui,HcName15,hcname,m,STR:11,,,Name für den 15. Heizkreis
 r,ui,HcName1,hcname,s,STR:11,,,Name für den 1. Heizkreis
+w,ui,HcName1,hcname,m,STR:11,,,Name für den 1. Heizkreis
 r,ui,HcName2,hcname,s,STR:11,,,Name für den 2. Heizkreis
+w,ui,HcName2,hcname,m,STR:11,,,Name für den 2. Heizkreis
 r,ui,HcName3,hcname,s,STR:11,,,Name für den 3. Heizkreis
+w,ui,HcName3,hcname,m,STR:11,,,Name für den 3. Heizkreis
 r,ui,HcName4,hcname,s,STR:11,,,Name für den 4. Heizkreis
+w,ui,HcName4,hcname,m,STR:11,,,Name für den 4. Heizkreis
 r,ui,HcName5,hcname,s,STR:11,,,Name für den 5. Heizkreis
+w,ui,HcName5,hcname,m,STR:11,,,Name für den 5. Heizkreis
 r,ui,HcName6,hcname,s,STR:11,,,Name für den 6. Heizkreis
+w,ui,HcName6,hcname,m,STR:11,,,Name für den 6. Heizkreis
 r,ui,HcName7,hcname,s,STR:11,,,Name für den 8. Heizkreis
+w,ui,HcName7,hcname,m,STR:11,,,Name für den 8. Heizkreis
 r,ui,HcName8,hcname,s,STR:11,,,Name für den 8. Heizkreis
+w,ui,HcName8,hcname,m,STR:11,,,Name für den 8. Heizkreis
 r,ui,HcName9,hcname,s,STR:11,,,Name für den 9. Heizkreis
+w,ui,HcName9,hcname,m,STR:11,,,Name für den 9. Heizkreis
 r,ui,HcPumpB1,onoff,s,UCH,0=off;1=on,,"Off=0, On=1"
 r,ui,HcPumpB2,onoff,s,UCH,0=off;1=on,,"Off=0, On=1"
 r,ui,HcPumpB3,onoff,s,UCH,0=off;1=on,,"Off=0, On=1"
@@ -647,6 +873,7 @@ r,ui,HcPumpB7,onoff,s,UCH,0=off;1=on,,"Off=0, On=1"
 r,ui,HcPumpB8,onoff,s,UCH,0=off;1=on,,"Off=0, On=1"
 r,ui,HcRequestAsc,onoff,s,UCH,0=off;1=on,,
 r,ui,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
+w,ui,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
 r,ui,HwcRequestAsc,onoff,s,UCH,0=off;1=on,,
 r,ui,HydraulicMap,,s,UCH,,,Hydraulikplan. Dies ist nor eine Kopie des Wertes von der Grundleiterplatte. Bitte den Wert bei der Grundleiterplatte ändern. Ein Neustart des Systems muß danach erfolgen damit dieser Wert aktualisiert wird.
 r,ui,InstallationCompleted,yesno,s,UCH,0=no;1=yes,,Installation assistant is done
@@ -667,9 +894,11 @@ r,ui,OutsideTempOffset,temp,s,D2C,,°C,Temperatur
 r,ui,PhoneNumberPart1,phone,s,STR:9,,,Telefonnummer
 r,ui,PhoneNumberPart2,phone,s,STR:9,,,Telefonnummer
 r,ui,PreShutDownTime,minutes0,s,UCH,,min,Minuten
+w,ui,PreShutDownTime,minutes0,m,UCH,,min,Minuten
 r,ui,RemoteDetected,,s,UCH,,,detected VR80 or VR90 (bit counted)
 r,ui,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 r,ui,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
+w,ui,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
 r,ui,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 r,ui,RoomTempOffsetSelfWarming,temp,s,D2C,,°C,Temperatur
 r,ui,ScanPrevention,onoff,s,UCH,0=off;1=on,,cyclic scan are started
@@ -685,6 +914,7 @@ r,ui,StorageSensorBottom,temp,s,D2C,,°C,Temperatur
 r,ui,StorageSensorMiddle,temp,s,D2C,,°C,Temperatur
 r,ui,StorageSensorTop,temp,s,D2C,,°C,Temperatur
 r,ui,SummerWinterTimeAdjust,onoff,s,UCH,0=off;1=on,,
+w,ui,SummerWinterTimeAdjust,onoff,m,UCH,0=off;1=on,,
 r,ui,SystemDemand1,,s,HEX:4,,,"Struct[TIte DesFlowTemp, Mode, CoolingReq]Mode: Off=0, Ch=1, Dhw=2, BoilerOverrun=3, BoilerPrerun=4CoolingReq: Off=0, On=1"
 r,ui,SystemModeStream1,,s,UCH,0=off;1=heat;2=cool;3=water;4=waterduringheat;5=waterduringcool,,"Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5"
 r,ui,SystemModeStream2,,s,UCH,0=off;1=heat;2=cool;3=water;4=waterduringheat;5=waterduringcool,,"Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5"
@@ -692,6 +922,7 @@ r,ui,SystemModeStream3,,s,UCH,0=off;1=heat;2=cool;3=water;4=waterduringheat;5=wa
 r,ui,SystemTempGradient,temp,s,D2C,,°C,gradient of the system temperature (VF1)
 r,ui,TempFailDetectTime,temp0,s,UCH,,°C,Temperatur
 r,ui,TempIncrease,temp,s,D2C,,°C,Temperatur
+w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur
 r,ui,Time,time,s,VTI,,,Zeit
 r,ui,FormatError,,
 r,ui,TurnOffDelay,,s,UCH,,,
@@ -700,3 +931,4 @@ r,ui,TurnOnDelay,,s,UCH,,,
 r,ui,WaterstationModulDetected,,s,UCH,,,detected VPM-W (bit counted)
 r,ui,YieldLastYear,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,
 r9,ui,YieldThisYear,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,,energy,s,UIN,,kWh,
+

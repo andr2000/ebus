@@ -48,7 +48,7 @@ def _split(line):
 
 
 def _decodetype(type_):
-    r = re.compile(r"\A(r)([1-9]?)\Z")
+    r = re.compile(r"(r)([1-9]?)")
     m = r.match(type_)
     if m:
         read = m.group(1) is not None

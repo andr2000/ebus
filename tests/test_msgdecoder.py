@@ -12,12 +12,12 @@ TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 
 def test_listen0a():
     """Process `listen0a.txt`."""
-    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0a", 700)
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0a", 791)
 
 
 def test_listen0b():
     """Process `listen0b.txt`."""
-    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0b", 700)
+    _test(TESTDATAPATH / "find0.txt", TESTDATAPATH / "listen0b", 791)
 
 
 def _test(deffilepath, basepath, num):

@@ -1,4 +1,5 @@
 import collections
+import copy
 
 from anytree import NodeMixin
 
@@ -73,6 +74,21 @@ class MsgDef(_MsgDef, NodeMixin):
         w = "w" if self.write else "-"
         u = "u" if self.update else "-"
         return "".join((r, p, w, u))
+
+    def join(self, msgdef):
+        """Return Joined Message Definition."""
+        if (self.circuit, self.name, self.fields) == (msgdef.circuit, msgdef.name, msgdef.fields):
+            return MsgDef(
+                self.circuit,
+                self.name,
+                tuple(copy.copy(fielddef) for fielddef in self.fields),
+                read=self.read or msgdef.read,
+                prio=self.prio or msgdef.prio,
+                write=self.write or msgdef.write,
+                update=self.update or msgdef.update,
+            )
+        else:
+            return None
 
 
 _FieldDef = collections.namedtuple("_FieldDef", "idx name ename types dividervalues unit comment")

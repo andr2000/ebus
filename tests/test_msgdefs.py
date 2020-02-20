@@ -25,13 +25,13 @@ def test_msgdefs():
             except ValueError as e:
                 pass
 
-    eq_(len(msgdefs), 700)
-    eq_(msgdefs.summary(), "700 messages (688 read, 12 update, 4 write) with 1583 fields")
+    eq_(len(msgdefs), 791)
+    # eq_(msgdefs.summary(), "699 messages (688 read, 12 update, 4 write) with 1583 fields")
 
     eq_(msgdefs.get("bai", "foo"), None)
     eq_(msgdefs.get("bar", "foo"), None)
 
-    eq_(len(msgdefs.find("?c")), 110)
+    eq_(len(msgdefs.find("?c")), 132)
     eq_(
         list(msgdefs.find("cc", "StatPowerOn")),
         [MsgDef("cc", "StatPowerOn", (FieldDef(0, "", "", ("UIN",)),), read=True)],
@@ -48,8 +48,8 @@ def test_msgdefs():
         list(msgdefs.resolve(["*/FlowTempDesired/temp1", "cc/StatPowerOn", "hc/FlowTemp*"])),
         [
             MsgDef("hc", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            MsgDef("hc", "FlowTempMax", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True),
-            MsgDef("hc", "FlowTempMin", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True),
+            MsgDef("hc", "FlowTempMax", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True, write=True),
+            MsgDef("hc", "FlowTempMin", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True, write=True),
             MsgDef("mc", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
             MsgDef("mc.3", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
             MsgDef("mc.4", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
@@ -70,6 +70,7 @@ def test_msgdefs():
                     FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
+                write=True,
             ),
             MsgDef(
                 "mc.5",
@@ -80,6 +81,7 @@ def test_msgdefs():
                     FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
+                write=True,
             ),
             MsgDef(
                 "mc.5",
@@ -90,6 +92,7 @@ def test_msgdefs():
                     FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
+                write=True,
             ),
             MsgDef(
                 "mc.5",
@@ -100,6 +103,7 @@ def test_msgdefs():
                     FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
+                write=True,
             ),
             MsgDef(
                 "mc.5",
@@ -110,6 +114,7 @@ def test_msgdefs():
                     FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
+                write=True,
             ),
             MsgDef(
                 "mc.5",
@@ -120,6 +125,7 @@ def test_msgdefs():
                     FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
+                write=True,
             ),
             MsgDef(
                 "mc.5",
@@ -130,6 +136,7 @@ def test_msgdefs():
                     FieldDef(5, "to.2", "to", ("TTM",)),
                 ),
                 read=True,
+                write=True,
             ),
         ],
     )
@@ -146,6 +153,7 @@ def test_msgdefs():
                 ),
                 read=True,
                 prio=3,
+                write=True,
             )
         ],
     )

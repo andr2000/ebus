@@ -11,6 +11,10 @@ r,bai,AntiCondensValue,power,s,UCH,,kW,Anhebung der minimalen Leistung
 MsgDef('bai', 'AntiCondensValue', read=True)
     FieldDef(0, 'power', 'power', ('UCH',), unit='kW')
 
+[SW>=413]r,bai,APCLegioProtection,,s,UCH,,,Legionellenschutz für internen Speicher
+MsgDef('bai', 'APCLegioProtection', update=True)
+    FieldDef(0, '', '', ('UCH',))
+
 r,bai,averageIgnitiontime,,s,UCH,10,s,Mittlere Zündzeit
 MsgDef('bai', 'averageIgnitiontime', read=True)
     FieldDef(0, '', '', ('UCH',), dividervalues='10', unit='s')
@@ -706,6 +710,9 @@ MsgDef('broadcast', 'id', read=True)
     FieldDef(2, 'software', 'software', ('PIN',), comment='Software-Version')
     FieldDef(3, 'hardware', 'hardware', ('PIN',))
 
+w,broadcast,id,
+MsgDef('broadcast', 'id', write=True)
+
 u,broadcast,load,onoff,m,UCH,0=off;1=on,,
 MsgDef('broadcast', 'load', update=True)
     FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
@@ -713,6 +720,9 @@ MsgDef('broadcast', 'load', update=True)
 u,broadcast,outsidetemp,temp2,m,D2B,,°C,Temperatur
 MsgDef('broadcast', 'outsidetemp', update=True)
     FieldDef(0, 'temp2', 'temp2', ('D2B',), unit='°C')
+
+w,broadcast,queryexistence,
+MsgDef('broadcast', 'queryexistence', write=True)
 
 u,broadcast,signoflife,
 MsgDef('broadcast', 'signoflife', update=True)
@@ -765,6 +775,22 @@ MsgDef('cc', 'Params', read=True)
     FieldDef(5, 'temps.1', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(6, 'temps.2', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(7, '.2', '', ('IGN:1',))
+
+w,cc,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('cc', 'SetFlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,cc,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('cc', 'SetFlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,cc,SetMode,hwcmode,m,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus
+MsgDef('cc', 'SetMode', write=True)
+    FieldDef(0, 'hwcmode', 'hwcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto')
+
+w,cc,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+MsgDef('cc', 'SetTempDesired', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
 r,cc,Stat15MinBusTimeout,,s,UCH,,,
 MsgDef('cc', 'Stat15MinBusTimeout', read=True)
@@ -827,8 +853,28 @@ MsgDef('cc', 'Timer.Friday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,cc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('cc', 'Timer.Friday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,cc,Timer.Monday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('cc', 'Timer.Monday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,cc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('cc', 'Timer.Monday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -847,8 +893,28 @@ MsgDef('cc', 'Timer.Saturday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,cc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('cc', 'Timer.Saturday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,cc,Timer.Sunday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('cc', 'Timer.Sunday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,cc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('cc', 'Timer.Sunday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -867,6 +933,16 @@ MsgDef('cc', 'Timer.Thursday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,cc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('cc', 'Timer.Thursday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,cc,Timer.Tuesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('cc', 'Timer.Tuesday', read=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
@@ -877,8 +953,28 @@ MsgDef('cc', 'Timer.Tuesday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,cc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('cc', 'Timer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,cc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('cc', 'Timer.Wednesday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,cc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('cc', 'Timer.Wednesday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -935,20 +1031,40 @@ r,hc,FlowTempMax,temp0,s,UCH,,°C,Temperatur
 MsgDef('hc', 'FlowTempMax', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
+w,hc,FlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('hc', 'FlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
 r,hc,FlowTempMin,temp0,s,UCH,,°C,Temperatur
 MsgDef('hc', 'FlowTempMin', read=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,hc,FlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('hc', 'FlowTempMin', write=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
 r,hc,Hc1PumpPort,onoff,s,UCH,0=off;1=on,,
 MsgDef('hc', 'Hc1PumpPort', read=True)
     FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
-r,hc,HcMaxPreHeating,,s,UCH,,min / 5,
-MsgDef('hc', 'HcMaxPreHeating', read=True)
+[SW<=400]r,hc,HcMaxPreHeating,hours,s,UCH,,h,Stunden
+MsgDef('hc', 'HcMaxPreHeating', update=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
+
+[SW>=401]r,hc,HcMaxPreHeating,,s,UCH,,min / 5,
+MsgDef('hc', 'HcMaxPreHeating', update=True)
     FieldDef(0, '', '', ('UCH',), unit='min / 5')
+
+[SW<=400]w,hc,HcMaxPreHeating,hours,m,UCH,,h,Stunden
+MsgDef('hc', 'HcMaxPreHeating', write=True, update=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
 
 r,hc,HeatingCurve,curve,s,UIN,100,,Heizkurve
 MsgDef('hc', 'HeatingCurve', read=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,hc,HeatingCurve,curve,m,UIN,100,,Heizkurve
+MsgDef('hc', 'HeatingCurve', write=True)
     FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
 
 r,hc,IsInHoliday,,s,UCH,,,
@@ -967,8 +1083,16 @@ r,hc,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mische
 MsgDef('hc', 'OperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,hc,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('hc', 'OperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,hc,OtShutdownLimit,desiredtemp,s,UCH,,°C,Solltemperatur
 MsgDef('hc', 'OtShutdownLimit', read=True)
+    FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C')
+
+w,hc,OtShutdownLimit,desiredtemp,m,UCH,,°C,Solltemperatur
+MsgDef('hc', 'OtShutdownLimit', write=True)
     FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C')
 
 r,hc,OutsideTemp,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
@@ -1069,16 +1193,38 @@ r,hc,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=l
 MsgDef('hc', 'TeleswitchOperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,hc,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('hc', 'TeleswitchOperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,hc,TempDesired,temp1,s,D1C,,°C,Temperatur
 MsgDef('hc', 'TempDesired', read=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
+w,hc,TempDesired,temp1,m,D1C,,°C,Temperatur
+MsgDef('hc', 'TempDesired', write=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
 r,hc,TempDesiredLow,temp1,s,D1C,,°C,Temperatur
 MsgDef('hc', 'TempDesiredLow', read=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
+w,hc,TempDesiredLow,temp1,m,D1C,,°C,Temperatur
+MsgDef('hc', 'TempDesiredLow', write=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
 r,hc,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hc', 'Timer.Friday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hc', 'Timer.Friday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1097,8 +1243,28 @@ MsgDef('hc', 'Timer.Monday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,hc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hc', 'Timer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,hc,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hc', 'Timer.Saturday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hc', 'Timer.Saturday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1117,8 +1283,28 @@ MsgDef('hc', 'Timer.Sunday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,hc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hc', 'Timer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,hc,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hc', 'Timer.Thursday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hc', 'Timer.Thursday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1137,8 +1323,28 @@ MsgDef('hc', 'Timer.Tuesday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,hc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hc', 'Timer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,hc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hc', 'Timer.Wednesday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hc', 'Timer.Wednesday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1182,12 +1388,24 @@ r,hwc,HcParallelStorageFillingEnabled2,yesno,s,UCH,0=no;1=yes,,
 MsgDef('hwc', 'HcParallelStorageFillingEnabled2', read=True)
     FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
 
+w,hwc,HcParallelStorageFillingEnabled2,yesno,m,UCH,0=no;1=yes,,
+MsgDef('hwc', 'HcParallelStorageFillingEnabled2', write=True)
+    FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
+
 r,hwc,HwcLaggingTime2,minutes0,s,UCH,,min,Minuten
 MsgDef('hwc', 'HwcLaggingTime2', read=True)
     FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
 
+w,hwc,HwcLaggingTime2,minutes0,m,UCH,,min,Minuten
+MsgDef('hwc', 'HwcLaggingTime2', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
 r,hwc,HwcLoadingDelay2,minutes0,s,UCH,,min,Minuten
 MsgDef('hwc', 'HwcLoadingDelay2', read=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
+w,hwc,HwcLoadingDelay2,minutes0,m,UCH,,min,Minuten
+MsgDef('hwc', 'HwcLoadingDelay2', write=True)
     FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
 
 r,hwc,IsInHoliday,,s,UCH,,,
@@ -1204,6 +1422,10 @@ MsgDef('hwc', 'LegioPump2', read=True)
 
 r,hwc,LegioStartDay2,,s,UCH,,,
 MsgDef('hwc', 'LegioStartDay2', read=True)
+    FieldDef(0, '', '', ('UCH',))
+
+w,hwc,LegioStartDay2,,m,UCH,,,
+MsgDef('hwc', 'LegioStartDay2', write=True)
     FieldDef(0, '', '', ('UCH',))
 
 r,hwc,Mode,temp0,s,UCH,,°C,Temperatur,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,,s,IGN:2,,,,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,HEX:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
@@ -1224,6 +1446,10 @@ r,hwc,OperatingMode2,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Misc
 MsgDef('hwc', 'OperatingMode2', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,hwc,OperatingMode2,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('hwc', 'OperatingMode2', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,hwc,Params,temp0,s,UCH,,°C,Temperatur,,s,IGN:3,,,,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,
 MsgDef('hwc', 'Params', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C', comment='Temperatur')
@@ -1234,6 +1460,22 @@ MsgDef('hwc', 'Params', read=True)
     FieldDef(5, 'temps.1', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(6, 'temps.2', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(7, '.2', '', ('IGN:1',))
+
+w,hwc,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('hwc', 'SetFlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,hwc,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('hwc', 'SetFlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,hwc,SetMode,hwcmode,m,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus
+MsgDef('hwc', 'SetMode', write=True)
+    FieldDef(0, 'hwcmode', 'hwcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto')
+
+w,hwc,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+MsgDef('hwc', 'SetTempDesired', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
 r,hwc,Stat15MinBusTimeout,,s,UCH,,,
 MsgDef('hwc', 'Stat15MinBusTimeout', read=True)
@@ -1299,8 +1541,16 @@ r,hwc,TeleswitchOperatingMode2,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5
 MsgDef('hwc', 'TeleswitchOperatingMode2', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,hwc,TeleswitchOperatingMode2,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('hwc', 'TeleswitchOperatingMode2', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,hwc,TempDesired2,temp1,s,D1C,,°C,Temperatur
 MsgDef('hwc', 'TempDesired2', read=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
+w,hwc,TempDesired2,temp1,m,D1C,,°C,Temperatur
+MsgDef('hwc', 'TempDesired2', write=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
 r,hwc,ThreeWayValveLoadingPump1,onoff,s,UCH,0=off;1=on,,
@@ -1309,6 +1559,16 @@ MsgDef('hwc', 'ThreeWayValveLoadingPump1', read=True)
 
 r,hwc,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hwc', 'Timer.Friday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hwc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hwc', 'Timer.Friday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1327,8 +1587,28 @@ MsgDef('hwc', 'Timer.Monday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,hwc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hwc', 'Timer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,hwc,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hwc', 'Timer.Saturday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hwc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hwc', 'Timer.Saturday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1347,8 +1627,28 @@ MsgDef('hwc', 'Timer.Sunday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,hwc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hwc', 'Timer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,hwc,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hwc', 'Timer.Thursday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hwc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hwc', 'Timer.Thursday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1367,8 +1667,28 @@ MsgDef('hwc', 'Timer.Tuesday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,hwc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hwc', 'Timer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,hwc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('hwc', 'Timer.Wednesday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,hwc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('hwc', 'Timer.Wednesday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1425,16 +1745,36 @@ r,mc,FlowTempMax,temp0,s,UCH,,°C,Temperatur
 MsgDef('mc', 'FlowTempMax', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
+w,mc,FlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'FlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
 r,mc,FlowTempMin,temp0,s,UCH,,°C,Temperatur
 MsgDef('mc', 'FlowTempMin', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
-r,mc,HcMaxPreHeating,,s,UCH,,min / 5,
-MsgDef('mc', 'HcMaxPreHeating', read=True)
+w,mc,FlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'FlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+[SW<=400]r,mc,HcMaxPreHeating,hours,s,UCH,,h,Stunden
+MsgDef('mc', 'HcMaxPreHeating', update=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
+
+[SW>=401]r,mc,HcMaxPreHeating,,s,UCH,,min / 5,
+MsgDef('mc', 'HcMaxPreHeating', update=True)
     FieldDef(0, '', '', ('UCH',), unit='min / 5')
+
+[SW<=400]w,mc,HcMaxPreHeating,hours,m,UCH,,h,Stunden
+MsgDef('mc', 'HcMaxPreHeating', write=True, update=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
 
 r,mc,HcPumpIdlePeriod,minutes0,s,UCH,,min,Minuten
 MsgDef('mc', 'HcPumpIdlePeriod', read=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
+w,mc,HcPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+MsgDef('mc', 'HcPumpIdlePeriod', write=True)
     FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
 
 r,mc,HcPumpPort,onoff,s,UCH,0=off;1=on,,
@@ -1443,6 +1783,10 @@ MsgDef('mc', 'HcPumpPort', read=True)
 
 r,mc,HeatingCurve,curve,s,UIN,100,,Heizkurve
 MsgDef('mc', 'HeatingCurve', read=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc,HeatingCurve,curve,m,UIN,100,,Heizkurve
+MsgDef('mc', 'HeatingCurve', write=True)
     FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
 
 r,mc,IsInHoliday,,s,UCH,,,
@@ -1456,6 +1800,10 @@ MsgDef('mc', 'IsInParty', read=True)
 r,mc,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,
 MsgDef('mc', 'IsInStorageFilling', read=True)
     FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
+
+w,mc,load,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc', 'load', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
 r,mc,MixerDutyCycle,,s,SCH,,,
 MsgDef('mc', 'MixerDutyCycle', read=True)
@@ -1476,8 +1824,16 @@ r,mc,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mische
 MsgDef('mc', 'OperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc', 'OperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc,OtShutdownLimit,desiredtemp,s,UCH,,°C,Solltemperatur
 MsgDef('mc', 'OtShutdownLimit', read=True)
+    FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C')
+
+w,mc,OtShutdownLimit,desiredtemp,m,UCH,,°C,Solltemperatur
+MsgDef('mc', 'OtShutdownLimit', write=True)
     FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C')
 
 r,mc,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
@@ -1491,6 +1847,66 @@ MsgDef('mc', 'Params', read=True)
     FieldDef(6, 'temps.2', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(7, 'temps.3', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(8, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
+
+w,mc,party,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc', 'party', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
+
+w,mc,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+MsgDef('mc', 'RoomTempOffset', write=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,mc,save,,m,TTH,,,
+MsgDef('mc', 'save', write=True)
+    FieldDef(0, '', '', ('TTH',))
+
+w,mc,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+MsgDef('mc', 'SetFloorPavingDryingDay', write=True)
+    FieldDef(0, 'days', 'days', ('UCH',))
+
+w,mc,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'SetFloorPavingDryingTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'SetFlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'SetFlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+MsgDef('mc', 'SetHeatingCurve', write=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+MsgDef('mc', 'SetMaxPreHeating', write=True)
+    FieldDef(0, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
+
+w,mc,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc', 'SetMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
+w,mc,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+MsgDef('mc', 'SetPumpIdlePeriod', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
+w,mc,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'SetShutdownTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'SetTempDesired', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc', 'SetTempDesiredLow', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
+MsgDef('mc', 'SetType', write=True)
+    FieldDef(0, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool')
 
 r,mc,Stat15MinBusTimeout,,s,UCH,,,
 MsgDef('mc', 'Stat15MinBusTimeout', read=True)
@@ -1551,16 +1967,38 @@ r,mc,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=l
 MsgDef('mc', 'TeleswitchOperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc', 'TeleswitchOperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc,TempDesired,temp1,s,D1C,,°C,Temperatur
 MsgDef('mc', 'TempDesired', read=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
+w,mc,TempDesired,temp1,m,D1C,,°C,Temperatur
+MsgDef('mc', 'TempDesired', write=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
 r,mc,TempDesiredLow,temp1,s,D1C,,°C,Temperatur
 MsgDef('mc', 'TempDesiredLow', read=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
+w,mc,TempDesiredLow,temp1,m,D1C,,°C,Temperatur
+MsgDef('mc', 'TempDesiredLow', write=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
 r,mc,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc', 'Timer.Friday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc', 'Timer.Friday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1579,8 +2017,28 @@ MsgDef('mc', 'Timer.Monday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc', 'Timer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc', 'Timer.Saturday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc', 'Timer.Saturday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1599,8 +2057,28 @@ MsgDef('mc', 'Timer.Sunday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc', 'Timer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc', 'Timer.Thursday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc', 'Timer.Thursday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1619,8 +2097,28 @@ MsgDef('mc', 'Timer.Tuesday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc', 'Timer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc', 'Timer.Wednesday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc', 'Timer.Wednesday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1677,16 +2175,36 @@ r,mc.3,FlowTempMax,temp0,s,UCH,,°C,Temperatur
 MsgDef('mc.3', 'FlowTempMax', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
+w,mc.3,FlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'FlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
 r,mc.3,FlowTempMin,temp0,s,UCH,,°C,Temperatur
 MsgDef('mc.3', 'FlowTempMin', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
-r,mc.3,HcMaxPreHeating,,s,UCH,,min / 5,
-MsgDef('mc.3', 'HcMaxPreHeating', read=True)
+w,mc.3,FlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'FlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+[SW<=400]r,mc.3,HcMaxPreHeating,hours,s,UCH,,h,Stunden
+MsgDef('mc.3', 'HcMaxPreHeating', update=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
+
+[SW>=401]r,mc.3,HcMaxPreHeating,,s,UCH,,min / 5,
+MsgDef('mc.3', 'HcMaxPreHeating', update=True)
     FieldDef(0, '', '', ('UCH',), unit='min / 5')
+
+[SW<=400]w,mc.3,HcMaxPreHeating,hours,m,UCH,,h,Stunden
+MsgDef('mc.3', 'HcMaxPreHeating', write=True, update=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
 
 r,mc.3,HcPumpIdlePeriod,minutes0,s,UCH,,min,Minuten
 MsgDef('mc.3', 'HcPumpIdlePeriod', read=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
+w,mc.3,HcPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+MsgDef('mc.3', 'HcPumpIdlePeriod', write=True)
     FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
 
 r,mc.3,HcPumpPort,onoff,s,UCH,0=off;1=on,,
@@ -1695,6 +2213,10 @@ MsgDef('mc.3', 'HcPumpPort', read=True)
 
 r,mc.3,HeatingCurve,curve,s,UIN,100,,Heizkurve
 MsgDef('mc.3', 'HeatingCurve', read=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc.3,HeatingCurve,curve,m,UIN,100,,Heizkurve
+MsgDef('mc.3', 'HeatingCurve', write=True)
     FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
 
 r,mc.3,IsInHoliday,,s,UCH,,,
@@ -1708,6 +2230,10 @@ MsgDef('mc.3', 'IsInParty', read=True)
 r,mc.3,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,
 MsgDef('mc.3', 'IsInStorageFilling', read=True)
     FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
+
+w,mc.3,load,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc.3', 'load', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
 r,mc.3,MixerDutyCycle,,s,SCH,,,
 MsgDef('mc.3', 'MixerDutyCycle', read=True)
@@ -1728,8 +2254,16 @@ r,mc.3,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Misc
 MsgDef('mc.3', 'OperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc.3,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc.3', 'OperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc.3,OtShutdownLimit,desiredtemp,s,UCH,,°C,Solltemperatur
 MsgDef('mc.3', 'OtShutdownLimit', read=True)
+    FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C')
+
+w,mc.3,OtShutdownLimit,desiredtemp,m,UCH,,°C,Solltemperatur
+MsgDef('mc.3', 'OtShutdownLimit', write=True)
     FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C')
 
 r,mc.3,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
@@ -1743,6 +2277,66 @@ MsgDef('mc.3', 'Params', read=True)
     FieldDef(6, 'temps.2', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(7, 'temps.3', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(8, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
+
+w,mc.3,party,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc.3', 'party', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
+
+w,mc.3,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+MsgDef('mc.3', 'RoomTempOffset', write=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,mc.3,save,,m,TTH,,,
+MsgDef('mc.3', 'save', write=True)
+    FieldDef(0, '', '', ('TTH',))
+
+w,mc.3,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+MsgDef('mc.3', 'SetFloorPavingDryingDay', write=True)
+    FieldDef(0, 'days', 'days', ('UCH',))
+
+w,mc.3,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'SetFloorPavingDryingTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.3,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'SetFlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.3,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'SetFlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.3,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+MsgDef('mc.3', 'SetHeatingCurve', write=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc.3,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+MsgDef('mc.3', 'SetMaxPreHeating', write=True)
+    FieldDef(0, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
+
+w,mc.3,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc.3', 'SetMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
+w,mc.3,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+MsgDef('mc.3', 'SetPumpIdlePeriod', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
+w,mc.3,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'SetShutdownTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.3,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'SetTempDesired', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.3,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.3', 'SetTempDesiredLow', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.3,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
+MsgDef('mc.3', 'SetType', write=True)
+    FieldDef(0, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool')
 
 r,mc.3,Stat15MinBusTimeout,,s,UCH,,,
 MsgDef('mc.3', 'Stat15MinBusTimeout', read=True)
@@ -1803,16 +2397,38 @@ r,mc.3,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5
 MsgDef('mc.3', 'TeleswitchOperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc.3,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc.3', 'TeleswitchOperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc.3,TempDesired,temp1,s,D1C,,°C,Temperatur
 MsgDef('mc.3', 'TempDesired', read=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
+w,mc.3,TempDesired,temp1,m,D1C,,°C,Temperatur
+MsgDef('mc.3', 'TempDesired', write=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
 r,mc.3,TempDesiredLow,temp1,s,D1C,,°C,Temperatur
 MsgDef('mc.3', 'TempDesiredLow', read=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
+w,mc.3,TempDesiredLow,temp1,m,D1C,,°C,Temperatur
+MsgDef('mc.3', 'TempDesiredLow', write=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
 r,mc.3,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.3', 'Timer.Friday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.3,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.3', 'Timer.Friday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1831,8 +2447,28 @@ MsgDef('mc.3', 'Timer.Monday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.3,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.3', 'Timer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.3,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.3', 'Timer.Saturday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.3,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.3', 'Timer.Saturday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1851,8 +2487,28 @@ MsgDef('mc.3', 'Timer.Sunday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.3,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.3', 'Timer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.3,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.3', 'Timer.Thursday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.3,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.3', 'Timer.Thursday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1871,8 +2527,28 @@ MsgDef('mc.3', 'Timer.Tuesday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.3,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.3', 'Timer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.3,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.3', 'Timer.Wednesday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.3,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.3', 'Timer.Wednesday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -1905,6 +2581,10 @@ r,mc.4,CoolingOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=lo
 MsgDef('mc.4', 'CoolingOperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc.4,CoolingOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of cooling circuit
+MsgDef('mc.4', 'CoolingOperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc.4,CoolingOpmodeAutoState,,s,UCH,,,
 MsgDef('mc.4', 'CoolingOpmodeAutoState', read=True)
     FieldDef(0, '', '', ('UCH',))
@@ -1915,6 +2595,10 @@ MsgDef('mc.4', 'CoolingRequest', read=True)
 
 r,mc.4,CoolingStartOffset,,s,D1C,2,,
 MsgDef('mc.4', 'CoolingStartOffset', read=True)
+    FieldDef(0, '', '', ('D1C',), dividervalues='2')
+
+w,mc.4,CoolingStartOffset,,m,D1C,2,,
+MsgDef('mc.4', 'CoolingStartOffset', write=True)
     FieldDef(0, '', '', ('D1C',), dividervalues='2')
 
 r,mc.4,CoolingSupported,yesno,s,UCH,0=no;1=yes,,
@@ -1932,6 +2616,16 @@ MsgDef('mc.4', 'coolingTimer.Friday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.4,coolingTimer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'coolingTimer.Friday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.4,coolingTimer.Monday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'coolingTimer.Monday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -1942,6 +2636,16 @@ MsgDef('mc.4', 'coolingTimer.Monday', read=True)
     FieldDef(5, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.4,coolingTimer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'coolingTimer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
 r,mc.4,coolingTimer.Saturday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'coolingTimer.Saturday', read=True)
@@ -1954,6 +2658,16 @@ MsgDef('mc.4', 'coolingTimer.Saturday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.4,coolingTimer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'coolingTimer.Saturday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.4,coolingTimer.Sunday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'coolingTimer.Sunday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -1964,6 +2678,16 @@ MsgDef('mc.4', 'coolingTimer.Sunday', read=True)
     FieldDef(5, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.4,coolingTimer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'coolingTimer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
 r,mc.4,coolingTimer.Thursday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'coolingTimer.Thursday', read=True)
@@ -1976,6 +2700,16 @@ MsgDef('mc.4', 'coolingTimer.Thursday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.4,coolingTimer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'coolingTimer.Thursday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.4,coolingTimer.Tuesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'coolingTimer.Tuesday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -1987,6 +2721,16 @@ MsgDef('mc.4', 'coolingTimer.Tuesday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.4,coolingTimer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'coolingTimer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.4,coolingTimer.Wednesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'coolingTimer.Wednesday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -1997,6 +2741,16 @@ MsgDef('mc.4', 'coolingTimer.Wednesday', read=True)
     FieldDef(5, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.4,coolingTimer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'coolingTimer.Wednesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
 r,mc.4,CoolingWhileHolidaySupported,,s,UCH,,,
 MsgDef('mc.4', 'CoolingWhileHolidaySupported', read=True)
@@ -2029,6 +2783,10 @@ r,mc.4,EfficiencyHysteresisMin,,s,D1C,2,,
 MsgDef('mc.4', 'EfficiencyHysteresisMin', read=True)
     FieldDef(0, '', '', ('D1C',), dividervalues='2')
 
+w,mc.4,EfficiencyHysteresisMin,,m,D1C,2,,
+MsgDef('mc.4', 'EfficiencyHysteresisMin', write=True)
+    FieldDef(0, '', '', ('D1C',), dividervalues='2')
+
 r,mc.4,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 MsgDef('mc.4', 'errorhistory', read=True)
     FieldDef(0, 'index', 'index', ('UCH',))
@@ -2054,8 +2812,16 @@ r,mc.4,FlowTempMax,temp0,s,UCH,,°C,For a heat demand the desired flow temperatu
 MsgDef('mc.4', 'FlowTempMax', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
+w,mc.4,FlowTempMax,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will maximal be this value
+MsgDef('mc.4', 'FlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
 r,mc.4,FlowTempMin,temp0,s,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
 MsgDef('mc.4', 'FlowTempMin', read=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.4,FlowTempMin,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
+MsgDef('mc.4', 'FlowTempMin', write=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
 r,mc.4,HcManualWorkingModeTriggeringActive,,s,UCH,,,
@@ -2064,6 +2830,10 @@ MsgDef('mc.4', 'HcManualWorkingModeTriggeringActive', read=True)
 
 r,mc.4,HcMaxPreHeating,hours,s,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
 MsgDef('mc.4', 'HcMaxPreHeating', read=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
+
+w,mc.4,HcMaxPreHeating,hours,m,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
+MsgDef('mc.4', 'HcMaxPreHeating', write=True)
     FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
 
 r,mc.4,HcMode,,s,UCH,,,
@@ -2082,12 +2852,20 @@ r,mc.4,HcPumpIdlePeriod,minutes0,s,UCH,,min,Time pump is not running in a pause 
 MsgDef('mc.4', 'HcPumpIdlePeriod', read=True)
     FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
 
+w,mc.4,HcPumpIdlePeriod,minutes0,m,UCH,,min,Time pump is not running in a pause at least
+MsgDef('mc.4', 'HcPumpIdlePeriod', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
 r,mc.4,HcPumpPort,onoff,s,UCH,0=off;1=on,,Status of mixer cicuit pump on MK1P
 MsgDef('mc.4', 'HcPumpPort', read=True)
     FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
 r,mc.4,HeatingCurve,curve,s,UIN,100,,Heating curve
 MsgDef('mc.4', 'HeatingCurve', read=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc.4,HeatingCurve,curve,m,UIN,100,,Heating curve
+MsgDef('mc.4', 'HeatingCurve', write=True)
     FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
 
 r,mc.4,IsInHoliday,,s,UCH,,,Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit
@@ -2101,6 +2879,10 @@ MsgDef('mc.4', 'IsInParty', read=True)
 r,mc.4,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,heating circuit is locked because of ongoing tank loading unless parallel loading has been activated
 MsgDef('mc.4', 'IsInStorageFilling', read=True)
     FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
+
+w,mc.4,load,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc.4', 'load', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
 r,mc.4,MixerDutyCycle,percents,s,SCH,,%,"Teleswitch,Pumpe,Zirkulationspumpe,WW Anforderung,WW Freigabe"
 MsgDef('mc.4', 'MixerDutyCycle', read=True)
@@ -2121,8 +2903,16 @@ r,mc.4,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Oper
 MsgDef('mc.4', 'OperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc.4,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of mixer circuit
+MsgDef('mc.4', 'OperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc.4,OtShutdownLimit,desiredtemp,s,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
 MsgDef('mc.4', 'OtShutdownLimit', read=True)
+    FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C', comment='For outside temperatures higher than this, there is no heat demand generated anymore')
+
+w,mc.4,OtShutdownLimit,desiredtemp,m,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
+MsgDef('mc.4', 'OtShutdownLimit', write=True)
     FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C', comment='For outside temperatures higher than this, there is no heat demand generated anymore')
 
 r,mc.4,OutsideTemp,temp,s,D2C,,°C,current outside temperature (valid only if a sensor is connected to the VR60),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
@@ -2142,9 +2932,69 @@ MsgDef('mc.4', 'Params', read=True)
     FieldDef(7, 'temps.3', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(8, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
 
+w,mc.4,party,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc.4', 'party', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
+
 r,mc.4,RcRoomTemp,temp,s,D2C,,°C,Temperatur
 MsgDef('mc.4', 'RcRoomTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,mc.4,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+MsgDef('mc.4', 'RoomTempOffset', write=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,mc.4,save,,m,TTH,,,
+MsgDef('mc.4', 'save', write=True)
+    FieldDef(0, '', '', ('TTH',))
+
+w,mc.4,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+MsgDef('mc.4', 'SetFloorPavingDryingDay', write=True)
+    FieldDef(0, 'days', 'days', ('UCH',))
+
+w,mc.4,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.4', 'SetFloorPavingDryingTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.4,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.4', 'SetFlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.4,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.4', 'SetFlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.4,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+MsgDef('mc.4', 'SetHeatingCurve', write=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc.4,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+MsgDef('mc.4', 'SetMaxPreHeating', write=True)
+    FieldDef(0, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
+
+w,mc.4,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc.4', 'SetMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
+w,mc.4,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+MsgDef('mc.4', 'SetPumpIdlePeriod', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
+w,mc.4,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.4', 'SetShutdownTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.4,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.4', 'SetTempDesired', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.4,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.4', 'SetTempDesiredLow', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.4,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
+MsgDef('mc.4', 'SetType', write=True)
+    FieldDef(0, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool')
 
 r,mc.4,Stat15MinBusTimeout,,s,UCH,,,
 MsgDef('mc.4', 'Stat15MinBusTimeout', read=True)
@@ -2213,12 +3063,24 @@ r,mc.4,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5
 MsgDef('mc.4', 'TeleswitchOperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc.4,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,If the tele switch port is activated the mixer circuit operates in this mode
+MsgDef('mc.4', 'TeleswitchOperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc.4,TempDesired,temp1,s,D1C,,°C,Day temperature setpoint of the circuit
 MsgDef('mc.4', 'TempDesired', read=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
+w,mc.4,TempDesired,temp1,m,D1C,,°C,Day temperature setpoint of the circuit
+MsgDef('mc.4', 'TempDesired', write=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
 r,mc.4,TempDesiredLow,temp1,s,D1C,,°C,Night temperature setpoint of the circuit
 MsgDef('mc.4', 'TempDesiredLow', read=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
+w,mc.4,TempDesiredLow,temp1,m,D1C,,°C,Night temperature setpoint of the circuit
+MsgDef('mc.4', 'TempDesiredLow', write=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
 r,mc.4,TempDiffInOutdoor,,s,D1C,2,,
@@ -2227,6 +3089,16 @@ MsgDef('mc.4', 'TempDiffInOutdoor', read=True)
 
 r,mc.4,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'Timer.Friday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.4,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'Timer.Friday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2245,8 +3117,28 @@ MsgDef('mc.4', 'Timer.Monday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.4,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'Timer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.4,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'Timer.Saturday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.4,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'Timer.Saturday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2265,8 +3157,28 @@ MsgDef('mc.4', 'Timer.Sunday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.4,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'Timer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.4,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'Timer.Thursday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.4,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'Timer.Thursday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2285,8 +3197,28 @@ MsgDef('mc.4', 'Timer.Tuesday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.4,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'Timer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.4,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.4', 'Timer.Wednesday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.4,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.4', 'Timer.Wednesday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2335,6 +3267,10 @@ r,mc.5,CoolingStartOffset,,s,D1C,2,,
 MsgDef('mc.5', 'CoolingStartOffset', read=True)
     FieldDef(0, '', '', ('D1C',), dividervalues='2')
 
+w,mc.5,CoolingStartOffset,,m,D1C,2,,
+MsgDef('mc.5', 'CoolingStartOffset', write=True)
+    FieldDef(0, '', '', ('D1C',), dividervalues='2')
+
 r,mc.5,CoolingSupported,yesno,s,UCH,0=no;1=yes,,
 MsgDef('mc.5', 'CoolingSupported', read=True)
     FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
@@ -2350,6 +3286,16 @@ MsgDef('mc.5', 'coolingTimer.Friday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.5,coolingTimer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'coolingTimer.Friday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.5,coolingTimer.Monday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'coolingTimer.Monday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -2360,6 +3306,16 @@ MsgDef('mc.5', 'coolingTimer.Monday', read=True)
     FieldDef(5, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.5,coolingTimer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'coolingTimer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
 r,mc.5,coolingTimer.Saturday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'coolingTimer.Saturday', read=True)
@@ -2372,6 +3328,16 @@ MsgDef('mc.5', 'coolingTimer.Saturday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.5,coolingTimer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'coolingTimer.Saturday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.5,coolingTimer.Sunday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'coolingTimer.Sunday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -2382,6 +3348,16 @@ MsgDef('mc.5', 'coolingTimer.Sunday', read=True)
     FieldDef(5, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.5,coolingTimer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'coolingTimer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
 r,mc.5,coolingTimer.Thursday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'coolingTimer.Thursday', read=True)
@@ -2394,6 +3370,16 @@ MsgDef('mc.5', 'coolingTimer.Thursday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.5,coolingTimer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'coolingTimer.Thursday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.5,coolingTimer.Tuesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'coolingTimer.Tuesday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -2405,6 +3391,16 @@ MsgDef('mc.5', 'coolingTimer.Tuesday', read=True)
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.5,coolingTimer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'coolingTimer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.5,coolingTimer.Wednesday,,s,IGN:1,,,,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'coolingTimer.Wednesday', read=True)
     FieldDef(0, '', '', ('IGN:1',))
@@ -2415,6 +3411,16 @@ MsgDef('mc.5', 'coolingTimer.Wednesday', read=True)
     FieldDef(5, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
     FieldDef(6, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(7, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.5,coolingTimer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'coolingTimer.Wednesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
 r,mc.5,CoolingWhileHolidaySupported,,s,UCH,,,
 MsgDef('mc.5', 'CoolingWhileHolidaySupported', read=True)
@@ -2472,8 +3478,16 @@ r,mc.5,FlowTempMax,temp0,s,UCH,,°C,For a heat demand the desired flow temperatu
 MsgDef('mc.5', 'FlowTempMax', read=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
+w,mc.5,FlowTempMax,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will maximal be this value
+MsgDef('mc.5', 'FlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
 r,mc.5,FlowTempMin,temp0,s,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
 MsgDef('mc.5', 'FlowTempMin', read=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.5,FlowTempMin,temp0,m,UCH,,°C,For a heat demand the desired flow temperature will at least be this value
+MsgDef('mc.5', 'FlowTempMin', write=True)
     FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
 
 r,mc.5,HcManualWorkingModeTriggeringActive,,s,UCH,,,
@@ -2482,6 +3496,10 @@ MsgDef('mc.5', 'HcManualWorkingModeTriggeringActive', read=True)
 
 r,mc.5,HcMaxPreHeating,hours,s,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
 MsgDef('mc.5', 'HcMaxPreHeating', read=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
+
+w,mc.5,HcMaxPreHeating,hours,m,UCH,,h,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
+MsgDef('mc.5', 'HcMaxPreHeating', write=True)
     FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
 
 r,mc.5,HcMode,,s,UCH,,,
@@ -2500,12 +3518,20 @@ r,mc.5,HcPumpIdlePeriod,minutes0,s,UCH,,min,Time pump is not running in a pause 
 MsgDef('mc.5', 'HcPumpIdlePeriod', read=True)
     FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
 
+w,mc.5,HcPumpIdlePeriod,minutes0,m,UCH,,min,Time pump is not running in a pause at least
+MsgDef('mc.5', 'HcPumpIdlePeriod', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
 r,mc.5,HcPumpPort,onoff,s,UCH,0=off;1=on,,Status of mixer cicuit pump on MK1P
 MsgDef('mc.5', 'HcPumpPort', read=True)
     FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
 r,mc.5,HeatingCurve,curve,s,UIN,100,,Heating curve
 MsgDef('mc.5', 'HeatingCurve', read=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc.5,HeatingCurve,curve,m,UIN,100,,Heating curve
+MsgDef('mc.5', 'HeatingCurve', write=True)
     FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
 
 r,mc.5,IsInHoliday,,s,UCH,,,Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit
@@ -2519,6 +3545,10 @@ MsgDef('mc.5', 'IsInParty', read=True)
 r,mc.5,IsInStorageFilling,yesno,s,UCH,0=no;1=yes,,heating circuit is locked because of ongoing tank loading unless parallel loading has been activated
 MsgDef('mc.5', 'IsInStorageFilling', read=True)
     FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
+
+w,mc.5,load,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc.5', 'load', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
 r,mc.5,MixerDutyCycle,percents,s,SCH,,%,"Teleswitch,Pumpe,Zirkulationspumpe,WW Anforderung,WW Freigabe"
 MsgDef('mc.5', 'MixerDutyCycle', read=True)
@@ -2539,8 +3569,16 @@ r,mc.5,OperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Oper
 MsgDef('mc.5', 'OperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc.5,OperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Operating mode of mixer circuit
+MsgDef('mc.5', 'OperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc.5,OtShutdownLimit,desiredtemp,s,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
 MsgDef('mc.5', 'OtShutdownLimit', read=True)
+    FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C', comment='For outside temperatures higher than this, there is no heat demand generated anymore')
+
+w,mc.5,OtShutdownLimit,desiredtemp,m,UCH,,°C,"For outside temperatures higher than this, there is no heat demand generated anymore"
+MsgDef('mc.5', 'OtShutdownLimit', write=True)
     FieldDef(0, 'desiredtemp', 'desiredtemp', ('UCH',), unit='°C', comment='For outside temperatures higher than this, there is no heat demand generated anymore')
 
 r,mc.5,OutsideTemp,temp,s,D2C,,°C,current outside temperature (valid only if a sensor is connected to the VR60),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
@@ -2560,9 +3598,69 @@ MsgDef('mc.5', 'Params', read=True)
     FieldDef(7, 'temps.3', 'temps', ('SCH',), unit='°C', comment='Temperatur')
     FieldDef(8, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
 
+w,mc.5,party,onoff,m,UCH,0=off;1=on,,
+MsgDef('mc.5', 'party', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
+
 r,mc.5,RcRoomTemp,temp,s,D2C,,°C,Temperatur
 MsgDef('mc.5', 'RcRoomTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,mc.5,RoomTempOffset,temp,m,D2C,,°C,Temperatur
+MsgDef('mc.5', 'RoomTempOffset', write=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,mc.5,save,,m,TTH,,,
+MsgDef('mc.5', 'save', write=True)
+    FieldDef(0, '', '', ('TTH',))
+
+w,mc.5,SetFloorPavingDryingDay,days,m,UCH,,,Tage
+MsgDef('mc.5', 'SetFloorPavingDryingDay', write=True)
+    FieldDef(0, 'days', 'days', ('UCH',))
+
+w,mc.5,SetFloorPavingDryingTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.5', 'SetFloorPavingDryingTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.5,SetFlowTempMax,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.5', 'SetFlowTempMax', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.5,SetFlowTempMin,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.5', 'SetFlowTempMin', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.5,SetHeatingCurve,curve,m,UIN,100,,Heizkurve
+MsgDef('mc.5', 'SetHeatingCurve', write=True)
+    FieldDef(0, 'curve', 'curve', ('UIN',), dividervalues='100')
+
+w,mc.5,SetMaxPreHeating,hours12,m,UCH,-12,h,Stunden
+MsgDef('mc.5', 'SetMaxPreHeating', write=True)
+    FieldDef(0, 'hours12', 'hours12', ('UCH',), dividervalues='-12', unit='h')
+
+w,mc.5,SetMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
+MsgDef('mc.5', 'SetMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
+w,mc.5,SetPumpIdlePeriod,minutes0,m,UCH,,min,Minuten
+MsgDef('mc.5', 'SetPumpIdlePeriod', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
+w,mc.5,SetShutdownTemp,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.5', 'SetShutdownTemp', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.5,SetTempDesired,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.5', 'SetTempDesired', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.5,SetTempDesiredLow,temp0,m,UCH,,°C,Temperatur
+MsgDef('mc.5', 'SetTempDesiredLow', write=True)
+    FieldDef(0, 'temp0', 'temp0', ('UCH',), unit='°C')
+
+w,mc.5,SetType,mctype,m,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ
+MsgDef('mc.5', 'SetType', write=True)
+    FieldDef(0, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool')
 
 r,mc.5,Stat15MinBusTimeout,,s,UCH,,,
 MsgDef('mc.5', 'Stat15MinBusTimeout', read=True)
@@ -2623,12 +3721,24 @@ r,mc.5,TeleswitchOperatingMode,mcmode,s,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5
 MsgDef('mc.5', 'TeleswitchOperatingMode', read=True)
     FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
 
+w,mc.5,TeleswitchOperatingMode,mcmode,m,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,If the tele switch port is activated the mixer circuit operates in this mode
+MsgDef('mc.5', 'TeleswitchOperatingMode', write=True)
+    FieldDef(0, 'mcmode', 'mcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto;4=eco;5=low')
+
 r,mc.5,TempDesired,temp1,s,D1C,,°C,Day temperature setpoint of the circuit
 MsgDef('mc.5', 'TempDesired', read=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
+w,mc.5,TempDesired,temp1,m,D1C,,°C,Day temperature setpoint of the circuit
+MsgDef('mc.5', 'TempDesired', write=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
 r,mc.5,TempDesiredLow,temp1,s,D1C,,°C,Night temperature setpoint of the circuit
 MsgDef('mc.5', 'TempDesiredLow', read=True)
+    FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
+
+w,mc.5,TempDesiredLow,temp1,m,D1C,,°C,Night temperature setpoint of the circuit
+MsgDef('mc.5', 'TempDesiredLow', write=True)
     FieldDef(0, 'temp1', 'temp1', ('D1C',), unit='°C')
 
 r,mc.5,TempDiffInOutdoor,,s,D1C,2,,
@@ -2637,6 +3747,16 @@ MsgDef('mc.5', 'TempDiffInOutdoor', read=True)
 
 r,mc.5,Timer.Friday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'Timer.Friday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.5,Timer.Friday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'Timer.Friday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2655,8 +3775,28 @@ MsgDef('mc.5', 'Timer.Monday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.5,Timer.Monday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'Timer.Monday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.5,Timer.Saturday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'Timer.Saturday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.5,Timer.Saturday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'Timer.Saturday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2675,8 +3815,28 @@ MsgDef('mc.5', 'Timer.Sunday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.5,Timer.Sunday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'Timer.Sunday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.5,Timer.Thursday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'Timer.Thursday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.5,Timer.Thursday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'Timer.Thursday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2695,8 +3855,28 @@ MsgDef('mc.5', 'Timer.Tuesday', read=True)
     FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
     FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
 
+w,mc.5,Timer.Tuesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'Timer.Tuesday', write=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
 r,mc.5,Timer.Wednesday,from,s,TTM,,,Slots 1-3,to,s,TTM,,,bis,from,s,TTM,,,Slot 2 von/bis,to,s,TTM,,,bis,from,s,TTM,,,Slot 3 von/bis,to,s,TTM,,,bis,daysel,s,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
 MsgDef('mc.5', 'Timer.Wednesday', read=True)
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='bis')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='Slot 3 von/bis')
+    FieldDef(5, 'to.2', 'to', ('TTM',), comment='bis')
+    FieldDef(6, 'daysel', 'daysel', ('UCH',), dividervalues='0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So')
+
+w,mc.5,Timer.Wednesday,from,m,TTM,,,Slots 1-3,to,m,TTM,,,bis,from,m,TTM,,,Slot 2 von/bis,to,m,TTM,,,bis,from,m,TTM,,,Slot 3 von/bis,to,m,TTM,,,bis,daysel,m,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+MsgDef('mc.5', 'Timer.Wednesday', write=True)
     FieldDef(0, 'from.0', 'from', ('TTM',), comment='Slots 1-3')
     FieldDef(1, 'to.0', 'to', ('TTM',), comment='bis')
     FieldDef(2, 'from.1', 'from', ('TTM',), comment='Slot 2 von/bis')
@@ -2724,6 +3904,13 @@ MsgDef('rcc', 'HolidayPeriod', read=True)
     FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
     FieldDef(3, 'hto.1', 'hto', ('HDA',))
 
+w,rcc,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
+MsgDef('rcc', 'HolidayPeriod', write=True)
+    FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
+    FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(3, 'hto.1', 'hto', ('HDA',))
+
 r,rcc,LcdContrastPwmValue,,s,UCH,,,Displaykontrast
 MsgDef('rcc', 'LcdContrastPwmValue', read=True)
     FieldDef(0, '', '', ('UCH',))
@@ -2737,6 +3924,10 @@ r,rcc,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc', 'RoomTempHoliday', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
 
+w,rcc,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
+MsgDef('rcc', 'RoomTempHoliday', write=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
 r,rcc,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc', 'RoomTempOffset', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
@@ -2747,6 +3938,13 @@ MsgDef('rcc', 'RoomTempOffsetSelfWarming', read=True)
 
 r,rcc.3,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
 MsgDef('rcc.3', 'HolidayPeriod', read=True)
+    FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
+    FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(3, 'hto.1', 'hto', ('HDA',))
+
+w,rcc.3,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
+MsgDef('rcc.3', 'HolidayPeriod', write=True)
     FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
     FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
     FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
@@ -2765,6 +3963,10 @@ r,rcc.3,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.3', 'RoomTempHoliday', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
 
+w,rcc.3,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
+MsgDef('rcc.3', 'RoomTempHoliday', write=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
 r,rcc.3,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.3', 'RoomTempOffset', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
@@ -2775,6 +3977,13 @@ MsgDef('rcc.3', 'RoomTempOffsetSelfWarming', read=True)
 
 r,rcc.4,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
 MsgDef('rcc.4', 'HolidayPeriod', read=True)
+    FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
+    FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(3, 'hto.1', 'hto', ('HDA',))
+
+w,rcc.4,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
+MsgDef('rcc.4', 'HolidayPeriod', write=True)
     FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
     FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
     FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
@@ -2793,6 +4002,10 @@ r,rcc.4,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.4', 'RoomTempHoliday', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
 
+w,rcc.4,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
+MsgDef('rcc.4', 'RoomTempHoliday', write=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
 r,rcc.4,RoomTempOffset,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.4', 'RoomTempOffset', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
@@ -2803,6 +4016,13 @@ MsgDef('rcc.4', 'RoomTempOffsetSelfWarming', read=True)
 
 r,rcc.5,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
 MsgDef('rcc.5', 'HolidayPeriod', read=True)
+    FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
+    FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(3, 'hto.1', 'hto', ('HDA',))
+
+w,rcc.5,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
+MsgDef('rcc.5', 'HolidayPeriod', write=True)
     FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
     FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
     FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
@@ -2819,6 +4039,10 @@ MsgDef('rcc.5', 'RoomTemp', read=True)
 
 r,rcc.5,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.5', 'RoomTempHoliday', read=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,rcc.5,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
+MsgDef('rcc.5', 'RoomTempHoliday', write=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
 
 r,rcc.5,RoomTempOffset,temp,s,D2C,,°C,Temperatur
@@ -3170,6 +4394,10 @@ r,ui,ContinuousHeatingLimit,,s,SCH,,,"-128=off, Unterhalb der hier eingestellten
 MsgDef('ui', 'ContinuousHeatingLimit', read=True)
     FieldDef(0, '', '', ('SCH',), comment='-128=off, Unterhalb der hier eingestellten Temperatur wird die Nachtabsenkung unterdrückt. Die Kreise arbeiten mit dem eingestellten Tagsollwert weiter.')
 
+w,ui,ContinuousHeatingLimit,,m,SCH,,,"-128=off, Unterhalb der hier eingestellten Temperatur wird die Nachtabsenkung unterdrückt. Die Kreise arbeiten mit dem eingestellten Tagsollwert weiter."
+MsgDef('ui', 'ContinuousHeatingLimit', write=True)
+    FieldDef(0, '', '', ('SCH',), comment='-128=off, Unterhalb der hier eingestellten Temperatur wird die Nachtabsenkung unterdrückt. Die Kreise arbeiten mit dem eingestellten Tagsollwert weiter.')
+
 r,ui,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
 MsgDef('ui', 'currenterror', read=True)
     FieldDef(0, 'error.0', 'error', ('UIN',), comment='Fehlernummer')
@@ -3347,6 +4575,10 @@ r,ui,FrostOverRideTime,hours,s,UCH,,h,Stunden
 MsgDef('ui', 'FrostOverRideTime', read=True)
     FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
 
+w,ui,FrostOverRideTime,hours,m,UCH,,h,Stunden
+MsgDef('ui', 'FrostOverRideTime', write=True)
+    FieldDef(0, 'hours', 'hours', ('UCH',), unit='h')
+
 r,ui,HcForceMode,,s,UCH,,,"ForceComsumDisable=0, ForceComsumNoHeating=1, ForceComsumMaxHeating=2"
 MsgDef('ui', 'HcForceMode', read=True)
     FieldDef(0, '', '', ('UCH',), comment='ForceComsumDisable=0, ForceComsumNoHeating=1, ForceComsumMaxHeating=2')
@@ -3355,60 +4587,120 @@ r,ui,HcName10,hcname,s,STR:11,,,Name für den 2. Heizkreis
 MsgDef('ui', 'HcName10', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName10,hcname,m,STR:11,,,Name für den 2. Heizkreis
+MsgDef('ui', 'HcName10', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName11,hcname,s,STR:11,,,Name für den 11. Heizkreis
 MsgDef('ui', 'HcName11', read=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
+w,ui,HcName11,hcname,m,STR:11,,,Name für den 11. Heizkreis
+MsgDef('ui', 'HcName11', write=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
 r,ui,HcName12,hcname,s,STR:11,,,Name für den 12. Heizkreis
 MsgDef('ui', 'HcName12', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName12,hcname,m,STR:11,,,Name für den 12. Heizkreis
+MsgDef('ui', 'HcName12', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName13,hcname,s,STR:11,,,Name für den 13. Heizkreis
 MsgDef('ui', 'HcName13', read=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
+w,ui,HcName13,hcname,m,STR:11,,,Name für den 13. Heizkreis
+MsgDef('ui', 'HcName13', write=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
 r,ui,HcName14,hcname,s,STR:11,,,Name für den 14. Heizkreis
 MsgDef('ui', 'HcName14', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName14,hcname,m,STR:11,,,Name für den 14. Heizkreis
+MsgDef('ui', 'HcName14', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName15,hcname,s,STR:11,,,Name für den 15. Heizkreis
 MsgDef('ui', 'HcName15', read=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
+w,ui,HcName15,hcname,m,STR:11,,,Name für den 15. Heizkreis
+MsgDef('ui', 'HcName15', write=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
 r,ui,HcName1,hcname,s,STR:11,,,Name für den 1. Heizkreis
 MsgDef('ui', 'HcName1', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName1,hcname,m,STR:11,,,Name für den 1. Heizkreis
+MsgDef('ui', 'HcName1', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName2,hcname,s,STR:11,,,Name für den 2. Heizkreis
 MsgDef('ui', 'HcName2', read=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
+w,ui,HcName2,hcname,m,STR:11,,,Name für den 2. Heizkreis
+MsgDef('ui', 'HcName2', write=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
 r,ui,HcName3,hcname,s,STR:11,,,Name für den 3. Heizkreis
 MsgDef('ui', 'HcName3', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName3,hcname,m,STR:11,,,Name für den 3. Heizkreis
+MsgDef('ui', 'HcName3', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName4,hcname,s,STR:11,,,Name für den 4. Heizkreis
 MsgDef('ui', 'HcName4', read=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
+w,ui,HcName4,hcname,m,STR:11,,,Name für den 4. Heizkreis
+MsgDef('ui', 'HcName4', write=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
 r,ui,HcName5,hcname,s,STR:11,,,Name für den 5. Heizkreis
 MsgDef('ui', 'HcName5', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName5,hcname,m,STR:11,,,Name für den 5. Heizkreis
+MsgDef('ui', 'HcName5', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName6,hcname,s,STR:11,,,Name für den 6. Heizkreis
 MsgDef('ui', 'HcName6', read=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
+w,ui,HcName6,hcname,m,STR:11,,,Name für den 6. Heizkreis
+MsgDef('ui', 'HcName6', write=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
 r,ui,HcName7,hcname,s,STR:11,,,Name für den 8. Heizkreis
 MsgDef('ui', 'HcName7', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName7,hcname,m,STR:11,,,Name für den 8. Heizkreis
+MsgDef('ui', 'HcName7', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName8,hcname,s,STR:11,,,Name für den 8. Heizkreis
 MsgDef('ui', 'HcName8', read=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
+w,ui,HcName8,hcname,m,STR:11,,,Name für den 8. Heizkreis
+MsgDef('ui', 'HcName8', write=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
 r,ui,HcName9,hcname,s,STR:11,,,Name für den 9. Heizkreis
 MsgDef('ui', 'HcName9', read=True)
+    FieldDef(0, 'hcname', 'hcname', ('STR:11',))
+
+w,ui,HcName9,hcname,m,STR:11,,,Name für den 9. Heizkreis
+MsgDef('ui', 'HcName9', write=True)
     FieldDef(0, 'hcname', 'hcname', ('STR:11',))
 
 r,ui,HcPumpB1,onoff,s,UCH,0=off;1=on,,"Off=0, On=1"
@@ -3449,6 +4741,13 @@ MsgDef('ui', 'HcRequestAsc', read=True)
 
 r,ui,HolidayPeriod,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis,hfrom,s,HDA,,,Ferienzeitraum von,hto,s,HDA,,,Ferienzeitraum bis
 MsgDef('ui', 'HolidayPeriod', read=True)
+    FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
+    FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
+    FieldDef(3, 'hto.1', 'hto', ('HDA',))
+
+w,ui,HolidayPeriod,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis,hfrom,m,HDA,,,Ferienzeitraum von,hto,m,HDA,,,Ferienzeitraum bis
+MsgDef('ui', 'HolidayPeriod', write=True)
     FieldDef(0, 'hfrom.0', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
     FieldDef(1, 'hto.0', 'hto', ('HDA',), comment='Ferienzeitraum bis')
     FieldDef(2, 'hfrom.1', 'hfrom', ('HDA',), comment='Ferienzeitraum von')
@@ -3535,6 +4834,10 @@ r,ui,PreShutDownTime,minutes0,s,UCH,,min,Minuten
 MsgDef('ui', 'PreShutDownTime', read=True)
     FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
 
+w,ui,PreShutDownTime,minutes0,m,UCH,,min,Minuten
+MsgDef('ui', 'PreShutDownTime', write=True)
+    FieldDef(0, 'minutes0', 'minutes0', ('UCH',), unit='min')
+
 r,ui,RemoteDetected,,s,UCH,,,detected VR80 or VR90 (bit counted)
 MsgDef('ui', 'RemoteDetected', read=True)
     FieldDef(0, '', '', ('UCH',))
@@ -3546,6 +4849,10 @@ MsgDef('ui', 'RoomTemp', read=True)
 
 r,ui,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('ui', 'RoomTempHoliday', read=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,ui,RoomTempHoliday,temp,m,D2C,,°C,Temperatur
+MsgDef('ui', 'RoomTempHoliday', write=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
 
 r,ui,RoomTempOffset,temp,s,D2C,,°C,Temperatur
@@ -3608,6 +4915,10 @@ r,ui,SummerWinterTimeAdjust,onoff,s,UCH,0=off;1=on,,
 MsgDef('ui', 'SummerWinterTimeAdjust', read=True)
     FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
+w,ui,SummerWinterTimeAdjust,onoff,m,UCH,0=off;1=on,,
+MsgDef('ui', 'SummerWinterTimeAdjust', write=True)
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
+
 r,ui,SystemDemand1,,s,HEX:4,,,"Struct[TIte DesFlowTemp, Mode, CoolingReq]Mode: Off=0, Ch=1, Dhw=2, BoilerOverrun=3, BoilerPrerun=4CoolingReq: Off=0, On=1"
 MsgDef('ui', 'SystemDemand1', read=True)
     FieldDef(0, '', '', ('HEX:4',), comment='Struct[TIte DesFlowTemp, Mode, CoolingReq]Mode: Off=0, Ch=1, Dhw=2, BoilerOverrun=3, BoilerPrerun=4CoolingReq: Off=0, On=1')
@@ -3634,6 +4945,10 @@ MsgDef('ui', 'TempFailDetectTime', read=True)
 
 r,ui,TempIncrease,temp,s,D2C,,°C,Temperatur
 MsgDef('ui', 'TempIncrease', read=True)
+    FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
+
+w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur
+MsgDef('ui', 'TempIncrease', write=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C')
 
 r,ui,Time,time,s,VTI,,,Zeit

@@ -42,7 +42,14 @@ class MsgDefs:
 
     def add(self, msgdef):
         """Add Message Definition."""
-        self._msgdefs[msgdef.circuit][msgdef.name].append(msgdef)
+        msgdefs = self._msgdefs[msgdef.circuit][msgdef.name]
+        for idx, md in enumerate(msgdefs):
+            joined = md.join(msgdef)
+            if joined is not None:
+                msgdefs[idx] = joined
+                break
+        else:
+            msgdefs.append(msgdef)
 
     def get(self, circuit, name):
         """Retrieve circuit message of `circuit` with `name`."""

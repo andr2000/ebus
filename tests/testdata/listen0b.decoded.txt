@@ -585,7 +585,7 @@ hc Hc1PumpPort = off
   hc Hc1PumpPort ("onoff='off'",)
 
 hc HcMaxPreHeating = 0
-  hc HcMaxPreHeating ("='0min / 5'",)
+  hc HcMaxPreHeating ("hours='0h'",)
 
 hc HeatingCurve = 1.20
   hc HeatingCurve ('curve=1.2',)
@@ -827,7 +827,7 @@ mc.3 FlowTempMin = 15
   mc.3 FlowTempMin ("temp0='15°C'",)
 
 mc.3 HcMaxPreHeating = 0
-  mc.3 HcMaxPreHeating ("='0min / 5'",)
+  mc.3 HcMaxPreHeating ("hours='0h'",)
 
 mc.3 HcPumpIdlePeriod = 0
   mc.3 HcPumpIdlePeriod ("minutes0='0min'",)
@@ -1179,7 +1179,7 @@ mc FlowTempMin = 20
   mc FlowTempMin ("temp0='20°C'",)
 
 mc HcMaxPreHeating = 0
-  mc HcMaxPreHeating ("='0min / 5'",)
+  mc HcMaxPreHeating ("hours='0h'",)
 
 mc HcPumpIdlePeriod = 0
   mc HcPumpIdlePeriod ("minutes0='0min'",)
