@@ -70,4 +70,4 @@ def format_field(field):
     """Format Field Value."""
     comment = field.fielddef.comment
     details = f" [{comment}]" if comment else ""
-    return f"{field.ident:<40s} {field.unitvalue}{details}"
+    return f"{field.ident:<40s} {field.fielddef.msgdef.type_} {field.unitvalue}{details}"

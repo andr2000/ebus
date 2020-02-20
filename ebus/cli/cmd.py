@@ -28,7 +28,7 @@ def parse_args(subparsers):
 
 async def _main(args):
     e = create_ebus(args)
-    async for line in e.cmd(args.cmd, infinite=args.infinite):
+    async for line in e.cmd(args.cmd, infinite=args.infinite, check=not args.infinite):
         print(line)
 
 

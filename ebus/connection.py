@@ -84,7 +84,7 @@ class Connection:
         await self._checkline(line)
         return line
 
-    async def readlines(self, infinite=False):
+    async def readlines(self, infinite=False, check=False):
         """
         Receive lines until an empty one.
 
@@ -95,6 +95,8 @@ class Connection:
         await self._ensure_connection()
         while True:
             line = await self._readline()
+            if check:
+                await self._checkline(line)
             yield line
             if not line and not infinite:
                 break
@@ -115,7 +117,7 @@ class Connection:
             # consume everything until newline
             while await self._readline():
                 pass
-            raise CommandError(line)
+            raise CommandError(line.lstrip("ERR: "))
 
 
 class CommandError(RuntimeError):

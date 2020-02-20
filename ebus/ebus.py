@@ -17,6 +17,7 @@ _CMD_FINDMSGDEFS = "find -a -F type,circuit,name,fields"
 
 
 class Ebus:
+
     def __init__(self, host, port, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.
@@ -92,15 +93,22 @@ class Ebus:
         else:
             return self.msgdecoder.decode_value(msgdef, lines[0])
 
-    async def write(self, msgdef, value):
+    async def write(self, msgdef, value, ttl=None):
         """Write Message."""
         if not msgdef.write:
             raise ValueError(f"Message is not writeable '{msgdef}'")
-        try:
-            async for line in self.request("write", msgdef.name, value, c=msgdef.circuit):
-                pass
-        except CommandError as e:
-            _LOGGER.warn(f"{msgdef.ident}: {e!r}")
+        fullmsgdef = self.msgdefs.get(msgdef.circuit, msgdef.name)
+        if fullmsgdef != msgdef:
+            if not msgdef.read:
+                raise ValueError(f"Message is not read-modify-writable '{msgdef}'")
+            # read actual values
+            readline = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, m=ttl)])[0]
+            values = readline.split(";")
+            for fielddef in msgdef.fields:
+                values[fielddef.idx] = value
+            value = ";".join(values)
+        async for line in self.request("write", msgdef.name, value, c=msgdef.circuit, check=True):
+            pass
 
     async def listen(self, msgdefs=None):
         """Listen to EBUSD, decode and yield."""
@@ -149,19 +157,19 @@ class Ebus:
         async for msg in self.listen(msgdefs=msgdefs):
             yield msg
 
-    async def request(self, cmd, *args, infinite=False, **kwargs):
+    async def request(self, cmd, *args, infinite=False, check=False, **kwargs):
         """Assemble request, send and readlines."""
         parts = [cmd]
         parts += [f"-{option} {value}" for option, value in kwargs.items() if value is not None]
         parts += [str(arg) for arg in args]
         await self.connection.write(" ".join(parts))
-        async for line in self.connection.readlines(infinite=infinite):
+        async for line in self.connection.readlines(infinite=infinite, check=check):
             yield line
 
-    async def cmd(self, cmd, infinite=False):
+    async def cmd(self, cmd, infinite=False, check=False):
         """Send `cmd` to EBUSD and Receive Response."""
         await self.connection.write(cmd)
-        async for line in self.connection.readlines(infinite=infinite):
+        async for line in self.connection.readlines(infinite=infinite, check=check):
             yield line
 
     def _decode_line(self, line):

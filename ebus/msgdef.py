@@ -54,7 +54,13 @@ class MsgDef(_MsgDef, NodeMixin):
         if isinstance(other, MsgDef):
             return self.__ident() == other.__ident()
         else:
-            return False
+            return NotImplemented
+
+    def __ne__(self, other):
+        if isinstance(other, MsgDef):
+            return self.__ident() != other.__ident()
+        else:
+            return NotImplemented
 
     @property
     def fields(self):
@@ -127,6 +133,11 @@ class FieldDef(_FieldDef, NodeMixin):
     def _pre_detach(self, parent):
         # it is forbidden to remove fields from their message - create new one
         assert False, f"{self!r} is already used by {parent!r}"  # pragma: no cover
+
+    @property
+    def msgdef(self):
+        """Message Definition."""
+        return self.parent
 
     @property
     def ident(self):

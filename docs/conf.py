@@ -291,7 +291,7 @@ texinfo_documents = [
 intersphinx_mapping = {
     "python": ("http://docs.python.org/3", None),
 }
-intersphinx_cache_limit = 0
+intersphinx_cache_limit = 300
 
 autodoc_default_flags = ["members", "undoc-members", "show-inheritance"]
 autoclass_content = "both"
