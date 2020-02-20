@@ -13,7 +13,7 @@ from . import write
 
 def argvhandler(argv):
     """Command Line Interface."""
-    parser = argparse.ArgumentParser(prog="Ebus Tool")
+    parser = argparse.ArgumentParser(prog="ebustool")
     parser.add_argument("--version", action="version", version=__version__)
     parser.set_defaults(main=lambda args: _print_help(parser))
 

@@ -32,6 +32,7 @@ Python Client for EBUS daemon.
    :maxdepth: 2
 
    installation
+   cli
    api
 
 Getting started
