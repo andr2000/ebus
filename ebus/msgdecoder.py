@@ -8,8 +8,6 @@ from .typedecoder import TypeDecoder
 
 class MsgDecoder:
 
-    """Message Decoder."""
-
     _re_decode = re.compile(r"([A-z0-9]+(\.[A-z0-9]+)?) ([^\s]*) (= )?(.*)")
 
     def __init__(self, msgdefs):
@@ -24,7 +22,7 @@ class MsgDecoder:
 
     def decode_line(self, line):
         """
-        Decode `line` and yield :any:`Msg` instance.
+        Decode `line` and return :any:`Msg` instance.
 
         Raises:
             ValueError: if `line` does not match expected format.

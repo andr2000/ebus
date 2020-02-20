@@ -17,7 +17,6 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	sphinx-apidoc --output-dir apidoc.tmp .. ../ebus/cli/*.py ../docs ../tests ../*.py --separate --force
-	rsync -rvct apidoc.tmp/ ./ --exclude modules.rst
+	rsync -rvct apidoc.tmp/ ./ --exclude modules.rst --exclude ebus.rst
 	rm -rf apidoc.tmp
-	mv ebus.rst api.rst
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

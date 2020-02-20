@@ -20,7 +20,7 @@ def repr_(obj, args=None, kwargs=None):
 
 class UnbufferedStream:
     def __init__(self, stream):
-        """Write unbuffered to `stream`."""
+        """Unbuffered `stream`."""
         self.stream = stream
 
     def write(self, *args, **kwargs):

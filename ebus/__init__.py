@@ -23,4 +23,4 @@ from .msgdef import MsgDef  # noqa
 from .msgdefdecoder import decode_msgdef  # noqa
 from .msgdefs import MsgDefs  # noqa
 from .typedecoder import TypeDecoder
-from .typedecoder import get_pytype
+from .typedecoder import get_typename

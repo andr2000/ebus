@@ -63,7 +63,7 @@ async def load_msgdefs(e, args):
 
     print("Loading Message Definitions ... ", end="")
     await e.load_msgdefs()
-    print(f"{e.msgdefs.get_info()} DONE.")
+    print(f"{e.msgdefs.summary()} DONE.")
 
 
 def format_field(field):

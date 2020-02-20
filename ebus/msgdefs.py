@@ -8,13 +8,11 @@ from .msgdef import MsgDef
 
 class MsgDefs:
 
-    """Message Defs Container."""
-
     _re_resolve = re.compile(r"\A([^/#]+)/([^/#]+)(#(\d))?(/([^/#]*))?\Z")
 
     def __init__(self):
         """
-        Message Defs Container.
+        Message Definitions Container.
 
         >>> from .msgdef import MsgDef, FieldDef
         >>> msgdefs = MsgDefs()
@@ -33,11 +31,13 @@ class MsgDefs:
         MsgDef('mc', 'Status0a', (FieldDef(0, 'temp', ...'°C'), FieldDef(1, 'mixer', ..., unit='°C')), read=True)
         >>> list(msgdefs)
         [MsgDef('mc', 'Status0a', (FieldDef(0, 'temp', ...'°C'), FieldDef(1, 'mixer', ..., unit='°C')), read=True)]
+        >>> msgdefs.summary()
+        '2 messages (2 read, 0 update, 0 write) with 7 fields'
         """
         self.clear()
 
     def clear(self):
-        """Clear."""
+        """Remove All Stored Message Definitions."""
         self._msgdefs = collections.defaultdict(lambda: collections.defaultdict(list))
 
     def add(self, msgdef):
@@ -45,7 +45,7 @@ class MsgDefs:
         self._msgdefs[msgdef.circuit][msgdef.name].append(msgdef)
 
     def get(self, circuit, name):
-        """Retrieve circuit message."""
+        """Retrieve circuit message of `circuit` with `name`."""
         msgdefs = self._msgdefs
         if circuit in msgdefs:
             circuitmsgdefs = msgdefs[circuit]
@@ -53,7 +53,7 @@ class MsgDefs:
                 return circuitmsgdefs[name][0]
 
     def find(self, circuit, name="*"):
-        """Find Message Definitions."""
+        """Find Message Definitions of `circuit` with `name`."""
         msgdefs = MsgDefs()
         for msgdef in self:
             if fnmatchcase(msgdef.circuit, circuit) and fnmatchcase(msgdef.name, name):
@@ -61,11 +61,11 @@ class MsgDefs:
         return msgdefs
 
     def resolve(self, patterns, filter_=None):
-        """Resolve patterns."""
+        """Resolve patterns and filter message definitions."""
         msgdefs = MsgDefs()
-        for pattern in patterns.split(";"):
+        for pattern in patterns:
             for msgdef in self._resolve(pattern.strip()):
-                if (filter_ is None or filter_(msgdef)) and msgdef not in msgdefs:
+                if msgdef not in msgdefs and (filter_ is None or filter_(msgdef)):
                     msgdefs.add(msgdef)
         return msgdefs
 
@@ -99,8 +99,8 @@ class MsgDefs:
         else:
             raise ValueError(f"Invalid pattern {pattern!r}")
 
-    def get_info(self):
-        """Human Information."""
+    def summary(self):
+        """Summary."""
         total = len(self)
         fields = sum(len(msgdef.fields) for msgdef in self)
         read = sum([1 for msgdef in self if msgdef.read])

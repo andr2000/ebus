@@ -1,6 +1,6 @@
 import asyncio
 
-from ..typedecoder import get_pytype
+from ..typedecoder import get_typename
 from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import add_patterns_arg
@@ -22,13 +22,13 @@ async def _main(args):
     disable_stdout_buffering()
     e = create_ebus(args)
     await load_msgdefs(e, args)
-    for msgdef in e.msgdefs.resolve(args.patterns):
+    for msgdef in e.msgdefs.resolve(args.patterns.split(";")):
         for fielddef in msgdef.fields:
             values = fielddef.values
             if values:
                 details = "/".join(fielddef.values.values())
             else:
-                details = get_pytype(fielddef.types[0]) or ""
+                details = get_typename(fielddef.types[0]) or ""
             if fielddef.comment:
                 details += f"[{fielddef.comment}]"
             print(f"{fielddef.ident:<40s} {msgdef.type_} {details}")

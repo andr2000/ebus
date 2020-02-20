@@ -26,7 +26,7 @@ def test_msgdefs():
                 pass
 
     eq_(len(msgdefs), 700)
-    eq_(msgdefs.get_info(), "700 messages (688 read, 12 update, 4 write) with 1583 fields")
+    eq_(msgdefs.summary(), "700 messages (688 read, 12 update, 4 write) with 1583 fields")
 
     eq_(msgdefs.get("bai", "foo"), None)
     eq_(msgdefs.get("bar", "foo"), None)
@@ -38,14 +38,14 @@ def test_msgdefs():
     )
 
     with assert_raises(ValueError):
-        msgdefs.resolve("a/")
+        msgdefs.resolve(["a/"])
     with assert_raises(ValueError):
-        msgdefs.resolve("a/b/c/")
+        msgdefs.resolve(["a/b/c/"])
     with assert_raises(ValueError):
-        msgdefs.resolve("/b/")
+        msgdefs.resolve(["/b/"])
 
     eq_(
-        list(msgdefs.resolve("*/FlowTempDesired/temp1;cc/StatPowerOn;hc/FlowTemp*")),
+        list(msgdefs.resolve(["*/FlowTempDesired/temp1", "cc/StatPowerOn", "hc/FlowTemp*"])),
         [
             MsgDef("hc", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
             MsgDef("hc", "FlowTempMax", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True),
@@ -57,9 +57,9 @@ def test_msgdefs():
             MsgDef("cc", "StatPowerOn", (FieldDef(0, "", "", ("UIN",)),), read=True),
         ],
     )
-    eq_(list(msgdefs.resolve("mc.5/Timer.*/foo")), [])
+    eq_(list(msgdefs.resolve(["mc.5/Timer.*/foo"])), [])
     eq_(
-        list(msgdefs.resolve("mc.5/Timer.*/to*")),
+        list(msgdefs.resolve(["mc.5/Timer.*/to*"])),
         [
             MsgDef(
                 "mc.5",
@@ -134,7 +134,7 @@ def test_msgdefs():
         ],
     )
     eq_(
-        list(msgdefs.resolve("mc.5/Timer.Friday#3/to*")),
+        list(msgdefs.resolve(["mc.5/Timer.Friday#3/to*"])),
         [
             MsgDef(
                 "mc.5",

@@ -4,7 +4,6 @@ import logging
 
 from .connection import CommandError
 from .connection import Connection
-from .const import CMD_FINDMSGDEFS
 from .msg import Msg
 from .msg import filter_msg
 from .msgdecoder import MsgDecoder
@@ -14,6 +13,7 @@ from .msgdefs import MsgDefs
 from .util import repr_
 
 _LOGGER = logging.getLogger(__name__)
+_CMD_FINDMSGDEFS = "find -a -F type,circuit,name,fields"
 
 
 class Ebus:
@@ -49,7 +49,7 @@ class Ebus:
         """Wait until scan is completed."""
         cnts = []
         while True:
-            cnt = sum([1 async for line in self.request(CMD_FINDMSGDEFS)])
+            cnt = sum([1 async for line in self.request(_CMD_FINDMSGDEFS)])
             cnts.append(cnt)
             if len(cnts) < 4 or cnts[-4] != cnts[-3] or cnts[-3] != cnts[-2] or cnts[-2] != cnts[-1]:
                 yield cnt
@@ -66,7 +66,7 @@ class Ebus:
         """
         self.msgdefs.clear()
         msgdefs = []
-        async for line in self.request(CMD_FINDMSGDEFS):
+        async for line in self.request(_CMD_FINDMSGDEFS):
             if line:
                 try:
                     msgdef = decode_msgdef(line)

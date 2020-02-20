@@ -1,14 +1,10 @@
-ebus package
-============
-
-Submodules
-----------
+API
+===
 
 .. toctree::
 
    ebus.circuitmap
    ebus.connection
-   ebus.const
    ebus.ebus
    ebus.msg
    ebus.msgdecoder
@@ -17,11 +13,3 @@ Submodules
    ebus.msgdefs
    ebus.typedecoder
    ebus.util
-
-Module contents
----------------
-
-.. automodule:: ebus
-    :members:
-    :undoc-members:
-    :show-inheritance:

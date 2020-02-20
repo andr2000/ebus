@@ -41,8 +41,19 @@ _PYTYPEMAP = {
 }
 
 
-def get_pytype(type_):
-    """Get Python Type `type`."""
+def get_typename(type_):
+    """
+    Get our name for EBUSD `type`.
+
+    >>> get_typename('hda')
+    'date'
+    >>> get_typename('hti')
+    'hhmmss'
+    >>> get_typename('flt')
+    'float'
+    >>> get_typename('uin')
+    'int'
+    """
     name = type_.split(":")[0].lower()
     return _PYTYPEMAP.get(name, None)
 
@@ -57,26 +68,34 @@ class TypeDecoder:
 
     >>> import ebus
     >>> typedecoder = ebus.TypeDecoder()
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("uin",), None, None)
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("uin",))
     >>> typedecoder(fielddef, '7')
     7
 
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("hda",))
+    >>> typedecoder(fielddef, '21.1.2019')
+    datetime.date(2019, 1, 21)
+
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("hti",))
+    >>> typedecoder(fielddef, '22:55:03')
+    datetime.time(22, 55, 3)
+
     Unknown types are just handled as strings:
 
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("foo",), None, None)
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("foo",))
     >>> typedecoder(fielddef, '7')
     '7'
 
     Unknown values become `None`:
 
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("bi0",), None, None)
+    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("bi0",))
     >>> typedecoder(fielddef, '-')
     """
 
     def __call__(self, fielddef, value):
         """Convert `value` to python value."""
         if fielddef.values is None:
-            pytype = get_pytype(fielddef.types[0])
+            pytype = get_typename(fielddef.types[0])
             if pytype:
                 method = getattr(self, "_" + pytype)
                 value = method(fielddef, value)
