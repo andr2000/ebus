@@ -124,6 +124,7 @@ MsgDef('b7v', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='time')
     FieldDef(3, 'date', 'date', ('HDA',), comment='date')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,b7v,FrostOverRideTime,,s,IGN:4,,,,hoursum2,s,UIN,,h,delay before frost protection is activated
 MsgDef('b7v', 'FrostOverRideTime', read=True)
@@ -1463,6 +1464,7 @@ MsgDef('bai', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='time')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='date')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,bai,dcfState,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Status
 MsgDef('bai', 'dcfState', read=True)
@@ -1472,6 +1474,7 @@ r,bai,DCFTimeDate,,s,VTI,,,DCF Time / date stamp struct { uchar sec; uchar min; 
 MsgDef('bai', 'DCFTimeDate', read=True)
     FieldDef(0, '.0', '', ('VTI',), comment='DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;')
     FieldDef(1, '.1', '', ('HDA',))
+    VirtFieldDef('+.1+.0')
 
 r,bai,DCRoomthermostat,onoff,s,UCH,0=off;1=on,,xternal controls heat demand (Clamp 3-4)
 MsgDef('bai', 'DCRoomthermostat', read=True)
@@ -1524,6 +1527,7 @@ MsgDef('bai', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='time')
     FieldDef(3, 'date', 'date', ('HDA',), comment='date')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,bai,ExternalFaultmessage,onoff,s,UCH,0=off;1=on,,External fault message
 MsgDef('bai', 'ExternalFaultmessage', read=True)
@@ -1609,6 +1613,7 @@ r,bai,FlowTemp,temp,s,D2C,,°C,CH supply temperature sensor (VF2),sensor,s,UCH,0
 MsgDef('bai', 'FlowTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='CH supply temperature sensor (VF2)')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,FlowTempDesired,temp,s,D2C,,°C,Flow temperature target value or return target value when return regulation is set
 MsgDef('bai', 'FlowTempDesired', read=True)
@@ -1698,6 +1703,7 @@ r,bai,HwcTemp,temp,s,D2C,,°C,Hot water flow temperature,sensor,s,UCH,0=ok;85=ci
 MsgDef('bai', 'HwcTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Hot water flow temperature')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,HwcTempDesired,temp,s,D2C,,°C,Hot water temperature target value
 MsgDef('bai', 'HwcTempDesired', read=True)
@@ -1759,6 +1765,7 @@ r,bai,OutdoorstempSensor,temp,s,D2C,,°C,Outdoor temperature sensor (uncorrected
 MsgDef('bai', 'OutdoorstempSensor', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Outdoor temperature sensor (uncorrected value) value and status')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,OverflowCounter,yesno,s,UCH,0=no;1=yes,,Predictive Maintenance counter have got an overflow
 MsgDef('bai', 'OverflowCounter', read=True)
@@ -1885,11 +1892,13 @@ MsgDef('bai', 'ReturnTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='CH return temperature sensor')
     FieldDef(1, 'tempmirror', 'tempmirror', ('UIN',))
     FieldDef(2, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,ReturnTempExternal,temp,s,D2C,,°C,External return temperature sensor,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'ReturnTempExternal', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='External return temperature sensor')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,ReturnTempMax,temp,s,D2C,,°C,Max flow return temperature
 MsgDef('bai', 'ReturnTempMax', read=True)
@@ -1999,6 +2008,7 @@ r,bai,StorageTemp,temp,s,D2C,,°C,Current temperature for warm start sensor (com
 MsgDef('bai', 'StorageTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Current temperature for warm start sensor (combi boiler) / Current storage tank sensor (system boiler only)')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,StorageTempDesired,temp,s,D2C,,°C,Warm start temperature value (combi boiler only); Storage temperature target value (system boiler only)
 MsgDef('bai', 'StorageTempDesired', read=True)
@@ -2080,6 +2090,7 @@ r,bai,WaterPressure,press,s,FLT,,bar,CH water pressure,sensor,s,UCH,0=ok;85=circ
 MsgDef('bai', 'WaterPressure', read=True)
     FieldDef(0, 'press', 'press', ('FLT',), unit='bar', comment='CH water pressure')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+press+sensor')
 
 r,bai,WaterpressureBranchControlOff,onoff,s,UCH,0=off;1=on,,Water pressure branch control switch
 MsgDef('bai', 'WaterpressureBranchControlOff', read=True)
@@ -2110,6 +2121,7 @@ MsgDef('broadcast', 'datetime', update=True)
     FieldDef(0, 'outsidetemp', 'outsidetemp', ('D2B',), unit='°C', comment='temperature')
     FieldDef(1, 'time', 'time', ('BTI',), comment='time')
     FieldDef(2, 'date', 'date', ('BDA',))
+    VirtFieldDef('+date+time')
 
 u,broadcast,error,error,m,STR:10,,,
 MsgDef('broadcast', 'error', update=True)
@@ -2150,6 +2162,7 @@ u,broadcast,vdatetime,time,m,BTI,,,,date,m,BDA,,,
 MsgDef('broadcast', 'vdatetime', update=True)
     FieldDef(0, 'time', 'time', ('BTI',))
     FieldDef(1, 'date', 'date', ('BDA',))
+    VirtFieldDef('+date+time')
 
 r,general,valuerange,id,m,UIN,,,register number,,s,IGN:2,,,,cur,s,UIN,,,current value,min,s,UIN,,,minimum value,max,s,UIN,,,maximum value,def,s,UIN,,,default value
 MsgDef('general', 'valuerange', read=True)

@@ -42,13 +42,13 @@ bai currenterror = -;-;-;-;-
   bai currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 bai DateTime = nosignal;-:-:-;-.-.-;-
-  bai DateTime ("dcfstate='nosignal'", 'btime=None', 'bdate=None', 'temp2=None')
+  bai DateTime ("dcfstate='nosignal'", 'btime=None', 'bdate=None', 'temp2=None', '+bdate+btime+dcfstate=None')
 
 bai dcfState = nosignal
   bai dcfState ("dcfstate='nosignal'",)
 
 bai DCFTimeDate = 20:53:00;30.01.2020
-  bai DCFTimeDate ('.0=datetime.time(20, 53)', '.1=datetime.date(2020, 1, 30)')
+  bai DCFTimeDate ('.0=datetime.time(20, 53)', '.1=datetime.date(2020, 1, 30)', '+.1+.0=datetime.datetime(2020, 1, 30, 20, 53)')
 
 bai DCRoomthermostat = on
   bai DCRoomthermostat ("onoff='on'",)
@@ -143,7 +143,7 @@ bai FlowsetHwcMax = 75.00
   bai FlowsetHwcMax ("temp='75.0°C'",)
 
 bai FlowTemp = 40.12;ok
-  bai FlowTemp ("temp='40.12°C'", "sensor='ok'")
+  bai FlowTemp ("temp='40.12°C'", "sensor='ok'", "+temp+sensor='40.12°C'")
 
 bai FlowTempDesired = 40.00
   bai FlowTempDesired ("temp='40.0°C'",)
@@ -206,7 +206,7 @@ bai HwcSwitch = on
   bai HwcSwitch ("onoff='on'",)
 
 bai HwcTemp = 116.06;circuit
-  bai HwcTemp ("temp='116.06°C'", "sensor='circuit'")
+  bai HwcTemp ("temp='116.06°C'", "sensor='circuit'", "+temp+sensor='circuit'")
 
 bai HwcTempMax = 70.00
   bai HwcTempMax ("temp='70.0°C'",)
@@ -245,7 +245,7 @@ bai OptionalRelais = extheatingpump
   bai OptionalRelais ("='extheatingpump'",)
 
 bai OutdoorstempSensor = -60.44;cutoff
-  bai OutdoorstempSensor ("temp='-60.44°C'", "sensor='cutoff'")
+  bai OutdoorstempSensor ("temp='-60.44°C'", "sensor='cutoff'", "+temp+sensor='cutoff'")
 
 bai OverflowCounter = yes
   bai OverflowCounter ("yesno='yes'",)
@@ -329,7 +329,7 @@ bai PumpPower = 100
   bai PumpPower ('=100',)
 
 bai PumpPowerDesired = 100
-  bai PumpPowerDesired ("='100%'",)
+  bai PumpPowerDesired ("='100'",)
 
 bai RemainingBoilerblocktime = 0
   bai RemainingBoilerblocktime ("minutes0='0min'",)
@@ -338,10 +338,10 @@ bai ReturnRegulation = off
   bai ReturnRegulation ("onoff='off'",)
 
 bai ReturnTemp = 33.44;65000;ok
-  bai ReturnTemp ("temp='33.44°C'", 'tempmirror=65000', "sensor='ok'")
+  bai ReturnTemp ("temp='33.44°C'", 'tempmirror=65000', "sensor='ok'", "+temp+sensor='33.44°C'")
 
 bai ReturnTempExternal = -1.81;cutoff
-  bai ReturnTempExternal ("temp='-1.81°C'", "sensor='cutoff'")
+  bai ReturnTempExternal ("temp='-1.81°C'", "sensor='cutoff'", "+temp+sensor='cutoff'")
 
 bai ReturnTempMax = 82.94
   bai ReturnTempMax ("temp='82.94°C'",)
@@ -353,7 +353,7 @@ bai SetFactoryValues = no
   bai SetFactoryValues ("yesno='no'",)
 
 bai SetMode = auto;41.0;-;-;0;0;0;0;0;0
-  bai SetMode ("hcmode='auto'", "flowtempdesired='41.0°C'", 'hwctempdesired=None', 'hwcflowtempdesired=None', ".0='0'", 'disablehc=False', "disablehwctapping='0'", "disablehwcload='0'", ".1='0'", 'remoteControlHcPump=False')
+  bai SetMode ("hcmode='auto'", "flowtempdesired='41.0°C'", 'hwctempdesired=None', 'hwcflowtempdesired=None', ".0='0'", 'disablehc=False', "disablehwctapping='0'", "disablehwcload='0'", ".1='0'", 'remoteControlHcPump=False', "releaseBackup=''", "releaseCooling=''")
 
 bai SHEMaxDeltaHwcFlow = 0.00
   bai SHEMaxDeltaHwcFlow ("temp='0.0°C'",)
@@ -380,7 +380,7 @@ bai StorageDelay = 0
   bai StorageDelay ("minutes0='0min'",)
 
 bai StorageExitTemp = 116.06;circuit
-  bai StorageExitTemp ("temp='116.06°C'", "sensor='circuit'")
+  bai StorageExitTemp ("temp='116.06°C'", "sensor='circuit'", "+temp+sensor='circuit'")
 
 bai Storageloadpump = 0
   bai Storageloadpump ("percent0='0%'",)
@@ -395,7 +395,7 @@ bai StorageLoadTimeMax = 45
   bai StorageLoadTimeMax ("minutes0='45min'",)
 
 bai StorageTemp = -14.94;cutoff
-  bai StorageTemp ("temp='-14.94°C'", "sensor='cutoff'")
+  bai StorageTemp ("temp='-14.94°C'", "sensor='cutoff'", "+temp+sensor='cutoff'")
 
 bai StorageTempDesired = 60.00
   bai StorageTempDesired ("temp='60.0°C'",)
@@ -449,7 +449,7 @@ bai WaterHcFlowMax = 3063
   bai WaterHcFlowMax ('=3063',)
 
 bai WaterPressure = 2.125;ok
-  bai WaterPressure ("press='2.125bar'", "sensor='ok'")
+  bai WaterPressure ("press='2.125bar'", "sensor='ok'", "+press+sensor='2.125bar'")
 
 bai WaterpressureBranchControlOff = off
   bai WaterpressureBranchControlOff ("onoff='off'",)
@@ -470,7 +470,7 @@ bai WPSecondStage = on
   bai WPSecondStage ("onoff='on'",)
 
 broadcast datetime = 2.500;20:57:00;30.01.2020
-  broadcast datetime ("outsidetemp='2.5°C'", 'time=datetime.time(20, 57)', 'date=datetime.date(2020, 1, 30)')
+  broadcast datetime ("outsidetemp='2.5°C'", 'time=datetime.time(20, 57)', 'date=datetime.date(2020, 1, 30)', '+date+time=datetime.datetime(2020, 1, 30, 20, 57)')
 
 broadcast error = ERR: no data stored
 
@@ -486,21 +486,21 @@ broadcast outsidetemp = 2.500
 broadcast signoflife = ERR: no data stored
 
 broadcast vdatetime = 20:56:04;30.01.2020
-  broadcast vdatetime ('time=datetime.time(20, 56, 4)', 'date=datetime.date(2020, 1, 30)')
+  broadcast vdatetime ('time=datetime.time(20, 56, 4)', 'date=datetime.date(2020, 1, 30)', '+date+time=datetime.datetime(2020, 1, 30, 20, 56, 4)')
 
 cc currenterror = -;-;-;-;-
   cc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 cc DateTime = valid;20:57:48;30.01.2020;2.500
-  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
+  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
 
 cc errorhistory = ERR: end of input reached
 
 cc Mode = 30;auto;off;6;00;day
-  cc Mode ("temp0='30°C'", "hwcmode.0='auto'", ".0='off'", "hwcmode.1='6'", "mctype7='00'", ".1='day'")
+  cc Mode ("temp0='30°C'", "hwcmode.0='auto'", ".0='off'", "hwcmode.1='6'", "mctype7='00'", ".1='day'", "daynight=''")
 
 cc Params = 30;6;22;15;75
-  cc Params ("temp0='30°C'", ".0='6'", "mctype7='22'", "temps.0='15°C'", ".1='75'")
+  cc Params ("temp0='30°C'", ".0='6'", "mctype7='22'", "temps.0='15°C'", ".1='75'", 'temps.1=None', 'temps.2=None', ".2=''")
 
 cc Stat15MinBusTimeout = 0
   cc Stat15MinBusTimeout ('=0',)
@@ -568,7 +568,7 @@ hc currenterror = -;-;-;-;-
   hc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 hc DateTime = valid;20:56:54;30.01.2020;2.500
-  hc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 56, 54)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
+  hc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 56, 54)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
 
 hc errorhistory = ERR: end of input reached
 
@@ -606,7 +606,7 @@ hc OtShutdownLimit = 21
   hc OtShutdownLimit ("desiredtemp='21°C'",)
 
 hc OutsideTemp = 2.50;ok
-  hc OutsideTemp ("temp='2.5°C'", "sensor='ok'")
+  hc OutsideTemp ("temp='2.5°C'", "sensor='ok'", "+temp+sensor='2.5°C'")
 
 hc SetMode = ERR: no data stored
 
@@ -646,7 +646,7 @@ hc StatYearOfInstallation = 18
   hc StatYearOfInstallation ('=18',)
 
 hc SumFlowSensor = 39.44;ok
-  hc SumFlowSensor ("temp='39.44°C'", "sensor='ok'")
+  hc SumFlowSensor ("temp='39.44°C'", "sensor='ok'", "+temp+sensor='39.44°C'")
 
 hc TeleSwitch = off
   hc TeleSwitch ("onoff='off'",)
@@ -688,7 +688,7 @@ hwc currenterror = -;-;-;-;-
   hwc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 hwc DateTime = valid;20:58:45;30.01.2020;2.500
-  hwc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 58, 45)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
+  hwc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 58, 45)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
 
 hwc errorhistory = ERR: end of input reached
 
@@ -717,7 +717,7 @@ hwc LegioStartDay2 = 0
   hwc LegioStartDay2 ('=0',)
 
 hwc Mode = 60;auto;off;hwc;00;day
-  hwc Mode ("temp0='60°C'", "hwcmode.0='auto'", ".0='off'", "hwcmode.1='hwc'", "mctype7='00'", ".1='day'")
+  hwc Mode ("temp0='60°C'", "hwcmode.0='auto'", ".0='off'", "hwcmode.1='hwc'", "mctype7='00'", ".1='day'", "daynight=''")
 
 hwc OneTimeCirSwitch = off
   hwc OneTimeCirSwitch ("onoff='off'",)
@@ -726,7 +726,7 @@ hwc OperatingMode2 = auto
   hwc OperatingMode2 ("mcmode='auto'",)
 
 hwc Params = 60;hwc;22;15;90
-  hwc Params ("temp0='60°C'", ".0='hwc'", "mctype7='22'", "temps.0='15°C'", ".1='90'")
+  hwc Params ("temp0='60°C'", ".0='hwc'", "mctype7='22'", "temps.0='15°C'", ".1='90'", 'temps.1=None', 'temps.2=None', ".2=''")
 
 hwc Stat15MinBusTimeout = 0
   hwc Stat15MinBusTimeout ('=0',)
@@ -762,7 +762,7 @@ hwc StatYearOfInstallation = 18
   hwc StatYearOfInstallation ('=18',)
 
 hwc Storage1Sensor2 = 55.38;ok
-  hwc Storage1Sensor2 ("temp='55.38°C'", "sensor='ok'")
+  hwc Storage1Sensor2 ("temp='55.38°C'", "sensor='ok'", "+temp+sensor='55.38°C'")
 
 hwc TeleSwitch = off
   hwc TeleSwitch ("onoff='off'",)
@@ -807,7 +807,7 @@ mc.3 currenterror = -;-;-;-;-
   mc.3 currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc.3 DateTime = valid;20:59:00;30.01.2020;2.500
-  mc.3 DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 59)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
+  mc.3 DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 59)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
 
 mc.3 errorhistory = ERR: end of input reached
 
@@ -815,7 +815,7 @@ mc.3 FloorPavingDryingDay = 0
   mc.3 FloorPavingDryingDay ('=0',)
 
 mc.3 FlowTemp = 38.81;ok
-  mc.3 FlowTemp ("temp='38.81°C'", "sensor='ok'")
+  mc.3 FlowTemp ("temp='38.81°C'", "sensor='ok'", "+temp+sensor='38.81°C'")
 
 mc.3 FlowTempDesired = 40.5
   mc.3 FlowTempDesired ("temp1='40.5°C'",)
@@ -851,7 +851,7 @@ mc.3 MixerDutyCycle = 14
   mc.3 MixerDutyCycle ('=14',)
 
 mc.3 Mode = 26;auto;0;0;low;mixer;day
-  mc.3 Mode ("temp0.0='26°C'", "mcmode.0='auto'", 'days=0', "temp0.1='0°C'", "mcmode.1='low'", "mctype7='mixer'", "='day'")
+  mc.3 Mode ("temp0.0='26°C'", "mcmode.0='auto'", 'days=0', "temp0.1='0°C'", "mcmode.1='low'", "mctype7='mixer'", "='day'", "daynight=''")
 
 mc.3 OperatingMode = auto
   mc.3 OperatingMode ("mcmode='auto'",)
@@ -959,25 +959,25 @@ mc.4 CoolingSupported = yes
   mc.4 CoolingSupported ("yesno='yes'",)
 
 mc.4 coolingTimer.Friday = 00:00;-:-;-:-;-:-;-:-;-:-;Mo-Fr
-  mc.4 coolingTimer.Friday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+  mc.4 coolingTimer.Friday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel=''")
 
 mc.4 coolingTimer.Monday = 00:00;-:-;-:-;-:-;-:-;-:-;Mo-Fr
-  mc.4 coolingTimer.Monday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+  mc.4 coolingTimer.Monday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel=''")
 
 mc.4 coolingTimer.Saturday = 00:00;-:-;-:-;-:-;-:-;-:-;Mo-Fr
-  mc.4 coolingTimer.Saturday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+  mc.4 coolingTimer.Saturday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel=''")
 
 mc.4 coolingTimer.Sunday = 00:00;-:-;-:-;-:-;-:-;-:-;Mo-Fr
-  mc.4 coolingTimer.Sunday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+  mc.4 coolingTimer.Sunday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel=''")
 
 mc.4 coolingTimer.Thursday = 00:00;-:-;-:-;-:-;-:-;-:-;Mo-Fr
-  mc.4 coolingTimer.Thursday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+  mc.4 coolingTimer.Thursday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel=''")
 
 mc.4 coolingTimer.Tuesday = 00:00;-:-;-:-;-:-;-:-;-:-;Mo-Fr
-  mc.4 coolingTimer.Tuesday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+  mc.4 coolingTimer.Tuesday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel=''")
 
 mc.4 coolingTimer.Wednesday = 00:00;-:-;-:-;-:-;-:-;-:-;Mo-Fr
-  mc.4 coolingTimer.Wednesday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None')
+  mc.4 coolingTimer.Wednesday ("='00:00'", 'from.0=None', 'to.0=None', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel=''")
 
 mc.4 CoolingWhileHolidaySupported = 0
   mc.4 CoolingWhileHolidaySupported ('=0',)
@@ -986,7 +986,7 @@ mc.4 currenterror = -;-;-;-;-
   mc.4 currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc.4 DateTime = nosignal;20:59:30;30.01.2020;-69.000
-  mc.4 DateTime ("dcfstate='nosignal'", 'btime=datetime.time(20, 59, 30)', 'bdate=datetime.date(2020, 1, 30)', "temp2='-69.0°C'")
+  mc.4 DateTime ("dcfstate='nosignal'", 'btime=datetime.time(20, 59, 30)', 'bdate=datetime.date(2020, 1, 30)', "temp2='-69.0°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'nosignal')")
 
 mc.4 DWMOffToCoolingDelay = 6
   mc.4 DWMOffToCoolingDelay ('=6',)
@@ -1003,7 +1003,7 @@ mc.4 FloorPavingDryingDay = 0
   mc.4 FloorPavingDryingDay ('=0',)
 
 mc.4 FlowTemp = 38.12;ok
-  mc.4 FlowTemp ("temp='38.12°C'", "sensor='ok'")
+  mc.4 FlowTemp ("temp='38.12°C'", "sensor='ok'", "+temp+sensor='38.12°C'")
 
 mc.4 FlowTempDesired = 37.5
   mc.4 FlowTempDesired ("temp1='37.5°C'",)
@@ -1051,7 +1051,7 @@ mc.4 MixerDutyCycle = -5
   mc.4 MixerDutyCycle ("percents='-5%'",)
 
 mc.4 Mode = 24;auto;0;0;low;mixer;day
-  mc.4 Mode ("temp0.0='24°C'", "mcmode.0='auto'", 'days=0', "temp0.1='0°C'", "mcmode.1='low'", "mctype7='mixer'", "='day'")
+  mc.4 Mode ("temp0.0='24°C'", "mcmode.0='auto'", 'days=0', "temp0.1='0°C'", "mcmode.1='low'", "mctype7='mixer'", "='day'", "daynight=''")
 
 mc.4 OperatingMode = auto
   mc.4 OperatingMode ("mcmode='auto'",)
@@ -1060,7 +1060,7 @@ mc.4 OtShutdownLimit = 21
   mc.4 OtShutdownLimit ("desiredtemp='21°C'",)
 
 mc.4 OutsideTemp = -69.00;cutoff
-  mc.4 OutsideTemp ("temp='-69.0°C'", "sensor='cutoff'")
+  mc.4 OutsideTemp ("temp='-69.0°C'", "sensor='cutoff'", "+temp+sensor='cutoff'")
 
 mc.4 Params = 24;16;0.40;mixer;21;0;15;50;0
   mc.4 Params ("temp0='24°C'", "temps.0='16°C'", 'curve=0.4', "mctype7='mixer'", "temps.1='21°C'", "minutes0='0min'", "temps.2='15°C'", "temps.3='50°C'", "hours12='0.0h'")
@@ -1159,7 +1159,7 @@ mc currenterror = -;-;-;-;-
   mc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc DateTime = ok;21:00:39;30.01.2020;2.500
-  mc DateTime ("dcfstate='ok'", 'btime=datetime.time(21, 0, 39)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
+  mc DateTime ("dcfstate='ok'", 'btime=datetime.time(21, 0, 39)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'ok')")
 
 mc errorhistory = ERR: end of input reached
 
@@ -1167,7 +1167,7 @@ mc FloorPavingDryingDay = 0
   mc FloorPavingDryingDay ('=0',)
 
 mc FlowTemp = 39.00;ok
-  mc FlowTemp ("temp='39.0°C'", "sensor='ok'")
+  mc FlowTemp ("temp='39.0°C'", "sensor='ok'", "+temp+sensor='39.0°C'")
 
 mc FlowTempDesired = 40.5
   mc FlowTempDesired ("temp1='40.5°C'",)
@@ -1203,7 +1203,7 @@ mc MixerDutyCycle = 12
   mc MixerDutyCycle ('=12',)
 
 mc Mode = 26;auto;0;0;low;mixer;day
-  mc Mode ("temp0.0='26°C'", "mcmode.0='auto'", 'days=0', "temp0.1='0°C'", "mcmode.1='low'", "mctype7='mixer'", "='day'")
+  mc Mode ("temp0.0='26°C'", "mcmode.0='auto'", 'days=0', "temp0.1='0°C'", "mcmode.1='low'", "mctype7='mixer'", "='day'", "daynight=''")
 
 mc OperatingMode = auto
   mc OperatingMode ("mcmode='auto'",)
@@ -1291,7 +1291,7 @@ rcc.3 LcdContrastPwmValue = 11
   rcc.3 LcdContrastPwmValue ('=11',)
 
 rcc.3 RoomTemp = 20.88;ok
-  rcc.3 RoomTemp ("temp='20.88°C'", "sensor='ok'")
+  rcc.3 RoomTemp ("temp='20.88°C'", "sensor='ok'", "+temp+sensor='20.88°C'")
 
 rcc.3 RoomTempHoliday = 18.00
   rcc.3 RoomTempHoliday ("temp='18.0°C'",)
@@ -1309,7 +1309,7 @@ rcc.4 LcdContrastPwmValue = 11
   rcc.4 LcdContrastPwmValue ('=11',)
 
 rcc.4 RoomTemp = 22.94;ok
-  rcc.4 RoomTemp ("temp='22.94°C'", "sensor='ok'")
+  rcc.4 RoomTemp ("temp='22.94°C'", "sensor='ok'", "+temp+sensor='22.94°C'")
 
 rcc.4 RoomTempHoliday = 20.00
   rcc.4 RoomTempHoliday ("temp='20.0°C'",)
@@ -1327,7 +1327,7 @@ rcc.5 LcdContrastPwmValue = 7
   rcc.5 LcdContrastPwmValue ('=7',)
 
 rcc.5 RoomTemp = 22.69;ok
-  rcc.5 RoomTemp ("temp='22.69°C'", "sensor='ok'")
+  rcc.5 RoomTemp ("temp='22.69°C'", "sensor='ok'", "+temp+sensor='22.69°C'")
 
 rcc.5 RoomTempHoliday = 21.00
   rcc.5 RoomTempHoliday ("temp='21.0°C'",)
@@ -1345,7 +1345,7 @@ rcc LcdContrastPwmValue = 11
   rcc LcdContrastPwmValue ('=11',)
 
 rcc RoomTemp = 25.06;ok
-  rcc RoomTemp ("temp='25.06°C'", "sensor='ok'")
+  rcc RoomTemp ("temp='25.06°C'", "sensor='ok'", "+temp+sensor='25.06°C'")
 
 rcc RoomTempHoliday = 15.00
   rcc RoomTempHoliday ("temp='15.0°C'",)
@@ -1357,7 +1357,7 @@ rcc RoomTempOffsetSelfWarming = -2.00
   rcc RoomTempOffsetSelfWarming ("temp='-2.0°C'",)
 
 scan.08 id = 12;22;41;0313111931;0001;011113;N2
-  scan.08 id ("='12'", "prefix='22'", "year='41'", "week='0313111931'", "product='0001'", "supplier='011113'", "counter='N2'")
+  scan.08 id ("='12'", "prefix='22'", "year='41'", "week='0313111931'", "product='0001'", "supplier='011113'", "counter='N2'", "suffix=''")
 
 ui ActoStorModulDetected = 0
   ui ActoStorModulDetected ('=0',)
@@ -1497,7 +1497,7 @@ ui FlagsB7 = ERR: invalid position in decode
 ui FlagsB8 = ERR: invalid position in decode
 
 ui FlowTemp = 38.81;ok
-  ui FlowTemp ("temp='38.81°C'", "sensor='ok'")
+  ui FlowTemp ("temp='38.81°C'", "sensor='ok'", "+temp+sensor='38.81°C'")
 
 ui FlowTempDesired = 85.00
   ui FlowTempDesired ("temp='85.0°C'",)
@@ -1638,7 +1638,7 @@ ui OffsetFlowTempDesiredBufToBoiler = 2.00
   ui OffsetFlowTempDesiredBufToBoiler ("temp='2.0°C'",)
 
 ui OutsideTemp = 2.50;ok
-  ui OutsideTemp ("temp='2.5°C'", "sensor='ok'")
+  ui OutsideTemp ("temp='2.5°C'", "sensor='ok'", "+temp+sensor='2.5°C'")
 
 ui OutsideTempOffset = 0.00
   ui OutsideTempOffset ("temp='0.0°C'",)
@@ -1656,7 +1656,7 @@ ui RemoteDetected = 30
   ui RemoteDetected ('=30',)
 
 ui RoomTemp = 32.38;ok
-  ui RoomTemp ("temp='32.38°C'", "sensor='ok'")
+  ui RoomTemp ("temp='32.38°C'", "sensor='ok'", "+temp+sensor='32.38°C'")
 
 ui RoomTempHoliday = 15.00
   ui RoomTempHoliday ("temp='15.0°C'",)

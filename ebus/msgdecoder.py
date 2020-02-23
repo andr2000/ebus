@@ -45,16 +45,23 @@ class MsgDecoder:
 
     def _decodefields(self, msgdef, values):
         typedecoder = self.typedecoder
+        fields = []
         for fielddef in msgdef.fields:
+            if fielddef.idx is None:
+                continue
             try:
                 value = values[fielddef.idx]
             except IndexError:
-                continue
+                value = ""
             try:
                 fieldvalue = typedecoder(fielddef, value.strip())
             except ValueError:
                 fieldvalue = None
-            yield Field(fielddef, fieldvalue)
+            fields.append(Field(fielddef, fieldvalue))
+        for virtfielddef in msgdef.virtfields:
+            virtfieldvalue = virtfielddef.func(fields)
+            fields.append(Field(virtfielddef, virtfieldvalue))
+        return fields
 
 
 class UnknownMsgError(RuntimeError):

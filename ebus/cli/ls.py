@@ -23,7 +23,7 @@ async def _main(args):
     e = create_ebus(args)
     await load_msgdefs(e, args)
     for msgdef in e.msgdefs.resolve(args.patterns.split(";")):
-        for fielddef in msgdef.fields:
+        for fielddef in msgdef.children:
             values = fielddef.values
             if values:
                 details = "/".join(fielddef.values.values())

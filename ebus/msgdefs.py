@@ -8,7 +8,7 @@ from .msgdef import MsgDef
 
 class MsgDefs:
 
-    _re_resolve = re.compile(r"\A([^/#]+)/([^/#]+)(#(\d))?(/([^/#]*))?\Z")
+    _re_resolve = re.compile(r"\A([^/#+]+)/([^/#+]+)(#(\d))?(/([^/#]*))?\Z")
 
     def __init__(self):
         """
@@ -82,12 +82,12 @@ class MsgDefs:
             circuit, name, _, prio, _, fieldname = m.groups()
             for msgdef in self.find(circuit, name):
                 if fieldname is None:
-                    fields = msgdef.fields
+                    fields = msgdef.children
                 else:
-                    fields = tuple(fielddef for fielddef in msgdef.fields if fnmatchcase(fielddef.name, fieldname))
+                    fields = tuple(fielddef for fielddef in msgdef.children if fnmatchcase(fielddef.name, fieldname))
                 if not fields:
                     continue
-                if fields == msgdef.fields and (prio is None or not msgdef.read):
+                if fields == msgdef.children and (prio is None or not msgdef.read):
                     yield msgdef
                 else:
                     if prio is None:
@@ -109,7 +109,7 @@ class MsgDefs:
     def summary(self):
         """Summary."""
         total = len(self)
-        fields = sum(len(msgdef.fields) for msgdef in self)
+        fields = sum(len(msgdef.children) for msgdef in self)
         read = sum([1 for msgdef in self if msgdef.read])
         update = sum([1 for msgdef in self if msgdef.update])
         write = sum([1 for msgdef in self if msgdef.write])

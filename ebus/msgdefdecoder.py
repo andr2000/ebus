@@ -3,6 +3,7 @@ import re
 
 from .msgdef import FieldDef
 from .msgdef import MsgDef
+from .virtfielddef import iter_virtfielddefs
 
 # https://github.com/john30/ebusd/wiki/4.1.-Message-definition#message-definition
 
@@ -19,23 +20,25 @@ def decode_msgdef(line):
     >>> m = decode_msgdef('r,mc.4,OtShutdownLimit,temp,s,UCH,,°C,"text, text"')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('mc.4', 'OtShutdownLimit', True, None, False, False)
-    >>> m.fields
+    >>> m.children
     (FieldDef(0, 'temp', 'temp', ('UCH',), unit='°C', comment='text, text'),)
 
     >>> m = decode_msgdef('w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
-    >>> m.fields
+    >>> m.children
     (FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C'),)
     """
     try:
         values = _split(line)
         type_, circuit, name = values[:3]
         read, prio, write, update = _decodetype(type_)
-        fields = _decodefields(values[3:])
+        children = _decodefields(values[3:])
     except ValueError:
         raise ValueError(f"Invalid message definition {line!r}") from None
-    return MsgDef(circuit, name, fields, read, prio, write, update)
+    for child in iter_virtfielddefs(children):
+        children.append(child)
+    return MsgDef(circuit, name, tuple(children), read, prio, write, update)
 
 
 def _split(line):
@@ -63,7 +66,7 @@ def _decodetype(type_):
 def _decodefields(values):
     if len(values) % 6 in (0, 3, 4, 5):
         chunks = _chunks(values, 6)
-        return tuple(_createfields(chunks))
+        return list(_createfields(chunks))
     else:
         raise ValueError()
 

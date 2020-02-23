@@ -34,7 +34,7 @@ class Field(collections.namedtuple("_Field", "fielddef value")):
     def unitvalue(self):
         """Unitized Value."""
         if self.value is not None:
-            if self.fielddef.unit:
+            if not isinstance(self.value, str) and self.fielddef.unit:
                 return f"{self.value}{self.fielddef.unit}"
             else:
                 return self.value

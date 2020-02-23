@@ -17,7 +17,6 @@ _CMD_FINDMSGDEFS = "find -a -F type,circuit,name,fields"
 
 
 class Ebus:
-
     def __init__(self, host, port, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.

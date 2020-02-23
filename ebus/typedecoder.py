@@ -54,8 +54,9 @@ def get_typename(type_):
     >>> get_typename('uin')
     'int'
     """
-    name = type_.split(":")[0].lower()
-    return _PYTYPEMAP.get(name, None)
+    if type_:
+        name = type_.split(":")[0].lower()
+        return _PYTYPEMAP.get(name, None)
 
 
 class TypeDecoder:

@@ -6,7 +6,7 @@ bai WaterHcFlowMax = 3063
   bai WaterHcFlowMax ('=3063',)
 
 bai WaterPressure = 2.125;ok
-  bai WaterPressure ("press='2.125bar'", "sensor='ok'")
+  bai WaterPressure ("press='2.125bar'", "sensor='ok'", "+press+sensor='2.125bar'")
 
 mc.3 Status = 40;off;38.31;26
   mc.3 Status ("temp0.0='40°C'", "onoff='off'", "temp='38.31°C'", "temp0.1='26°C'")
@@ -36,10 +36,10 @@ cc currenterror = -;-;-;-;-
   cc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 cc DateTime = valid;20:57:48;30.01.2020;2.500
-  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'")
+  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
 
 cc Params = 30;6;22;15;75
-  cc Params ("temp0='30°C'", ".0='6'", "mctype7='22'", "temps.0='15°C'", ".1='75'")
+  cc Params ("temp0='30°C'", ".0='6'", "mctype7='22'", "temps.0='15°C'", ".1='75'", 'temps.1=None', 'temps.2=None', ".2=''")
 
 cc Stat15MinBusTimeout = 0
   cc Stat15MinBusTimeout ('=0',)

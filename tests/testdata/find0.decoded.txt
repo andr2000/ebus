@@ -69,6 +69,7 @@ MsgDef('bai', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,bai,dcfState,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Status
 MsgDef('bai', 'dcfState', read=True)
@@ -78,6 +79,7 @@ r,bai,DCFTimeDate,,s,VTI,,,DCF Time / date stamp struct { uchar sec; uchar min; 
 MsgDef('bai', 'DCFTimeDate', read=True)
     FieldDef(0, '.0', '', ('VTI',), comment='DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;')
     FieldDef(1, '.1', '', ('HDA',))
+    VirtFieldDef('+.1+.0')
 
 r,bai,DCRoomthermostat,onoff,s,UCH,0=off;1=on,,Wärmeanforderung vom externen Regler (Klemme 3-4)
 MsgDef('bai', 'DCRoomthermostat', read=True)
@@ -126,6 +128,7 @@ MsgDef('bai', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,bai,ExternalFaultmessage,onoff,s,UCH,0=off;1=on,,Signal für die externe Störmeldeeinrichtung
 MsgDef('bai', 'ExternalFaultmessage', read=True)
@@ -211,6 +214,7 @@ r,bai,FlowTemp,temp,s,D2C,,°C,Vorlauftemperatur,sensor,s,UCH,0=ok;85=circuit;17
 MsgDef('bai', 'FlowTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Vorlauftemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,FlowTempDesired,temp,s,D2C,,°C,Vorlaufsolltemperatur oder Rücklaufsolltemperatur (wenn Rücklaufregelung aktiviert wurde). Der Maximalwert wird über d.71 und einem eBUS Regler begrenzt.
 MsgDef('bai', 'FlowTempDesired', read=True)
@@ -296,6 +300,7 @@ r,bai,HwcTemp,temp,s,D2C,,°C,Vorlauftemperatur bei Warmwasserzapfung (nur bei K
 MsgDef('bai', 'HwcTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Vorlauftemperatur bei Warmwasserzapfung (nur bei Kombi-Heizgeräten)')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,HwcTempMax,temp,s,D2C,,°C,Max. Speichersollwert. Begrenzt den max. Einstellbereich des Potentiometers (Rechtsanschlag).
 MsgDef('bai', 'HwcTempMax', read=True)
@@ -349,6 +354,7 @@ r,bai,OutdoorstempSensor,temp,s,D2C,,°C,Außentemperaturwert (ohne Korrekturwer
 MsgDef('bai', 'OutdoorstempSensor', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Außentemperaturwert (ohne Korrekturwert) und Sensorstatus')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,OverflowCounter,yesno,s,UCH,0=no;1=yes,,Predictive Maintenance counter have got an overflow
 MsgDef('bai', 'OverflowCounter', read=True)
@@ -475,11 +481,13 @@ MsgDef('bai', 'ReturnTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Rücklauftemperatur')
     FieldDef(1, 'tempmirror', 'tempmirror', ('UIN',))
     FieldDef(2, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,ReturnTempExternal,temp,s,D2C,,°C,Externer Rücklauftemperatursensor,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 MsgDef('bai', 'ReturnTempExternal', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Externer Rücklauftemperatursensor')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,ReturnTempMax,temp,s,D2C,,°C,Max. Rücklauftemperatur
 MsgDef('bai', 'ReturnTempMax', read=True)
@@ -561,6 +569,7 @@ r,bai,StorageExitTemp,temp,s,D2C,,°C,Speicherauslauftemperatur Istwert,sensor,s
 MsgDef('bai', 'StorageExitTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Speicherauslauftemperatur Istwert')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,Storageloadpump,percent0,s,UCH,,%,Ladepumpenanforderung
 MsgDef('bai', 'Storageloadpump', read=True)
@@ -582,6 +591,7 @@ r,bai,StorageTemp,temp,s,D2C,,°C,Aktuelle Temperatur des Warmstartspeichers (be
 MsgDef('bai', 'StorageTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Aktuelle Temperatur des Warmstartspeichers (bei Kombigeräten) oder aktuelle Speichertemperatur bei (VC Geräten)')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,bai,StorageTempDesired,temp,s,D2C,,°C,VCW: Solltemperatur des WarmstartspeichersVC: Solltemperatur des externen Speichers
 MsgDef('bai', 'StorageTempDesired', read=True)
@@ -655,6 +665,7 @@ r,bai,WaterPressure,press,s,FLT,,bar,Wasserdruck,sensor,s,UCH,0=ok;85=circuit;17
 MsgDef('bai', 'WaterPressure', read=True)
     FieldDef(0, 'press', 'press', ('FLT',), unit='bar', comment='Wasserdruck')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+press+sensor')
 
 r,bai,WaterpressureBranchControlOff,onoff,s,UCH,0=off;1=on,,Überwachung der Druckänderung beim Schalten der Pumpe kann hiermit aktiviert oder deaktiviert werden
 MsgDef('bai', 'WaterpressureBranchControlOff', read=True)
@@ -685,6 +696,7 @@ MsgDef('broadcast', 'datetime', update=True)
     FieldDef(0, 'outsidetemp', 'outsidetemp', ('D2B',), unit='°C', comment='Temperatur')
     FieldDef(1, 'time', 'time', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'date', 'date', ('BDA',))
+    VirtFieldDef('+date+time')
 
 u,broadcast,error,error,m,STR:10,,,
 MsgDef('broadcast', 'error', update=True)
@@ -731,6 +743,7 @@ u,broadcast,vdatetime,time,m,BTI,,,,date,m,BDA,,,
 MsgDef('broadcast', 'vdatetime', update=True)
     FieldDef(0, 'time', 'time', ('BTI',))
     FieldDef(1, 'date', 'date', ('BDA',))
+    VirtFieldDef('+date+time')
 
 r,cc,currenterror,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer,error,s,UIN,,,Fehlernummer
 MsgDef('cc', 'currenterror', read=True)
@@ -746,6 +759,7 @@ MsgDef('cc', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,cc,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 MsgDef('cc', 'errorhistory', read=True)
@@ -754,6 +768,7 @@ MsgDef('cc', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,cc,Mode,temp0,s,UCH,,°C,Temperatur,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,,s,IGN:2,,,,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,Warmwasser Modus,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,,s,HEX:1,,,,daynight,s,UCH,0=night;1=day;7=floorpaving,,Tag-/Nachtmodus
 MsgDef('cc', 'Mode', read=True)
@@ -1014,6 +1029,7 @@ MsgDef('hc', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,hc,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 MsgDef('hc', 'errorhistory', read=True)
@@ -1022,6 +1038,7 @@ MsgDef('hc', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,hc,FlowTempDesired,temp1,s,D1C,,°C,Temperatur
 MsgDef('hc', 'FlowTempDesired', read=True)
@@ -1099,6 +1116,7 @@ r,hc,OutsideTemp,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cut
 MsgDef('hc', 'OutsideTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Temperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 uw,hc,SetMode,hcmode,m,UCH,0=auto;1=off;2=water,,Boiler Modus,flowtempdesired,m,D1C,,°C,Temperatur,hwctempdesired,m,D1C,,°C,Temperatur,hwcflowtempdesired,m,UCH,,°C,Temperatur,,m,IGN:1,,,,disablehc,m,BI0:1,,,,disablehwctapping,m,BI1:1,,,,disablehwcload,m,BI2:1,,,,,m,IGN:1,,,,remoteControlHcPump,m,BI0:1,,,,releaseBackup,m,BI1:1,,,,releaseCooling,m,BI2:1,,,
 MsgDef('hc', 'SetMode', write=True, update=True)
@@ -1184,6 +1202,7 @@ r,hc,SumFlowSensor,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=c
 MsgDef('hc', 'SumFlowSensor', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Temperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,hc,TeleSwitch,onoff,s,UCH,0=off;1=on,,
 MsgDef('hc', 'TeleSwitch', read=True)
@@ -1371,6 +1390,7 @@ MsgDef('hwc', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,hwc,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 MsgDef('hwc', 'errorhistory', read=True)
@@ -1379,6 +1399,7 @@ MsgDef('hwc', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,hwc,FlowTempDesired2,temp1,s,D1C,,°C,Temperatur
 MsgDef('hwc', 'FlowTempDesired2', read=True)
@@ -1532,6 +1553,7 @@ r,hwc,Storage1Sensor2,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;17
 MsgDef('hwc', 'Storage1Sensor2', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Temperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,hwc,TeleSwitch,onoff,s,UCH,0=off;1=on,,
 MsgDef('hwc', 'TeleSwitch', read=True)
@@ -1719,6 +1741,7 @@ MsgDef('mc', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,mc,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 MsgDef('mc', 'errorhistory', read=True)
@@ -1727,6 +1750,7 @@ MsgDef('mc', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,mc,FloorPavingDryingDay,,s,UCH,,,
 MsgDef('mc', 'FloorPavingDryingDay', read=True)
@@ -1736,6 +1760,7 @@ r,mc,FlowTemp,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cutoff
 MsgDef('mc', 'FlowTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Temperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,mc,FlowTempDesired,temp1,s,D1C,,°C,Temperatur
 MsgDef('mc', 'FlowTempDesired', read=True)
@@ -2149,6 +2174,7 @@ MsgDef('mc.3', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,mc.3,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,Zeit,date,s,HDA,,,Datum,error,s,UIN,,,Fehlernummer
 MsgDef('mc.3', 'errorhistory', read=True)
@@ -2157,6 +2183,7 @@ MsgDef('mc.3', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,mc.3,FloorPavingDryingDay,,s,UCH,,,Current day of floor paving drying routine
 MsgDef('mc.3', 'FloorPavingDryingDay', read=True)
@@ -2166,6 +2193,7 @@ r,mc.3,FlowTemp,temp,s,D2C,,°C,Temperatur,sensor,s,UCH,0=ok;85=circuit;170=cuto
 MsgDef('mc.3', 'FlowTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Temperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,mc.3,FlowTempDesired,temp1,s,D1C,,°C,Temperatur
 MsgDef('mc.3', 'FlowTempDesired', read=True)
@@ -2770,6 +2798,7 @@ MsgDef('mc.4', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,mc.4,DWMOffToCoolingDelay,,s,UCH,,,
 MsgDef('mc.4', 'DWMOffToCoolingDelay', read=True)
@@ -2794,6 +2823,7 @@ MsgDef('mc.4', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,mc.4,FloorPavingDryingDay,,s,UCH,,,Current day of floor paving drying routine
 MsgDef('mc.4', 'FloorPavingDryingDay', read=True)
@@ -2803,6 +2833,7 @@ r,mc.4,FlowTemp,temp,s,D2C,,°C,Vorlauftemperatur,sensor,s,UCH,0=ok;85=circuit;1
 MsgDef('mc.4', 'FlowTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Vorlauftemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,mc.4,FlowTempDesired,temp1,s,D1C,,°C,Desired flow temperature of MK1
 MsgDef('mc.4', 'FlowTempDesired', read=True)
@@ -2919,6 +2950,7 @@ r,mc.4,OutsideTemp,temp,s,D2C,,°C,current outside temperature (valid only if a 
 MsgDef('mc.4', 'OutsideTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='current outside temperature (valid only if a sensor is connected to the VR60)')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,mc.4,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
 MsgDef('mc.4', 'Params', read=True)
@@ -3440,6 +3472,7 @@ MsgDef('mc.5', 'DateTime', read=True)
     FieldDef(1, 'btime', 'btime', ('BTI',), comment='Uhrzeit')
     FieldDef(2, 'bdate', 'bdate', ('BDA',), comment='Datum')
     FieldDef(3, 'temp2', 'temp2', ('D2B',), unit='°C')
+    VirtFieldDef('+bdate+btime+dcfstate')
 
 r,mc.5,DWMOffToCoolingDelay,,s,UCH,,,
 MsgDef('mc.5', 'DWMOffToCoolingDelay', read=True)
@@ -3460,6 +3493,7 @@ MsgDef('mc.5', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,mc.5,FloorPavingDryingDay,,s,UCH,,,Current day of floor paving drying routine
 MsgDef('mc.5', 'FloorPavingDryingDay', read=True)
@@ -3469,6 +3503,7 @@ r,mc.5,FlowTemp,temp,s,D2C,,°C,Vorlauftemperatur,sensor,s,UCH,0=ok;85=circuit;1
 MsgDef('mc.5', 'FlowTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Vorlauftemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,mc.5,FlowTempDesired,temp1,s,D1C,,°C,Desired flow temperature of MK2
 MsgDef('mc.5', 'FlowTempDesired', read=True)
@@ -3585,6 +3620,7 @@ r,mc.5,OutsideTemp,temp,s,D2C,,°C,current outside temperature (valid only if a 
 MsgDef('mc.5', 'OutsideTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='current outside temperature (valid only if a sensor is connected to the VR60)')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,mc.5,Params,temp0,s,UCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,curve,s,UIN,100,,Heizkurve,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,minutes0,s,UCH,,min,Minuten,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,hours12,s,UCH,-12,h,Stunden
 MsgDef('mc.5', 'Params', read=True)
@@ -3919,6 +3955,7 @@ r,rcc,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170=c
 MsgDef('rcc', 'RoomTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Raumtemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,rcc,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc', 'RoomTempHoliday', read=True)
@@ -3958,6 +3995,7 @@ r,rcc.3,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170
 MsgDef('rcc.3', 'RoomTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Raumtemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,rcc.3,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.3', 'RoomTempHoliday', read=True)
@@ -3997,6 +4035,7 @@ r,rcc.4,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170
 MsgDef('rcc.4', 'RoomTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Raumtemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,rcc.4,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.4', 'RoomTempHoliday', read=True)
@@ -4036,6 +4075,7 @@ r,rcc.5,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170
 MsgDef('rcc.5', 'RoomTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Raumtemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,rcc.5,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('rcc.5', 'RoomTempHoliday', read=True)
@@ -4489,6 +4529,7 @@ MsgDef('ui', 'errorhistory', read=True)
     FieldDef(2, 'time2', 'time2', ('VTM',), comment='Zeit')
     FieldDef(3, 'date', 'date', ('HDA',), comment='Datum')
     FieldDef(4, 'error', 'error', ('UIN',))
+    VirtFieldDef('+date+time2')
 
 r,ui,FlagsB1,,s,UCH,,,
 MsgDef('ui', 'FlagsB1', read=True)
@@ -4526,6 +4567,7 @@ r,ui,FlowTemp,temp,s,D2C,,°C,Systemtemperatur in der hydraulischen Weiche oder 
 MsgDef('ui', 'FlowTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Systemtemperatur in der hydraulischen Weiche oder am gemeinsamen Vorlauf (VF1)')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,ui,FlowTempDesired,temp,s,D2C,,°C,Ermittelte Vorlaufsolltemperatur für das System
 MsgDef('ui', 'FlowTempDesired', read=True)
@@ -4817,6 +4859,7 @@ r,ui,OutsideTemp,temp,s,D2C,,°C,Außentemperatur,sensor,s,UCH,0=ok;85=circuit;1
 MsgDef('ui', 'OutsideTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Außentemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,ui,OutsideTempOffset,temp,s,D2C,,°C,Temperatur
 MsgDef('ui', 'OutsideTempOffset', read=True)
@@ -4846,6 +4889,7 @@ r,ui,RoomTemp,temp,s,D2C,,°C,Raumtemperatur,sensor,s,UCH,0=ok;85=circuit;170=cu
 MsgDef('ui', 'RoomTemp', read=True)
     FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C', comment='Raumtemperatur')
     FieldDef(1, 'sensor', 'sensor', ('UCH',), dividervalues='0=ok;85=circuit;170=cutoff')
+    VirtFieldDef('+temp+sensor')
 
 r,ui,RoomTempHoliday,temp,s,D2C,,°C,Temperatur
 MsgDef('ui', 'RoomTempHoliday', read=True)
