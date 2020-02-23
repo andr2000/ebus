@@ -32,7 +32,7 @@ def decode_msgdef(line):
     try:
         values = _split(line)
         type_, circuit, name = values[:3]
-        read, prio, write, update = _decodetype(type_)
+        read, prio, write, update = decodetype(type_)
         children = _decodefields(values[3:])
     except ValueError:
         raise ValueError(f"Invalid message definition {line!r}") from None
@@ -50,7 +50,17 @@ def _split(line):
     return values
 
 
-def _decodetype(type_):
+def decodetype(type_):
+    """
+    Decode Type.
+
+    >>> decodetype('r')
+    (True, None, False, False)
+    >>> decodetype('w')
+    (False, None, True, False)
+    >>> decodetype('u')
+    (False, None, False, True)
+    """
     r = re.compile(r"(r)([1-9]?)")
     m = r.match(type_)
     if m:

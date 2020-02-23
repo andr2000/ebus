@@ -20,7 +20,7 @@ def iter_virtfielddefs(fielddefs):
                     sidx = names.index("dcfstate")
                     yield VirtFieldDef(
                         f"+{names[didx]}+{names[tidx]}+dcfstate",
-                        lambda fields: _merge_date_time(fields[didx].value, fields[tidx].value, fields[sidx]),
+                        lambda fields: _merge_date_time(fields[didx].value, fields[tidx].value, fields[sidx].value),
                     )
                 else:
                     yield VirtFieldDef(

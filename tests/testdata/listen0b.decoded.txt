@@ -492,7 +492,7 @@ cc currenterror = -;-;-;-;-
   cc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 cc DateTime = valid;20:57:48;30.01.2020;2.500
-  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
+  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", '+bdate+btime+dcfstate=datetime.datetime(2020, 1, 30, 20, 57, 48)')
 
 cc errorhistory = ERR: end of input reached
 
@@ -568,7 +568,7 @@ hc currenterror = -;-;-;-;-
   hc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 hc DateTime = valid;20:56:54;30.01.2020;2.500
-  hc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 56, 54)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
+  hc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 56, 54)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", '+bdate+btime+dcfstate=datetime.datetime(2020, 1, 30, 20, 56, 54)')
 
 hc errorhistory = ERR: end of input reached
 
@@ -688,7 +688,7 @@ hwc currenterror = -;-;-;-;-
   hwc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 hwc DateTime = valid;20:58:45;30.01.2020;2.500
-  hwc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 58, 45)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
+  hwc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 58, 45)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", '+bdate+btime+dcfstate=datetime.datetime(2020, 1, 30, 20, 58, 45)')
 
 hwc errorhistory = ERR: end of input reached
 
@@ -807,7 +807,7 @@ mc.3 currenterror = -;-;-;-;-
   mc.3 currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc.3 DateTime = valid;20:59:00;30.01.2020;2.500
-  mc.3 DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 59)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'valid')")
+  mc.3 DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 59)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", '+bdate+btime+dcfstate=datetime.datetime(2020, 1, 30, 20, 59)')
 
 mc.3 errorhistory = ERR: end of input reached
 
@@ -986,7 +986,7 @@ mc.4 currenterror = -;-;-;-;-
   mc.4 currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc.4 DateTime = nosignal;20:59:30;30.01.2020;-69.000
-  mc.4 DateTime ("dcfstate='nosignal'", 'btime=datetime.time(20, 59, 30)', 'bdate=datetime.date(2020, 1, 30)', "temp2='-69.0°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'nosignal')")
+  mc.4 DateTime ("dcfstate='nosignal'", 'btime=datetime.time(20, 59, 30)', 'bdate=datetime.date(2020, 1, 30)', "temp2='-69.0°C'", "+bdate+btime+dcfstate='nosignal'")
 
 mc.4 DWMOffToCoolingDelay = 6
   mc.4 DWMOffToCoolingDelay ('=6',)
@@ -1159,7 +1159,7 @@ mc currenterror = -;-;-;-;-
   mc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 mc DateTime = ok;21:00:39;30.01.2020;2.500
-  mc DateTime ("dcfstate='ok'", 'btime=datetime.time(21, 0, 39)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate=Field('dcfstate', 'ok')")
+  mc DateTime ("dcfstate='ok'", 'btime=datetime.time(21, 0, 39)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", "+bdate+btime+dcfstate='ok'")
 
 mc errorhistory = ERR: end of input reached
 
