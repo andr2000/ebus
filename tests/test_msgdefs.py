@@ -12,7 +12,7 @@ from .util import cmp_
 TESTDATAPATH = pathlib.Path(__file__).parent / "testdata"
 
 
-def test_msgdefs():
+def test_msgdefs0():
     """Message Defs."""
     msgdefs = ebus.MsgDefs()
 
@@ -26,7 +26,7 @@ def test_msgdefs():
                 pass
 
     eq_(len(msgdefs), 791)
-    # eq_(msgdefs.summary(), "699 messages (688 read, 12 update, 4 write) with 1583 fields")
+    eq_(msgdefs.summary(), "791 messages (685 read, 19 update, 231 write) with 1797 fields")
 
     eq_(msgdefs.get("bai", "foo"), None)
     eq_(msgdefs.get("bar", "foo"), None)
@@ -157,3 +157,20 @@ def test_msgdefs():
             )
         ],
     )
+
+
+def test_msgdefs1():
+    """Message Defs."""
+    msgdefs = ebus.MsgDefs()
+
+    # load
+    infilepath = TESTDATAPATH / "find1.txt"
+    for line in infilepath.read_text().splitlines():
+        if line:
+            try:
+                msgdefs.add(ebus.decode_msgdef(line))
+            except ValueError as e:
+                pass
+
+    eq_(len(msgdefs), 606)
+    eq_(msgdefs.summary(), "606 messages (396 read, 12 update, 229 write) with 1568 fields")

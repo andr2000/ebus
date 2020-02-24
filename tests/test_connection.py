@@ -23,6 +23,8 @@ def test_connection():
     eq_(c.port, 4444)
     eq_(c.autoconnect, True)
 
+    eq_(repr(c), "Connection(host='foo', port=4444, autoconnect=True)")
+
 
 def test_connect_fails():
     """Connection failed."""

@@ -1,4 +1,9 @@
 import asyncio
+import logging
+
+from .util import repr_
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class Connection:
@@ -15,6 +20,16 @@ class Connection:
         self._port = port
         self._autoconnect = autoconnect
         self._reader, self._writer = None, None
+
+    def __repr__(self):
+        return repr_(
+            self,
+            kwargs=(
+                ("host", self.host, "127.0.0.1"),
+                ("port", self.port, 8888),
+                ("autoconnect", self.autoconnect, False),
+            ),
+        )
 
     @property
     def host(self):
@@ -38,10 +53,12 @@ class Connection:
         Raises:
             IOError: If connection cannot be established
         """
+        _LOGGER.debug(f"connect()")
         self._reader, self._writer = await asyncio.open_connection(self._host, self._port)
 
     async def disconnect(self):
         """Disconnect if not already done."""
+        _LOGGER.debug(f"disconnect()")
         if self._writer:
             try:
                 self._writer.close()
@@ -67,6 +84,7 @@ class Connection:
             IOError: If connection is broken or cannot be established (`autoconnect==True`)
             ConnectionError: If not connected (`autoconnect==False`)
         """
+        _LOGGER.debug(f"write({message!r})")
         await self._ensure_connection()
         self._writer.write(f"{message}\n".encode())
         await self._writer.drain()
@@ -82,6 +100,7 @@ class Connection:
         await self._ensure_connection()
         line = await self._readline()
         await self._checkline(line)
+        _LOGGER.debug(f"readline() = {line!r}")
         return line
 
     async def readlines(self, infinite=False, check=False):
@@ -97,6 +116,7 @@ class Connection:
             line = await self._readline()
             if check:
                 await self._checkline(line)
+            _LOGGER.debug(f"readlines() = {line!r}")
             yield line
             if not line and not infinite:
                 break

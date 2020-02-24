@@ -15,6 +15,7 @@ def argvhandler(argv):
     """Command Line Interface."""
     parser = argparse.ArgumentParser(prog="ebustool")
     parser.add_argument("--version", action="version", version=__version__)
+    parser.add_argument("--debug", action="store_true", default=False)
     parser.set_defaults(main=lambda args: _print_help(parser))
 
     # Sub Commands
@@ -27,6 +28,8 @@ def argvhandler(argv):
     write.parse_args(subparsers)
 
     args = parser.parse_args(argv)
+    loglevel = logging.DEBUG if args.debug else logging.WARN
+    logging.basicConfig(format="%(levelname)s:%(message)s", level=loglevel)
     args.main(args)
 
 
@@ -37,7 +40,6 @@ def _print_help(parser):
 
 def main():  # pragma: no cover
     """Command Line Hookup."""
-    logging.basicConfig(format="%(levelname)s:%(message)s")
     try:
         argvhandler(sys.argv[1:])
     except (RuntimeError, ValueError) as e:

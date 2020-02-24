@@ -27,6 +27,7 @@ class Ebus:
         self.scanwaitinterval = scanwaitinterval
         self.msgdefs = MsgDefs()
         self.msgdecoder = MsgDecoder(self.msgdefs)
+        _LOGGER.info(f"{self}")
 
     def __repr__(self):
         return repr_(
@@ -49,7 +50,7 @@ class Ebus:
         """Wait until scan is completed."""
         cnts = []
         while True:
-            cnt = sum([1 async for line in self.request(_CMD_FINDMSGDEFS)])
+            cnt = sum([1 async for line in self._request(_CMD_FINDMSGDEFS)])
             cnts.append(cnt)
             if len(cnts) < 4 or cnts[-4] != cnts[-3] or cnts[-3] != cnts[-2] or cnts[-2] != cnts[-1]:
                 yield cnt
@@ -64,9 +65,10 @@ class Ebus:
         Keyword Args:
             scanwait (bool): Wait for EBUSD scan to complete
         """
+        _LOGGER.info("load_msgdefs()")
         self.msgdefs.clear()
         msgdefs = []
-        async for line in self.request(_CMD_FINDMSGDEFS):
+        async for line in self._request(_CMD_FINDMSGDEFS):
             if line:
                 try:
                     msgdef = decode_msgdef(line)
@@ -84,9 +86,10 @@ class Ebus:
         Raises:
             ValueError: on decoder error
         """
+        _LOGGER.info(f"read({msgdef}, prio={prio}, ttl={ttl})")
         p = msgdef.prio if prio else None
         try:
-            lines = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, p=p, m=ttl)])
+            lines = tuple([line async for line in self._request("read", msgdef.name, c=msgdef.circuit, p=p, m=ttl)])
         except CommandError as e:
             _LOGGER.warn(f"{msgdef.ident}: {e!r}")
         else:
@@ -94,6 +97,7 @@ class Ebus:
 
     async def write(self, msgdef, value, ttl=None):
         """Write Message."""
+        _LOGGER.info(f"read({msgdef}, value={value}, ttl={ttl})")
         if not msgdef.write:
             raise ValueError(f"Message is not writeable '{msgdef}'")
         fullmsgdef = self.msgdefs.get(msgdef.circuit, msgdef.name)
@@ -101,17 +105,18 @@ class Ebus:
             if not msgdef.read:
                 raise ValueError(f"Message is not read-modify-writable '{msgdef}'")
             # read actual values
-            readline = tuple([line async for line in self.request("read", msgdef.name, c=msgdef.circuit, m=ttl)])[0]
+            readline = tuple([line async for line in self._request("read", msgdef.name, c=msgdef.circuit, m=ttl)])[0]
             values = readline.split(";")
             for fielddef in msgdef.fields:
                 values[fielddef.idx] = value
             value = ";".join(values)
-        async for line in self.request("write", msgdef.name, value, c=msgdef.circuit, check=True):
+        async for line in self._request("write", msgdef.name, value, c=msgdef.circuit, check=True):
             pass
 
     async def listen(self, msgdefs=None):
         """Listen to EBUSD, decode and yield."""
-        async for line in self.request("listen", infinite=True):
+        _LOGGER.info(f"listen(msgdefs={msgdefs})")
+        async for line in self._request("listen", infinite=True):
             if line == "listen started":
                 continue
             msg = self._decode_line(line)
@@ -128,6 +133,7 @@ class Ebus:
         Use `find` to get the latest data, if me missed any updates in the
         meantime and start listening
         """
+        _LOGGER.info(f"observe(msgdefs={msgdefs}, prio={prio}, ttl={None})")
         msgdefs = msgdefs or self.msgdefs
         data = collections.defaultdict(lambda: None)
 
@@ -144,7 +150,7 @@ class Ebus:
                 data[msgdef] = None
 
         # find new values (which got updated while we where reading)
-        async for line in self.request("find -d"):
+        async for line in self._request("find -d"):
             msg = self._decode_line(line)
             if msg:
                 msg = filter_msg(msg, msgdefs)
@@ -156,18 +162,19 @@ class Ebus:
         async for msg in self.listen(msgdefs=msgdefs):
             yield msg
 
-    async def request(self, cmd, *args, infinite=False, check=False, **kwargs):
+    async def cmd(self, cmd, infinite=False, check=False):
+        """Send `cmd` to EBUSD and Receive Response."""
+        _LOGGER.info(f"cmd({cmd}, infinite={infinite}, check={check})")
+        await self.connection.write(cmd)
+        async for line in self.connection.readlines(infinite=infinite, check=check):
+            yield line
+
+    async def _request(self, cmd, *args, infinite=False, check=False, **kwargs):
         """Assemble request, send and readlines."""
         parts = [cmd]
         parts += [f"-{option} {value}" for option, value in kwargs.items() if value is not None]
         parts += [str(arg) for arg in args]
         await self.connection.write(" ".join(parts))
-        async for line in self.connection.readlines(infinite=infinite, check=check):
-            yield line
-
-    async def cmd(self, cmd, infinite=False, check=False):
-        """Send `cmd` to EBUSD and Receive Response."""
-        await self.connection.write(cmd)
         async for line in self.connection.readlines(infinite=infinite, check=check):
             yield line
 
