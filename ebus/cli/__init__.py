@@ -10,6 +10,7 @@ from . import listen
 from . import ls
 from . import observe
 from . import read
+from . import state
 from . import write
 
 
@@ -27,6 +28,7 @@ def argvhandler(argv):
     ls.parse_args(subparsers)
     observe.parse_args(subparsers)
     read.parse_args(subparsers)
+    state.parse_args(subparsers)
     write.parse_args(subparsers)
 
     args = parser.parse_args(argv)

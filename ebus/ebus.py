@@ -4,6 +4,7 @@ import logging
 
 from .connection import CommandError
 from .connection import Connection
+from .connection import ConnectionTimeout
 from .msg import filter_msg
 from .msgdecoder import MsgDecoder
 from .msgdecoder import UnknownMsgError
@@ -165,6 +166,21 @@ class Ebus:
         # listen
         async for msg in self.listen(msgdefs=msgdefs):
             yield msg
+
+    async def get_state(self):
+        """
+        Return state string.
+
+        States are:
+          TODO
+        """
+        _LOGGER.info(f"get_state()")
+        try:
+            lines = tuple([line async for line in self._request("state")])
+            state = lines[0].split(",")[0]
+            return state
+        except ConnectionTimeout:
+            return "no ebusd connection"
 
     async def cmd(self, cmd, infinite=False, check=False):
         """Send `cmd` to EBUSD and Receive Response."""
