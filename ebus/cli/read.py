@@ -1,6 +1,3 @@
-import asyncio
-import logging
-
 from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import add_patterns_arg
@@ -18,7 +15,7 @@ def parse_args(subparsers):
     add_msgdef_args(parser)
     add_read_args(parser, ttl=0)
     add_patterns_arg(parser, opt=True)
-    parser.set_defaults(main=main)
+    parser.set_defaults(main=_main)
 
 
 async def _main(args):
@@ -33,10 +30,3 @@ async def _main(args):
             if msg:
                 for field in msg.fields:
                     print(format_field(field))
-
-
-def main(args):
-    """Main."""
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(_main(args))
-    loop.close()

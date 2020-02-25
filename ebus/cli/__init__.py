@@ -1,4 +1,6 @@
 import argparse
+import asyncio
+import inspect
 import logging
 import sys
 
@@ -29,8 +31,13 @@ def argvhandler(argv):
 
     args = parser.parse_args(argv)
     loglevel = logging.DEBUG if args.debug else logging.WARN
-    logging.basicConfig(format="%(levelname)s:%(message)s", level=loglevel)
-    args.main(args)
+    logging.basicConfig(format="%(levelname)10s %(name)15s %(message)s", level=loglevel)
+    if inspect.iscoroutinefunction(args.main):
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(args.main(args))
+        loop.close()
+    else:
+        args.main(args)
 
 
 def _print_help(parser):

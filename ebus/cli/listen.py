@@ -15,7 +15,7 @@ def parse_args(subparsers):
     add_ebus_args(parser)
     add_msgdef_args(parser)
     add_patterns_arg(parser, opt=True)
-    parser.set_defaults(main=main)
+    parser.set_defaults(main=_main)
 
 
 async def _main(args):
@@ -28,10 +28,3 @@ async def _main(args):
         async for msg in e.listen(msgdefs=msgdefs):
             for field in msg.fields:
                 print(format_field(field))
-
-
-def main(args):
-    """Main."""
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(_main(args))
-    loop.close()

@@ -4,7 +4,6 @@ import logging
 
 from .connection import CommandError
 from .connection import Connection
-from .msg import Msg
 from .msg import filter_msg
 from .msgdecoder import MsgDecoder
 from .msgdecoder import UnknownMsgError
@@ -91,7 +90,7 @@ class Ebus:
         Raises:
             ValueError: on decoder error
         """
-        _LOGGER.info(f"read({msgdef}, prio={prio}, ttl={ttl})")
+        _LOGGER.info(f"read({msgdef!r}, prio={prio!r}, ttl={ttl!r})")
         p = msgdef.prio if prio else None
         try:
             lines = tuple([line async for line in self._request("read", msgdef.name, c=msgdef.circuit, p=p, m=ttl)])
@@ -102,7 +101,7 @@ class Ebus:
 
     async def write(self, msgdef, value, ttl=None):
         """Write Message."""
-        _LOGGER.info(f"read({msgdef}, value={value}, ttl={ttl})")
+        _LOGGER.info(f"read({msgdef!r}, value={value!r}, ttl={ttl!r})")
         if not msgdef.write:
             raise ValueError(f"Message is not writeable '{msgdef}'")
         fullmsgdef = self.msgdefs.get(msgdef.circuit, msgdef.name)
@@ -120,7 +119,7 @@ class Ebus:
 
     async def listen(self, msgdefs=None):
         """Listen to EBUSD, decode and yield."""
-        _LOGGER.info(f"listen(msgdefs={msgdefs})")
+        _LOGGER.info(f"listen(msgdefs={msgdefs!r})")
         async for line in self._request("listen", infinite=True):
             if line == "listen started":
                 continue
@@ -138,7 +137,7 @@ class Ebus:
         Use `find` to get the latest data, if me missed any updates in the
         meantime and start listening
         """
-        _LOGGER.info(f"observe(msgdefs={msgdefs}, prio={prio}, ttl={None})")
+        _LOGGER.info(f"observe(msgdefs={msgdefs!r}, prio={prio!r}, ttl={ttl!r})")
         msgdefs = msgdefs or self.msgdefs
         data = collections.defaultdict(lambda: None)
 
@@ -169,7 +168,7 @@ class Ebus:
 
     async def cmd(self, cmd, infinite=False, check=False):
         """Send `cmd` to EBUSD and Receive Response."""
-        _LOGGER.info(f"cmd({cmd}, infinite={infinite}, check={check})")
+        _LOGGER.info(f"cmd({cmd!r}, infinite={infinite!r}, check={check!r})")
         await self.connection.write(cmd)
         async for line in self.connection.readlines(infinite=infinite, check=check):
             yield line

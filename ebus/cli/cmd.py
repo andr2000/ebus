@@ -23,17 +23,10 @@ def parse_args(subparsers):
     parser.add_argument(
         "cmd", help=("TCP Command. " "See https://github.com/john30/ebusd/wiki/3.1.-TCP-client-commands for reference.")
     )
-    parser.set_defaults(main=main)
+    parser.set_defaults(main=_main)
 
 
 async def _main(args):
     e = create_ebus(args)
     async for line in e.cmd(args.cmd, infinite=args.infinite, check=not args.infinite):
         print(line)
-
-
-def main(args):
-    """Main."""
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(_main(args))
-    loop.close()

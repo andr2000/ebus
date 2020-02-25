@@ -1,5 +1,3 @@
-import asyncio
-
 from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import create_ebus
@@ -14,7 +12,7 @@ def parse_args(subparsers):
     add_msgdef_args(parser)
     parser.add_argument("field", help="Field (i.e. 'ui/OutsideTemp/temp')")
     parser.add_argument("value", help="Value (i.e. '5')")
-    parser.set_defaults(main=main)
+    parser.set_defaults(main=_main)
 
 
 async def _main(args):
@@ -23,10 +21,3 @@ async def _main(args):
     await load_msgdefs(e, args)
     for msgdef in e.msgdefs.resolve([args.field]):
         await e.write(msgdef, args.value)
-
-
-def main(args):
-    """Main."""
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(_main(args))
-    loop.close()

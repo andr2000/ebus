@@ -22,7 +22,7 @@ def parse_args(subparsers):
     parser.add_argument(
         "--type", "-t", help="Type to be checked, 'r' for readable, 'w' for writeable.",
     )
-    parser.set_defaults(main=main)
+    parser.set_defaults(main=_main)
 
 
 async def _main(args):
@@ -59,10 +59,3 @@ def _filter_type(msgdef, type_):
     read, write, update = type_
     pairs = ((msgdef.read, read), (msgdef.write, write), (msgdef.update, update))
     return all([(exp is None or val == exp) for val, exp in pairs])
-
-
-def main(args):
-    """Main."""
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(_main(args))
-    loop.close()
