@@ -89,7 +89,8 @@ def _createfields(chunks):
             dups[name] += 1
         # create fields
         cnts = collections.defaultdict(lambda: 0)
-        for idx, chunk in enumerate(chunks):
+        idx = 0
+        for chunk in chunks:
             name = chunk[0]
             if dups[name]:
                 cnt = cnts[name]
@@ -97,12 +98,16 @@ def _createfields(chunks):
                 name = f"{name}.{cnt}"
             else:
                 name = name
-            yield _createfield(idx, name, *chunk)
+            field = _createfield(idx, name, *chunk)
+            if field:
+                yield field
+                idx += 1
 
 
 def _createfield(idx, name, ename, part, datatype, dividervalues=None, unit=None, comment=None):
     types = tuple(datatype.split(","))
-    return FieldDef(idx, name, ename, types, dividervalues, unit, comment)
+    if types and not types[0].startswith("IGN"):
+        return FieldDef(idx, name, ename, types, dividervalues, unit, comment)
 
 
 def _chunks(list_or_tuple, maxsize):

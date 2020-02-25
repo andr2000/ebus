@@ -25,8 +25,8 @@ def test_msgdefs0():
             except ValueError as e:
                 pass
 
-    eq_(len(msgdefs), 791)
-    eq_(msgdefs.summary(), "791 messages (685 read, 19 update, 231 write) with 1797 fields")
+    eq_(len(msgdefs), 777)
+    eq_(msgdefs.summary(), "777 messages (685 read, 19 update, 231 write) with 1654 fields")
 
     eq_(msgdefs.get("bai", "foo"), None)
     eq_(msgdefs.get("bar", "foo"), None)
@@ -172,5 +172,5 @@ def test_msgdefs1():
             except ValueError as e:
                 pass
 
-    eq_(len(msgdefs), 606)
-    eq_(msgdefs.summary(), "606 messages (396 read, 12 update, 229 write) with 1568 fields")
+    eq_(len(msgdefs), 429)
+    eq_(msgdefs.summary(), "429 messages (396 read, 12 update, 229 write) with 846 fields")

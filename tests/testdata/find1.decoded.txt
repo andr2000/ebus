@@ -1,8 +1,7 @@
 
 r,b7v,AdaptHeatCurve,,s,IGN:4,,,,yesno,s,UCH,0=no;1=yes,,automatic correction of configured heat curve
 MsgDef('b7v', 'AdaptHeatCurve', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
 
 w,b7v,AdaptHeatCurve,yesno,m,UCH,0=no;1=yes,,automatic correction of configured heat curve
 MsgDef('b7v', 'AdaptHeatCurve', write=True)
@@ -10,8 +9,7 @@ MsgDef('b7v', 'AdaptHeatCurve', write=True)
 
 r,b7v,BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays
 MsgDef('b7v', 'BankHolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays
 MsgDef('b7v', 'BankHolidayEndPeriod', write=True)
@@ -19,8 +17,7 @@ MsgDef('b7v', 'BankHolidayEndPeriod', write=True)
 
 r,b7v,BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays
 MsgDef('b7v', 'BankHolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays
 MsgDef('b7v', 'BankHolidayStartPeriod', write=True)
@@ -28,13 +25,12 @@ MsgDef('b7v', 'BankHolidayStartPeriod', write=True)
 
 r,b7v,ccTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ccTimer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ccTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ccTimer.Friday', write=True)
@@ -47,13 +43,12 @@ MsgDef('b7v', 'ccTimer.Friday', write=True)
 
 r,b7v,ccTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ccTimer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ccTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ccTimer.Monday', write=True)
@@ -66,13 +61,12 @@ MsgDef('b7v', 'ccTimer.Monday', write=True)
 
 r,b7v,ccTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ccTimer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ccTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ccTimer.Saturday', write=True)
@@ -85,13 +79,12 @@ MsgDef('b7v', 'ccTimer.Saturday', write=True)
 
 r,b7v,ccTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ccTimer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ccTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ccTimer.Sunday', write=True)
@@ -104,13 +97,12 @@ MsgDef('b7v', 'ccTimer.Sunday', write=True)
 
 r,b7v,ccTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ccTimer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ccTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ccTimer.Thursday', write=True)
@@ -123,13 +115,12 @@ MsgDef('b7v', 'ccTimer.Thursday', write=True)
 
 r,b7v,ccTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ccTimer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ccTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ccTimer.Tuesday', write=True)
@@ -142,13 +133,12 @@ MsgDef('b7v', 'ccTimer.Tuesday', write=True)
 
 r,b7v,ccTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ccTimer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ccTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ccTimer.Wednesday', write=True)
@@ -165,8 +155,7 @@ MsgDef('b7v', 'clearerrorhistory', write=True)
 
 r,b7v,ContinuosHeating,,s,IGN:4,,,,tempv,s,EXP,,°C,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 MsgDef('b7v', 'ContinuosHeating', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C', comment='-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C', comment='-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)')
 
 w,b7v,ContinuosHeating,tempv,m,EXP,,°C,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 MsgDef('b7v', 'ContinuosHeating', write=True)
@@ -182,8 +171,7 @@ MsgDef('b7v', 'currenterror', read=True)
 
 r,b7v,CylinderChargeHyst,,s,IGN:4,,,,calibrationv,s,EXP,,K,Hysterese Speicherladung
 MsgDef('b7v', 'CylinderChargeHyst', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
+    FieldDef(0, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
 
 w,b7v,CylinderChargeHyst,calibrationv,m,EXP,,K,Hysterese Speicherladung
 MsgDef('b7v', 'CylinderChargeHyst', write=True)
@@ -191,8 +179,7 @@ MsgDef('b7v', 'CylinderChargeHyst', write=True)
 
 r,b7v,CylinderChargeOffset,,s,IGN:4,,,,calibrationv,s,EXP,,K,Speicherlad. Offset
 MsgDef('b7v', 'CylinderChargeOffset', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
+    FieldDef(0, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
 
 w,b7v,CylinderChargeOffset,calibrationv,m,EXP,,K,Speicherlad. Offset
 MsgDef('b7v', 'CylinderChargeOffset', write=True)
@@ -200,8 +187,7 @@ MsgDef('b7v', 'CylinderChargeOffset', write=True)
 
 r,b7v,Date,,s,IGN:4,,,,date,s,HDA,,,Aktuelles Datum
 MsgDef('b7v', 'Date', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'date', 'date', ('HDA',))
+    FieldDef(0, 'date', 'date', ('HDA',))
 
 w,b7v,Date,date,m,HDA,,,Aktuelles Datum
 MsgDef('b7v', 'Date', write=True)
@@ -209,8 +195,7 @@ MsgDef('b7v', 'Date', write=True)
 
 r,b7v,DisplayedOutsideTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,Außentemperatur
 MsgDef('b7v', 'DisplayedOutsideTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,time,date,s,HDA,,,date,error,s,UIN,,,error number
 MsgDef('b7v', 'errorhistory', read=True)
@@ -223,8 +208,7 @@ MsgDef('b7v', 'errorhistory', read=True)
 
 r,b7v,FrostOverRideTime,,s,IGN:4,,,,hoursum2,s,UIN,,h,delay before frost protection is activated
 MsgDef('b7v', 'FrostOverRideTime', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hoursum2', 'hoursum2', ('UIN',), unit='h')
+    FieldDef(0, 'hoursum2', 'hoursum2', ('UIN',), unit='h')
 
 w,b7v,FrostOverRideTime,hoursum2,m,UIN,,h,delay before frost protection is activated
 MsgDef('b7v', 'FrostOverRideTime', write=True)
@@ -232,13 +216,11 @@ MsgDef('b7v', 'FrostOverRideTime', write=True)
 
 r1,b7v,Hc1ActualFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature setpoint of Hc1
 MsgDef('b7v', 'Hc1ActualFlowTempDesired', read=True, prio=1)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,Hc1AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc1AutoOffMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'offmode', 'offmode', ('UIN',), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', 'offmode', ('UIN',), dividervalues='0=eco;1=night')
 
 w,b7v,Hc1AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc1AutoOffMode', write=True)
@@ -246,14 +228,11 @@ MsgDef('b7v', 'Hc1AutoOffMode', write=True)
 
 r,b7v,Hc1CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
 MsgDef('b7v', 'Hc1CircuitType', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
-    FieldDef(2, '.1', '', ('IGN:1',))
+    FieldDef(0, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
 
 r,b7v,Hc1ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc1 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc1ExcessTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
+    FieldDef(0, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
 
 w,b7v,Hc1ExcessTemp,calibrationv,m,EXP,,K,excess temperature of Hc1 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc1ExcessTemp', write=True)
@@ -261,13 +240,11 @@ MsgDef('b7v', 'Hc1ExcessTemp', write=True)
 
 r,b7v,Hc1FlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature of Hc1
 MsgDef('b7v', 'Hc1FlowTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r2,b7v,Hc1HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc1
 MsgDef('b7v', 'Hc1HeatCurve', read=True, prio=2)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',))
+    FieldDef(0, '.1', '', ('EXP',))
 
 w,b7v,Hc1HeatCurve,,m,EXP,,,heating curve of Hc1
 MsgDef('b7v', 'Hc1HeatCurve', write=True)
@@ -275,13 +252,11 @@ MsgDef('b7v', 'Hc1HeatCurve', write=True)
 
 r,b7v,Hc1HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc1
 MsgDef('b7v', 'Hc1HeatCurveAdaption', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',))
+    FieldDef(0, '.1', '', ('EXP',))
 
 r,b7v,Hc1MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc1
 MsgDef('b7v', 'Hc1MaxFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc1MaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc1
 MsgDef('b7v', 'Hc1MaxFlowTempDesired', write=True)
@@ -289,8 +264,7 @@ MsgDef('b7v', 'Hc1MaxFlowTempDesired', write=True)
 
 r,b7v,Hc1MinFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc1
 MsgDef('b7v', 'Hc1MinFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc1MinFlowTempDesired,tempv,m,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc1
 MsgDef('b7v', 'Hc1MinFlowTempDesired', write=True)
@@ -298,13 +272,11 @@ MsgDef('b7v', 'Hc1MinFlowTempDesired', write=True)
 
 r,b7v,Hc1MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
 MsgDef('b7v', 'Hc1MixerMovement', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
+    FieldDef(0, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
 
 r,b7v,Hc1PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 1
 MsgDef('b7v', 'Hc1PumpStatus', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UIN',))
+    FieldDef(0, '.1', '', ('UIN',))
 
 w,b7v,Hc1PumpStatus,,m,UIN,,,pump status of zone 1
 MsgDef('b7v', 'Hc1PumpStatus', write=True)
@@ -312,8 +284,7 @@ MsgDef('b7v', 'Hc1PumpStatus', write=True)
 
 r2,b7v,Hc1RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc1
 MsgDef('b7v', 'Hc1RoomTempSwitchOn', read=True, prio=2)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'rcmode', 'rcmode', ('UIN',), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', 'rcmode', ('UIN',), dividervalues='0=off;1=modulating;2=thermostat')
 
 w,b7v,Hc1RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc1
 MsgDef('b7v', 'Hc1RoomTempSwitchOn', write=True)
@@ -321,8 +292,7 @@ MsgDef('b7v', 'Hc1RoomTempSwitchOn', write=True)
 
 r2,b7v,Hc1Status,,s,IGN:4,,,,,s,UCH,,,status of zone 1
 MsgDef('b7v', 'Hc1Status', read=True, prio=2)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UCH',))
+    FieldDef(0, '.1', '', ('UCH',))
 
 w,b7v,Hc1Status,,m,UCH,,,status of zone 1
 MsgDef('b7v', 'Hc1Status', write=True)
@@ -330,8 +300,7 @@ MsgDef('b7v', 'Hc1Status', write=True)
 
 r,b7v,Hc1SummerTempLimit,,s,IGN:4,,,,tempv,s,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
 MsgDef('b7v', 'Hc1SummerTempLimit', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc1SummerTempLimit,tempv,m,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
 MsgDef('b7v', 'Hc1SummerTempLimit', write=True)
@@ -339,13 +308,11 @@ MsgDef('b7v', 'Hc1SummerTempLimit', write=True)
 
 r,b7v,Hc2ActualFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature setpoint of Hc2
 MsgDef('b7v', 'Hc2ActualFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,Hc2AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc2 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc2AutoOffMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'offmode', 'offmode', ('UIN',), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', 'offmode', ('UIN',), dividervalues='0=eco;1=night')
 
 w,b7v,Hc2AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc2 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc2AutoOffMode', write=True)
@@ -353,14 +320,11 @@ MsgDef('b7v', 'Hc2AutoOffMode', write=True)
 
 r,b7v,Hc2CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
 MsgDef('b7v', 'Hc2CircuitType', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
-    FieldDef(2, '.1', '', ('IGN:1',))
+    FieldDef(0, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
 
 r,b7v,Hc2ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc2 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc2ExcessTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
+    FieldDef(0, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
 
 w,b7v,Hc2ExcessTemp,calibrationv,m,EXP,,K,excess temperature of Hc2 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc2ExcessTemp', write=True)
@@ -368,13 +332,11 @@ MsgDef('b7v', 'Hc2ExcessTemp', write=True)
 
 r,b7v,Hc2FlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature of Hc2
 MsgDef('b7v', 'Hc2FlowTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,Hc2HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc2
 MsgDef('b7v', 'Hc2HeatCurve', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',))
+    FieldDef(0, '.1', '', ('EXP',))
 
 w,b7v,Hc2HeatCurve,,m,EXP,,,heating curve of Hc2
 MsgDef('b7v', 'Hc2HeatCurve', write=True)
@@ -382,13 +344,11 @@ MsgDef('b7v', 'Hc2HeatCurve', write=True)
 
 r,b7v,Hc2HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc2
 MsgDef('b7v', 'Hc2HeatCurveAdaption', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',))
+    FieldDef(0, '.1', '', ('EXP',))
 
 r,b7v,Hc2MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc2
 MsgDef('b7v', 'Hc2MaxFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc2MaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc2
 MsgDef('b7v', 'Hc2MaxFlowTempDesired', write=True)
@@ -396,8 +356,7 @@ MsgDef('b7v', 'Hc2MaxFlowTempDesired', write=True)
 
 r,b7v,Hc2MinFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc2
 MsgDef('b7v', 'Hc2MinFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc2MinFlowTempDesired,tempv,m,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc2
 MsgDef('b7v', 'Hc2MinFlowTempDesired', write=True)
@@ -405,13 +364,11 @@ MsgDef('b7v', 'Hc2MinFlowTempDesired', write=True)
 
 r,b7v,Hc2MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
 MsgDef('b7v', 'Hc2MixerMovement', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
+    FieldDef(0, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
 
 r,b7v,Hc2PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 2
 MsgDef('b7v', 'Hc2PumpStatus', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UIN',))
+    FieldDef(0, '.1', '', ('UIN',))
 
 w,b7v,Hc2PumpStatus,,m,UIN,,,pump status of zone 2
 MsgDef('b7v', 'Hc2PumpStatus', write=True)
@@ -419,8 +376,7 @@ MsgDef('b7v', 'Hc2PumpStatus', write=True)
 
 r,b7v,Hc2RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc2
 MsgDef('b7v', 'Hc2RoomTempSwitchOn', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'rcmode', 'rcmode', ('UIN',), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', 'rcmode', ('UIN',), dividervalues='0=off;1=modulating;2=thermostat')
 
 w,b7v,Hc2RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc2
 MsgDef('b7v', 'Hc2RoomTempSwitchOn', write=True)
@@ -428,8 +384,7 @@ MsgDef('b7v', 'Hc2RoomTempSwitchOn', write=True)
 
 r,b7v,Hc2Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc2Status', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UCH',))
+    FieldDef(0, '.1', '', ('UCH',))
 
 w,b7v,Hc2Status,,m,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc2Status', write=True)
@@ -437,8 +392,7 @@ MsgDef('b7v', 'Hc2Status', write=True)
 
 r,b7v,Hc2SummerTempLimit,,s,IGN:4,,,,tempv,s,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
 MsgDef('b7v', 'Hc2SummerTempLimit', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc2SummerTempLimit,tempv,m,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
 MsgDef('b7v', 'Hc2SummerTempLimit', write=True)
@@ -446,13 +400,11 @@ MsgDef('b7v', 'Hc2SummerTempLimit', write=True)
 
 r,b7v,Hc3ActualFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature setpoint of Hc3
 MsgDef('b7v', 'Hc3ActualFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,Hc3AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc3 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc3AutoOffMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'offmode', 'offmode', ('UIN',), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', 'offmode', ('UIN',), dividervalues='0=eco;1=night')
 
 w,b7v,Hc3AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc3 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc3AutoOffMode', write=True)
@@ -460,14 +412,11 @@ MsgDef('b7v', 'Hc3AutoOffMode', write=True)
 
 r,b7v,Hc3CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
 MsgDef('b7v', 'Hc3CircuitType', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
-    FieldDef(2, '.1', '', ('IGN:1',))
+    FieldDef(0, 'mctype', 'mctype', ('UCH',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
 
 r,b7v,Hc3ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc3 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc3ExcessTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
+    FieldDef(0, 'calibrationv', 'calibrationv', ('EXP',), unit='K')
 
 w,b7v,Hc3ExcessTemp,calibrationv,m,EXP,,K,excess temperature of Hc3 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc3ExcessTemp', write=True)
@@ -475,13 +424,11 @@ MsgDef('b7v', 'Hc3ExcessTemp', write=True)
 
 r,b7v,Hc3FlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current flow temperature of Hc3
 MsgDef('b7v', 'Hc3FlowTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,Hc3HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc3
 MsgDef('b7v', 'Hc3HeatCurve', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',))
+    FieldDef(0, '.1', '', ('EXP',))
 
 w,b7v,Hc3HeatCurve,,m,EXP,,,heating curve of Hc3
 MsgDef('b7v', 'Hc3HeatCurve', write=True)
@@ -489,13 +436,11 @@ MsgDef('b7v', 'Hc3HeatCurve', write=True)
 
 r,b7v,Hc3HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc3
 MsgDef('b7v', 'Hc3HeatCurveAdaption', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',))
+    FieldDef(0, '.1', '', ('EXP',))
 
 r,b7v,Hc3MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc3
 MsgDef('b7v', 'Hc3MaxFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc3MaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc3
 MsgDef('b7v', 'Hc3MaxFlowTempDesired', write=True)
@@ -503,8 +448,7 @@ MsgDef('b7v', 'Hc3MaxFlowTempDesired', write=True)
 
 r,b7v,Hc3MinFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc3
 MsgDef('b7v', 'Hc3MinFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc3MinFlowTempDesired,tempv,m,EXP,,°C,minimum flow temperature setpoint (end emphasis) of Hc3
 MsgDef('b7v', 'Hc3MinFlowTempDesired', write=True)
@@ -512,13 +456,11 @@ MsgDef('b7v', 'Hc3MinFlowTempDesired', write=True)
 
 r,b7v,Hc3MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
 MsgDef('b7v', 'Hc3MixerMovement', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
+    FieldDef(0, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
 
 r,b7v,Hc3PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 3
 MsgDef('b7v', 'Hc3PumpStatus', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UIN',))
+    FieldDef(0, '.1', '', ('UIN',))
 
 w,b7v,Hc3PumpStatus,,m,UIN,,,pump status of zone 3
 MsgDef('b7v', 'Hc3PumpStatus', write=True)
@@ -526,8 +468,7 @@ MsgDef('b7v', 'Hc3PumpStatus', write=True)
 
 r,b7v,Hc3RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc3
 MsgDef('b7v', 'Hc3RoomTempSwitchOn', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'rcmode', 'rcmode', ('UIN',), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', 'rcmode', ('UIN',), dividervalues='0=off;1=modulating;2=thermostat')
 
 w,b7v,Hc3RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc3
 MsgDef('b7v', 'Hc3RoomTempSwitchOn', write=True)
@@ -535,8 +476,7 @@ MsgDef('b7v', 'Hc3RoomTempSwitchOn', write=True)
 
 r,b7v,Hc3Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc3Status', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UCH',))
+    FieldDef(0, '.1', '', ('UCH',))
 
 w,b7v,Hc3Status,,m,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc3Status', write=True)
@@ -544,8 +484,7 @@ MsgDef('b7v', 'Hc3Status', write=True)
 
 r,b7v,Hc3SummerTempLimit,,s,IGN:4,,,,tempv,s,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
 MsgDef('b7v', 'Hc3SummerTempLimit', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,Hc3SummerTempLimit,tempv,m,EXP,,°C,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
 MsgDef('b7v', 'Hc3SummerTempLimit', write=True)
@@ -553,18 +492,15 @@ MsgDef('b7v', 'Hc3SummerTempLimit', write=True)
 
 r,b7v,HcStorageTempBottom,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler Hz, unten"
 MsgDef('b7v', 'HcStorageTempBottom', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler Hz, unten')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler Hz, unten')
 
 r,b7v,HcStorageTempTop,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler Hz, oben"
 MsgDef('b7v', 'HcStorageTempTop', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler Hz, oben')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler Hz, oben')
 
 r,b7v,HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays
 MsgDef('b7v', 'HolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,HolidayEndPeriod,hto,m,HDA,,,end date of holidays
 MsgDef('b7v', 'HolidayEndPeriod', write=True)
@@ -572,8 +508,7 @@ MsgDef('b7v', 'HolidayEndPeriod', write=True)
 
 r,b7v,HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays
 MsgDef('b7v', 'HolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays
 MsgDef('b7v', 'HolidayStartPeriod', write=True)
@@ -581,8 +516,7 @@ MsgDef('b7v', 'HolidayStartPeriod', write=True)
 
 r,b7v,HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint
 MsgDef('b7v', 'HolidayTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,HolidayTemp,tempv,m,EXP,,°C,holiday setpoint
 MsgDef('b7v', 'HolidayTemp', write=True)
@@ -590,8 +524,7 @@ MsgDef('b7v', 'HolidayTemp', write=True)
 
 r,b7v,HwcBankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays
 MsgDef('b7v', 'HwcBankHolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,HwcBankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays
 MsgDef('b7v', 'HwcBankHolidayEndPeriod', write=True)
@@ -599,8 +532,7 @@ MsgDef('b7v', 'HwcBankHolidayEndPeriod', write=True)
 
 r,b7v,HwcBankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays
 MsgDef('b7v', 'HwcBankHolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,HwcBankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays
 MsgDef('b7v', 'HwcBankHolidayStartPeriod', write=True)
@@ -608,13 +540,11 @@ MsgDef('b7v', 'HwcBankHolidayStartPeriod', write=True)
 
 r,b7v,HwcFlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,desired flow temp for Hwc
 MsgDef('b7v', 'HwcFlowTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,HwcHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays
 MsgDef('b7v', 'HwcHolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,HwcHolidayEndPeriod,hto,m,HDA,,,end date of holidays
 MsgDef('b7v', 'HwcHolidayEndPeriod', write=True)
@@ -622,8 +552,7 @@ MsgDef('b7v', 'HwcHolidayEndPeriod', write=True)
 
 r,b7v,HwcHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays
 MsgDef('b7v', 'HwcHolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,HwcHolidayStartPeriod,hfrom,m,HDA,,,start date of holidays
 MsgDef('b7v', 'HwcHolidayStartPeriod', write=True)
@@ -631,8 +560,7 @@ MsgDef('b7v', 'HwcHolidayStartPeriod', write=True)
 
 r,b7v,HwcLockTime,,s,IGN:4,,,,minutes2,s,UIN,,min,Sperrzeit WW-Bedarf
 MsgDef('b7v', 'HwcLockTime', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'minutes2', 'minutes2', ('UIN',), unit='min')
+    FieldDef(0, 'minutes2', 'minutes2', ('UIN',), unit='min')
 
 w,b7v,HwcLockTime,minutes2,m,UIN,,min,Sperrzeit WW-Bedarf
 MsgDef('b7v', 'HwcLockTime', write=True)
@@ -640,8 +568,7 @@ MsgDef('b7v', 'HwcLockTime', write=True)
 
 r,b7v,HwcMaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint of Hwc
 MsgDef('b7v', 'HwcMaxFlowTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,HwcMaxFlowTempDesired,tempv,m,EXP,,°C,maximum flow temperature setpoint of Hwc
 MsgDef('b7v', 'HwcMaxFlowTempDesired', write=True)
@@ -649,8 +576,7 @@ MsgDef('b7v', 'HwcMaxFlowTempDesired', write=True)
 
 r2,b7v,HwcOpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of Hwc
 MsgDef('b7v', 'HwcOpMode', read=True, prio=2)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
 
 w,b7v,HwcOpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of Hwc
 MsgDef('b7v', 'HwcOpMode', write=True)
@@ -658,8 +584,7 @@ MsgDef('b7v', 'HwcOpMode', write=True)
 
 r,b7v,HwcParallelLoading,,s,IGN:4,,,,onoff,s,UCH,0=off;1=on,,heating and hot water parallel
 MsgDef('b7v', 'HwcParallelLoading', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', 'onoff', ('UCH',), dividervalues='0=off;1=on')
 
 w,b7v,HwcParallelLoading,onoff,m,UCH,0=off;1=on,,heating and hot water parallel
 MsgDef('b7v', 'HwcParallelLoading', write=True)
@@ -667,8 +592,7 @@ MsgDef('b7v', 'HwcParallelLoading', write=True)
 
 r,b7v,HwcSFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'HwcSFMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
 
 w,b7v,HwcSFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'HwcSFMode', write=True)
@@ -676,23 +600,19 @@ MsgDef('b7v', 'HwcSFMode', write=True)
 
 r1,b7v,HwcStorageTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,Speicheristtemperatur
 MsgDef('b7v', 'HwcStorageTemp', read=True, prio=1)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,HwcStorageTempBottom,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler WW, unten"
 MsgDef('b7v', 'HwcStorageTempBottom', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler WW, unten')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler WW, unten')
 
 r,b7v,HwcStorageTempTop,,s,IGN:4,,,,tempv,s,EXP,,°C,"Temp.fühler WW, oben"
 MsgDef('b7v', 'HwcStorageTempTop', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler WW, oben')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C', comment='Temp.fühler WW, oben')
 
 r2,b7v,HwcTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,setpoint of domestic hot water circuit
 MsgDef('b7v', 'HwcTempDesired', read=True, prio=2)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,HwcTempDesired,tempv,m,EXP,,°C,setpoint of domestic hot water circuit
 MsgDef('b7v', 'HwcTempDesired', write=True)
@@ -700,13 +620,12 @@ MsgDef('b7v', 'HwcTempDesired', write=True)
 
 r,b7v,hwcTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,hwcTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Friday', write=True)
@@ -719,13 +638,12 @@ MsgDef('b7v', 'hwcTimer.Friday', write=True)
 
 r,b7v,hwcTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,hwcTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Monday', write=True)
@@ -738,13 +656,12 @@ MsgDef('b7v', 'hwcTimer.Monday', write=True)
 
 r,b7v,hwcTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,hwcTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Saturday', write=True)
@@ -757,13 +674,12 @@ MsgDef('b7v', 'hwcTimer.Saturday', write=True)
 
 r,b7v,hwcTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,hwcTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Sunday', write=True)
@@ -776,13 +692,12 @@ MsgDef('b7v', 'hwcTimer.Sunday', write=True)
 
 r,b7v,hwcTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,hwcTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Thursday', write=True)
@@ -795,13 +710,12 @@ MsgDef('b7v', 'hwcTimer.Thursday', write=True)
 
 r,b7v,hwcTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,hwcTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Tuesday', write=True)
@@ -814,13 +728,12 @@ MsgDef('b7v', 'hwcTimer.Tuesday', write=True)
 
 r,b7v,hwcTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,hwcTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'hwcTimer.Wednesday', write=True)
@@ -833,8 +746,7 @@ MsgDef('b7v', 'hwcTimer.Wednesday', write=True)
 
 r,b7v,HydraulicScheme,,s,IGN:4,,,,,s,UIN,,,Systemschema
 MsgDef('b7v', 'HydraulicScheme', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UIN',))
+    FieldDef(0, '.1', '', ('UIN',))
 
 w,b7v,HydraulicScheme,,m,UIN,,,Systemschema
 MsgDef('b7v', 'HydraulicScheme', write=True)
@@ -842,8 +754,7 @@ MsgDef('b7v', 'HydraulicScheme', write=True)
 
 r,b7v,Installer1,,s,IGN:4,,,,shortname,s,STR:6,,,installer's name
 MsgDef('b7v', 'Installer1', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'shortname', 'shortname', ('STR:6',))
+    FieldDef(0, 'shortname', 'shortname', ('STR:6',))
 
 w,b7v,Installer1,shortname,m,STR:6,,,installer's name
 MsgDef('b7v', 'Installer1', write=True)
@@ -851,8 +762,7 @@ MsgDef('b7v', 'Installer1', write=True)
 
 r,b7v,Installer2,,s,IGN:4,,,,shortname,s,STR:6,,,installer's name
 MsgDef('b7v', 'Installer2', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'shortname', 'shortname', ('STR:6',))
+    FieldDef(0, 'shortname', 'shortname', ('STR:6',))
 
 w,b7v,Installer2,shortname,m,STR:6,,,installer's name
 MsgDef('b7v', 'Installer2', write=True)
@@ -860,8 +770,7 @@ MsgDef('b7v', 'Installer2', write=True)
 
 r,b7v,KeyCodeforConfigMenu,,s,IGN:4,,,,,s,UIN,,,000-999; code for the installer's menues
 MsgDef('b7v', 'KeyCodeforConfigMenu', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UIN',))
+    FieldDef(0, '.1', '', ('UIN',))
 
 w,b7v,KeyCodeforConfigMenu,,m,UIN,,,000-999; code for the installer's menues
 MsgDef('b7v', 'KeyCodeforConfigMenu', write=True)
@@ -869,8 +778,7 @@ MsgDef('b7v', 'KeyCodeforConfigMenu', write=True)
 
 r,b7v,MaintenanceDate,,s,IGN:4,,,,date,s,HDA,,,Datum nächste Wartung
 MsgDef('b7v', 'MaintenanceDate', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'date', 'date', ('HDA',))
+    FieldDef(0, 'date', 'date', ('HDA',))
 
 w,b7v,MaintenanceDate,date,m,HDA,,,Datum nächste Wartung
 MsgDef('b7v', 'MaintenanceDate', write=True)
@@ -878,13 +786,11 @@ MsgDef('b7v', 'MaintenanceDate', write=True)
 
 r,b7v,MaintenanceDue,,s,IGN:4,,,,yesno,s,UCH,0=no;1=yes,,zeigt an ob die Wartung fällig ist
 MsgDef('b7v', 'MaintenanceDue', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', 'yesno', ('UCH',), dividervalues='0=no;1=yes')
 
 r,b7v,MaxCylinderChargeTime,,s,IGN:4,,,,minutes2,s,UIN,,min,maximum cylinder charging time
 MsgDef('b7v', 'MaxCylinderChargeTime', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'minutes2', 'minutes2', ('UIN',), unit='min')
+    FieldDef(0, 'minutes2', 'minutes2', ('UIN',), unit='min')
 
 w,b7v,MaxCylinderChargeTime,minutes2,m,UIN,,min,maximum cylinder charging time
 MsgDef('b7v', 'MaxCylinderChargeTime', write=True)
@@ -892,8 +798,7 @@ MsgDef('b7v', 'MaxCylinderChargeTime', write=True)
 
 r,b7v,MaxRoomHumidity,,s,IGN:4,,,,,s,UIN,,,maximum room humidity
 MsgDef('b7v', 'MaxRoomHumidity', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UIN',))
+    FieldDef(0, '.1', '', ('UIN',))
 
 w,b7v,MaxRoomHumidity,,m,UIN,,,maximum room humidity
 MsgDef('b7v', 'MaxRoomHumidity', write=True)
@@ -901,8 +806,7 @@ MsgDef('b7v', 'MaxRoomHumidity', write=True)
 
 r,b7v,MultiRelaySetting,,s,IGN:4,,,,mamode,s,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 MsgDef('b7v', 'MultiRelaySetting', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'mamode', 'mamode', ('UIN',), dividervalues='0=circulation;1=dryer;2=zone;3=legiopump')
+    FieldDef(0, 'mamode', 'mamode', ('UIN',), dividervalues='0=circulation;1=dryer;2=zone;3=legiopump')
 
 w,b7v,MultiRelaySetting,mamode,m,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 MsgDef('b7v', 'MultiRelaySetting', write=True)
@@ -910,13 +814,12 @@ MsgDef('b7v', 'MultiRelaySetting', write=True)
 
 r,b7v,noiseReductionTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,noiseReductionTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Friday', write=True)
@@ -929,13 +832,12 @@ MsgDef('b7v', 'noiseReductionTimer.Friday', write=True)
 
 r,b7v,noiseReductionTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,noiseReductionTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Monday', write=True)
@@ -948,13 +850,12 @@ MsgDef('b7v', 'noiseReductionTimer.Monday', write=True)
 
 r,b7v,noiseReductionTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,noiseReductionTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Saturday', write=True)
@@ -967,13 +868,12 @@ MsgDef('b7v', 'noiseReductionTimer.Saturday', write=True)
 
 r,b7v,noiseReductionTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,noiseReductionTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Sunday', write=True)
@@ -986,13 +886,12 @@ MsgDef('b7v', 'noiseReductionTimer.Sunday', write=True)
 
 r,b7v,noiseReductionTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,noiseReductionTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Thursday', write=True)
@@ -1005,13 +904,12 @@ MsgDef('b7v', 'noiseReductionTimer.Thursday', write=True)
 
 r,b7v,noiseReductionTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,noiseReductionTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Tuesday', write=True)
@@ -1024,13 +922,12 @@ MsgDef('b7v', 'noiseReductionTimer.Tuesday', write=True)
 
 r,b7v,noiseReductionTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,noiseReductionTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Wednesday', write=True)
@@ -1043,8 +940,7 @@ MsgDef('b7v', 'noiseReductionTimer.Wednesday', write=True)
 
 r,b7v,OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of all/configured zone(s) matching OpModeEffect
 MsgDef('b7v', 'OpMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
 
 w,b7v,OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of all/configured zone(s) matching OpModeEffect
 MsgDef('b7v', 'OpMode', write=True)
@@ -1052,8 +948,7 @@ MsgDef('b7v', 'OpMode', write=True)
 
 r,b7v,OpModeEffect,,s,IGN:4,,,,zonesel,s,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,selection which heating circuit is affected by changing parameters in the basic display
 MsgDef('b7v', 'OpModeEffect', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zonesel', 'zonesel', ('UIN',), dividervalues='0=alle;1=1;2=2;3=3;4=4;5=5;6=6')
+    FieldDef(0, 'zonesel', 'zonesel', ('UIN',), dividervalues='0=alle;1=1;2=2;3=3;4=4;5=5;6=6')
 
 w,b7v,OpModeEffect,zonesel,m,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,selection which heating circuit is affected by changing parameters in the basic display
 MsgDef('b7v', 'OpModeEffect', write=True)
@@ -1061,8 +956,7 @@ MsgDef('b7v', 'OpModeEffect', write=True)
 
 r,b7v,OutsideTempAvg,,s,IGN:4,,,,tempv,s,EXP,,°C,gerundete mittlere Außentemperatur (alle 3h aktualisiert)
 MsgDef('b7v', 'OutsideTempAvg', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,OutsideTempAvg,tempv,m,EXP,,°C,gerundete mittlere Außentemperatur (alle 3h aktualisiert)
 MsgDef('b7v', 'OutsideTempAvg', write=True)
@@ -1070,8 +964,7 @@ MsgDef('b7v', 'OutsideTempAvg', write=True)
 
 r,b7v,PhoneNumber1,,s,IGN:4,,,,shortphone,s,STR:6,,,installer's telephone number
 MsgDef('b7v', 'PhoneNumber1', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'shortphone', 'shortphone', ('STR:6',))
+    FieldDef(0, 'shortphone', 'shortphone', ('STR:6',))
 
 w,b7v,PhoneNumber1,shortphone,m,STR:6,,,installer's telephone number
 MsgDef('b7v', 'PhoneNumber1', write=True)
@@ -1079,8 +972,7 @@ MsgDef('b7v', 'PhoneNumber1', write=True)
 
 r,b7v,PhoneNumber2,,s,IGN:4,,,,shortphone,s,STR:6,,,installer's telephone number
 MsgDef('b7v', 'PhoneNumber2', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'shortphone', 'shortphone', ('STR:6',))
+    FieldDef(0, 'shortphone', 'shortphone', ('STR:6',))
 
 w,b7v,PhoneNumber2,shortphone,m,STR:6,,,installer's telephone number
 MsgDef('b7v', 'PhoneNumber2', write=True)
@@ -1088,8 +980,7 @@ MsgDef('b7v', 'PhoneNumber2', write=True)
 
 r,b7v,PrEnergySum,,s,IGN:4,,,,energy4,s,ULG,,kWh,Dieses Jahr Stromverbrauch gesamt
 MsgDef('b7v', 'PrEnergySum', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrEnergySum,energy4,m,ULG,,kWh,Dieses Jahr Stromverbrauch gesamt
 MsgDef('b7v', 'PrEnergySum', write=True)
@@ -1097,8 +988,7 @@ MsgDef('b7v', 'PrEnergySum', write=True)
 
 r,b7v,PrEnergySumHc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Stromverbrauch Heizung gesamt
 MsgDef('b7v', 'PrEnergySumHc', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrEnergySumHc,energy4,m,ULG,,kWh,Stromverbrauch Heizung gesamt
 MsgDef('b7v', 'PrEnergySumHc', write=True)
@@ -1106,8 +996,7 @@ MsgDef('b7v', 'PrEnergySumHc', write=True)
 
 r,b7v,PrEnergySumHcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Stromverbrauch Heizung
 MsgDef('b7v', 'PrEnergySumHcLastMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrEnergySumHcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Stromverbrauch Heizung
 MsgDef('b7v', 'PrEnergySumHcLastMonth', write=True)
@@ -1115,8 +1004,7 @@ MsgDef('b7v', 'PrEnergySumHcLastMonth', write=True)
 
 r,b7v,PrEnergySumHcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Stromverbrauch Heizung
 MsgDef('b7v', 'PrEnergySumHcThisMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrEnergySumHcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Stromverbrauch Heizung
 MsgDef('b7v', 'PrEnergySumHcThisMonth', write=True)
@@ -1124,8 +1012,7 @@ MsgDef('b7v', 'PrEnergySumHcThisMonth', write=True)
 
 r,b7v,PrEnergySumHwc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Stromverbrauch hot water gesamt
 MsgDef('b7v', 'PrEnergySumHwc', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrEnergySumHwc,energy4,m,ULG,,kWh,Stromverbrauch hot water gesamt
 MsgDef('b7v', 'PrEnergySumHwc', write=True)
@@ -1133,8 +1020,7 @@ MsgDef('b7v', 'PrEnergySumHwc', write=True)
 
 r,b7v,PrEnergySumHwcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Stromverbrauch hot water
 MsgDef('b7v', 'PrEnergySumHwcLastMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrEnergySumHwcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Stromverbrauch hot water
 MsgDef('b7v', 'PrEnergySumHwcLastMonth', write=True)
@@ -1142,8 +1028,7 @@ MsgDef('b7v', 'PrEnergySumHwcLastMonth', write=True)
 
 r,b7v,PrEnergySumHwcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Stromverbrauch hot water
 MsgDef('b7v', 'PrEnergySumHwcThisMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrEnergySumHwcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Stromverbrauch hot water
 MsgDef('b7v', 'PrEnergySumHwcThisMonth', write=True)
@@ -1151,8 +1036,7 @@ MsgDef('b7v', 'PrEnergySumHwcThisMonth', write=True)
 
 r,b7v,PrFuelSum,,s,IGN:4,,,,energy4,s,ULG,,kWh,Dieses Jahr Brennstoffverbrauch gesamt
 MsgDef('b7v', 'PrFuelSum', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrFuelSum,energy4,m,ULG,,kWh,Dieses Jahr Brennstoffverbrauch gesamt
 MsgDef('b7v', 'PrFuelSum', write=True)
@@ -1160,8 +1044,7 @@ MsgDef('b7v', 'PrFuelSum', write=True)
 
 r,b7v,PrFuelSumHc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Brennstoffverbrauch Heizung gesamt
 MsgDef('b7v', 'PrFuelSumHc', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrFuelSumHc,energy4,m,ULG,,kWh,Brennstoffverbrauch Heizung gesamt
 MsgDef('b7v', 'PrFuelSumHc', write=True)
@@ -1169,8 +1052,7 @@ MsgDef('b7v', 'PrFuelSumHc', write=True)
 
 r,b7v,PrFuelSumHcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Brennstoffverbrauch Heizung
 MsgDef('b7v', 'PrFuelSumHcLastMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrFuelSumHcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Brennstoffverbrauch Heizung
 MsgDef('b7v', 'PrFuelSumHcLastMonth', write=True)
@@ -1178,8 +1060,7 @@ MsgDef('b7v', 'PrFuelSumHcLastMonth', write=True)
 
 r,b7v,PrFuelSumHcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Brennstoffverbrauch Heizung
 MsgDef('b7v', 'PrFuelSumHcThisMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrFuelSumHcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Brennstoffverbrauch Heizung
 MsgDef('b7v', 'PrFuelSumHcThisMonth', write=True)
@@ -1187,8 +1068,7 @@ MsgDef('b7v', 'PrFuelSumHcThisMonth', write=True)
 
 r,b7v,PrFuelSumHwc,,s,IGN:4,,,,energy4,s,ULG,,kWh,Brennstoffverbrauch hot water gesamt
 MsgDef('b7v', 'PrFuelSumHwc', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrFuelSumHwc,energy4,m,ULG,,kWh,Brennstoffverbrauch hot water gesamt
 MsgDef('b7v', 'PrFuelSumHwc', write=True)
@@ -1196,8 +1076,7 @@ MsgDef('b7v', 'PrFuelSumHwc', write=True)
 
 r,b7v,PrFuelSumHwcLastMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Letzter Monat Brennstoffverbrauch hot water
 MsgDef('b7v', 'PrFuelSumHwcLastMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrFuelSumHwcLastMonth,energy4,m,ULG,,kWh,Letzter Monat Brennstoffverbrauch hot water
 MsgDef('b7v', 'PrFuelSumHwcLastMonth', write=True)
@@ -1205,8 +1084,7 @@ MsgDef('b7v', 'PrFuelSumHwcLastMonth', write=True)
 
 r,b7v,PrFuelSumHwcThisMonth,,s,IGN:4,,,,energy4,s,ULG,,kWh,Aktueller Monat Brennstoffverbrauch hot water
 MsgDef('b7v', 'PrFuelSumHwcThisMonth', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,PrFuelSumHwcThisMonth,energy4,m,ULG,,kWh,Aktueller Monat Brennstoffverbrauch hot water
 MsgDef('b7v', 'PrFuelSumHwcThisMonth', write=True)
@@ -1214,8 +1092,7 @@ MsgDef('b7v', 'PrFuelSumHwcThisMonth', write=True)
 
 r,b7v,PumpAdditionalTime,,s,IGN:4,,,,minutes2,s,UIN,,min,Ladepumpe Nachlaufzeit
 MsgDef('b7v', 'PumpAdditionalTime', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'minutes2', 'minutes2', ('UIN',), unit='min')
+    FieldDef(0, 'minutes2', 'minutes2', ('UIN',), unit='min')
 
 w,b7v,PumpAdditionalTime,minutes2,m,UIN,,min,Ladepumpe Nachlaufzeit
 MsgDef('b7v', 'PumpAdditionalTime', write=True)
@@ -1223,8 +1100,7 @@ MsgDef('b7v', 'PumpAdditionalTime', write=True)
 
 r,b7v,SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'SFMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
 
 w,b7v,SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'SFMode', write=True)
@@ -1232,8 +1108,7 @@ MsgDef('b7v', 'SFMode', write=True)
 
 r,b7v,SolarYieldTotal,,s,IGN:4,,,,energy4,s,ULG,,kWh,Solarertrag gesamt
 MsgDef('b7v', 'SolarYieldTotal', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,SolarYieldTotal,energy4,m,ULG,,kWh,Solarertrag gesamt
 MsgDef('b7v', 'SolarYieldTotal', write=True)
@@ -1241,18 +1116,16 @@ MsgDef('b7v', 'SolarYieldTotal', write=True)
 
 r,b7v,SystemFlowTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,Systemvorlauf
 MsgDef('b7v', 'SystemFlowTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,tariffTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,tariffTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Friday', write=True)
@@ -1265,13 +1138,12 @@ MsgDef('b7v', 'tariffTimer.Friday', write=True)
 
 r,b7v,tariffTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,tariffTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Monday', write=True)
@@ -1284,13 +1156,12 @@ MsgDef('b7v', 'tariffTimer.Monday', write=True)
 
 r,b7v,tariffTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,tariffTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Saturday', write=True)
@@ -1303,13 +1174,12 @@ MsgDef('b7v', 'tariffTimer.Saturday', write=True)
 
 r,b7v,tariffTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,tariffTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Sunday', write=True)
@@ -1322,13 +1192,12 @@ MsgDef('b7v', 'tariffTimer.Sunday', write=True)
 
 r,b7v,tariffTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,tariffTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Thursday', write=True)
@@ -1341,13 +1210,12 @@ MsgDef('b7v', 'tariffTimer.Thursday', write=True)
 
 r,b7v,tariffTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,tariffTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Tuesday', write=True)
@@ -1360,13 +1228,12 @@ MsgDef('b7v', 'tariffTimer.Tuesday', write=True)
 
 r,b7v,tariffTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,tariffTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'tariffTimer.Wednesday', write=True)
@@ -1379,8 +1246,7 @@ MsgDef('b7v', 'tariffTimer.Wednesday', write=True)
 
 r,b7v,Time,,s,IGN:4,,,,,s,HTI,,,Aktuelle Uhrzeit
 MsgDef('b7v', 'Time', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('HTI',))
+    FieldDef(0, '.1', '', ('HTI',))
 
 w,b7v,Time,,m,HTI,,,Aktuelle Uhrzeit
 MsgDef('b7v', 'Time', write=True)
@@ -1388,13 +1254,12 @@ MsgDef('b7v', 'Time', write=True)
 
 r,b7v,ventilationTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ventilationTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Friday', write=True)
@@ -1407,13 +1272,12 @@ MsgDef('b7v', 'ventilationTimer.Friday', write=True)
 
 r,b7v,ventilationTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ventilationTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Monday', write=True)
@@ -1426,13 +1290,12 @@ MsgDef('b7v', 'ventilationTimer.Monday', write=True)
 
 r,b7v,ventilationTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ventilationTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Saturday', write=True)
@@ -1445,13 +1308,12 @@ MsgDef('b7v', 'ventilationTimer.Saturday', write=True)
 
 r,b7v,ventilationTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ventilationTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Sunday', write=True)
@@ -1464,13 +1326,12 @@ MsgDef('b7v', 'ventilationTimer.Sunday', write=True)
 
 r,b7v,ventilationTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ventilationTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Thursday', write=True)
@@ -1483,13 +1344,12 @@ MsgDef('b7v', 'ventilationTimer.Thursday', write=True)
 
 r,b7v,ventilationTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ventilationTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Tuesday', write=True)
@@ -1502,13 +1362,12 @@ MsgDef('b7v', 'ventilationTimer.Tuesday', write=True)
 
 r,b7v,ventilationTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,ventilationTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'ventilationTimer.Wednesday', write=True)
@@ -1521,13 +1380,11 @@ MsgDef('b7v', 'ventilationTimer.Wednesday', write=True)
 
 r,b7v,WaterPressure,,s,IGN:4,,,,pressv,s,EXP,,bar,Wasserdruck
 MsgDef('b7v', 'WaterPressure', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'pressv', 'pressv', ('EXP',), unit='bar')
+    FieldDef(0, 'pressv', 'pressv', ('EXP',), unit='bar')
 
 r,b7v,YieldTotal,,s,IGN:4,,,,energy4,s,ULG,,kWh,Umweltertrag gesamt
 MsgDef('b7v', 'YieldTotal', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'energy4', 'energy4', ('ULG',), unit='kWh')
+    FieldDef(0, 'energy4', 'energy4', ('ULG',), unit='kWh')
 
 w,b7v,YieldTotal,energy4,m,ULG,,kWh,Umweltertrag gesamt
 MsgDef('b7v', 'YieldTotal', write=True)
@@ -1535,8 +1392,7 @@ MsgDef('b7v', 'YieldTotal', write=True)
 
 r2,b7v,z1ActualRoomTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
 MsgDef('b7v', 'z1ActualRoomTempDesired', read=True, prio=2)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z1ActualRoomTempDesired,tempv,m,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
 MsgDef('b7v', 'z1ActualRoomTempDesired', write=True)
@@ -1544,8 +1400,7 @@ MsgDef('b7v', 'z1ActualRoomTempDesired', write=True)
 
 r,b7v,z1BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays for zone 1
 MsgDef('b7v', 'z1BankHolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,z1BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays for zone 1
 MsgDef('b7v', 'z1BankHolidayEndPeriod', write=True)
@@ -1553,8 +1408,7 @@ MsgDef('b7v', 'z1BankHolidayEndPeriod', write=True)
 
 r,b7v,z1BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays for zone 1
 MsgDef('b7v', 'z1BankHolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,z1BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays for zone 1
 MsgDef('b7v', 'z1BankHolidayStartPeriod', write=True)
@@ -1562,8 +1416,7 @@ MsgDef('b7v', 'z1BankHolidayStartPeriod', write=True)
 
 r,b7v,z1CoolingTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,desired cooling setpoint for zone 1
 MsgDef('b7v', 'z1CoolingTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z1CoolingTemp,tempv,m,EXP,,°C,desired cooling setpoint for zone 1
 MsgDef('b7v', 'z1CoolingTemp', write=True)
@@ -1571,13 +1424,12 @@ MsgDef('b7v', 'z1CoolingTemp', write=True)
 
 r,b7v,z1CoolingTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1CoolingTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Friday', write=True)
@@ -1590,13 +1442,12 @@ MsgDef('b7v', 'z1CoolingTimer.Friday', write=True)
 
 r,b7v,z1CoolingTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1CoolingTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Monday', write=True)
@@ -1609,13 +1460,12 @@ MsgDef('b7v', 'z1CoolingTimer.Monday', write=True)
 
 r,b7v,z1CoolingTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1CoolingTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Saturday', write=True)
@@ -1628,13 +1478,12 @@ MsgDef('b7v', 'z1CoolingTimer.Saturday', write=True)
 
 r,b7v,z1CoolingTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1CoolingTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Sunday', write=True)
@@ -1647,13 +1496,12 @@ MsgDef('b7v', 'z1CoolingTimer.Sunday', write=True)
 
 r,b7v,z1CoolingTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1CoolingTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Thursday', write=True)
@@ -1666,13 +1514,12 @@ MsgDef('b7v', 'z1CoolingTimer.Thursday', write=True)
 
 r,b7v,z1CoolingTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1CoolingTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Tuesday', write=True)
@@ -1685,13 +1532,12 @@ MsgDef('b7v', 'z1CoolingTimer.Tuesday', write=True)
 
 r,b7v,z1CoolingTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1CoolingTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1CoolingTimer.Wednesday', write=True)
@@ -1704,8 +1550,7 @@ MsgDef('b7v', 'z1CoolingTimer.Wednesday', write=True)
 
 r2,b7v,z1DayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,day setpoint for zone 1
 MsgDef('b7v', 'z1DayTemp', read=True, prio=2)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z1DayTemp,tempv,m,EXP,,°C,day setpoint for zone 1
 MsgDef('b7v', 'z1DayTemp', write=True)
@@ -1713,8 +1558,7 @@ MsgDef('b7v', 'z1DayTemp', write=True)
 
 r,b7v,z1HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays for zone 1
 MsgDef('b7v', 'z1HolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,z1HolidayEndPeriod,hto,m,HDA,,,end date of holidays for zone 1
 MsgDef('b7v', 'z1HolidayEndPeriod', write=True)
@@ -1722,8 +1566,7 @@ MsgDef('b7v', 'z1HolidayEndPeriod', write=True)
 
 r,b7v,z1HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays for zone 1
 MsgDef('b7v', 'z1HolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,z1HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays for zone 1
 MsgDef('b7v', 'z1HolidayStartPeriod', write=True)
@@ -1731,8 +1574,7 @@ MsgDef('b7v', 'z1HolidayStartPeriod', write=True)
 
 r,b7v,z1HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint for zone 1
 MsgDef('b7v', 'z1HolidayTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z1HolidayTemp,tempv,m,EXP,,°C,holiday setpoint for zone 1
 MsgDef('b7v', 'z1HolidayTemp', write=True)
@@ -1740,8 +1582,7 @@ MsgDef('b7v', 'z1HolidayTemp', write=True)
 
 r,b7v,z1Name1,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 1
 MsgDef('b7v', 'z1Name1', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zname', 'zname', ('STR:5',))
+    FieldDef(0, 'zname', 'zname', ('STR:5',))
 
 w,b7v,z1Name1,zname,m,STR:5,,,name of zone 1
 MsgDef('b7v', 'z1Name1', write=True)
@@ -1749,8 +1590,7 @@ MsgDef('b7v', 'z1Name1', write=True)
 
 r,b7v,z1Name2,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 1
 MsgDef('b7v', 'z1Name2', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zname', 'zname', ('STR:5',))
+    FieldDef(0, 'zname', 'zname', ('STR:5',))
 
 w,b7v,z1Name2,zname,m,STR:5,,,name of zone 1
 MsgDef('b7v', 'z1Name2', write=True)
@@ -1758,8 +1598,7 @@ MsgDef('b7v', 'z1Name2', write=True)
 
 r2,b7v,z1NightTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,night setpoint for zone 1
 MsgDef('b7v', 'z1NightTemp', read=True, prio=2)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z1NightTemp,tempv,m,EXP,,°C,night setpoint for zone 1
 MsgDef('b7v', 'z1NightTemp', write=True)
@@ -1767,8 +1606,7 @@ MsgDef('b7v', 'z1NightTemp', write=True)
 
 r,b7v,z1OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 1
 MsgDef('b7v', 'z1OpMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
 
 w,b7v,z1OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 1
 MsgDef('b7v', 'z1OpMode', write=True)
@@ -1776,8 +1614,7 @@ MsgDef('b7v', 'z1OpMode', write=True)
 
 r,b7v,z1QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 1
 MsgDef('b7v', 'z1QuickVetoTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z1QuickVetoTemp,tempv,m,EXP,,°C,manual override setpoint for zone 1
 MsgDef('b7v', 'z1QuickVetoTemp', write=True)
@@ -1785,13 +1622,11 @@ MsgDef('b7v', 'z1QuickVetoTemp', write=True)
 
 r1,b7v,z1RoomTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current room temperature in zone 1
 MsgDef('b7v', 'z1RoomTemp', read=True, prio=1)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,z1RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 1
 MsgDef('b7v', 'z1RoomZoneMapping', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zmapping', 'zmapping', ('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', 'zmapping', ('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
 
 w,b7v,z1RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 1
 MsgDef('b7v', 'z1RoomZoneMapping', write=True)
@@ -1799,8 +1634,7 @@ MsgDef('b7v', 'z1RoomZoneMapping', write=True)
 
 r,b7v,z1SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z1SFMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
 
 w,b7v,z1SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z1SFMode', write=True)
@@ -1808,8 +1642,7 @@ MsgDef('b7v', 'z1SFMode', write=True)
 
 r,b7v,z1Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 1
 MsgDef('b7v', 'z1Shortname', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'shortname', 'shortname', ('STR:6',))
+    FieldDef(0, 'shortname', 'shortname', ('STR:6',))
 
 w,b7v,z1Shortname,shortname,m,STR:6,,,short name of zone 1
 MsgDef('b7v', 'z1Shortname', write=True)
@@ -1817,13 +1650,12 @@ MsgDef('b7v', 'z1Shortname', write=True)
 
 r,b7v,z1Timer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1Timer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1Timer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1Timer.Friday', write=True)
@@ -1836,13 +1668,12 @@ MsgDef('b7v', 'z1Timer.Friday', write=True)
 
 r,b7v,z1Timer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1Timer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1Timer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1Timer.Monday', write=True)
@@ -1855,13 +1686,12 @@ MsgDef('b7v', 'z1Timer.Monday', write=True)
 
 r,b7v,z1Timer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1Timer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1Timer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1Timer.Saturday', write=True)
@@ -1874,13 +1704,12 @@ MsgDef('b7v', 'z1Timer.Saturday', write=True)
 
 r,b7v,z1Timer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1Timer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1Timer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1Timer.Sunday', write=True)
@@ -1893,13 +1722,12 @@ MsgDef('b7v', 'z1Timer.Sunday', write=True)
 
 r,b7v,z1Timer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1Timer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1Timer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1Timer.Thursday', write=True)
@@ -1912,13 +1740,12 @@ MsgDef('b7v', 'z1Timer.Thursday', write=True)
 
 r,b7v,z1Timer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1Timer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1Timer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1Timer.Tuesday', write=True)
@@ -1931,13 +1758,12 @@ MsgDef('b7v', 'z1Timer.Tuesday', write=True)
 
 r,b7v,z1Timer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z1Timer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z1Timer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z1Timer.Wednesday', write=True)
@@ -1950,8 +1776,7 @@ MsgDef('b7v', 'z1Timer.Wednesday', write=True)
 
 r,b7v,z1ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 1
 MsgDef('b7v', 'z1ValveStatus', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UCH',))
+    FieldDef(0, '.1', '', ('UCH',))
 
 w,b7v,z1ValveStatus,,m,UCH,,,valve status of zone 1
 MsgDef('b7v', 'z1ValveStatus', write=True)
@@ -1959,8 +1784,7 @@ MsgDef('b7v', 'z1ValveStatus', write=True)
 
 r,b7v,z2ActualRoomTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
 MsgDef('b7v', 'z2ActualRoomTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z2ActualRoomTempDesired,tempv,m,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
 MsgDef('b7v', 'z2ActualRoomTempDesired', write=True)
@@ -1968,8 +1792,7 @@ MsgDef('b7v', 'z2ActualRoomTempDesired', write=True)
 
 r,b7v,z2BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays for zone 2
 MsgDef('b7v', 'z2BankHolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,z2BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays for zone 2
 MsgDef('b7v', 'z2BankHolidayEndPeriod', write=True)
@@ -1977,8 +1800,7 @@ MsgDef('b7v', 'z2BankHolidayEndPeriod', write=True)
 
 r,b7v,z2BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays for zone 2
 MsgDef('b7v', 'z2BankHolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,z2BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays for zone 2
 MsgDef('b7v', 'z2BankHolidayStartPeriod', write=True)
@@ -1986,8 +1808,7 @@ MsgDef('b7v', 'z2BankHolidayStartPeriod', write=True)
 
 r,b7v,z2CoolingTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,desired cooling setpoint for zone 2
 MsgDef('b7v', 'z2CoolingTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z2CoolingTemp,tempv,m,EXP,,°C,desired cooling setpoint for zone 2
 MsgDef('b7v', 'z2CoolingTemp', write=True)
@@ -1995,13 +1816,12 @@ MsgDef('b7v', 'z2CoolingTemp', write=True)
 
 r,b7v,z2CoolingTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2CoolingTimer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Friday', write=True)
@@ -2014,13 +1834,12 @@ MsgDef('b7v', 'z2CoolingTimer.Friday', write=True)
 
 r,b7v,z2CoolingTimer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2CoolingTimer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Monday', write=True)
@@ -2033,13 +1852,12 @@ MsgDef('b7v', 'z2CoolingTimer.Monday', write=True)
 
 r,b7v,z2CoolingTimer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2CoolingTimer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Saturday', write=True)
@@ -2052,13 +1870,12 @@ MsgDef('b7v', 'z2CoolingTimer.Saturday', write=True)
 
 r,b7v,z2CoolingTimer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2CoolingTimer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Sunday', write=True)
@@ -2071,13 +1888,12 @@ MsgDef('b7v', 'z2CoolingTimer.Sunday', write=True)
 
 r,b7v,z2CoolingTimer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2CoolingTimer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Thursday', write=True)
@@ -2090,13 +1906,12 @@ MsgDef('b7v', 'z2CoolingTimer.Thursday', write=True)
 
 r,b7v,z2CoolingTimer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2CoolingTimer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Tuesday', write=True)
@@ -2109,13 +1924,12 @@ MsgDef('b7v', 'z2CoolingTimer.Tuesday', write=True)
 
 r,b7v,z2CoolingTimer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2CoolingTimer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2CoolingTimer.Wednesday', write=True)
@@ -2128,8 +1942,7 @@ MsgDef('b7v', 'z2CoolingTimer.Wednesday', write=True)
 
 r,b7v,z2DayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,day setpoint for zone 2
 MsgDef('b7v', 'z2DayTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z2DayTemp,tempv,m,EXP,,°C,day setpoint for zone 2
 MsgDef('b7v', 'z2DayTemp', write=True)
@@ -2137,8 +1950,7 @@ MsgDef('b7v', 'z2DayTemp', write=True)
 
 r,b7v,z2HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays for zone 2
 MsgDef('b7v', 'z2HolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,z2HolidayEndPeriod,hto,m,HDA,,,end date of holidays for zone 2
 MsgDef('b7v', 'z2HolidayEndPeriod', write=True)
@@ -2146,8 +1958,7 @@ MsgDef('b7v', 'z2HolidayEndPeriod', write=True)
 
 r,b7v,z2HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays for zone 2
 MsgDef('b7v', 'z2HolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,z2HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays for zone 2
 MsgDef('b7v', 'z2HolidayStartPeriod', write=True)
@@ -2155,8 +1966,7 @@ MsgDef('b7v', 'z2HolidayStartPeriod', write=True)
 
 r,b7v,z2HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint for zone 2
 MsgDef('b7v', 'z2HolidayTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z2HolidayTemp,tempv,m,EXP,,°C,holiday setpoint for zone 2
 MsgDef('b7v', 'z2HolidayTemp', write=True)
@@ -2164,8 +1974,7 @@ MsgDef('b7v', 'z2HolidayTemp', write=True)
 
 r,b7v,z2Name1,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 2
 MsgDef('b7v', 'z2Name1', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zname', 'zname', ('STR:5',))
+    FieldDef(0, 'zname', 'zname', ('STR:5',))
 
 w,b7v,z2Name1,zname,m,STR:5,,,name of zone 2
 MsgDef('b7v', 'z2Name1', write=True)
@@ -2173,8 +1982,7 @@ MsgDef('b7v', 'z2Name1', write=True)
 
 r,b7v,z2Name2,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 2
 MsgDef('b7v', 'z2Name2', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zname', 'zname', ('STR:5',))
+    FieldDef(0, 'zname', 'zname', ('STR:5',))
 
 w,b7v,z2Name2,zname,m,STR:5,,,name of zone 2
 MsgDef('b7v', 'z2Name2', write=True)
@@ -2182,8 +1990,7 @@ MsgDef('b7v', 'z2Name2', write=True)
 
 r,b7v,z2NightTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,night setpoint for zone 2
 MsgDef('b7v', 'z2NightTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z2NightTemp,tempv,m,EXP,,°C,night setpoint for zone 2
 MsgDef('b7v', 'z2NightTemp', write=True)
@@ -2191,8 +1998,7 @@ MsgDef('b7v', 'z2NightTemp', write=True)
 
 r,b7v,z2OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 2
 MsgDef('b7v', 'z2OpMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
 
 w,b7v,z2OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 2
 MsgDef('b7v', 'z2OpMode', write=True)
@@ -2200,8 +2006,7 @@ MsgDef('b7v', 'z2OpMode', write=True)
 
 r,b7v,z2QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 2
 MsgDef('b7v', 'z2QuickVetoTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z2QuickVetoTemp,tempv,m,EXP,,°C,manual override setpoint for zone 2
 MsgDef('b7v', 'z2QuickVetoTemp', write=True)
@@ -2209,13 +2014,11 @@ MsgDef('b7v', 'z2QuickVetoTemp', write=True)
 
 r,b7v,z2RoomTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current room temperature in zone 2
 MsgDef('b7v', 'z2RoomTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,z2RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 2
 MsgDef('b7v', 'z2RoomZoneMapping', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zmapping', 'zmapping', ('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', 'zmapping', ('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
 
 w,b7v,z2RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 2
 MsgDef('b7v', 'z2RoomZoneMapping', write=True)
@@ -2223,8 +2026,7 @@ MsgDef('b7v', 'z2RoomZoneMapping', write=True)
 
 r,b7v,z2SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z2SFMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
 
 w,b7v,z2SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z2SFMode', write=True)
@@ -2232,8 +2034,7 @@ MsgDef('b7v', 'z2SFMode', write=True)
 
 r,b7v,z2Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 2
 MsgDef('b7v', 'z2Shortname', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'shortname', 'shortname', ('STR:6',))
+    FieldDef(0, 'shortname', 'shortname', ('STR:6',))
 
 w,b7v,z2Shortname,shortname,m,STR:6,,,short name of zone 2
 MsgDef('b7v', 'z2Shortname', write=True)
@@ -2241,13 +2042,12 @@ MsgDef('b7v', 'z2Shortname', write=True)
 
 r,b7v,z2Timer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2Timer.Friday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2Timer.Friday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2Timer.Friday', write=True)
@@ -2260,13 +2060,12 @@ MsgDef('b7v', 'z2Timer.Friday', write=True)
 
 r,b7v,z2Timer.Monday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2Timer.Monday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2Timer.Monday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2Timer.Monday', write=True)
@@ -2279,13 +2078,12 @@ MsgDef('b7v', 'z2Timer.Monday', write=True)
 
 r,b7v,z2Timer.Saturday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2Timer.Saturday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2Timer.Saturday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2Timer.Saturday', write=True)
@@ -2298,13 +2096,12 @@ MsgDef('b7v', 'z2Timer.Saturday', write=True)
 
 r,b7v,z2Timer.Sunday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2Timer.Sunday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2Timer.Sunday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2Timer.Sunday', write=True)
@@ -2317,13 +2114,12 @@ MsgDef('b7v', 'z2Timer.Sunday', write=True)
 
 r,b7v,z2Timer.Thursday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2Timer.Thursday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2Timer.Thursday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2Timer.Thursday', write=True)
@@ -2336,13 +2132,12 @@ MsgDef('b7v', 'z2Timer.Thursday', write=True)
 
 r,b7v,z2Timer.Tuesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2Timer.Tuesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2Timer.Tuesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2Timer.Tuesday', write=True)
@@ -2355,13 +2150,12 @@ MsgDef('b7v', 'z2Timer.Tuesday', write=True)
 
 r,b7v,z2Timer.Wednesday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'z2Timer.Wednesday', read=True)
-    FieldDef(0, '', '', ('IGN:1',), comment='whether timeslot is valid')
-    FieldDef(1, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
-    FieldDef(2, 'to.0', 'to', ('TTM',), comment='to')
-    FieldDef(3, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
-    FieldDef(4, 'to.1', 'to', ('TTM',), comment='to')
-    FieldDef(5, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
-    FieldDef(6, 'to.2', 'to', ('TTM',))
+    FieldDef(0, 'from.0', 'from', ('TTM',), comment='slot 1 from/to')
+    FieldDef(1, 'to.0', 'to', ('TTM',), comment='to')
+    FieldDef(2, 'from.1', 'from', ('TTM',), comment='slot 2 from/to')
+    FieldDef(3, 'to.1', 'to', ('TTM',), comment='to')
+    FieldDef(4, 'from.2', 'from', ('TTM',), comment='slot 3 from/to')
+    FieldDef(5, 'to.2', 'to', ('TTM',))
 
 w,b7v,z2Timer.Wednesday,from,m,TTM,,,slot 1 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 2 from/to,to,m,TTM,,,to,from,m,TTM,,,slot 3 from/to,to,m,TTM,,,to
 MsgDef('b7v', 'z2Timer.Wednesday', write=True)
@@ -2374,8 +2168,7 @@ MsgDef('b7v', 'z2Timer.Wednesday', write=True)
 
 r,b7v,z2ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 2
 MsgDef('b7v', 'z2ValveStatus', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UCH',))
+    FieldDef(0, '.1', '', ('UCH',))
 
 w,b7v,z2ValveStatus,,m,UCH,,,valve status of zone 2
 MsgDef('b7v', 'z2ValveStatus', write=True)
@@ -2383,8 +2176,7 @@ MsgDef('b7v', 'z2ValveStatus', write=True)
 
 r,b7v,z3ActualRoomTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
 MsgDef('b7v', 'z3ActualRoomTempDesired', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z3ActualRoomTempDesired,tempv,m,EXP,,°C,current room setpoint considering all basic conditions passed to the control algorithms
 MsgDef('b7v', 'z3ActualRoomTempDesired', write=True)
@@ -2392,8 +2184,7 @@ MsgDef('b7v', 'z3ActualRoomTempDesired', write=True)
 
 r,b7v,z3BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays for zone 3
 MsgDef('b7v', 'z3BankHolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,z3BankHolidayEndPeriod,hto,m,HDA,,,end date of bank holidays for zone 3
 MsgDef('b7v', 'z3BankHolidayEndPeriod', write=True)
@@ -2401,8 +2192,7 @@ MsgDef('b7v', 'z3BankHolidayEndPeriod', write=True)
 
 r,b7v,z3BankHolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of bank holidays for zone 3
 MsgDef('b7v', 'z3BankHolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,z3BankHolidayStartPeriod,hfrom,m,HDA,,,start date of bank holidays for zone 3
 MsgDef('b7v', 'z3BankHolidayStartPeriod', write=True)
@@ -2410,8 +2200,7 @@ MsgDef('b7v', 'z3BankHolidayStartPeriod', write=True)
 
 r,b7v,z3DayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,day setpoint for zone 3
 MsgDef('b7v', 'z3DayTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z3DayTemp,tempv,m,EXP,,°C,day setpoint for zone 3
 MsgDef('b7v', 'z3DayTemp', write=True)
@@ -2419,8 +2208,7 @@ MsgDef('b7v', 'z3DayTemp', write=True)
 
 r,b7v,z3HolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of holidays for zone 3
 MsgDef('b7v', 'z3HolidayEndPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hto', 'hto', ('HDA',))
+    FieldDef(0, 'hto', 'hto', ('HDA',))
 
 w,b7v,z3HolidayEndPeriod,hto,m,HDA,,,end date of holidays for zone 3
 MsgDef('b7v', 'z3HolidayEndPeriod', write=True)
@@ -2428,8 +2216,7 @@ MsgDef('b7v', 'z3HolidayEndPeriod', write=True)
 
 r,b7v,z3HolidayStartPeriod,,s,IGN:4,,,,hfrom,s,HDA,,,start date of holidays for zone 3
 MsgDef('b7v', 'z3HolidayStartPeriod', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'hfrom', 'hfrom', ('HDA',))
+    FieldDef(0, 'hfrom', 'hfrom', ('HDA',))
 
 w,b7v,z3HolidayStartPeriod,hfrom,m,HDA,,,start date of holidays for zone 3
 MsgDef('b7v', 'z3HolidayStartPeriod', write=True)
@@ -2437,8 +2224,7 @@ MsgDef('b7v', 'z3HolidayStartPeriod', write=True)
 
 r,b7v,z3HolidayTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,holiday setpoint for zone 3
 MsgDef('b7v', 'z3HolidayTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z3HolidayTemp,tempv,m,EXP,,°C,holiday setpoint for zone 3
 MsgDef('b7v', 'z3HolidayTemp', write=True)
@@ -2446,8 +2232,7 @@ MsgDef('b7v', 'z3HolidayTemp', write=True)
 
 r,b7v,z3Name1,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 3
 MsgDef('b7v', 'z3Name1', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zname', 'zname', ('STR:5',))
+    FieldDef(0, 'zname', 'zname', ('STR:5',))
 
 w,b7v,z3Name1,zname,m,STR:5,,,name of zone 3
 MsgDef('b7v', 'z3Name1', write=True)
@@ -2455,8 +2240,7 @@ MsgDef('b7v', 'z3Name1', write=True)
 
 r,b7v,z3Name2,,s,IGN:4,,,,zname,s,STR:5,,,name of zone 3
 MsgDef('b7v', 'z3Name2', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zname', 'zname', ('STR:5',))
+    FieldDef(0, 'zname', 'zname', ('STR:5',))
 
 w,b7v,z3Name2,zname,m,STR:5,,,name of zone 3
 MsgDef('b7v', 'z3Name2', write=True)
@@ -2464,8 +2248,7 @@ MsgDef('b7v', 'z3Name2', write=True)
 
 r,b7v,z3NightTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,night setpoint for zone 3
 MsgDef('b7v', 'z3NightTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z3NightTemp,tempv,m,EXP,,°C,night setpoint for zone 3
 MsgDef('b7v', 'z3NightTemp', write=True)
@@ -2473,8 +2256,7 @@ MsgDef('b7v', 'z3NightTemp', write=True)
 
 r,b7v,z3OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 3
 MsgDef('b7v', 'z3OpMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', 'opmode', ('UIN',), dividervalues='0=off;1=auto;2=day;3=night')
 
 w,b7v,z3OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 3
 MsgDef('b7v', 'z3OpMode', write=True)
@@ -2482,8 +2264,7 @@ MsgDef('b7v', 'z3OpMode', write=True)
 
 r,b7v,z3QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 3
 MsgDef('b7v', 'z3QuickVetoTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 w,b7v,z3QuickVetoTemp,tempv,m,EXP,,°C,manual override setpoint for zone 3
 MsgDef('b7v', 'z3QuickVetoTemp', write=True)
@@ -2491,13 +2272,11 @@ MsgDef('b7v', 'z3QuickVetoTemp', write=True)
 
 r,b7v,z3RoomTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,current room temperature in zone 3
 MsgDef('b7v', 'z3RoomTemp', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'tempv', 'tempv', ('EXP',), unit='°C')
+    FieldDef(0, 'tempv', 'tempv', ('EXP',), unit='°C')
 
 r,b7v,z3RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 3
 MsgDef('b7v', 'z3RoomZoneMapping', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'zmapping', 'zmapping', ('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', 'zmapping', ('UIN',), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
 
 w,b7v,z3RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 3
 MsgDef('b7v', 'z3RoomZoneMapping', write=True)
@@ -2505,8 +2284,7 @@ MsgDef('b7v', 'z3RoomZoneMapping', write=True)
 
 r,b7v,z3SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z3SFMode', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', 'sfmode', ('UCH',), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
 
 w,b7v,z3SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z3SFMode', write=True)
@@ -2514,8 +2292,7 @@ MsgDef('b7v', 'z3SFMode', write=True)
 
 r,b7v,z3Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 3
 MsgDef('b7v', 'z3Shortname', read=True)
-    FieldDef(0, '', '', ('IGN:4',))
-    FieldDef(1, 'shortname', 'shortname', ('STR:6',))
+    FieldDef(0, 'shortname', 'shortname', ('STR:6',))
 
 w,b7v,z3Shortname,shortname,m,STR:6,,,short name of zone 3
 MsgDef('b7v', 'z3Shortname', write=True)
@@ -2523,8 +2300,7 @@ MsgDef('b7v', 'z3Shortname', write=True)
 
 r,b7v,z3ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 3
 MsgDef('b7v', 'z3ValveStatus', read=True)
-    FieldDef(0, '.0', '', ('IGN:4',))
-    FieldDef(1, '.1', '', ('UCH',))
+    FieldDef(0, '.1', '', ('UCH',))
 
 w,b7v,z3ValveStatus,,m,UCH,,,valve status of zone 3
 MsgDef('b7v', 'z3ValveStatus', write=True)
@@ -3154,14 +2930,12 @@ MsgDef('bai', 'SetMode', write=True, update=True)
     FieldDef(1, 'flowtempdesired', 'flowtempdesired', ('D1C',), unit='°C', comment='temperature')
     FieldDef(2, 'hwctempdesired', 'hwctempdesired', ('D1C',), unit='°C', comment='temperature')
     FieldDef(3, 'hwcflowtempdesired', 'hwcflowtempdesired', ('UCH',), unit='°C', comment='temperature')
-    FieldDef(4, '.0', '', ('IGN:1',))
-    FieldDef(5, 'disablehc', 'disablehc', ('BI0:1',))
-    FieldDef(6, 'disablehwctapping', 'disablehwctapping', ('BI1:1',))
-    FieldDef(7, 'disablehwcload', 'disablehwcload', ('BI2:1',))
-    FieldDef(8, '.1', '', ('IGN:1',))
-    FieldDef(9, 'remoteControlHcPump', 'remoteControlHcPump', ('BI0:1',))
-    FieldDef(10, 'releaseBackup', 'releaseBackup', ('BI1:1',))
-    FieldDef(11, 'releaseCooling', 'releaseCooling', ('BI2:1',))
+    FieldDef(4, 'disablehc', 'disablehc', ('BI0:1',))
+    FieldDef(5, 'disablehwctapping', 'disablehwctapping', ('BI1:1',))
+    FieldDef(6, 'disablehwcload', 'disablehwcload', ('BI2:1',))
+    FieldDef(7, 'remoteControlHcPump', 'remoteControlHcPump', ('BI0:1',))
+    FieldDef(8, 'releaseBackup', 'releaseBackup', ('BI1:1',))
+    FieldDef(9, 'releaseCooling', 'releaseCooling', ('BI2:1',))
 
 r,bai,SHEMaxDeltaHwcFlow,temp,s,D2C,,°C,maximum difference between flow and DHW outlet temperature
 MsgDef('bai', 'SHEMaxDeltaHwcFlow', read=True)
@@ -3429,11 +3203,10 @@ MsgDef('broadcast', 'vdatetime', update=True)
 r,general,valuerange,id,m,UIN,,,register number,,s,IGN:2,,,,cur,s,UIN,,,current value,min,s,UIN,,,minimum value,max,s,UIN,,,maximum value,def,s,UIN,,,default value
 MsgDef('general', 'valuerange', read=True)
     FieldDef(0, 'id', 'id', ('UIN',), comment='register number')
-    FieldDef(1, '', '', ('IGN:2',))
-    FieldDef(2, 'cur', 'cur', ('UIN',), comment='current value')
-    FieldDef(3, 'min', 'min', ('UIN',), comment='minimum value')
-    FieldDef(4, 'max', 'max', ('UIN',), comment='maximum value')
-    FieldDef(5, 'def', 'def', ('UIN',))
+    FieldDef(1, 'cur', 'cur', ('UIN',), comment='current value')
+    FieldDef(2, 'min', 'min', ('UIN',), comment='minimum value')
+    FieldDef(3, 'max', 'max', ('UIN',), comment='maximum value')
+    FieldDef(4, 'def', 'def', ('UIN',))
 
 r,memory,eeprom,address,m,UIN,,,start address,count,m,UCH,,,number of bytes,data,s,HEX:*,,,data bytes
 MsgDef('memory', 'eeprom', read=True)
@@ -3459,14 +3232,13 @@ MsgDef('memory', 'ram', write=True)
 
 r,scan,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
 MsgDef('scan', 'id', read=True)
-    FieldDef(0, '', '', ('IGN:1',))
-    FieldDef(1, 'prefix', 'prefix', ('STR:2',))
-    FieldDef(2, 'year', 'year', ('STR:2',))
-    FieldDef(3, 'week', 'week', ('STR:2',))
-    FieldDef(4, 'product', 'product', ('STR:10',))
-    FieldDef(5, 'supplier', 'supplier', ('STR:4',))
-    FieldDef(6, 'counter', 'counter', ('STR:6',))
-    FieldDef(7, 'suffix', 'suffix', ('STR:2',))
+    FieldDef(0, 'prefix', 'prefix', ('STR:2',))
+    FieldDef(1, 'year', 'year', ('STR:2',))
+    FieldDef(2, 'week', 'week', ('STR:2',))
+    FieldDef(3, 'product', 'product', ('STR:10',))
+    FieldDef(4, 'supplier', 'supplier', ('STR:4',))
+    FieldDef(5, 'counter', 'counter', ('STR:6',))
+    FieldDef(6, 'suffix', 'suffix', ('STR:2',))
 
 r,scan.08,,MF,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,,ID,s,STR:5,,,,SW,s,PIN,,,,HW,s,PIN,,,
 MsgDef('scan.08', '', read=True)
@@ -3477,14 +3249,13 @@ MsgDef('scan.08', '', read=True)
 
 r,scan.08,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
 MsgDef('scan.08', 'id', read=True)
-    FieldDef(0, '', '', ('IGN:1',))
-    FieldDef(1, 'prefix', 'prefix', ('STR:2',))
-    FieldDef(2, 'year', 'year', ('STR:2',))
-    FieldDef(3, 'week', 'week', ('STR:2',))
-    FieldDef(4, 'product', 'product', ('STR:10',))
-    FieldDef(5, 'supplier', 'supplier', ('STR:4',))
-    FieldDef(6, 'counter', 'counter', ('STR:6',))
-    FieldDef(7, 'suffix', 'suffix', ('STR:2',))
+    FieldDef(0, 'prefix', 'prefix', ('STR:2',))
+    FieldDef(1, 'year', 'year', ('STR:2',))
+    FieldDef(2, 'week', 'week', ('STR:2',))
+    FieldDef(3, 'product', 'product', ('STR:10',))
+    FieldDef(4, 'supplier', 'supplier', ('STR:4',))
+    FieldDef(5, 'counter', 'counter', ('STR:6',))
+    FieldDef(6, 'suffix', 'suffix', ('STR:2',))
 
 r,scan.15,,MF,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,,ID,s,STR:5,,,,SW,s,PIN,,,,HW,s,PIN,,,
 MsgDef('scan.15', '', read=True)
@@ -3495,11 +3266,10 @@ MsgDef('scan.15', '', read=True)
 
 r,scan.15,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
 MsgDef('scan.15', 'id', read=True)
-    FieldDef(0, '', '', ('IGN:1',))
-    FieldDef(1, 'prefix', 'prefix', ('STR:2',))
-    FieldDef(2, 'year', 'year', ('STR:2',))
-    FieldDef(3, 'week', 'week', ('STR:2',))
-    FieldDef(4, 'product', 'product', ('STR:10',))
-    FieldDef(5, 'supplier', 'supplier', ('STR:4',))
-    FieldDef(6, 'counter', 'counter', ('STR:6',))
-    FieldDef(7, 'suffix', 'suffix', ('STR:2',))
+    FieldDef(0, 'prefix', 'prefix', ('STR:2',))
+    FieldDef(1, 'year', 'year', ('STR:2',))
+    FieldDef(2, 'week', 'week', ('STR:2',))
+    FieldDef(3, 'product', 'product', ('STR:10',))
+    FieldDef(4, 'supplier', 'supplier', ('STR:4',))
+    FieldDef(5, 'counter', 'counter', ('STR:6',))
+    FieldDef(6, 'suffix', 'suffix', ('STR:2',))

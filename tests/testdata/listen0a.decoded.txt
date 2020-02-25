@@ -36,10 +36,10 @@ cc currenterror = -;-;-;-;-
   cc currenterror ('error.0=None', 'error.1=None', 'error.2=None', 'error.3=None', 'error.4=None')
 
 cc DateTime = valid;20:57:48;30.01.2020;2.500
-  cc DateTime ("dcfstate='valid'", 'btime=datetime.time(20, 57, 48)', 'bdate=datetime.date(2020, 1, 30)', "temp2='2.5°C'", '+bdate+btime+dcfstate=datetime.datetime(2020, 1, 30, 20, 57, 48)')
+  cc DateTime ("dcfstate='valid'", 'btime=HourMinuteSecond(20, 57, 48)', 'bdate=Date(2020, 1, 30)', "temp2='2.5°C'", '+bdate+btime+dcfstate=datetime.datetime(2020, 1, 30, 20, 57, 48)')
 
 cc Params = 30;6;22;15;75
-  cc Params ("temp0='30°C'", ".0='6'", "mctype7='22'", "temps.0='15°C'", ".1='75'", 'temps.1=None', 'temps.2=None', ".2=''")
+  cc Params ("temp0='30°C'", "mctype7='6'", "temps.0='22°C'", "temps.1='15°C'", "temps.2='75°C'")
 
 cc Stat15MinBusTimeout = 0
   cc Stat15MinBusTimeout ('=0',)
@@ -78,25 +78,25 @@ cc StatYearOfInstallation = 18
   cc StatYearOfInstallation ('=18',)
 
 cc Timer.Friday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Friday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Friday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Monday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Monday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Monday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Saturday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Saturday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Saturday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Sunday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Sunday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Sunday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Thursday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Thursday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Thursday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Tuesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Tuesday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Tuesday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 cc Timer.Wednesday = 04:30;22:30;-:-;-:-;-:-;-:-;Mo-So
-  cc Timer.Wednesday ('from.0=datetime.time(4, 30)', 'to.0=datetime.time(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
+  cc Timer.Wednesday ('from.0=HourMinute(4, 30)', 'to.0=HourMinute(22, 30)', 'from.1=None', 'to.1=None', 'from.2=None', 'to.2=None', "daysel='Mo-So'")
 
 qhc BoilerCircuitDisabled = yes
   UnknownMsgError('circuit=qhc, name=BoilerCircuitDisabled')

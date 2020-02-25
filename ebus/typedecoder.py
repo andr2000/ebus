@@ -1,5 +1,7 @@
 import datetime
 
+from . import types
+
 _PYTYPEMAP = {
     "bda": "date",
     "hda": "date",
@@ -74,12 +76,18 @@ class TypeDecoder:
     7
 
     >>> fielddef = ebus.FieldDef(0, "uname", "name", ("hda",))
-    >>> typedecoder(fielddef, '21.1.2019')
-    datetime.date(2019, 1, 21)
+    >>> v = typedecoder(fielddef, '21.1.2019')
+    >>> v
+    Date(2019, 1, 21)
+    >>> str(v)
+    '2019-01-21'
 
     >>> fielddef = ebus.FieldDef(0, "uname", "name", ("hti",))
-    >>> typedecoder(fielddef, '22:55:03')
-    datetime.time(22, 55, 3)
+    >>> v = typedecoder(fielddef, '22:55:03')
+    >>> v
+    HourMinuteSecond(22, 55, 3)
+    >>> str(v)
+    '22:55:03'
 
     Unknown types are just handled as strings:
 
@@ -105,17 +113,20 @@ class TypeDecoder:
     @staticmethod
     def _date(fielddef, value):
         if value != "-.-.-":
-            return datetime.datetime.strptime(value, "%d.%m.%Y").date()
+            dt = datetime.datetime.strptime(value, "%d.%m.%Y")
+            return types.Date(dt.year, dt.month, dt.day)
 
     @staticmethod
     def _hhmm(fielddef, value):
         if value != "-:-":
-            return datetime.datetime.strptime(value, "%H:%M").time()
+            dt = datetime.datetime.strptime(value, "%H:%M")
+            return types.HourMinute(dt.hour, dt.minute)
 
     @staticmethod
     def _hhmmss(fielddef, value):
         if value != "-:-:-":
-            return datetime.datetime.strptime(value, "%H:%M:%S").time()
+            dt = datetime.datetime.strptime(value, "%H:%M:%S").time()
+            return types.HourMinuteSecond(dt.hour, dt.minute, dt.second)
 
     @staticmethod
     def _int(fielddef, value):
