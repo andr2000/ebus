@@ -497,7 +497,7 @@ cc DateTime = valid;20:57:48;30.01.2020;2.500
 cc errorhistory = ERR: end of input reached
 
 cc Mode = 30;auto;off;6;00;day
-  cc Mode ("temp0='30°C'", "hwcmode.0='auto'", "hwcmode.1='off'", "mctype7='6'", ".1='00'", "daynight='day'")
+  cc Mode ("temp0='30°C'", "hwcmode.0='auto'", "hwcmode.1='off'", "mctype7='6'", "='00'", "daynight='day'")
 
 cc Params = 30;6;22;15;75
   cc Params ("temp0='30°C'", "mctype7='6'", "temps.0='22°C'", "temps.1='15°C'", "temps.2='75°C'")
@@ -717,7 +717,7 @@ hwc LegioStartDay2 = 0
   hwc LegioStartDay2 ('=0',)
 
 hwc Mode = 60;auto;off;hwc;00;day
-  hwc Mode ("temp0='60°C'", "hwcmode.0='auto'", "hwcmode.1='off'", "mctype7='hwc'", ".1='00'", "daynight='day'")
+  hwc Mode ("temp0='60°C'", "hwcmode.0='auto'", "hwcmode.1='off'", "mctype7='hwc'", "='00'", "daynight='day'")
 
 hwc OneTimeCirSwitch = off
   hwc OneTimeCirSwitch ("onoff='off'",)

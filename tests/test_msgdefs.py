@@ -172,5 +172,5 @@ def test_msgdefs1():
             except ValueError as e:
                 pass
 
-    eq_(len(msgdefs), 429)
-    eq_(msgdefs.summary(), "429 messages (396 read, 12 update, 229 write) with 846 fields")
+    eq_(len(msgdefs), 413)
+    eq_(msgdefs.summary(), "413 messages (396 read, 12 update, 229 write) with 830 fields")

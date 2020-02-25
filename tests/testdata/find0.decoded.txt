@@ -774,7 +774,7 @@ MsgDef('cc', 'Mode', read=True)
     FieldDef(1, 'hwcmode.0', 'hwcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto', comment='Warmwasser Modus')
     FieldDef(2, 'hwcmode.1', 'hwcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto', comment='Warmwasser Modus')
     FieldDef(3, 'mctype7', 'mctype7', ('BI0:7',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='Mischer Typ')
-    FieldDef(4, '.1', '', ('HEX:1',))
+    FieldDef(4, '', '', ('HEX:1',))
     FieldDef(5, 'daynight', 'daynight', ('UCH',), dividervalues='0=night;1=day;7=floorpaving')
 
 r,cc,Params,temp0,s,UCH,,°C,Temperatur,,s,IGN:3,,,,mctype7,s,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,Mischer Typ,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,,temps,s,SCH,,°C,Temperatur,temps,s,SCH,,°C,Temperatur,,s,IGN:1,,,
@@ -1446,7 +1446,7 @@ MsgDef('hwc', 'Mode', read=True)
     FieldDef(1, 'hwcmode.0', 'hwcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto', comment='Warmwasser Modus')
     FieldDef(2, 'hwcmode.1', 'hwcmode', ('UCH',), dividervalues='0=disabled;1=on;2=off;3=auto', comment='Warmwasser Modus')
     FieldDef(3, 'mctype7', 'mctype7', ('BI0:7',), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='Mischer Typ')
-    FieldDef(4, '.1', '', ('HEX:1',))
+    FieldDef(4, '', '', ('HEX:1',))
     FieldDef(5, 'daynight', 'daynight', ('UCH',), dividervalues='0=night;1=day;7=floorpaving')
 
 r,hwc,OneTimeCirSwitch,onoff,s,UCH,0=off;1=on,,non-recurring circulation pump running period

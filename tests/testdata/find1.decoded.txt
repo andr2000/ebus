@@ -244,7 +244,7 @@ MsgDef('b7v', 'Hc1FlowTemp', read=True)
 
 r2,b7v,Hc1HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc1
 MsgDef('b7v', 'Hc1HeatCurve', read=True, prio=2)
-    FieldDef(0, '.1', '', ('EXP',))
+    FieldDef(0, '', '', ('EXP',))
 
 w,b7v,Hc1HeatCurve,,m,EXP,,,heating curve of Hc1
 MsgDef('b7v', 'Hc1HeatCurve', write=True)
@@ -252,7 +252,7 @@ MsgDef('b7v', 'Hc1HeatCurve', write=True)
 
 r,b7v,Hc1HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc1
 MsgDef('b7v', 'Hc1HeatCurveAdaption', read=True)
-    FieldDef(0, '.1', '', ('EXP',))
+    FieldDef(0, '', '', ('EXP',))
 
 r,b7v,Hc1MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc1
 MsgDef('b7v', 'Hc1MaxFlowTempDesired', read=True)
@@ -272,11 +272,11 @@ MsgDef('b7v', 'Hc1MinFlowTempDesired', write=True)
 
 r,b7v,Hc1MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
 MsgDef('b7v', 'Hc1MixerMovement', read=True)
-    FieldDef(0, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
+    FieldDef(0, '', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
 
 r,b7v,Hc1PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 1
 MsgDef('b7v', 'Hc1PumpStatus', read=True)
-    FieldDef(0, '.1', '', ('UIN',))
+    FieldDef(0, '', '', ('UIN',))
 
 w,b7v,Hc1PumpStatus,,m,UIN,,,pump status of zone 1
 MsgDef('b7v', 'Hc1PumpStatus', write=True)
@@ -292,7 +292,7 @@ MsgDef('b7v', 'Hc1RoomTempSwitchOn', write=True)
 
 r2,b7v,Hc1Status,,s,IGN:4,,,,,s,UCH,,,status of zone 1
 MsgDef('b7v', 'Hc1Status', read=True, prio=2)
-    FieldDef(0, '.1', '', ('UCH',))
+    FieldDef(0, '', '', ('UCH',))
 
 w,b7v,Hc1Status,,m,UCH,,,status of zone 1
 MsgDef('b7v', 'Hc1Status', write=True)
@@ -336,7 +336,7 @@ MsgDef('b7v', 'Hc2FlowTemp', read=True)
 
 r,b7v,Hc2HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc2
 MsgDef('b7v', 'Hc2HeatCurve', read=True)
-    FieldDef(0, '.1', '', ('EXP',))
+    FieldDef(0, '', '', ('EXP',))
 
 w,b7v,Hc2HeatCurve,,m,EXP,,,heating curve of Hc2
 MsgDef('b7v', 'Hc2HeatCurve', write=True)
@@ -344,7 +344,7 @@ MsgDef('b7v', 'Hc2HeatCurve', write=True)
 
 r,b7v,Hc2HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc2
 MsgDef('b7v', 'Hc2HeatCurveAdaption', read=True)
-    FieldDef(0, '.1', '', ('EXP',))
+    FieldDef(0, '', '', ('EXP',))
 
 r,b7v,Hc2MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc2
 MsgDef('b7v', 'Hc2MaxFlowTempDesired', read=True)
@@ -364,11 +364,11 @@ MsgDef('b7v', 'Hc2MinFlowTempDesired', write=True)
 
 r,b7v,Hc2MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
 MsgDef('b7v', 'Hc2MixerMovement', read=True)
-    FieldDef(0, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
+    FieldDef(0, '', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
 
 r,b7v,Hc2PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 2
 MsgDef('b7v', 'Hc2PumpStatus', read=True)
-    FieldDef(0, '.1', '', ('UIN',))
+    FieldDef(0, '', '', ('UIN',))
 
 w,b7v,Hc2PumpStatus,,m,UIN,,,pump status of zone 2
 MsgDef('b7v', 'Hc2PumpStatus', write=True)
@@ -384,7 +384,7 @@ MsgDef('b7v', 'Hc2RoomTempSwitchOn', write=True)
 
 r,b7v,Hc2Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc2Status', read=True)
-    FieldDef(0, '.1', '', ('UCH',))
+    FieldDef(0, '', '', ('UCH',))
 
 w,b7v,Hc2Status,,m,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc2Status', write=True)
@@ -428,7 +428,7 @@ MsgDef('b7v', 'Hc3FlowTemp', read=True)
 
 r,b7v,Hc3HeatCurve,,s,IGN:4,,,,,s,EXP,,,heating curve of Hc3
 MsgDef('b7v', 'Hc3HeatCurve', read=True)
-    FieldDef(0, '.1', '', ('EXP',))
+    FieldDef(0, '', '', ('EXP',))
 
 w,b7v,Hc3HeatCurve,,m,EXP,,,heating curve of Hc3
 MsgDef('b7v', 'Hc3HeatCurve', write=True)
@@ -436,7 +436,7 @@ MsgDef('b7v', 'Hc3HeatCurve', write=True)
 
 r,b7v,Hc3HeatCurveAdaption,,s,IGN:4,,,,,s,EXP,,,adaption applied to heating curve of Hc3
 MsgDef('b7v', 'Hc3HeatCurveAdaption', read=True)
-    FieldDef(0, '.1', '', ('EXP',))
+    FieldDef(0, '', '', ('EXP',))
 
 r,b7v,Hc3MaxFlowTempDesired,,s,IGN:4,,,,tempv,s,EXP,,°C,maximum flow temperature setpoint (end emphasis) of Hc3
 MsgDef('b7v', 'Hc3MaxFlowTempDesired', read=True)
@@ -456,11 +456,11 @@ MsgDef('b7v', 'Hc3MinFlowTempDesired', write=True)
 
 r,b7v,Hc3MixerMovement,,s,IGN:4,,,,,s,EXP,,,"status of mixer (<0 closing, >0 opening)"
 MsgDef('b7v', 'Hc3MixerMovement', read=True)
-    FieldDef(0, '.1', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
+    FieldDef(0, '', '', ('EXP',), comment='status of mixer (<0 closing, >0 opening)')
 
 r,b7v,Hc3PumpStatus,,s,IGN:4,,,,,s,UIN,,,pump status of zone 3
 MsgDef('b7v', 'Hc3PumpStatus', read=True)
-    FieldDef(0, '.1', '', ('UIN',))
+    FieldDef(0, '', '', ('UIN',))
 
 w,b7v,Hc3PumpStatus,,m,UIN,,,pump status of zone 3
 MsgDef('b7v', 'Hc3PumpStatus', write=True)
@@ -476,7 +476,7 @@ MsgDef('b7v', 'Hc3RoomTempSwitchOn', write=True)
 
 r,b7v,Hc3Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc3Status', read=True)
-    FieldDef(0, '.1', '', ('UCH',))
+    FieldDef(0, '', '', ('UCH',))
 
 w,b7v,Hc3Status,,m,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc3Status', write=True)
@@ -746,7 +746,7 @@ MsgDef('b7v', 'hwcTimer.Wednesday', write=True)
 
 r,b7v,HydraulicScheme,,s,IGN:4,,,,,s,UIN,,,Systemschema
 MsgDef('b7v', 'HydraulicScheme', read=True)
-    FieldDef(0, '.1', '', ('UIN',))
+    FieldDef(0, '', '', ('UIN',))
 
 w,b7v,HydraulicScheme,,m,UIN,,,Systemschema
 MsgDef('b7v', 'HydraulicScheme', write=True)
@@ -770,7 +770,7 @@ MsgDef('b7v', 'Installer2', write=True)
 
 r,b7v,KeyCodeforConfigMenu,,s,IGN:4,,,,,s,UIN,,,000-999; code for the installer's menues
 MsgDef('b7v', 'KeyCodeforConfigMenu', read=True)
-    FieldDef(0, '.1', '', ('UIN',))
+    FieldDef(0, '', '', ('UIN',))
 
 w,b7v,KeyCodeforConfigMenu,,m,UIN,,,000-999; code for the installer's menues
 MsgDef('b7v', 'KeyCodeforConfigMenu', write=True)
@@ -798,7 +798,7 @@ MsgDef('b7v', 'MaxCylinderChargeTime', write=True)
 
 r,b7v,MaxRoomHumidity,,s,IGN:4,,,,,s,UIN,,,maximum room humidity
 MsgDef('b7v', 'MaxRoomHumidity', read=True)
-    FieldDef(0, '.1', '', ('UIN',))
+    FieldDef(0, '', '', ('UIN',))
 
 w,b7v,MaxRoomHumidity,,m,UIN,,,maximum room humidity
 MsgDef('b7v', 'MaxRoomHumidity', write=True)
@@ -1246,7 +1246,7 @@ MsgDef('b7v', 'tariffTimer.Wednesday', write=True)
 
 r,b7v,Time,,s,IGN:4,,,,,s,HTI,,,Aktuelle Uhrzeit
 MsgDef('b7v', 'Time', read=True)
-    FieldDef(0, '.1', '', ('HTI',))
+    FieldDef(0, '', '', ('HTI',))
 
 w,b7v,Time,,m,HTI,,,Aktuelle Uhrzeit
 MsgDef('b7v', 'Time', write=True)
@@ -1776,7 +1776,7 @@ MsgDef('b7v', 'z1Timer.Wednesday', write=True)
 
 r,b7v,z1ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 1
 MsgDef('b7v', 'z1ValveStatus', read=True)
-    FieldDef(0, '.1', '', ('UCH',))
+    FieldDef(0, '', '', ('UCH',))
 
 w,b7v,z1ValveStatus,,m,UCH,,,valve status of zone 1
 MsgDef('b7v', 'z1ValveStatus', write=True)
@@ -2168,7 +2168,7 @@ MsgDef('b7v', 'z2Timer.Wednesday', write=True)
 
 r,b7v,z2ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 2
 MsgDef('b7v', 'z2ValveStatus', read=True)
-    FieldDef(0, '.1', '', ('UCH',))
+    FieldDef(0, '', '', ('UCH',))
 
 w,b7v,z2ValveStatus,,m,UCH,,,valve status of zone 2
 MsgDef('b7v', 'z2ValveStatus', write=True)
@@ -2300,7 +2300,7 @@ MsgDef('b7v', 'z3Shortname', write=True)
 
 r,b7v,z3ValveStatus,,s,IGN:4,,,,,s,UCH,,,valve status of zone 3
 MsgDef('b7v', 'z3ValveStatus', read=True)
-    FieldDef(0, '.1', '', ('UCH',))
+    FieldDef(0, '', '', ('UCH',))
 
 w,b7v,z3ValveStatus,,m,UCH,,,valve status of zone 3
 MsgDef('b7v', 'z3ValveStatus', write=True)

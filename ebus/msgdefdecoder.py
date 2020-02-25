@@ -84,30 +84,29 @@ def _decodefields(values):
 def _createfields(chunks):
     if chunks:
         # determine duplicate names
+        fields = []
         dups = collections.defaultdict(lambda: -1)
-        for name in tuple(zip(*chunks))[0]:
-            dups[name] += 1
+        for chunk in chunks:
+            name, _, datatype = chunk[:3]
+            if not datatype.startswith("IGN"):
+                fields.append(chunk)
+                dups[name] += 1
         # create fields
         cnts = collections.defaultdict(lambda: 0)
-        idx = 0
-        for chunk in chunks:
-            name = chunk[0]
+        for idx, field in enumerate(fields):
+            name = field[0]
             if dups[name]:
                 cnt = cnts[name]
                 cnts[name] = cnt + 1
                 name = f"{name}.{cnt}"
             else:
                 name = name
-            field = _createfield(idx, name, *chunk)
-            if field:
-                yield field
-                idx += 1
+            yield _createfield(idx, name, *field)
 
 
 def _createfield(idx, name, ename, part, datatype, dividervalues=None, unit=None, comment=None):
     types = tuple(datatype.split(","))
-    if types and not types[0].startswith("IGN"):
-        return FieldDef(idx, name, ename, types, dividervalues, unit, comment)
+    return FieldDef(idx, name, ename, types, dividervalues, unit, comment)
 
 
 def _chunks(list_or_tuple, maxsize):

@@ -22,7 +22,7 @@ def test_listen0b():
 
 def test_listen1a():
     """Process `listen1a.txt`."""
-    _test(TESTDATAPATH / "find1.txt", TESTDATAPATH / "listen1a", 429)
+    _test(TESTDATAPATH / "find1.txt", TESTDATAPATH / "listen1a", 413)
 
 
 def _test(deffilepath, basepath, num):
