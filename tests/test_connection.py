@@ -18,12 +18,12 @@ def test_connection():
     eq_(c.port, 8888)
     eq_(c.autoconnect, False)
 
-    c = ebus.Connection(host="foo", port=4444, autoconnect=True)
+    c = ebus.Connection(host="foo", port=4444, autoconnect=True, timeout=5)
     eq_(c.host, "foo")
     eq_(c.port, 4444)
     eq_(c.autoconnect, True)
 
-    eq_(repr(c), "Connection(host='foo', port=4444, autoconnect=True)")
+    eq_(repr(c), "Connection(host='foo', port=4444, autoconnect=True, timeout=5)")
 
 
 def test_connect_fails():

@@ -7,6 +7,7 @@ def add_ebus_args(parser):
     """Load arguments related to :any:`create_ebus`."""
     parser.add_argument("--host", "-H", default="127.0.0.1", help="EBUSD address. Default is '172.0.0.1'.")
     parser.add_argument("--port", "-P", default=8888, type=int, help="EBUSD port. Default is 8888.")
+    parser.add_argument("--timeout", "-T", default=10, type=int, help="EBUSD connection timeout. Default is 10.")
 
 
 def add_msgdef_args(parser):
@@ -50,7 +51,7 @@ def disable_stdout_buffering():
 
 def create_ebus(args):
     """Create :any:`Ebus` instance with parameters from `args`."""
-    return ebus.Ebus(host=args.host, port=args.port)
+    return ebus.Ebus(host=args.host, port=args.port, timeout=args.timeout)
 
 
 async def load_msgdefs(e, args):

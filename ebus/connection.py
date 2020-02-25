@@ -7,7 +7,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class Connection:
-    def __init__(self, host="127.0.0.1", port=8888, autoconnect=False):
+    def __init__(self, host="127.0.0.1", port=8888, autoconnect=False, timeout=None):
         """
         Ebus Connection.
 
@@ -19,6 +19,7 @@ class Connection:
         self._host = host
         self._port = port
         self._autoconnect = autoconnect
+        self._timeout = timeout
         self._reader, self._writer = None, None
 
     def __repr__(self):
@@ -28,6 +29,7 @@ class Connection:
                 ("host", self.host, "127.0.0.1"),
                 ("port", self.port, 8888),
                 ("autoconnect", self.autoconnect, False),
+                ("timeout", self.timeout, None),
             ),
         )
 
@@ -46,6 +48,11 @@ class Connection:
         """Automatically connect and re-connect."""
         return self._autoconnect
 
+    @property
+    def timeout(self):
+        """Connection Timeout."""
+        return self._timeout
+
     async def connect(self):
         """
         Establish connection (required before first communication).
@@ -54,7 +61,7 @@ class Connection:
             IOError: If connection cannot be established
         """
         _LOGGER.debug(f"connect()")
-        self._reader, self._writer = await asyncio.open_connection(self._host, self._port)
+        self._reader, self._writer = await self._timedout(asyncio.open_connection(self._host, self._port))
 
     async def disconnect(self):
         """Disconnect if not already done."""
@@ -87,7 +94,7 @@ class Connection:
         _LOGGER.debug(f"write({message!r})")
         await self._ensure_connection()
         self._writer.write(f"{message}\n".encode())
-        await self._writer.drain()
+        await self._timedout(self._writer.drain())
 
     async def readline(self):
         """
@@ -132,6 +139,16 @@ class Connection:
             else:
                 raise ConnectionError("Not connected")
 
+    async def _timedout(self, task):
+        if self._timeout:
+            try:
+                result = await asyncio.wait_for(task, timeout=self._timeout)
+            except asyncio.TimeoutError:
+                raise ConnectionTimeout(f"{self.host}:{self.port}")
+        else:
+            result = await task
+        return result
+
     async def _checkline(self, line):
         if line.startswith("ERR: "):
             # consume everything until newline
@@ -141,4 +158,9 @@ class Connection:
 
 
 class CommandError(RuntimeError):
+    pass
+
+
+class ConnectionTimeout(RuntimeError):
+
     pass

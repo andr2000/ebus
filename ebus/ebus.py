@@ -17,13 +17,13 @@ _CMD_FINDMSGDEFS = "find -a -F type,circuit,name,fields"
 
 
 class Ebus:
-    def __init__(self, host, port, scanwaitinterval=3):
+    def __init__(self, host, port, timeout=None, scanwaitinterval=3):
         """
         Pythonic EBUS Representation.
 
         This instance connects to an EBUSD instance and allows to read, write or monitor.
         """
-        self.connection = Connection(host=host, port=port, autoconnect=True)
+        self.connection = Connection(host=host, port=port, autoconnect=True, timeout=timeout)
         self.scanwaitinterval = scanwaitinterval
         self.msgdefs = MsgDefs()
         self.msgdecoder = MsgDecoder(self.msgdefs)
@@ -33,7 +33,7 @@ class Ebus:
         return repr_(
             self,
             args=(self.connection.host, self.connection.port),
-            kwargs=(("scanwaitinterval", self.scanwaitinterval, 3),),
+            kwargs=(("timeout", self.timeout, None), ("scanwaitinterval", self.scanwaitinterval, 3),),
         )
 
     @property
@@ -45,6 +45,11 @@ class Ebus:
     def port(self):
         """Port."""
         return self.connection.port
+
+    @property
+    def timeout(self):
+        """Timeout."""
+        return self.connection.timeout
 
     async def wait_scancompleted(self):
         """Wait until scan is completed."""
