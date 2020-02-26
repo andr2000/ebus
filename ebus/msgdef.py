@@ -102,21 +102,20 @@ class MsgDef(_MsgDef, NodeMixin):
             return None
 
 
-_FieldDef = collections.namedtuple("_FieldDef", "idx name ename types dividervalues unit comment")
+_FieldDef = collections.namedtuple("_FieldDef", "idx name types dividervalues unit comment")
 
 
 class AbstractFieldDef(_FieldDef, NodeMixin):
 
     __slots__ = tuple()
 
-    def __new__(cls, idx, name, ename, types, dividervalues=None, unit=None, comment=None):
+    def __new__(cls, idx, name, types, dividervalues=None, unit=None, comment=None):
         """
         Abstract Field Definition.
 
         Args:
             idx (str): Index within Message
             name (str): Unique name (as `name` may be used multiple times by ebus)
-            ename (str): Ebus Name
             types (tuple): Tuple of type idenfifier
 
         Keywords Args:
@@ -124,10 +123,10 @@ class AbstractFieldDef(_FieldDef, NodeMixin):
             unit (str): Unit of the field value
             comment (str): Comment.
         """
-        return _FieldDef.__new__(cls, idx, name, ename, types, dividervalues or None, unit or None, comment or None)
+        return _FieldDef.__new__(cls, idx, name, types, dividervalues or None, unit or None, comment or None)
 
     def __repr__(self):
-        args = (self.idx, self.name, self.ename, self.types)
+        args = (self.idx, self.name, self.types)
         kwargs = [
             ("dividervalues", self.dividervalues, None),
             ("unit", self.unit, None),
@@ -151,12 +150,7 @@ class AbstractFieldDef(_FieldDef, NodeMixin):
 
     def __copy__(self):
         return FieldDef(
-            idx=self.idx,
-            name=self.name,
-            ename=self.ename,
-            types=self.types,
-            dividervalues=self.dividervalues,
-            unit=self.unit,
+            idx=self.idx, name=self.name, types=self.types, dividervalues=self.dividervalues, unit=self.unit,
         )
 
     @property
@@ -189,7 +183,7 @@ class VirtFieldDef(AbstractFieldDef):
         Args:
             name (str): Unique name (as `name` may be used multiple times by ebus)
         """
-        obj = AbstractFieldDef.__new__(cls, None, name, name, (None,), None, unit, None)
+        obj = AbstractFieldDef.__new__(cls, None, name, (None,), None, unit, None)
         obj.func = func
         return obj
 

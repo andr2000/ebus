@@ -33,8 +33,7 @@ def test_msgdefs0():
 
     eq_(len(msgdefs.find("?c")), 132)
     eq_(
-        list(msgdefs.find("cc", "StatPowerOn")),
-        [MsgDef("cc", "StatPowerOn", (FieldDef(0, "", "", ("UIN",)),), read=True)],
+        list(msgdefs.find("cc", "StatPowerOn")), [MsgDef("cc", "StatPowerOn", (FieldDef(0, "", ("UIN",)),), read=True)],
     )
 
     with assert_raises(ValueError):
@@ -47,14 +46,14 @@ def test_msgdefs0():
     eq_(
         list(msgdefs.resolve(["*/FlowTempDesired/temp1", "cc/StatPowerOn", "hc/FlowTemp*"])),
         [
-            MsgDef("hc", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            MsgDef("hc", "FlowTempMax", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True, write=True),
-            MsgDef("hc", "FlowTempMin", (FieldDef(0, "temp0", "temp0", ("UCH",), unit="°C"),), read=True, write=True),
-            MsgDef("mc", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            MsgDef("mc.3", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            MsgDef("mc.4", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            MsgDef("mc.5", "FlowTempDesired", (FieldDef(0, "temp1", "temp1", ("D1C",), unit="°C"),), read=True),
-            MsgDef("cc", "StatPowerOn", (FieldDef(0, "", "", ("UIN",)),), read=True),
+            MsgDef("hc", "FlowTempDesired", (FieldDef(0, "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("hc", "FlowTempMax", (FieldDef(0, "temp0", ("UCH",), unit="°C"),), read=True, write=True),
+            MsgDef("hc", "FlowTempMin", (FieldDef(0, "temp0", ("UCH",), unit="°C"),), read=True, write=True),
+            MsgDef("mc", "FlowTempDesired", (FieldDef(0, "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("mc.3", "FlowTempDesired", (FieldDef(0, "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("mc.4", "FlowTempDesired", (FieldDef(0, "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("mc.5", "FlowTempDesired", (FieldDef(0, "temp1", ("D1C",), unit="°C"),), read=True),
+            MsgDef("cc", "StatPowerOn", (FieldDef(0, "", ("UIN",)),), read=True),
         ],
     )
     eq_(list(msgdefs.resolve(["mc.5/Timer.*/foo"])), [])
@@ -64,77 +63,49 @@ def test_msgdefs0():
             MsgDef(
                 "mc.5",
                 "Timer.Friday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 write=True,
             ),
             MsgDef(
                 "mc.5",
                 "Timer.Monday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 write=True,
             ),
             MsgDef(
                 "mc.5",
                 "Timer.Saturday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 write=True,
             ),
             MsgDef(
                 "mc.5",
                 "Timer.Sunday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 write=True,
             ),
             MsgDef(
                 "mc.5",
                 "Timer.Thursday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 write=True,
             ),
             MsgDef(
                 "mc.5",
                 "Timer.Tuesday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 write=True,
             ),
             MsgDef(
                 "mc.5",
                 "Timer.Wednesday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 write=True,
             ),
@@ -146,11 +117,7 @@ def test_msgdefs0():
             MsgDef(
                 "mc.5",
                 "Timer.Friday",
-                (
-                    FieldDef(1, "to.0", "to", ("TTM",)),
-                    FieldDef(3, "to.1", "to", ("TTM",)),
-                    FieldDef(5, "to.2", "to", ("TTM",)),
-                ),
+                (FieldDef(1, "to.0", ("TTM",)), FieldDef(3, "to.1", ("TTM",)), FieldDef(5, "to.2", ("TTM",)),),
                 read=True,
                 prio=3,
                 write=True,

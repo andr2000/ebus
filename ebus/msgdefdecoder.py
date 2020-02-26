@@ -21,13 +21,13 @@ def decode_msgdef(line):
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('mc.4', 'OtShutdownLimit', True, None, False, False)
     >>> m.children
-    (FieldDef(0, 'temp', 'temp', ('UCH',), unit='°C', comment='text, text'),)
+    (FieldDef(0, 'temp', ('UCH',), unit='°C', comment='text, text'),)
 
     >>> m = decode_msgdef('w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
     >>> m.children
-    (FieldDef(0, 'temp', 'temp', ('D2C',), unit='°C'),)
+    (FieldDef(0, 'temp', ('D2C',), unit='°C'),)
     """
     try:
         values = _split(line)
@@ -106,7 +106,7 @@ def _createfields(chunks):
 
 def _createfield(idx, name, ename, part, datatype, dividervalues=None, unit=None, comment=None):
     types = tuple(datatype.split(","))
-    return FieldDef(idx, name, ename, types, dividervalues, unit, comment)
+    return FieldDef(idx, name, types, dividervalues, unit, comment)
 
 
 def _chunks(list_or_tuple, maxsize):

@@ -71,18 +71,18 @@ class TypeDecoder:
 
     >>> import ebus
     >>> typedecoder = ebus.TypeDecoder()
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("uin",))
+    >>> fielddef = ebus.FieldDef(0, "name", ("uin",))
     >>> typedecoder(fielddef, '7')
     7
 
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("hda",))
+    >>> fielddef = ebus.FieldDef(0, "name", ("hda",))
     >>> v = typedecoder(fielddef, '21.1.2019')
     >>> v
     Date(2019, 1, 21)
     >>> str(v)
     '2019-01-21'
 
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("hti",))
+    >>> fielddef = ebus.FieldDef(0, "name", ("hti",))
     >>> v = typedecoder(fielddef, '22:55:03')
     >>> v
     HourMinuteSecond(22, 55, 3)
@@ -91,13 +91,13 @@ class TypeDecoder:
 
     Unknown types are just handled as strings:
 
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("foo",))
+    >>> fielddef = ebus.FieldDef(0, "name", ("foo",))
     >>> typedecoder(fielddef, '7')
     '7'
 
     Unknown values become `None`:
 
-    >>> fielddef = ebus.FieldDef(0, "uname", "name", ("bi0",))
+    >>> fielddef = ebus.FieldDef(0, "name", ("bi0",))
     >>> typedecoder(fielddef, '-')
     """
 
