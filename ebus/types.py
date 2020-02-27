@@ -230,6 +230,12 @@ class TimeType(Type):
                 return None
 
 
+class DateTimeType(Type):
+    def __init__(self):
+        """Date Time."""
+        pass
+
+
 class WeekdayType(Type):
     def __init__(self):
         """Weekday Type."""

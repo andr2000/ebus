@@ -33,13 +33,9 @@ async def _main(args):
     print(f"Listing {msgdefs.summary()}")
     for msgdef in msgdefs:
         for fielddef in msgdef.children:
-            values = fielddef.values
-            if values:
-                details = "/".join(fielddef.values.values())
-            else:
-                details = repr(fielddef.type_)
+            details = repr(fielddef.type_)
             if fielddef.comment:
-                details += f"[{fielddef.comment}]"
+                details += f" [{fielddef.comment}]"
             if args.name_only:
                 print(fielddef.ident)
             else:

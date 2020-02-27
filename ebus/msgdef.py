@@ -155,16 +155,22 @@ class FieldDef(AbstractFieldDef):
 
 
 class VirtFieldDef(AbstractFieldDef):
-    def __new__(cls, name, func, unit=None):
+    def __new__(cls, name, type_, func, unit=None, comment=None):
         """
-        Field Definition.
+        Virtual Field Definition.
 
         Args:
             name (str): Unique name (as `name` may be used multiple times by ebus)
+            type_ (Type): Type
+            func: Function to create value.
+
+        Keywords Args:
+            unit (str): Unit of the field value
+            comment (str): Comment.
         """
-        obj = AbstractFieldDef.__new__(cls, None, name, None, unit, None)
+        obj = AbstractFieldDef.__new__(cls, None, name, type_, unit or None, comment or None)
         obj.func = func
         return obj
 
     def __repr__(self):
-        return repr_(self, (self.name,))
+        return repr_(self, (self.name, self.type_))

@@ -1,6 +1,7 @@
 import datetime
 
 from .msgdef import VirtFieldDef
+from .types import DateTimeType
 from .types import DateType
 from .types import TimeType
 from .util import repr_
@@ -20,11 +21,13 @@ def iter_virtfielddefs(fielddefs):
                 sidx = names.index("dcfstate")
                 yield VirtFieldDef(
                     f"+{names[didx]}+{names[tidx]}+dcfstate",
+                    DateTimeType(),
                     lambda fields: _merge_date_time(fields[didx].value, fields[tidx].value, fields[sidx].value),
                 )
             else:
                 yield VirtFieldDef(
                     f"+{names[didx]}+{names[tidx]}",
+                    DateTimeType(),
                     lambda fields: _merge_date_time(fields[didx].value, fields[tidx].value),
                 )
     if len(fielddefs) > 1 and names[-1] == "sensor":
@@ -32,6 +35,7 @@ def iter_virtfielddefs(fielddefs):
         sensordef = fielddefs[-1]
         yield VirtFieldDef(
             f"+{valuedef.name}+{sensordef.name}",
+            valuedef.type_,
             lambda fields: _merge_sensor_status(fields[valuedef.idx].value, fields[sensordef.idx].value),
             unit=valuedef.unit,
         )
