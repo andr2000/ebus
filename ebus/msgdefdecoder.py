@@ -3,6 +3,7 @@ import re
 
 from .msgdef import FieldDef
 from .msgdef import MsgDef
+from .types import gettype
 from .virtfielddef import iter_virtfielddefs
 
 # https://github.com/john30/ebusd/wiki/4.1.-Message-definition#message-definition
@@ -21,13 +22,13 @@ def decode_msgdef(line):
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('mc.4', 'OtShutdownLimit', True, None, False, False)
     >>> m.children
-    (FieldDef(0, 'temp', ('UCH',), unit='°C', comment='text, text'),)
+    (FieldDef(0, 'temp', IntType(0, 254), unit='°C', comment='text, text'),)
 
     >>> m = decode_msgdef('w,ui,TempIncrease,temp,m,D2C,,°C,Temperatur')
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
     >>> m.children
-    (FieldDef(0, 'temp', ('D2C',), unit='°C'),)
+    (FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C'),)
     """
     try:
         values = _split(line)
@@ -105,8 +106,8 @@ def _createfields(chunks):
 
 
 def _createfield(idx, name, ename, part, datatype, dividervalues=None, unit=None, comment=None):
-    types = tuple(datatype.split(","))
-    return FieldDef(idx, name, types, dividervalues, unit, comment)
+    type_ = gettype(datatype.split(",")[0])
+    return FieldDef(idx, name, type_, dividervalues, unit, comment)
 
 
 def _chunks(list_or_tuple, maxsize):

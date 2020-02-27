@@ -3,7 +3,6 @@ import re
 from .msg import Error
 from .msg import Field
 from .msg import Msg
-from .typedecoder import TypeDecoder
 
 
 class MsgDecoder:
@@ -18,7 +17,6 @@ class MsgDecoder:
             msgdefs (MsgDefs): Message Definitions
         """
         self.msgdefs = msgdefs
-        self.typedecoder = TypeDecoder()
 
     def decode_line(self, line):
         """
@@ -44,19 +42,12 @@ class MsgDecoder:
             return Msg(msgdef, fields)
 
     def _decodefields(self, msgdef, values):
-        typedecoder = self.typedecoder
         fields = []
         for fielddef in msgdef.fields:
             if fielddef.idx is None:
                 continue
-            try:
-                value = values[fielddef.idx]
-            except IndexError:
-                value = ""
-            try:
-                fieldvalue = typedecoder(fielddef, value.strip())
-            except ValueError:
-                fieldvalue = None
+            value = values[fielddef.idx].strip()
+            fieldvalue = fielddef.type_.decode(fielddef, value)
             fields.append(Field(fielddef, fieldvalue))
         for virtfielddef in msgdef.virtfields:
             virtfieldvalue = virtfielddef.func(fields)

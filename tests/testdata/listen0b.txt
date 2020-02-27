@@ -117,6 +117,7 @@ bai ReturnTempMax = 82.94
 bai SerialNumber = 01 02 03 04 05 06 07 08
 bai SetFactoryValues = no
 bai SetMode = auto;41.0;-;-;0;0;0;0;0;0
+bai SetMode = auto;41.0;-;-;0;0;0;0;1;0
 bai SHEMaxDeltaHwcFlow = 0.00
 bai SHEMaxFlowTemp = 0.00
 bai Statenumber = 4

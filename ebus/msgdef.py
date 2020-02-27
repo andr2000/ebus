@@ -51,13 +51,13 @@ class MsgDef(_MsgDef, NodeMixin):
         return hash(self.__ident())
 
     def __eq__(self, other):
-        if isinstance(other, MsgDef):
+        if self.__class__ is other.__class__:
             return self.__ident() == other.__ident()
         else:
             return NotImplemented
 
     def __ne__(self, other):
-        if isinstance(other, MsgDef):
+        if self.__class__ is other.__class__:
             return self.__ident() != other.__ident()
         else:
             return NotImplemented
@@ -102,31 +102,31 @@ class MsgDef(_MsgDef, NodeMixin):
             return None
 
 
-_FieldDef = collections.namedtuple("_FieldDef", "idx name types dividervalues unit comment")
+_FieldDef = collections.namedtuple("_FieldDef", "idx name type_ dividervalues unit comment")
 
 
 class AbstractFieldDef(_FieldDef, NodeMixin):
 
     __slots__ = tuple()
 
-    def __new__(cls, idx, name, types, dividervalues=None, unit=None, comment=None):
+    def __new__(cls, idx, name, type_, dividervalues=None, unit=None, comment=None):
         """
         Abstract Field Definition.
 
         Args:
             idx (str): Index within Message
             name (str): Unique name (as `name` may be used multiple times by ebus)
-            types (tuple): Tuple of type idenfifier
+            type_ (Type): Type
 
         Keywords Args:
             dividervalues (str): EBUS Divider or value specification
             unit (str): Unit of the field value
             comment (str): Comment.
         """
-        return _FieldDef.__new__(cls, idx, name, types, dividervalues or None, unit or None, comment or None)
+        return _FieldDef.__new__(cls, idx, name, type_, dividervalues or None, unit or None, comment or None)
 
     def __repr__(self):
-        args = (self.idx, self.name, self.types)
+        args = (self.idx, self.name, self.type_)
         kwargs = [
             ("dividervalues", self.dividervalues, None),
             ("unit", self.unit, None),
@@ -150,7 +150,7 @@ class AbstractFieldDef(_FieldDef, NodeMixin):
 
     def __copy__(self):
         return FieldDef(
-            idx=self.idx, name=self.name, types=self.types, dividervalues=self.dividervalues, unit=self.unit,
+            idx=self.idx, name=self.name, type_=self.type_, dividervalues=self.dividervalues, unit=self.unit,
         )
 
     @property

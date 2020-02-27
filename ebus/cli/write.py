@@ -11,7 +11,7 @@ def parse_args(subparsers):
     add_ebus_args(parser)
     add_msgdef_args(parser)
     parser.add_argument("field", help="Field (i.e. 'ui/OutsideTemp/temp')")
-    parser.add_argument("value", help="Value (i.e. '5')")
+    parser.add_argument("value", help="Value to apply (i.e. '5'). 'NONE' is reserved for no value.")
     parser.set_defaults(main=_main)
 
 
@@ -20,4 +20,5 @@ async def _main(args):
     e = create_ebus(args)
     await load_msgdefs(e, args)
     for msgdef in e.msgdefs.resolve([args.field]):
-        await e.write(msgdef, args.value)
+        value = args.value if args.value != "NONE" else None
+        await e.write(msgdef, value)

@@ -4,6 +4,8 @@ from nose.tools import eq_
 
 import ebus
 
+_TYPE = ebus.types.StrType(length=2)
+
 
 def test_msgdef0():
     """MsgDef Example 0"""
@@ -61,10 +63,10 @@ def test_msgdef2():
 
 def test_fielddef0():
     """FieldDef Example 0."""
-    f = ebus.FieldDef(0, "name", ("uin",), "4", "unit")
+    f = ebus.FieldDef(0, "name", _TYPE, "4", "unit")
     m = ebus.MsgDef("circuit", "name", (f,), False, None, False, True)
     eq_(f.name, "name")
-    eq_(f.types, ("uin",))
+    eq_(f.type_, _TYPE)
     eq_(f.dividervalues, "4")
     eq_(f.divider, 4.0)
     eq_(f.values, None)
@@ -72,15 +74,15 @@ def test_fielddef0():
     eq_(f.ident, "circuit/name/name")
     eq_(sys.getsizeof(f), 104)
     eq_(
-        repr(f), "FieldDef(0, 'name', ('uin',), dividervalues='4', unit='unit')",
+        repr(f), "FieldDef(0, 'name', StrType(length=2), dividervalues='4', unit='unit')",
     )
 
 
 def test_fielddef1():
     """FieldDef Example 1."""
-    f = ebus.FieldDef(0, "name", ("uin",), "-4", "unit")
+    f = ebus.FieldDef(0, "name", _TYPE, "-4", "unit")
     eq_(f.name, "name")
-    eq_(f.types, ("uin",))
+    eq_(f.type_, _TYPE)
     eq_(f.dividervalues, "-4")
     eq_(f.divider, 0.25)
     eq_(f.values, None)
@@ -88,15 +90,15 @@ def test_fielddef1():
     eq_(f.ident, None)
     eq_(sys.getsizeof(f), 104)
     eq_(
-        repr(f), "FieldDef(0, 'name', ('uin',), dividervalues='-4', unit='unit')",
+        repr(f), "FieldDef(0, 'name', StrType(length=2), dividervalues='-4', unit='unit')",
     )
 
 
 def test_fielddef2():
     """FieldDef Example 2."""
-    f = ebus.FieldDef(0, "name", ("uin",), "0=off;1=on", "unit")
+    f = ebus.FieldDef(0, "name", _TYPE, "0=off;1=on", "unit")
     eq_(f.name, "name")
-    eq_(f.types, ("uin",))
+    eq_(f.type_, _TYPE)
     eq_(f.dividervalues, "0=off;1=on")
     eq_(f.divider, None)
     eq_(f.values, {"0": "off", "1": "on"})
@@ -104,15 +106,15 @@ def test_fielddef2():
     eq_(f.ident, None)
     eq_(sys.getsizeof(f), 104)
     eq_(
-        repr(f), "FieldDef(0, 'name', ('uin',), dividervalues='0=off;1=on', unit='unit')",
+        repr(f), "FieldDef(0, 'name', StrType(length=2), dividervalues='0=off;1=on', unit='unit')",
     )
 
 
 def test_eq():
     """Test EQ."""
-    f0 = ebus.FieldDef(0, "name", ("uin",), "0=off;1=on", "unit")
-    f1 = ebus.FieldDef(0, "name", ("uin",), "0=off;1=on", "unit")
-    g1 = ebus.FieldDef(1, "name", ("uin",), "0=off;1=on", "unit")
+    f0 = ebus.FieldDef(0, "name", _TYPE, "0=off;1=on", "unit")
+    f1 = ebus.FieldDef(0, "name", _TYPE, "0=off;1=on", "unit")
+    g1 = ebus.FieldDef(1, "name", _TYPE, "0=off;1=on", "unit")
     eq_(f0, f1)
 
     m0 = ebus.MsgDef("circuit", "name", (f0,), False, None, False, True)
@@ -127,6 +129,6 @@ def test_eq():
 
 def test_hash():
     """Test Hash."""
-    f0 = ebus.FieldDef(0, "name", ("uin",), "0=off;1=on", "unit")
-    f1 = ebus.FieldDef(0, "name", ("uin",), "0=off;1=on", "unit")
+    f0 = ebus.FieldDef(0, "name", _TYPE, "0=off;1=on", "unit")
+    f1 = ebus.FieldDef(0, "name", _TYPE, "0=off;1=on", "unit")
     eq_(hash(f0), hash(f1))

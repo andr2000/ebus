@@ -102,7 +102,7 @@ class Ebus:
 
     async def write(self, msgdef, value, ttl=None):
         """Write Message."""
-        _LOGGER.info(f"read({msgdef!r}, value={value!r}, ttl={ttl!r})")
+        _LOGGER.info(f"write({msgdef!r}, value={value!r}, ttl={ttl!r})")
         if not msgdef.write:
             raise ValueError(f"Message is not writeable '{msgdef}'")
         fullmsgdef = self.msgdefs.get(msgdef.circuit, msgdef.name)
@@ -113,9 +113,9 @@ class Ebus:
             readline = tuple([line async for line in self._request("read", msgdef.name, c=msgdef.circuit, m=ttl)])[0]
             values = readline.split(";")
             for fielddef in msgdef.fields:
-                values[fielddef.idx] = value
-            value = ";".join(values)
-        async for line in self._request("write", msgdef.name, value, c=msgdef.circuit, check=True):
+                encvalue = fielddef.type_.encode(fielddef, value)
+                values[fielddef.idx] = encvalue
+        async for line in self._request("write", msgdef.name, ";".join(values), c=msgdef.circuit, check=True):
             pass
 
     async def listen(self, msgdefs=None):

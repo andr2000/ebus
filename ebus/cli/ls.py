@@ -1,7 +1,6 @@
 import asyncio
 
 from ..msgdefdecoder import decodetype
-from ..typedecoder import get_typename
 from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import add_patterns_arg
@@ -38,7 +37,7 @@ async def _main(args):
             if values:
                 details = "/".join(fielddef.values.values())
             else:
-                details = get_typename(fielddef.types[0]) or ""
+                details = repr(fielddef.type_)
             if fielddef.comment:
                 details += f"[{fielddef.comment}]"
             if args.name_only:

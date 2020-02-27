@@ -9,6 +9,7 @@ __description__ = """Python Client for EBUS daemon."""
 __url__ = "https://github.com/c0fec0de/ebus"
 
 from . import cli  # noqa
+from . import types
 from .circuitmap import CircuitMap  # noqa
 from .connection import CommandError  # noqa
 from .connection import Connection  # noqa
@@ -22,5 +23,3 @@ from .msgdef import FieldDef  # noqa
 from .msgdef import MsgDef  # noqa
 from .msgdefdecoder import decode_msgdef  # noqa
 from .msgdefs import MsgDefs  # noqa
-from .typedecoder import TypeDecoder
-from .typedecoder import get_typename
