@@ -1,8 +1,9 @@
 import re
 
-from .msg import Error
 from .msg import Field
 from .msg import Msg
+from .na import NA
+from .na import NotAvailable
 
 
 class MsgDecoder:
@@ -46,8 +47,12 @@ class MsgDecoder:
         for fielddef in msgdef.fields:
             if fielddef.idx is None:
                 continue
-            value = values[fielddef.idx].strip()
-            fieldvalue = fielddef.type_.decode(value)
+            try:
+                value = values[fielddef.idx].strip()
+            except IndexError:
+                fieldvalue = NA
+            else:
+                fieldvalue = fielddef.type_.decode(value)
             fields.append(Field(fielddef, fieldvalue))
         for virtfielddef in msgdef.virtfields:
             virtfieldvalue = virtfielddef.func(fields)

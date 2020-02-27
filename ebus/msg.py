@@ -1,5 +1,6 @@
 import collections
 
+from .na import NA
 from .util import repr_
 
 Error = collections.namedtuple("Error", "msg")
@@ -33,11 +34,12 @@ class Field(collections.namedtuple("_Field", "fielddef value")):
     @property
     def unitvalue(self):
         """Unitized Value."""
-        if self.value is not None:
-            if not isinstance(self.value, str) and self.fielddef.unit:
-                return f"{self.value}{self.fielddef.unit}"
+        value = self.value
+        if value is not None and value is not NA:
+            if not isinstance(value, str) and self.fielddef.unit:
+                return f"{value}{self.fielddef.unit}"
             else:
-                return self.value
+                return value
         else:
             return None
 

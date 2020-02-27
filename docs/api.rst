@@ -11,6 +11,7 @@ API
    ebus.msgdef
    ebus.msgdefdecoder
    ebus.msgdefs
+   ebus.na
    ebus.typedecoder
    ebus.util
    ebus.virtfielddef

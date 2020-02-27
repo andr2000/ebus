@@ -47,7 +47,7 @@ class Type:
         try:
             value = self._decode(value)
         except ValueError as e:
-            value = ValueError(str(e))
+            value = None
         return value
 
     def _decode(self, value):
@@ -145,7 +145,7 @@ class IntType(Type):
         return IntType(min_, max_, divider=divider)
 
     def _decode(self, value):
-        if value != "-":
+        if value not in ("-", ""):
             if self.divider and self.divider > 0:
                 return float(value)
             else:
@@ -250,9 +250,8 @@ class PinType(Type):
     def __init__(self):
         """Pin."""
 
-    # def _decode(self, value):
-    #     # TODO
-    #     return value
+    def _decode(self, value):
+        return value
 
 
 TYPEMAP = {
