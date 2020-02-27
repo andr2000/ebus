@@ -25,8 +25,7 @@ class Ebus:
         """
         self.connection = Connection(host=host, port=port, autoconnect=True, timeout=timeout)
         self.scanwaitinterval = scanwaitinterval
-        self.msgdefs = MsgDefs()
-        self.msgdecoder = MsgDecoder(self.msgdefs)
+        self.msgdecoder = MsgDecoder(MsgDefs())
         _LOGGER.info(f"{self}")
 
     def __repr__(self):
@@ -51,6 +50,18 @@ class Ebus:
         """Timeout."""
         return self.connection.timeout
 
+    @property
+    def msgdefs(self):
+        """Message Defintions."""
+        return self.msgdecoder.msgdefs
+
+    @msgdefs.setter
+    def msgdefs(self, msgdefs):
+        self.msgdecoder.msgdefs = msgdefs
+
+    def __copy__(self):
+        return Ebus(self.host, self.port, timeout=self.timeout, scanwaitinterval=self.scanwaitinterval)
+
     async def wait_scancompleted(self):
         """Wait until scan is completed."""
         cnts = []
@@ -68,7 +79,7 @@ class Ebus:
         Load Message Definitions from EBUSD.
 
         Keyword Args:
-            scanwait (bool): Wait for EBUSD scan to complete
+            scanwait(bool): Wait for EBUSD scan to complete
         """
         _LOGGER.info("load_msgdefs()")
         self.msgdefs.clear()
