@@ -15,17 +15,18 @@ class MsgDefs:
         Message Definitions Container.
 
         >>> from .msgdef import MsgDef, FieldDef
+        >>> from .types import Type
         >>> msgdefs = MsgDefs()
         >>> msgdefs.add(MsgDef('mc', 'Status0a', (
-        ...     FieldDef(0, 'temp', ('D2C',), None, '°C'),
-        ...     FieldDef(1, 'mixer', ('UCH',), None, None),
-        ...     FieldDef(2, 'onoff-0', ('UCH',), None, None),
-        ...     FieldDef(3, 'onoff-1', ('UCH',), None, None),
-        ...     FieldDef(4, 'temp0', ('UCH',), None, '°C'),
+        ...     FieldDef(0, 'temp', Type(), '°C'),
+        ...     FieldDef(1, 'mixer', Type(), None),
+        ...     FieldDef(2, 'onoff-0', Type(), None),
+        ...     FieldDef(3, 'onoff-1', Type(), None),
+        ...     FieldDef(4, 'temp0', Type(), '°C'),
         ... ), read=True))
         >>> msgdefs.add(MsgDef('hc', 'Status0', (
-        ...     FieldDef(0, 'temp', ('D2C',), None, '°C'),
-        ...     FieldDef(1, 'temp0', ('UCH',), None, '°C'),
+        ...     FieldDef(0, 'temp', Type(), '°C'),
+        ...     FieldDef(1, 'temp0', Type(), '°C'),
         ... ), read=True))
         >>> msgdefs.get('mc', 'Status0a')
         MsgDef('mc', 'Status0a', (FieldDef(0, 'temp', ...'°C'), FieldDef(1, 'mixer', ..., unit='°C')), read=True)

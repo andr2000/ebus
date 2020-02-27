@@ -3,6 +3,7 @@ import re
 
 from .msgdef import FieldDef
 from .msgdef import MsgDef
+from .types import EnumType
 from .types import gettype
 from .virtfielddef import iter_virtfielddefs
 
@@ -28,7 +29,7 @@ def decode_msgdef(line):
     >>> m.circuit, m.name, m.read, m.prio, m.write, m.update
     ('ui', 'TempIncrease', False, None, True, False)
     >>> m.children
-    (FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C'),)
+    (FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C'),)
     """
     try:
         values = _split(line)
@@ -106,8 +107,18 @@ def _createfields(chunks):
 
 
 def _createfield(idx, name, ename, part, datatype, dividervalues=None, unit=None, comment=None):
-    type_ = gettype(datatype.split(",")[0])
-    return FieldDef(idx, name, type_, dividervalues, unit, comment)
+    if dividervalues and "=" in dividervalues:
+        type_ = EnumType(tuple(pair.split("=", 1)[1] for pair in dividervalues.split(";")))
+    else:
+        ebustype = datatype.split(",")[0]
+        if dividervalues:
+            divider = float(dividervalues)
+            if divider < 0:
+                divider = 1 / -divider
+        else:
+            divider = None
+        type_ = gettype(ebustype, divider)
+    return FieldDef(idx, name, type_, unit, comment)
 
 
 def _chunks(list_or_tuple, maxsize):

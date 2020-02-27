@@ -1,11 +1,11 @@
 
 r,b7v,AdaptHeatCurve,,s,IGN:4,,,,yesno,s,UCH,0=no;1=yes,,automatic correction of configured heat curve
 MsgDef('b7v', 'AdaptHeatCurve', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 w,b7v,AdaptHeatCurve,yesno,m,UCH,0=no;1=yes,,automatic correction of configured heat curve
 MsgDef('b7v', 'AdaptHeatCurve', write=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,b7v,BankHolidayEndPeriod,,s,IGN:4,,,,hto,s,HDA,,,end date of bank holidays
 MsgDef('b7v', 'BankHolidayEndPeriod', read=True)
@@ -151,7 +151,7 @@ MsgDef('b7v', 'ccTimer.Wednesday', write=True)
 
 w,b7v,clearerrorhistory,cleared,s,UCH,0=no;1=yes,,
 MsgDef('b7v', 'clearerrorhistory', write=True)
-    FieldDef(0, 'cleared', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'cleared', EnumType(('no', 'yes')))
 
 r,b7v,ContinuosHeating,,s,IGN:4,,,,tempv,s,EXP,,°C,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 MsgDef('b7v', 'ContinuosHeating', read=True)
@@ -220,15 +220,15 @@ MsgDef('b7v', 'Hc1ActualFlowTempDesired', read=True, prio=1)
 
 r,b7v,Hc1AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc1AutoOffMode', read=True)
-    FieldDef(0, 'offmode', IntType(0, 65534), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', EnumType(('eco', 'night')))
 
 w,b7v,Hc1AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc1AutoOffMode', write=True)
-    FieldDef(0, 'offmode', IntType(0, 65534), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', EnumType(('eco', 'night')))
 
 r,b7v,Hc1CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
 MsgDef('b7v', 'Hc1CircuitType', read=True)
-    FieldDef(0, 'mctype', IntType(0, 254), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
+    FieldDef(0, 'mctype', EnumType(('inactive', 'mixer', 'fixed', 'hwc', 'returnincr', 'pool')), comment='mixer type')
 
 r,b7v,Hc1ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc1 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc1ExcessTemp', read=True)
@@ -284,11 +284,11 @@ MsgDef('b7v', 'Hc1PumpStatus', write=True)
 
 r2,b7v,Hc1RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc1
 MsgDef('b7v', 'Hc1RoomTempSwitchOn', read=True, prio=2)
-    FieldDef(0, 'rcmode', IntType(0, 65534), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', EnumType(('off', 'modulating', 'thermostat')))
 
 w,b7v,Hc1RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc1
 MsgDef('b7v', 'Hc1RoomTempSwitchOn', write=True)
-    FieldDef(0, 'rcmode', IntType(0, 65534), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', EnumType(('off', 'modulating', 'thermostat')))
 
 r2,b7v,Hc1Status,,s,IGN:4,,,,,s,UCH,,,status of zone 1
 MsgDef('b7v', 'Hc1Status', read=True, prio=2)
@@ -312,15 +312,15 @@ MsgDef('b7v', 'Hc2ActualFlowTempDesired', read=True)
 
 r,b7v,Hc2AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc2 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc2AutoOffMode', read=True)
-    FieldDef(0, 'offmode', IntType(0, 65534), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', EnumType(('eco', 'night')))
 
 w,b7v,Hc2AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc2 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc2AutoOffMode', write=True)
-    FieldDef(0, 'offmode', IntType(0, 65534), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', EnumType(('eco', 'night')))
 
 r,b7v,Hc2CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
 MsgDef('b7v', 'Hc2CircuitType', read=True)
-    FieldDef(0, 'mctype', IntType(0, 254), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
+    FieldDef(0, 'mctype', EnumType(('inactive', 'mixer', 'fixed', 'hwc', 'returnincr', 'pool')), comment='mixer type')
 
 r,b7v,Hc2ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc2 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc2ExcessTemp', read=True)
@@ -376,11 +376,11 @@ MsgDef('b7v', 'Hc2PumpStatus', write=True)
 
 r,b7v,Hc2RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc2
 MsgDef('b7v', 'Hc2RoomTempSwitchOn', read=True)
-    FieldDef(0, 'rcmode', IntType(0, 65534), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', EnumType(('off', 'modulating', 'thermostat')))
 
 w,b7v,Hc2RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc2
 MsgDef('b7v', 'Hc2RoomTempSwitchOn', write=True)
-    FieldDef(0, 'rcmode', IntType(0, 65534), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', EnumType(('off', 'modulating', 'thermostat')))
 
 r,b7v,Hc2Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc2Status', read=True)
@@ -404,15 +404,15 @@ MsgDef('b7v', 'Hc3ActualFlowTempDesired', read=True)
 
 r,b7v,Hc3AutoOffMode,,s,IGN:4,,,,offmode,s,UIN,0=eco;1=night,,operation of Hc3 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc3AutoOffMode', read=True)
-    FieldDef(0, 'offmode', IntType(0, 65534), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', EnumType(('eco', 'night')))
 
 w,b7v,Hc3AutoOffMode,offmode,m,UIN,0=eco;1=night,,operation of Hc3 during the lowering time; no influence if room temperature modulation is set to thermostat
 MsgDef('b7v', 'Hc3AutoOffMode', write=True)
-    FieldDef(0, 'offmode', IntType(0, 65534), dividervalues='0=eco;1=night')
+    FieldDef(0, 'offmode', EnumType(('eco', 'night')))
 
 r,b7v,Hc3CircuitType,,s,IGN:4,,,,mctype,s,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type,,s,IGN:1,,,
 MsgDef('b7v', 'Hc3CircuitType', read=True)
-    FieldDef(0, 'mctype', IntType(0, 254), dividervalues='0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool', comment='mixer type')
+    FieldDef(0, 'mctype', EnumType(('inactive', 'mixer', 'fixed', 'hwc', 'returnincr', 'pool')), comment='mixer type')
 
 r,b7v,Hc3ExcessTemp,,s,IGN:4,,,,calibrationv,s,EXP,,K,excess temperature of Hc3 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 MsgDef('b7v', 'Hc3ExcessTemp', read=True)
@@ -468,11 +468,11 @@ MsgDef('b7v', 'Hc3PumpStatus', write=True)
 
 r,b7v,Hc3RoomTempSwitchOn,,s,IGN:4,,,,rcmode,s,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc3
 MsgDef('b7v', 'Hc3RoomTempSwitchOn', read=True)
-    FieldDef(0, 'rcmode', IntType(0, 65534), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', EnumType(('off', 'modulating', 'thermostat')))
 
 w,b7v,Hc3RoomTempSwitchOn,rcmode,m,UIN,0=off;1=modulating;2=thermostat,,room temperature modulation of Hc3
 MsgDef('b7v', 'Hc3RoomTempSwitchOn', write=True)
-    FieldDef(0, 'rcmode', IntType(0, 65534), dividervalues='0=off;1=modulating;2=thermostat')
+    FieldDef(0, 'rcmode', EnumType(('off', 'modulating', 'thermostat')))
 
 r,b7v,Hc3Status,,s,IGN:4,,,,,s,UCH,,,status of zone 2
 MsgDef('b7v', 'Hc3Status', read=True)
@@ -576,27 +576,27 @@ MsgDef('b7v', 'HwcMaxFlowTempDesired', write=True)
 
 r2,b7v,HwcOpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of Hwc
 MsgDef('b7v', 'HwcOpMode', read=True, prio=2)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 w,b7v,HwcOpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of Hwc
 MsgDef('b7v', 'HwcOpMode', write=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 r,b7v,HwcParallelLoading,,s,IGN:4,,,,onoff,s,UCH,0=off;1=on,,heating and hot water parallel
 MsgDef('b7v', 'HwcParallelLoading', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 w,b7v,HwcParallelLoading,onoff,m,UCH,0=off;1=on,,heating and hot water parallel
 MsgDef('b7v', 'HwcParallelLoading', write=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,b7v,HwcSFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'HwcSFMode', read=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 w,b7v,HwcSFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'HwcSFMode', write=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 r1,b7v,HwcStorageTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,Speicheristtemperatur
 MsgDef('b7v', 'HwcStorageTemp', read=True, prio=1)
@@ -786,7 +786,7 @@ MsgDef('b7v', 'MaintenanceDate', write=True)
 
 r,b7v,MaintenanceDue,,s,IGN:4,,,,yesno,s,UCH,0=no;1=yes,,zeigt an ob die Wartung fällig ist
 MsgDef('b7v', 'MaintenanceDue', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,b7v,MaxCylinderChargeTime,,s,IGN:4,,,,minutes2,s,UIN,,min,maximum cylinder charging time
 MsgDef('b7v', 'MaxCylinderChargeTime', read=True)
@@ -806,11 +806,11 @@ MsgDef('b7v', 'MaxRoomHumidity', write=True)
 
 r,b7v,MultiRelaySetting,,s,IGN:4,,,,mamode,s,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 MsgDef('b7v', 'MultiRelaySetting', read=True)
-    FieldDef(0, 'mamode', IntType(0, 65534), dividervalues='0=circulation;1=dryer;2=zone;3=legiopump')
+    FieldDef(0, 'mamode', EnumType(('circulation', 'dryer', 'zone', 'legiopump')))
 
 w,b7v,MultiRelaySetting,mamode,m,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 MsgDef('b7v', 'MultiRelaySetting', write=True)
-    FieldDef(0, 'mamode', IntType(0, 65534), dividervalues='0=circulation;1=dryer;2=zone;3=legiopump')
+    FieldDef(0, 'mamode', EnumType(('circulation', 'dryer', 'zone', 'legiopump')))
 
 r,b7v,noiseReductionTimer.Friday,,s,IGN:1,,,whether timeslot is valid,from,s,TTM,,,slot 1 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 2 from/to,to,s,TTM,,,to,from,s,TTM,,,slot 3 from/to,to,s,TTM,,,to
 MsgDef('b7v', 'noiseReductionTimer.Friday', read=True)
@@ -940,19 +940,19 @@ MsgDef('b7v', 'noiseReductionTimer.Wednesday', write=True)
 
 r,b7v,OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of all/configured zone(s) matching OpModeEffect
 MsgDef('b7v', 'OpMode', read=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 w,b7v,OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of all/configured zone(s) matching OpModeEffect
 MsgDef('b7v', 'OpMode', write=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 r,b7v,OpModeEffect,,s,IGN:4,,,,zonesel,s,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,selection which heating circuit is affected by changing parameters in the basic display
 MsgDef('b7v', 'OpModeEffect', read=True)
-    FieldDef(0, 'zonesel', IntType(0, 65534), dividervalues='0=alle;1=1;2=2;3=3;4=4;5=5;6=6')
+    FieldDef(0, 'zonesel', EnumType(('alle', '1', '2', '3', '4', '5', '6')))
 
 w,b7v,OpModeEffect,zonesel,m,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,selection which heating circuit is affected by changing parameters in the basic display
 MsgDef('b7v', 'OpModeEffect', write=True)
-    FieldDef(0, 'zonesel', IntType(0, 65534), dividervalues='0=alle;1=1;2=2;3=3;4=4;5=5;6=6')
+    FieldDef(0, 'zonesel', EnumType(('alle', '1', '2', '3', '4', '5', '6')))
 
 r,b7v,OutsideTempAvg,,s,IGN:4,,,,tempv,s,EXP,,°C,gerundete mittlere Außentemperatur (alle 3h aktualisiert)
 MsgDef('b7v', 'OutsideTempAvg', read=True)
@@ -1100,11 +1100,11 @@ MsgDef('b7v', 'PumpAdditionalTime', write=True)
 
 r,b7v,SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'SFMode', read=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 w,b7v,SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'SFMode', write=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 r,b7v,SolarYieldTotal,,s,IGN:4,,,,energy4,s,ULG,,kWh,Solarertrag gesamt
 MsgDef('b7v', 'SolarYieldTotal', read=True)
@@ -1606,11 +1606,11 @@ MsgDef('b7v', 'z1NightTemp', write=True)
 
 r,b7v,z1OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 1
 MsgDef('b7v', 'z1OpMode', read=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 w,b7v,z1OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 1
 MsgDef('b7v', 'z1OpMode', write=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 r,b7v,z1QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 1
 MsgDef('b7v', 'z1QuickVetoTemp', read=True)
@@ -1626,19 +1626,19 @@ MsgDef('b7v', 'z1RoomTemp', read=True, prio=1)
 
 r,b7v,z1RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 1
 MsgDef('b7v', 'z1RoomZoneMapping', read=True)
-    FieldDef(0, 'zmapping', IntType(0, 65534), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', EnumType(('none', 'VRC700', 'VR91.1', 'VR91.2', 'VR91.3')))
 
 w,b7v,z1RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 1
 MsgDef('b7v', 'z1RoomZoneMapping', write=True)
-    FieldDef(0, 'zmapping', IntType(0, 65534), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', EnumType(('none', 'VRC700', 'VR91.1', 'VR91.2', 'VR91.3')))
 
 r,b7v,z1SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z1SFMode', read=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 w,b7v,z1SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z1SFMode', write=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 r,b7v,z1Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 1
 MsgDef('b7v', 'z1Shortname', read=True)
@@ -1998,11 +1998,11 @@ MsgDef('b7v', 'z2NightTemp', write=True)
 
 r,b7v,z2OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 2
 MsgDef('b7v', 'z2OpMode', read=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 w,b7v,z2OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 2
 MsgDef('b7v', 'z2OpMode', write=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 r,b7v,z2QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 2
 MsgDef('b7v', 'z2QuickVetoTemp', read=True)
@@ -2018,19 +2018,19 @@ MsgDef('b7v', 'z2RoomTemp', read=True)
 
 r,b7v,z2RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 2
 MsgDef('b7v', 'z2RoomZoneMapping', read=True)
-    FieldDef(0, 'zmapping', IntType(0, 65534), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', EnumType(('none', 'VRC700', 'VR91.1', 'VR91.2', 'VR91.3')))
 
 w,b7v,z2RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 2
 MsgDef('b7v', 'z2RoomZoneMapping', write=True)
-    FieldDef(0, 'zmapping', IntType(0, 65534), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', EnumType(('none', 'VRC700', 'VR91.1', 'VR91.2', 'VR91.3')))
 
 r,b7v,z2SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z2SFMode', read=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 w,b7v,z2SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z2SFMode', write=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 r,b7v,z2Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 2
 MsgDef('b7v', 'z2Shortname', read=True)
@@ -2256,11 +2256,11 @@ MsgDef('b7v', 'z3NightTemp', write=True)
 
 r,b7v,z3OpMode,,s,IGN:4,,,,opmode,s,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 3
 MsgDef('b7v', 'z3OpMode', read=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 w,b7v,z3OpMode,opmode,m,UIN,0=off;1=auto;2=day;3=night,,operation mode of zone 3
 MsgDef('b7v', 'z3OpMode', write=True)
-    FieldDef(0, 'opmode', IntType(0, 65534), dividervalues='0=off;1=auto;2=day;3=night')
+    FieldDef(0, 'opmode', EnumType(('off', 'auto', 'day', 'night')))
 
 r,b7v,z3QuickVetoTemp,,s,IGN:4,,,,tempv,s,EXP,,°C,manual override setpoint for zone 3
 MsgDef('b7v', 'z3QuickVetoTemp', read=True)
@@ -2276,19 +2276,19 @@ MsgDef('b7v', 'z3RoomTemp', read=True)
 
 r,b7v,z3RoomZoneMapping,,s,IGN:4,,,,zmapping,s,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 3
 MsgDef('b7v', 'z3RoomZoneMapping', read=True)
-    FieldDef(0, 'zmapping', IntType(0, 65534), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', EnumType(('none', 'VRC700', 'VR91.1', 'VR91.2', 'VR91.3')))
 
 w,b7v,z3RoomZoneMapping,zmapping,m,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,configures which room temperature is assigned to zone 3
 MsgDef('b7v', 'z3RoomZoneMapping', write=True)
-    FieldDef(0, 'zmapping', IntType(0, 65534), dividervalues='0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3')
+    FieldDef(0, 'zmapping', EnumType(('none', 'VRC700', 'VR91.1', 'VR91.2', 'VR91.3')))
 
 r,b7v,z3SFMode,,s,IGN:4,,,,sfmode,s,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z3SFMode', read=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 w,b7v,z3SFMode,sfmode,m,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 MsgDef('b7v', 'z3SFMode', write=True)
-    FieldDef(0, 'sfmode', IntType(0, 254), dividervalues='0=auto;1=ventilation;2=party;3=veto;6=load')
+    FieldDef(0, 'sfmode', EnumType(('auto', 'ventilation', 'party', 'veto', 'load')))
 
 r,b7v,z3Shortname,,s,IGN:4,,,,shortname,s,STR:6,,,short name of zone 3
 MsgDef('b7v', 'z3Shortname', read=True)
@@ -2308,23 +2308,23 @@ MsgDef('b7v', 'z3ValveStatus', write=True)
 
 r,bai,AccessoriesOne,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 1
 MsgDef('bai', 'AccessoriesOne', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol')
+    FieldDef(0, '', EnumType(('circulationpump', 'extheatingpump', 'storagechargingpump', 'fluegasflapextractorhood', 'externalgasvalve', 'externalerrormessage', 'solarpump', 'remotecontrol')))
 
 w,bai,AccessoriesOne,,m,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 1
 MsgDef('bai', 'AccessoriesOne', write=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol')
+    FieldDef(0, '', EnumType(('circulationpump', 'extheatingpump', 'storagechargingpump', 'fluegasflapextractorhood', 'externalgasvalve', 'externalerrormessage', 'solarpump', 'remotecontrol')))
 
 r,bai,AccessoriesTwo,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 2
 MsgDef('bai', 'AccessoriesTwo', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol')
+    FieldDef(0, '', EnumType(('circulationpump', 'extheatingpump', 'storagechargingpump', 'fluegasflapextractorhood', 'externalgasvalve', 'externalerrormessage', 'solarpump', 'remotecontrol')))
 
 w,bai,AccessoriesTwo,,m,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of accessory relay 2
 MsgDef('bai', 'AccessoriesTwo', write=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol')
+    FieldDef(0, '', EnumType(('circulationpump', 'extheatingpump', 'storagechargingpump', 'fluegasflapextractorhood', 'externalgasvalve', 'externalerrormessage', 'solarpump', 'remotecontrol')))
 
 r,bai,ACRoomthermostat,onoff,s,UCH,0=off;1=on,,External controls heat demand (Clamp 3-4)
 MsgDef('bai', 'ACRoomthermostat', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,AntiCondensValue,,s,UCH,,kW / %,Minimal power to avoid condensation
 MsgDef('bai', 'AntiCondensValue', read=True)
@@ -2348,7 +2348,7 @@ MsgDef('bai', 'APCLegioProtection', write=True, update=True)
 
 r,bai,averageIgnitiontime,,s,UCH,10,s,Average ignition time
 MsgDef('bai', 'averageIgnitiontime', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='10', unit='s')
+    FieldDef(0, '', IntType(0, 25.4, divider=10), unit='s')
 
 r,bai,BlockTimeHcMax,minutes0,s,UCH,,min,Maximum burner anti cycling period at 20°C flow temperature set point
 MsgDef('bai', 'BlockTimeHcMax', read=True)
@@ -2368,11 +2368,11 @@ MsgDef('bai', 'ChangesDSN', read=True)
 
 r1,bai,CirPump,onoff,s,UCH,0=off;1=on,,Hot water circulation pump (via external module)
 MsgDef('bai', 'CirPump', read=True, prio=1)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 w,bai,clearerrorhistory,cleared,s,UCH,0=no;1=yes,,
 MsgDef('bai', 'clearerrorhistory', write=True)
-    FieldDef(0, 'cleared', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'cleared', EnumType(('no', 'yes')))
 
 r,bai,CodingResistor,,s,HEX:3,,,boiler identification resistor
 MsgDef('bai', 'CodingResistor', read=True)
@@ -2404,15 +2404,15 @@ MsgDef('bai', 'currenterror', read=True)
 
 r,bai,DateTime,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF receiver state,btime,s,BTI,,,time,bdate,s,BDA,,,date,temp2,s,D2B,,°C,temperature
 MsgDef('bai', 'DateTime', read=True)
-    FieldDef(0, 'dcfstate', IntType(0, 254), dividervalues='0=nosignal;1=ok;2=sync;3=valid', comment='DCF receiver state')
+    FieldDef(0, 'dcfstate', EnumType(('nosignal', 'ok', 'sync', 'valid')), comment='DCF receiver state')
     FieldDef(1, 'btime', TimeType(), comment='time')
     FieldDef(2, 'bdate', DateType(), comment='date')
-    FieldDef(3, 'temp2', IntType(-127.99, 127.99, frac=0.00390625), unit='°C')
+    FieldDef(3, 'temp2', IntType(-127.99, 127.99, divider=256), unit='°C')
     VirtFieldDef('+bdate+btime+dcfstate')
 
 r,bai,dcfState,dcfstate,s,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Status
 MsgDef('bai', 'dcfState', read=True)
-    FieldDef(0, 'dcfstate', IntType(0, 254), dividervalues='0=nosignal;1=ok;2=sync;3=valid')
+    FieldDef(0, 'dcfstate', EnumType(('nosignal', 'ok', 'sync', 'valid')))
 
 r,bai,DCFTimeDate,,s,VTI,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;,,s,HDA,,,
 MsgDef('bai', 'DCFTimeDate', read=True)
@@ -2422,7 +2422,7 @@ MsgDef('bai', 'DCFTimeDate', read=True)
 
 r,bai,DCRoomthermostat,onoff,s,UCH,0=off;1=on,,xternal controls heat demand (Clamp 3-4)
 MsgDef('bai', 'DCRoomthermostat', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,DeactivationsIFC,,s,UCH,,,Number of ignition failures (unsuccessful last-run or faulty flame signal)
 MsgDef('bai', 'DeactivationsIFC', read=True)
@@ -2434,7 +2434,7 @@ MsgDef('bai', 'DeactivationsTemplimiter', read=True)
 
 r,bai,DeltaFlowReturnMax,temp,s,D2C,,°C,Maintenance data
 MsgDef('bai', 'DeltaFlowReturnMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,DisplayMode,,s,UCH,,,Display mode of the appliance
 MsgDef('bai', 'DisplayMode', read=True)
@@ -2458,15 +2458,15 @@ MsgDef('bai', 'DSNStart', read=True)
 
 r,bai,EBusHeatcontrol,yesno,s,UCH,0=no;1=yes,,Digital regulator status
 MsgDef('bai', 'EBusHeatcontrol', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,bai,EbusSourceOn,onoff,s,UCH,0=off;1=on,,Activation signal of the eBus source
 MsgDef('bai', 'EbusSourceOn', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,EbusVoltage,onoff,s,UCH,0=off;1=on,,eBUS voltage feedback
 MsgDef('bai', 'EbusVoltage', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,errorhistory,index,m,UCH,,,,status,s,UCH,,,Status,time2,s,VTM,,,time,date,s,HDA,,,date,error,s,UIN,,,error number
 MsgDef('bai', 'errorhistory', read=True)
@@ -2479,27 +2479,27 @@ MsgDef('bai', 'errorhistory', read=True)
 
 r,bai,ExternalFaultmessage,onoff,s,UCH,0=off;1=on,,External fault message
 MsgDef('bai', 'ExternalFaultmessage', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,externalHwcSwitch,onoff,s,UCH,0=off;1=on,,Demand external HWC tank (via contact)
 MsgDef('bai', 'externalHwcSwitch', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,ExternGasvalve,onoff,s,UCH,0=off;1=on,,External solenoid valve
 MsgDef('bai', 'ExternGasvalve', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,ExtFlowTempDesiredMin,temp,s,D2C,,°C,minimum out of Kl.7 and eBus flow setpoint
 MsgDef('bai', 'ExtFlowTempDesiredMin', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,ExtStorageModulCon,yesno,s,UCH,0=no;1=yes,,External memory module (VR65) connected
 MsgDef('bai', 'ExtStorageModulCon', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r1,bai,extWP,onoff,s,UCH,0=off;1=on,,External central heating pump
 MsgDef('bai', 'extWP', read=True, prio=1)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,FanHours,hoursum2,s,UIN,,h,Operating hours of the fan
 MsgDef('bai', 'FanHours', read=True)
@@ -2547,7 +2547,7 @@ MsgDef('bai', 'FanStarts', read=True)
 
 r1,bai,Flame,,s,UCH,15=on;240=off,,Flame
 MsgDef('bai', 'Flame', read=True, prio=1)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=on;240=off')
+    FieldDef(0, '', EnumType(('on', 'off')))
 
 r,bai,FlameSensingASIC,,s,UIN,,,ioni/adc value from the flame control circuit
 MsgDef('bai', 'FlameSensingASIC', read=True)
@@ -2555,61 +2555,61 @@ MsgDef('bai', 'FlameSensingASIC', read=True)
 
 r,bai,FloorHeatingContact,onoff,s,UCH,0=off;1=on,,Floor heating contact
 MsgDef('bai', 'FloorHeatingContact', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,FlowsetHcMax,temp,s,D2C,,°C,Setting the maximum flow setpoint in heating mode (with left-hand stop of the potentiometer)
 MsgDef('bai', 'FlowsetHcMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 w,bai,FlowsetHcMax,temp,m,D2C,,°C,Setting the maximum flow setpoint in heating mode (with left-hand stop of the potentiometer)
 MsgDef('bai', 'FlowsetHcMax', write=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,FlowsetHwcMax,temp,s,D2C,,°C,storage charging temperature limit (target flow temperature in storage mode)
 MsgDef('bai', 'FlowsetHwcMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 w,bai,FlowsetHwcMax,temp,m,D2C,,°C,storage charging temperature limit (target flow temperature in storage mode)
 MsgDef('bai', 'FlowsetHwcMax', write=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r1,bai,FlowTemp,temp,s,D2C,,°C,CH supply temperature sensor (VF2),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'FlowTemp', read=True, prio=1)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C', comment='CH supply temperature sensor (VF2)')
-    FieldDef(1, 'sensor', IntType(0, 254), dividervalues='0=ok;85=circuit;170=cutoff')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='CH supply temperature sensor (VF2)')
+    FieldDef(1, 'sensor', EnumType(('ok', 'circuit', 'cutoff')))
     VirtFieldDef('+temp+sensor')
 
 r9,bai,FlowTempDesired,temp,s,D2C,,°C,Flow temperature target value or return target value when return regulation is set
 MsgDef('bai', 'FlowTempDesired', read=True, prio=9)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,FlowTempMax,temp,s,D2C,,°C,Maximum CH flow temperature
 MsgDef('bai', 'FlowTempMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,Fluegasvalve,onoff,s,UCH,0=off;1=on,,Feedback from the flue gas valve
 MsgDef('bai', 'Fluegasvalve', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,FluegasvalveOpen,onoff,s,UCH,0=off;1=on,,Exhaust (flue) flap open
 MsgDef('bai', 'FluegasvalveOpen', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,Gasvalve3UC,,s,UCH,15=on;240=off,,Gas valve switching signal (from the processor)
 MsgDef('bai', 'Gasvalve3UC', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=on;240=off')
+    FieldDef(0, '', EnumType(('on', 'off')))
 
 r,bai,GasvalveASICFeedback,,s,UCH,15=on;240=off,,Gas valve feedback (from ASIC)
 MsgDef('bai', 'GasvalveASICFeedback', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=on;240=off')
+    FieldDef(0, '', EnumType(('on', 'off')))
 
 r,bai,GasvalveUC,,s,UCH,15=on;240=off,,Activation signal of the gasvalve (activated via micrcontroller)
 MsgDef('bai', 'GasvalveUC', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=on;240=off')
+    FieldDef(0, '', EnumType(('on', 'off')))
 
 r,bai,GasvalveUCFeedback,,s,UCH,15=on;240=off,,Gas valve feedback (from micro controller)
 MsgDef('bai', 'GasvalveUCFeedback', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=on;240=off')
+    FieldDef(0, '', EnumType(('on', 'off')))
 
 r,bai,HcHours,hoursum2,s,UIN,,h,Hours of operation in heating mode
 MsgDef('bai', 'HcHours', read=True)
@@ -2617,11 +2617,11 @@ MsgDef('bai', 'HcHours', read=True)
 
 r,bai,HcPumpMode,,s,UCH,0=post run;1=permanent;2=winter,,Pump mode for central heating
 MsgDef('bai', 'HcPumpMode', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='0=post run;1=permanent;2=winter')
+    FieldDef(0, '', EnumType(('post run', 'permanent', 'winter')))
 
 w,bai,HcPumpMode,,m,UCH,0=post run;1=permanent;2=winter,,Pump mode for central heating
 MsgDef('bai', 'HcPumpMode', write=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='0=post run;1=permanent;2=winter')
+    FieldDef(0, '', EnumType(('post run', 'permanent', 'winter')))
 
 r,bai,HcPumpStarts,cntstarts2,s,UIN,,,Pump times switched on
 MsgDef('bai', 'HcPumpStarts', read=True)
@@ -2629,7 +2629,7 @@ MsgDef('bai', 'HcPumpStarts', read=True)
 
 r,bai,HcStarts,,s,UIN,-100,,Number of CH mode starts
 MsgDef('bai', 'HcStarts', read=True)
-    FieldDef(0, '', IntType(0, 65534), dividervalues='-100')
+    FieldDef(0, '', IntType(0, 6553400, divider=0.01))
 
 r,bai,HcUnderHundredStarts,,s,UCH,,,Heat switch cycles under hundred
 MsgDef('bai', 'HcUnderHundredStarts', read=True)
@@ -2637,11 +2637,11 @@ MsgDef('bai', 'HcUnderHundredStarts', read=True)
 
 r,bai,HeatingSwitch,onoff,s,UCH,0=off;1=on,,Central heating on/off switch
 MsgDef('bai', 'HeatingSwitch', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 w,bai,HeatingSwitch,onoff,m,UCH,0=off;1=on,,Central heating on/off switch
 MsgDef('bai', 'HeatingSwitch', write=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,HoursTillService,hoursum2,s,UIN,,h,Hours left before service is needed
 MsgDef('bai', 'HoursTillService', read=True)
@@ -2653,7 +2653,7 @@ MsgDef('bai', 'HoursTillService', write=True)
 
 r,bai,HwcDemand,yesno,s,UCH,0=no;1=yes,,Domestic hot water demand
 MsgDef('bai', 'HwcDemand', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,bai,HwcHours,hoursum2,s,UIN,,h,Hours of DHW operation
 MsgDef('bai', 'HwcHours', read=True)
@@ -2661,45 +2661,45 @@ MsgDef('bai', 'HwcHours', read=True)
 
 r,bai,HwcImpellorSwitch,yesno,s,UCH,0=no;1=yes,,DHW demand from impeller switch
 MsgDef('bai', 'HwcImpellorSwitch', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,bai,HwcPostrunTime,,s,UCH,-10,s,"Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)"
 MsgDef('bai', 'HwcPostrunTime', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='-10', unit='s', comment='Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)')
+    FieldDef(0, '', IntType(0, 2540, divider=0.1), unit='s', comment='Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)')
 
 w,bai,HwcPostrunTime,,m,UCH,-10,s,"Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)"
 MsgDef('bai', 'HwcPostrunTime', write=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='-10', unit='s', comment='Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)')
+    FieldDef(0, '', IntType(0, 2540, divider=0.1), unit='s', comment='Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)')
 
 r,bai,HwcStarts,,s,UIN,-100,,Number of DHW mode starts
 MsgDef('bai', 'HwcStarts', read=True)
-    FieldDef(0, '', IntType(0, 65534), dividervalues='-100')
+    FieldDef(0, '', IntType(0, 6553400, divider=0.01))
 
 r,bai,HwcSwitch,onoff,s,UCH,0=off;1=on,,Domestic hot water switch
 MsgDef('bai', 'HwcSwitch', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 w,bai,HwcSwitch,onoff,m,UCH,0=off;1=on,,Domestic hot water switch
 MsgDef('bai', 'HwcSwitch', write=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,HwcTemp,temp,s,D2C,,°C,Hot water flow temperature,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'HwcTemp', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C', comment='Hot water flow temperature')
-    FieldDef(1, 'sensor', IntType(0, 254), dividervalues='0=ok;85=circuit;170=cutoff')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='Hot water flow temperature')
+    FieldDef(1, 'sensor', EnumType(('ok', 'circuit', 'cutoff')))
     VirtFieldDef('+temp+sensor')
 
 r,bai,HwcTempDesired,temp,s,D2C,,°C,Hot water temperature target value
 MsgDef('bai', 'HwcTempDesired', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,HwcTempMax,temp,s,D2C,,°C,Max. Speichersollwert. Limits the maximum adjustment range of the potentiometer (right stop).
 MsgDef('bai', 'HwcTempMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 w,bai,HwcTempMax,temp,m,D2C,,°C,Max. Speichersollwert. Limits the maximum adjustment range of the potentiometer (right stop).
 MsgDef('bai', 'HwcTempMax', write=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,HwcTypes,,s,UCH,,,DHW type of the appliance
 MsgDef('bai', 'HwcTypes', read=True)
@@ -2711,57 +2711,57 @@ MsgDef('bai', 'HwcUnderHundredStarts', read=True)
 
 r,bai,HwcWaterflow,uin100,s,UIN,100,,domestic hot water flow sensor
 MsgDef('bai', 'HwcWaterflow', read=True)
-    FieldDef(0, 'uin100', IntType(0, 65534), dividervalues='100')
+    FieldDef(0, 'uin100', IntType(0, 655.34, divider=100))
 
 r,bai,HwcWaterflowMax,uin100,s,UIN,100,,Maximalwert des Warmwassersensors
 MsgDef('bai', 'HwcWaterflowMax', read=True)
-    FieldDef(0, 'uin100', IntType(0, 65534), dividervalues='100')
+    FieldDef(0, 'uin100', IntType(0, 655.34, divider=100))
 
 r,bai,Ignitor,,s,UCH,15=on;240=off,,Ignition status
 MsgDef('bai', 'Ignitor', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=on;240=off')
+    FieldDef(0, '', EnumType(('on', 'off')))
 
 r,bai,InitialisationEEPROM,yesno,s,UCH,0=no;1=yes,,EEPROM initialization (for production)
 MsgDef('bai', 'InitialisationEEPROM', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,bai,IonisationVoltageLevel,,s,SIN,10,,Digital ionisation voltage (80 = no flame; 40 = good flame)
 MsgDef('bai', 'IonisationVoltageLevel', read=True)
-    FieldDef(0, '', IntType(-32767, 32767), dividervalues='10')
+    FieldDef(0, '', IntType(-3276.7, 3276.7, divider=10))
 
 r,bai,maintenancedata_HwcTempMax,temp,s,D2C,,°C,Maximum temperature measured at the tap water outlet sensor
 MsgDef('bai', 'maintenancedata_HwcTempMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,maxIgnitiontime,,s,UCH,10,s,Maximum ignition time
 MsgDef('bai', 'maxIgnitiontime', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='10', unit='s')
+    FieldDef(0, '', IntType(0, 25.4, divider=10), unit='s')
 
 r,bai,minIgnitiontime,,s,UCH,10,s,Minimum ignition time
 MsgDef('bai', 'minIgnitiontime', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='10', unit='s')
+    FieldDef(0, '', IntType(0, 25.4, divider=10), unit='s')
 
 r1,bai,ModulationTempDesired,,s,SIN,10,%,Modulation set point
 MsgDef('bai', 'ModulationTempDesired', read=True, prio=1)
-    FieldDef(0, '', IntType(-32767, 32767), dividervalues='10', unit='%')
+    FieldDef(0, '', IntType(-3276.7, 3276.7, divider=10), unit='%')
 
 r,bai,OptionalRelais,,s,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of optional relay
 MsgDef('bai', 'OptionalRelais', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol')
+    FieldDef(0, '', EnumType(('circulationpump', 'extheatingpump', 'storagechargingpump', 'fluegasflapextractorhood', 'externalgasvalve', 'externalerrormessage', 'solarpump', 'remotecontrol')))
 
 w,bai,OptionalRelais,,m,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Function of optional relay
 MsgDef('bai', 'OptionalRelais', write=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol')
+    FieldDef(0, '', EnumType(('circulationpump', 'extheatingpump', 'storagechargingpump', 'fluegasflapextractorhood', 'externalgasvalve', 'externalerrormessage', 'solarpump', 'remotecontrol')))
 
 r,bai,OutdoorstempSensor,temp,s,D2C,,°C,Outdoor temperature sensor (uncorrected value) value and status,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'OutdoorstempSensor', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C', comment='Outdoor temperature sensor (uncorrected value) value and status')
-    FieldDef(1, 'sensor', IntType(0, 254), dividervalues='0=ok;85=circuit;170=cutoff')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='Outdoor temperature sensor (uncorrected value) value and status')
+    FieldDef(1, 'sensor', EnumType(('ok', 'circuit', 'cutoff')))
     VirtFieldDef('+temp+sensor')
 
 r,bai,OverflowCounter,yesno,s,UCH,0=no;1=yes,,Predictive Maintenance counter have got an overflow
 MsgDef('bai', 'OverflowCounter', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,bai,ParamToken,,s,UCH,,,Token for parameter managment
 MsgDef('bai', 'ParamToken', read=True)
@@ -2877,11 +2877,11 @@ MsgDef('bai', 'PumpPower', read=True, prio=1)
 
 r,bai,PumpPowerDesired,,s,UCH,0=auto;1=53;2=60;3=70;4=85;5=100,%,PWM-Desired central heating pump power
 MsgDef('bai', 'PumpPowerDesired', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='0=auto;1=53;2=60;3=70;4=85;5=100', unit='%')
+    FieldDef(0, '', EnumType(('auto', '53', '60', '70', '85', '100')), unit='%')
 
 w,bai,PumpPowerDesired,,m,UCH,0=auto;1=53;2=60;3=70;4=85;5=100,%,PWM-Desired central heating pump power
 MsgDef('bai', 'PumpPowerDesired', write=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='0=auto;1=53;2=60;3=70;4=85;5=100', unit='%')
+    FieldDef(0, '', EnumType(('auto', '53', '60', '70', '85', '100')), unit='%')
 
 r,bai,RemainingBoilerblocktime,minutes0,s,UCH,,min,Remaining burner anti-cycling time
 MsgDef('bai', 'RemainingBoilerblocktime', read=True)
@@ -2889,28 +2889,28 @@ MsgDef('bai', 'RemainingBoilerblocktime', read=True)
 
 r,bai,ReturnRegulation,onoff,s,UCH,0=off;1=on,,Activation of the return control
 MsgDef('bai', 'ReturnRegulation', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 w,bai,ReturnRegulation,onoff,m,UCH,0=off;1=on,,Activation of the return control
 MsgDef('bai', 'ReturnRegulation', write=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r1,bai,ReturnTemp,temp,s,D2C,,°C,CH return temperature sensor,tempmirror,s,UIN,,,,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'ReturnTemp', read=True, prio=1)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C', comment='CH return temperature sensor')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='CH return temperature sensor')
     FieldDef(1, 'tempmirror', IntType(0, 65534))
-    FieldDef(2, 'sensor', IntType(0, 254), dividervalues='0=ok;85=circuit;170=cutoff')
+    FieldDef(2, 'sensor', EnumType(('ok', 'circuit', 'cutoff')))
     VirtFieldDef('+temp+sensor')
 
 r,bai,ReturnTempExternal,temp,s,D2C,,°C,External return temperature sensor,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'ReturnTempExternal', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C', comment='External return temperature sensor')
-    FieldDef(1, 'sensor', IntType(0, 254), dividervalues='0=ok;85=circuit;170=cutoff')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='External return temperature sensor')
+    FieldDef(1, 'sensor', EnumType(('ok', 'circuit', 'cutoff')))
     VirtFieldDef('+temp+sensor')
 
 r,bai,ReturnTempMax,temp,s,D2C,,°C,Max flow return temperature
 MsgDef('bai', 'ReturnTempMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,SerialNumber,,s,HEX:8,,,Serial number AI
 MsgDef('bai', 'SerialNumber', read=True)
@@ -2918,17 +2918,17 @@ MsgDef('bai', 'SerialNumber', read=True)
 
 r,bai,SetFactoryValues,yesno,s,UCH,0=no;1=yes,,Reset to factory defaults
 MsgDef('bai', 'SetFactoryValues', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 w,bai,SetFactoryValues,yesno,m,UCH,0=no;1=yes,,Reset to factory defaults
 MsgDef('bai', 'SetFactoryValues', write=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 uw,bai,SetMode,hcmode,m,UCH,0=auto;1=off;2=water,,boiler mode,flowtempdesired,m,D1C,,°C,temperature,hwctempdesired,m,D1C,,°C,temperature,hwcflowtempdesired,m,UCH,,°C,temperature,,m,IGN:1,,,,disablehc,m,BI0:1,,,,disablehwctapping,m,BI1:1,,,,disablehwcload,m,BI2:1,,,,,m,IGN:1,,,,remoteControlHcPump,m,BI0:1,,,,releaseBackup,m,BI1:1,,,,releaseCooling,m,BI2:1,,,
 MsgDef('bai', 'SetMode', write=True, update=True)
-    FieldDef(0, 'hcmode', IntType(0, 254), dividervalues='0=auto;1=off;2=water', comment='boiler mode')
-    FieldDef(1, 'flowtempdesired', IntType(0, 100, frac=0.5), unit='°C', comment='temperature')
-    FieldDef(2, 'hwctempdesired', IntType(0, 100, frac=0.5), unit='°C', comment='temperature')
+    FieldDef(0, 'hcmode', EnumType(('auto', 'off', 'water')), comment='boiler mode')
+    FieldDef(1, 'flowtempdesired', IntType(0, 100, divider=2), unit='°C', comment='temperature')
+    FieldDef(2, 'hwctempdesired', IntType(0, 100, divider=2), unit='°C', comment='temperature')
     FieldDef(3, 'hwcflowtempdesired', IntType(0, 254), unit='°C', comment='temperature')
     FieldDef(4, 'disablehc', BoolType())
     FieldDef(5, 'disablehwctapping', BoolType())
@@ -2939,11 +2939,11 @@ MsgDef('bai', 'SetMode', write=True, update=True)
 
 r,bai,SHEMaxDeltaHwcFlow,temp,s,D2C,,°C,maximum difference between flow and DHW outlet temperature
 MsgDef('bai', 'SHEMaxDeltaHwcFlow', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,SHEMaxFlowTemp,temp,s,D2C,,°C,Maximum flow temperature for WW
 MsgDef('bai', 'SHEMaxFlowTemp', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,SolPostHeat,,s,UCH,,,special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti)
 MsgDef('bai', 'SolPostHeat', read=True)
@@ -2967,36 +2967,36 @@ MsgDef('bai', 'Statenumber', read=True)
 
 r,bai,Status01,temp1,s,D1C,,°C,temperature,temp1,s,D1C,,°C,temperature,temp2,s,D2B,,°C,temperature,temp1,s,D1C,,°C,temperature,temp1,s,D1C,,°C,temperature,pumpstate,s,UCH,0=off;1=on;2=overrun,,pump state
 MsgDef('bai', 'Status01', read=True)
-    FieldDef(0, 'temp1.0', IntType(0, 100, frac=0.5), unit='°C', comment='temperature')
-    FieldDef(1, 'temp1.1', IntType(0, 100, frac=0.5), unit='°C', comment='temperature')
-    FieldDef(2, 'temp2', IntType(-127.99, 127.99, frac=0.00390625), unit='°C', comment='temperature')
-    FieldDef(3, 'temp1.2', IntType(0, 100, frac=0.5), unit='°C', comment='temperature')
-    FieldDef(4, 'temp1.3', IntType(0, 100, frac=0.5), unit='°C', comment='temperature')
-    FieldDef(5, 'pumpstate', IntType(0, 254), dividervalues='0=off;1=on;2=overrun')
+    FieldDef(0, 'temp1.0', IntType(0, 100, divider=2), unit='°C', comment='temperature')
+    FieldDef(1, 'temp1.1', IntType(0, 100, divider=2), unit='°C', comment='temperature')
+    FieldDef(2, 'temp2', IntType(-127.99, 127.99, divider=256), unit='°C', comment='temperature')
+    FieldDef(3, 'temp1.2', IntType(0, 100, divider=2), unit='°C', comment='temperature')
+    FieldDef(4, 'temp1.3', IntType(0, 100, divider=2), unit='°C', comment='temperature')
+    FieldDef(5, 'pumpstate', EnumType(('off', 'on', 'overrun')))
 
 r,bai,Status02,hwcmode,s,UCH,0=disabled;1=on;2=off;3=auto,,hot water mode,temp0,s,UCH,,°C,temperature,temp1,s,D1C,,°C,temperature,temp0,s,UCH,,°C,temperature,temp1,s,D1C,,°C,temperature
 MsgDef('bai', 'Status02', read=True)
-    FieldDef(0, 'hwcmode', IntType(0, 254), dividervalues='0=disabled;1=on;2=off;3=auto', comment='hot water mode')
+    FieldDef(0, 'hwcmode', EnumType(('disabled', 'on', 'off', 'auto')), comment='hot water mode')
     FieldDef(1, 'temp0.0', IntType(0, 254), unit='°C', comment='temperature')
-    FieldDef(2, 'temp1.0', IntType(0, 100, frac=0.5), unit='°C', comment='temperature')
+    FieldDef(2, 'temp1.0', IntType(0, 100, divider=2), unit='°C', comment='temperature')
     FieldDef(3, 'temp0.1', IntType(0, 254), unit='°C', comment='temperature')
-    FieldDef(4, 'temp1.1', IntType(0, 100, frac=0.5), unit='°C')
+    FieldDef(4, 'temp1.1', IntType(0, 100, divider=2), unit='°C')
 
 r,bai,Status16,temp,s,D2C,,°C,temperature
 MsgDef('bai', 'Status16', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,Status,temp,s,D2C,,°C,temperature,press,s,FLT,,bar,pressure,press,s,FLT,,bar,pressure,hcmode2,s,UCH,0=off;3=heat;4=water,,boiler mode,,s,HEX:1,,,
 MsgDef('bai', 'Status', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C', comment='temperature')
-    FieldDef(1, 'press.0', IntType(-32.767, 32.767, frac=0.001), unit='bar', comment='pressure')
-    FieldDef(2, 'press.1', IntType(-32.767, 32.767, frac=0.001), unit='bar', comment='pressure')
-    FieldDef(3, 'hcmode2', IntType(0, 254), dividervalues='0=off;3=heat;4=water', comment='boiler mode')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='temperature')
+    FieldDef(1, 'press.0', IntType(-32.767, 32.767, divider=1000), unit='bar', comment='pressure')
+    FieldDef(2, 'press.1', IntType(-32.767, 32.767, divider=1000), unit='bar', comment='pressure')
+    FieldDef(3, 'hcmode2', EnumType(('off', 'heat', 'water')), comment='boiler mode')
     FieldDef(4, '', HexType(length=1))
 
 uw,bai,StatusCirPump,,m,UCH,0=off;100=on,,
 MsgDef('bai', 'StatusCirPump', write=True, update=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='0=off;100=on')
+    FieldDef(0, '', EnumType(('off', 'on')))
 
 r,bai,Storageloadpump,percent0,s,UCH,,%,Tank load pump demand
 MsgDef('bai', 'Storageloadpump', read=True)
@@ -3020,21 +3020,21 @@ MsgDef('bai', 'StorageLoadTimeMax', write=True)
 
 r,bai,StoragereleaseClock,yesno,s,UCH,0=no;1=yes,,hot water release (tank storage) via eBus Control
 MsgDef('bai', 'StoragereleaseClock', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,bai,StorageTemp,temp,s,D2C,,°C,Current temperature for warm start sensor (combi boiler) / Current storage tank sensor (system boiler only),sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'StorageTemp', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C', comment='Current temperature for warm start sensor (combi boiler) / Current storage tank sensor (system boiler only)')
-    FieldDef(1, 'sensor', IntType(0, 254), dividervalues='0=ok;85=circuit;170=cutoff')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C', comment='Current temperature for warm start sensor (combi boiler) / Current storage tank sensor (system boiler only)')
+    FieldDef(1, 'sensor', EnumType(('ok', 'circuit', 'cutoff')))
     VirtFieldDef('+temp+sensor')
 
 r,bai,StorageTempDesired,temp,s,D2C,,°C,Warm start temperature value (combi boiler only); Storage temperature target value (system boiler only)
 MsgDef('bai', 'StorageTempDesired', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,StorageTempMax,temp,s,D2C,,°C,Maximum storage tank temperature
 MsgDef('bai', 'StorageTempMax', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,TargetFanSpeed,,s,UIN,,1/min,Fan speed setpoint
 MsgDef('bai', 'TargetFanSpeed', read=True)
@@ -3058,15 +3058,15 @@ MsgDef('bai', 'TempGradientFailure', read=True)
 
 r,bai,Templimiter,,s,UCH,15=on;240=off,,Feedback of the temperature limiter sensor
 MsgDef('bai', 'Templimiter', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=on;240=off')
+    FieldDef(0, '', EnumType(('on', 'off')))
 
 r,bai,TemplimiterWithNTC,,s,UCH,15=yes;240=no,,Temperature limiter (1 = NTC; 0 = switching contact)
 MsgDef('bai', 'TemplimiterWithNTC', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=yes;240=no')
+    FieldDef(0, '', EnumType(('yes', 'no')))
 
 r,bai,TempMaxDiffExtTFT,temp,s,D2C,,°C,Predictive maintenance data
 MsgDef('bai', 'TempMaxDiffExtTFT', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,Testbyte,,s,UCH,,,Testbyte (relevant for testers)
 MsgDef('bai', 'Testbyte', read=True)
@@ -3074,7 +3074,7 @@ MsgDef('bai', 'Testbyte', read=True)
 
 r,bai,TimerInputHc,onoff,s,UCH,0=off;1=on,,Timer input (block heatdemand)
 MsgDef('bai', 'TimerInputHc', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,ValveMode,,s,UCH,,,"Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position"
 MsgDef('bai', 'ValveMode', read=True)
@@ -3090,23 +3090,23 @@ MsgDef('bai', 'ValveStarts', read=True)
 
 r,bai,VolatileLockout,,s,UCH,15=yes;240=no,,TRUE: STB errors are locking
 MsgDef('bai', 'VolatileLockout', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=yes;240=no')
+    FieldDef(0, '', EnumType(('yes', 'no')))
 
 r,bai,VolatileLockoutIFCGV,,s,UCH,15=yes;240=no,,All IFC errors are non-volatile
 MsgDef('bai', 'VolatileLockoutIFCGV', read=True)
-    FieldDef(0, '', IntType(0, 254), dividervalues='15=yes;240=no')
+    FieldDef(0, '', EnumType(('yes', 'no')))
 
 r,bai,WarmstartDemand,yesno,s,UCH,0=no;1=yes,,Status of warmstarr mode
 MsgDef('bai', 'WarmstartDemand', read=True)
-    FieldDef(0, 'yesno', IntType(0, 254), dividervalues='0=no;1=yes')
+    FieldDef(0, 'yesno', EnumType(('no', 'yes')))
 
 r,bai,WarmstartOffset,temp,s,D2C,,°C,Offset for warm start target value (combination boilers only)
 MsgDef('bai', 'WarmstartOffset', read=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 w,bai,WarmstartOffset,temp,m,D2C,,°C,Offset for warm start target value (combination boilers only)
 MsgDef('bai', 'WarmstartOffset', write=True)
-    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, frac=0.0625), unit='°C')
+    FieldDef(0, 'temp', IntType(-2047.9, 2047.9, divider=16), unit='°C')
 
 r,bai,WaterHcFlowMax,,s,UIN,,,v
 MsgDef('bai', 'WaterHcFlowMax', read=True)
@@ -3114,13 +3114,13 @@ MsgDef('bai', 'WaterHcFlowMax', read=True)
 
 r1,bai,WaterPressure,press,s,FLT,,bar,CH water pressure,sensor,s,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 MsgDef('bai', 'WaterPressure', read=True, prio=1)
-    FieldDef(0, 'press', IntType(-32.767, 32.767, frac=0.001), unit='bar', comment='CH water pressure')
-    FieldDef(1, 'sensor', IntType(0, 254), dividervalues='0=ok;85=circuit;170=cutoff')
+    FieldDef(0, 'press', IntType(-32.767, 32.767, divider=1000), unit='bar', comment='CH water pressure')
+    FieldDef(1, 'sensor', EnumType(('ok', 'circuit', 'cutoff')))
     VirtFieldDef('+press+sensor')
 
 r,bai,WaterpressureBranchControlOff,onoff,s,UCH,0=off;1=on,,Water pressure branch control switch
 MsgDef('bai', 'WaterpressureBranchControlOff', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,WaterpressureMeasureCounter,,s,UCH,,,Maintenance data
 MsgDef('bai', 'WaterpressureMeasureCounter', read=True)
@@ -3132,7 +3132,7 @@ MsgDef('bai', 'WaterpressureVariantSum', read=True)
 
 r1,bai,WP,onoff,s,UCH,0=off;1=on,,Internal central heating pump
 MsgDef('bai', 'WP', read=True, prio=1)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 r,bai,WPPostrunTime,minutes0,s,UCH,,min,water pump overrun time for heating mode
 MsgDef('bai', 'WPPostrunTime', read=True)
@@ -3144,11 +3144,11 @@ MsgDef('bai', 'WPPostrunTime', write=True)
 
 r,bai,WPSecondStage,onoff,s,UCH,0=off;1=on,,Second stage of the pump activated
 MsgDef('bai', 'WPSecondStage', read=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 u,broadcast,datetime,outsidetemp,m,D2B,,°C,temperature,time,m,BTI,,,time,date,m,BDA,,,date
 MsgDef('broadcast', 'datetime', update=True)
-    FieldDef(0, 'outsidetemp', IntType(-127.99, 127.99, frac=0.00390625), unit='°C', comment='temperature')
+    FieldDef(0, 'outsidetemp', IntType(-127.99, 127.99, divider=256), unit='°C', comment='temperature')
     FieldDef(1, 'time', TimeType(), comment='time')
     FieldDef(2, 'date', DateType())
     VirtFieldDef('+date+time')
@@ -3159,34 +3159,34 @@ MsgDef('broadcast', 'error', update=True)
 
 u,broadcast,hwcStatus,onoff,m,UCH,0=off;1=on,,,VF1,m,UCH,,°C,temperature,onoff,m,UCH,0=off;1=on,,
 MsgDef('broadcast', 'hwcStatus', update=True)
-    FieldDef(0, 'onoff.0', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff.0', EnumType(('off', 'on')))
     FieldDef(1, 'VF1', IntType(0, 254), unit='°C', comment='temperature')
-    FieldDef(2, 'onoff.1', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(2, 'onoff.1', EnumType(('off', 'on')))
 
 u,broadcast,id,manufacturer,m,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,device manufacturer,id,m,STR:5,,,device id,software,m,PIN,,,software version,hardware,m,PIN,,,hardware version
 MsgDef('broadcast', 'id', update=True)
-    FieldDef(0, 'manufacturer', IntType(0, 254), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu', comment='device manufacturer')
+    FieldDef(0, 'manufacturer', EnumType(('Dungs', 'FH Ostfalia', 'TEM', 'Lamberti', 'CEB', 'Landis-Staefa', 'FERRO', 'MONDIAL', 'Wikon', 'Wolf', 'RAWE', 'Satronic', 'ENCON', 'Kromschröder', 'Eberle', 'EBV', 'Grässlin', 'ebm-papst', 'SIG', 'Theben', 'Thermowatt', 'Vaillant', 'Toby', 'Weishaupt', 'ebusd.eu')), comment='device manufacturer')
     FieldDef(1, 'id', StrType(length=5), comment='device id')
-    FieldDef(2, 'software', PinType(length=4), comment='software version')
-    FieldDef(3, 'hardware', PinType(length=4))
+    FieldDef(2, 'software', PinType(), comment='software version')
+    FieldDef(3, 'hardware', PinType())
 
 r,broadcast,id,manufacturer,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,device manufacturer,id,s,STR:5,,,device id,software,s,PIN,,,software version,hardware,s,PIN,,,hardware version
 MsgDef('broadcast', 'id', read=True)
-    FieldDef(0, 'manufacturer', IntType(0, 254), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschröder;96=Eberle;101=EBV;117=Grässlin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu', comment='device manufacturer')
+    FieldDef(0, 'manufacturer', EnumType(('Dungs', 'FH Ostfalia', 'TEM', 'Lamberti', 'CEB', 'Landis-Staefa', 'FERRO', 'MONDIAL', 'Wikon', 'Wolf', 'RAWE', 'Satronic', 'ENCON', 'Kromschröder', 'Eberle', 'EBV', 'Grässlin', 'ebm-papst', 'SIG', 'Theben', 'Thermowatt', 'Vaillant', 'Toby', 'Weishaupt', 'ebusd.eu')), comment='device manufacturer')
     FieldDef(1, 'id', StrType(length=5), comment='device id')
-    FieldDef(2, 'software', PinType(length=4), comment='software version')
-    FieldDef(3, 'hardware', PinType(length=4))
+    FieldDef(2, 'software', PinType(), comment='software version')
+    FieldDef(3, 'hardware', PinType())
 
 w,broadcast,id,
 MsgDef('broadcast', 'id', write=True)
 
 u,broadcast,load,onoff,m,UCH,0=off;1=on,,
 MsgDef('broadcast', 'load', update=True)
-    FieldDef(0, 'onoff', IntType(0, 254), dividervalues='0=off;1=on')
+    FieldDef(0, 'onoff', EnumType(('off', 'on')))
 
 u,broadcast,outsidetemp,temp2,m,D2B,,°C,temperature
 MsgDef('broadcast', 'outsidetemp', update=True)
-    FieldDef(0, 'temp2', IntType(-127.99, 127.99, frac=0.00390625), unit='°C')
+    FieldDef(0, 'temp2', IntType(-127.99, 127.99, divider=256), unit='°C')
 
 w,broadcast,queryexistence,
 MsgDef('broadcast', 'queryexistence', write=True)
@@ -3242,10 +3242,10 @@ MsgDef('scan', 'id', read=True)
 
 r,scan.08,,MF,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,,ID,s,STR:5,,,,SW,s,PIN,,,,HW,s,PIN,,,
 MsgDef('scan.08', '', read=True)
-    FieldDef(0, 'MF', IntType(0, 254), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu')
+    FieldDef(0, 'MF', EnumType(('Dungs', 'FH Ostfalia', 'TEM', 'Lamberti', 'CEB', 'Landis-Staefa', 'FERRO', 'MONDIAL', 'Wikon', 'Wolf', 'RAWE', 'Satronic', 'ENCON', 'Kromschroeder', 'Eberle', 'EBV', 'Graesslin', 'ebm-papst', 'SIG', 'Theben', 'Thermowatt', 'Vaillant', 'Toby', 'Weishaupt', 'ebusd.eu')))
     FieldDef(1, 'ID', StrType(length=5))
-    FieldDef(2, 'SW', PinType(length=4))
-    FieldDef(3, 'HW', PinType(length=4))
+    FieldDef(2, 'SW', PinType())
+    FieldDef(3, 'HW', PinType())
 
 r,scan.08,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
 MsgDef('scan.08', 'id', read=True)
@@ -3259,10 +3259,10 @@ MsgDef('scan.08', 'id', read=True)
 
 r,scan.15,,MF,s,UCH,6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu,,,ID,s,STR:5,,,,SW,s,PIN,,,,HW,s,PIN,,,
 MsgDef('scan.15', '', read=True)
-    FieldDef(0, 'MF', IntType(0, 254), dividervalues='6=Dungs;15=FH Ostfalia;16=TEM;17=Lamberti;20=CEB;21=Landis-Staefa;22=FERRO;23=MONDIAL;24=Wikon;25=Wolf;32=RAWE;48=Satronic;64=ENCON;80=Kromschroeder;96=Eberle;101=EBV;117=Graesslin;133=ebm-papst;149=SIG;165=Theben;167=Thermowatt;181=Vaillant;192=Toby;197=Weishaupt;253=ebusd.eu')
+    FieldDef(0, 'MF', EnumType(('Dungs', 'FH Ostfalia', 'TEM', 'Lamberti', 'CEB', 'Landis-Staefa', 'FERRO', 'MONDIAL', 'Wikon', 'Wolf', 'RAWE', 'Satronic', 'ENCON', 'Kromschroeder', 'Eberle', 'EBV', 'Graesslin', 'ebm-papst', 'SIG', 'Theben', 'Thermowatt', 'Vaillant', 'Toby', 'Weishaupt', 'ebusd.eu')))
     FieldDef(1, 'ID', StrType(length=5))
-    FieldDef(2, 'SW', PinType(length=4))
-    FieldDef(3, 'HW', PinType(length=4))
+    FieldDef(2, 'SW', PinType())
+    FieldDef(3, 'HW', PinType())
 
 r,scan.15,id,,s,IGN:1,,,,prefix,s,STR:2,,,,year,s,STR:2,,,,week,s,STR:2,,,,product,s,STR:10,,,,supplier,s,STR:4,,,,counter,s,STR:6,,,,suffix,s,STR:2,,,
 MsgDef('scan.15', 'id', read=True)

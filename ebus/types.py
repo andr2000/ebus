@@ -1,14 +1,16 @@
 import datetime
+import re
 
 from .util import repr_
 
-
-class NotAvailable:
-    def __repr__(self):
-        return repr_(self)
+_RE_BIT = re.compile(r"\ABI\d(:(\d))?\Z")
 
 
 class Type:
+    def __init__(self):
+        """Abstract Type."""
+        pass
+
     def __repr__(self):
         return repr_(self, self._getargs(), self._getkwargs())
 
@@ -36,36 +38,59 @@ class Type:
     def _getkwargs(self):
         return ()
 
-    def decode(self, fielddef, value):
-        if fielddef.values is None:
-            try:
-                value = fielddef.type_._decode(fielddef, value)
-            except ValueError as e:
-                value = ValueError(str(e))
+    def with_divider(self, divider):
+        """Return copy and apply `divider`."""
+        raise NotImplementedError(self)
+
+    def decode(self, value):
+        """Decode `value`."""
+        try:
+            value = self._decode(value)
+        except ValueError as e:
+            value = ValueError(str(e))
         return value
 
-    def _decode(self, fielddef, value):
+    def _decode(self, value):
         raise NotImplementedError(self)
+
+
+class EnumType(Type):
+    def __init__(self, values):
+        """Enumeration of `values`."""
+        self._values = values
+
+    @property
+    def values(self):
+        """Enumeration Values."""
+        return self._values
+
+    def _getargs(self):
+        return (self._values,)
+
+    def _decode(self, value):
+        return value
 
 
 class StrType(Type):
     def __init__(self, length=None):
+        """String with maximum `length`."""
         self._length = length
 
     @property
     def length(self):
-        """Width."""
+        """Length."""
         return self._length
 
     def _getkwargs(self):
         return (("length", self.length, None),)
 
-    def _decode(self, fielddef, value):
+    def _decode(self, value):
         return value
 
 
 class HexType(Type):
     def __init__(self, length=None):
+        """`length` number of Hex Bytes."""
         self._length = length
 
     @property
@@ -76,7 +101,7 @@ class HexType(Type):
     def _getkwargs(self):
         return (("length", self.length, None),)
 
-    def _decode(self, fielddef, value):
+    def _decode(self, value):
         values = value.split(" ")
         if self.length:
             if len(values) != self.length:
@@ -85,32 +110,43 @@ class HexType(Type):
 
 
 class IntType(Type):
-    def __init__(self, min_, max_, frac=None):
+    def __init__(self, min_, max_, divider=None):
+        """Integer in the range of [min_, max_] with granularity of `1 / divider`."""
         self._min = min_
         self._max = max_
-        self._frac = frac
+        self._divider = divider
 
     @property
     def min_(self):
+        """Lower Limit."""
         return self._min
 
     @property
     def max_(self):
+        """Upper Limit."""
         return self._max
 
     @property
-    def frac(self):
-        return self._frac
+    def divider(self):
+        """Divider."""
+        return self._divider
 
     def _getargs(self):
         return (self.min_, self.max_)
 
     def _getkwargs(self):
-        return (("frac", self.frac, None),)
+        return (("divider", self.divider, None),)
 
-    def _decode(self, fielddef, value):
+    def with_divider(self, divider):
+        """Return copy and apply `divider`."""
+        divider = _try_int(divider * (self.divider or 1))
+        min_ = _try_int(self.min_ / divider)
+        max_ = _try_int(self.max_ / divider)
+        return IntType(min_, max_, divider=divider)
+
+    def _decode(self, value):
         if value != "-":
-            if fielddef.dividervalues or self.frac is not None:
+            if self.divider and self.divider > 0:
                 return float(value)
             else:
                 return int(value)
@@ -119,7 +155,11 @@ class IntType(Type):
 
 
 class BoolType(Type):
-    def _decode(self, fielddef, value):
+    def __init__(self):
+        """Boolean Type."""
+        pass
+
+    def _decode(self, value):
         if value != "-":
             return bool(int(value))
         else:
@@ -127,7 +167,11 @@ class BoolType(Type):
 
 
 class FloatType(Type):
-    def _decode(self, fielddef, value):
+    def __init__(self):
+        """Floating Type."""
+        pass
+
+    def _decode(self, value):
         if value != "-":
             return float(value)
         else:
@@ -135,7 +179,11 @@ class FloatType(Type):
 
 
 class DateType(Type):
-    def _decode(self, fielddef, value):
+    def __init__(self):
+        """Date Type."""
+        pass
+
+    def _decode(self, value):
         if value != "-.-.-":
             return datetime.datetime.strptime(value, "%d.%m.%Y").date()
         else:
@@ -144,6 +192,13 @@ class DateType(Type):
 
 class TimeType(Type):
     def __init__(self, minres=None, nosecond=False):
+        """
+        Time.
+
+        Keyword Args:
+            minres: Minute Resolution
+            nosecond: Skip second
+        """
         self._minres = minres
         self._nosecond = nosecond
 
@@ -154,12 +209,13 @@ class TimeType(Type):
 
     @property
     def nosecond(self):
+        """Skip Second."""
         return self._nosecond
 
     def _getkwargs(self):
         return (("minres", self._minres, None),)
 
-    def _decode(self, fielddef, value):
+    def _decode(self, value):
         if self.nosecond:
             if value != "-:-":
                 dt = datetime.datetime.strptime(value, "%H:%M")
@@ -175,26 +231,20 @@ class TimeType(Type):
 
 
 class WeekdayType(Type):
+    def __init__(self):
+        """Weekday Type."""
+        pass
 
-    pass
-    # def _decode(self, fielddef, value):
+    # def _decode(self, value):
     #     # TODO
     #     return value
 
 
 class PinType(Type):
-    def __init__(self, length=None):
-        self._length = length
+    def __init__(self):
+        """Pin."""
 
-    @property
-    def length(self):
-        """Width."""
-        return self._length
-
-    def _getkwargs(self):
-        return (("length", self.length, None),)
-
-    # def _decode(self, fielddef, value):
+    # def _decode(self, value):
     #     # TODO
     #     return value
 
@@ -246,7 +296,7 @@ TYPEMAP = {
     # TODO: HCD:2     unsigned hex BCD              0...9999                 each BCD byte converted to hex
     # TODO: HCD:3     unsigned hex BCD              0...999999               each BCD byte converted to hex
     # PIN       unsigned BCD                  0000...9999
-    "PIN": PinType(4),
+    "PIN": PinType(),
     # UCH       unsigned integer              0...254
     "UCH": IntType(0, 254),
     # SCH       signed integer               -127...127
@@ -254,15 +304,15 @@ TYPEMAP = {
     "SCH": IntType(-127, 127),
     "D1B": IntType(-127, 127),
     # D1C       unsigned number               0.0...100.0              fraction 1/2 = divisor 2
-    "D1C": IntType(0, 100, frac=1.0 / 2),
+    "D1C": IntType(0, 100, divider=2),
     # D2B       signed number                -127.99...127.99          fraction 1/256 = divisor 256
-    "D2B": IntType(-127.99, 127.99, frac=1.0 / 256),
+    "D2B": IntType(-127.99, 127.99, divider=256),
     # D2C       signed number                -2047.9...2047.9          fraction 1/16 = divisor 16
-    "D2C": IntType(-2047.9, 2047.9, frac=1.0 / 16),
+    "D2C": IntType(-2047.9, 2047.9, divider=16),
     # FLT       signed number                -32.767...32.767         low byte first, fraction 1/1000 = divisor 1000
     # FLR       signed number reverse        -32.767...32.767         high byte first, fraction 1/1000 = divisor 1000
-    "FLT": IntType(-32.767, 32.767, frac=1.0 / 1000),
-    "FLR": IntType(-32.767, 32.767, frac=1.0 / 1000),
+    "FLT": IntType(-32.767, 32.767, divider=1000),
+    "FLR": IntType(-32.767, 32.767, divider=1000),
     # EXP       signed float number          -3.0e38...3.0e38          low byte first
     # EXR       signed float number reverse  -3.0e38...3.0e38          high byte first
     "EXP": FloatType(),
@@ -294,8 +344,9 @@ TYPEMAP = {
 }
 
 
-def gettype(name):
-    """Get Type for Name."""
+def gettype(name, divider=None):
+    """Get :any:`Type` instance for `name` with `divider`."""
+    # create missing types
     if name not in TYPEMAP:
         # STR       character string              Hello
         # NTS       character string              Hello
@@ -312,22 +363,25 @@ def gettype(name):
                 TYPEMAP[name] = HexType(int(len_))
             else:
                 TYPEMAP[name] = HexType()
-        # BI0       bit 0                         0...1
-        # BI1       bit 1                         0...1
-        # BI2       bit 2                         0...1
-        # BI3       bit 3                         0...1
-        # BI4       bit 4                         0...1
-        # BI5       bit 5                         0...1
-        # BI6       bit 6                         0...1
-        # BI7       bit 7                         0...1
-        if name.startswith(("BI0:", "BI1:", "BI2:", "BI3:", "BI4:", "BI5:", "BI6:", "BI7:")):
-            TYPEMAP[name] = BoolType()
-    return TYPEMAP[name]
+        # BI0:7     bit 0                         0...1
+        m = _RE_BIT.match(name)
+        if m:
+            width = int(m.groups()[1])
+            if width > 1:
+                TYPEMAP[name] = IntType(0, 2 ** width - 1)
+            else:
+                TYPEMAP[name] = BoolType()
+    # get type
+    type_ = TYPEMAP[name]
+    # divider
+    if divider:
+        type_ = type_.with_divider(divider)
+    return type_
 
 
 class Time(datetime.time):
 
-    """:any:`datetime.time` with '%H:%M:%S' string representation."""
+    """Time."""
 
     def __str__(self):
         return self.strftime("%H:%M:%S")
@@ -335,15 +389,25 @@ class Time(datetime.time):
 
 class ShortTime(datetime.time):
 
-    """:any:`datetime.time` with '%H:%M' string representation."""
+    """Time without Seconds."""
 
     def __str__(self):
         return self.strftime("%H:%M")
 
 
 class Hex(int):
+
+    """Integer with Hex Representation."""
+
     def __repr__(self):
         value = int(self)
         return f"0x{self:02X}"
 
     __str__ = __repr__
+
+
+def _try_int(value):
+    intvalue = int(value)
+    if float(value) == float(intvalue):
+        value = intvalue
+    return value

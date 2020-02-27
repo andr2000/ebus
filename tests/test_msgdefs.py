@@ -49,13 +49,19 @@ def test_msgdefs0():
     eq_(
         list(msgdefs.resolve(["*/FlowTempDesired/temp1", "cc/StatPowerOn", "hc/FlowTemp*"])),
         [
-            MsgDef("hc", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, frac=0.5), unit="°C"),), read=True),
+            MsgDef("hc", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, divider=2), unit="°C"),), read=True),
             MsgDef("hc", "FlowTempMax", (FieldDef(0, "temp0", IntType(0, 254), unit="°C"),), read=True, write=True),
             MsgDef("hc", "FlowTempMin", (FieldDef(0, "temp0", IntType(0, 254), unit="°C"),), read=True, write=True),
-            MsgDef("mc", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, frac=0.5), unit="°C"),), read=True),
-            MsgDef("mc.3", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, frac=0.5), unit="°C"),), read=True),
-            MsgDef("mc.4", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, frac=0.5), unit="°C"),), read=True),
-            MsgDef("mc.5", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, frac=0.5), unit="°C"),), read=True),
+            MsgDef("mc", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, divider=2), unit="°C"),), read=True),
+            MsgDef(
+                "mc.3", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, divider=2), unit="°C"),), read=True
+            ),
+            MsgDef(
+                "mc.4", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, divider=2), unit="°C"),), read=True
+            ),
+            MsgDef(
+                "mc.5", "FlowTempDesired", (FieldDef(0, "temp1", IntType(0, 100, divider=2), unit="°C"),), read=True
+            ),
             MsgDef("cc", "StatPowerOn", (FieldDef(0, "", IntType(0, 65534)),), read=True),
         ],
     )

@@ -102,14 +102,14 @@ class MsgDef(_MsgDef, NodeMixin):
             return None
 
 
-_FieldDef = collections.namedtuple("_FieldDef", "idx name type_ dividervalues unit comment")
+_FieldDef = collections.namedtuple("_FieldDef", "idx name type_ unit comment")
 
 
 class AbstractFieldDef(_FieldDef, NodeMixin):
 
     __slots__ = tuple()
 
-    def __new__(cls, idx, name, type_, dividervalues=None, unit=None, comment=None):
+    def __new__(cls, idx, name, type_, unit=None, comment=None):
         """
         Abstract Field Definition.
 
@@ -119,16 +119,14 @@ class AbstractFieldDef(_FieldDef, NodeMixin):
             type_ (Type): Type
 
         Keywords Args:
-            dividervalues (str): EBUS Divider or value specification
             unit (str): Unit of the field value
             comment (str): Comment.
         """
-        return _FieldDef.__new__(cls, idx, name, type_, dividervalues or None, unit or None, comment or None)
+        return _FieldDef.__new__(cls, idx, name, type_, unit or None, comment or None)
 
     def __repr__(self):
         args = (self.idx, self.name, self.type_)
         kwargs = [
-            ("dividervalues", self.dividervalues, None),
             ("unit", self.unit, None),
             ("comment", self.comment, None),
         ]
@@ -149,26 +147,7 @@ class AbstractFieldDef(_FieldDef, NodeMixin):
         return f"{self.parent.ident}/{self.name}" if self.parent else None
 
     def __copy__(self):
-        return FieldDef(
-            idx=self.idx, name=self.name, type_=self.type_, dividervalues=self.dividervalues, unit=self.unit,
-        )
-
-    @property
-    def divider(self):
-        """Divider if given."""
-        dividervalues = self.dividervalues
-        if dividervalues and "=" not in dividervalues:
-            divider = float(self.dividervalues)
-            if divider < 0:
-                divider = 1 / -divider
-            return divider
-
-    @property
-    def values(self):
-        """Return valuemap."""
-        dividervalues = self.dividervalues
-        if dividervalues and "=" in dividervalues:
-            return dict([pair.split("=", 1) for pair in dividervalues.split(";")])
+        return FieldDef(idx=self.idx, name=self.name, type_=self.type_, unit=self.unit)
 
 
 class FieldDef(AbstractFieldDef):
@@ -183,7 +162,7 @@ class VirtFieldDef(AbstractFieldDef):
         Args:
             name (str): Unique name (as `name` may be used multiple times by ebus)
         """
-        obj = AbstractFieldDef.__new__(cls, None, name, (None,), None, unit, None)
+        obj = AbstractFieldDef.__new__(cls, None, name, None, unit, None)
         obj.func = func
         return obj
 

@@ -47,7 +47,7 @@ class MsgDecoder:
             if fielddef.idx is None:
                 continue
             value = values[fielddef.idx].strip()
-            fieldvalue = fielddef.type_.decode(fielddef, value)
+            fieldvalue = fielddef.type_.decode(value)
             fields.append(Field(fielddef, fieldvalue))
         for virtfielddef in msgdef.virtfields:
             virtfieldvalue = virtfielddef.func(fields)
