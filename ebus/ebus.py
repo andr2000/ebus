@@ -17,7 +17,7 @@ _CMD_FINDMSGDEFS = "find -a -F type,circuit,name,fields"
 
 
 class Ebus:
-    def __init__(self, host, port, timeout=None, scanwaitinterval=3):
+    def __init__(self, host, port, timeout=None, scanwaitinterval=3, msgdefs=None):
         """
         Pythonic EBUS Representation.
 
@@ -25,14 +25,19 @@ class Ebus:
         """
         self.connection = Connection(host=host, port=port, autoconnect=True, timeout=timeout)
         self.scanwaitinterval = scanwaitinterval
-        self.msgdecoder = MsgDecoder(MsgDefs())
+        self._msgdefs = msgdefs
+        self.msgdecoder = MsgDecoder(msgdefs or MsgDefs())
         _LOGGER.info(f"{self}")
 
     def __repr__(self):
         return repr_(
             self,
             args=(self.connection.host, self.connection.port),
-            kwargs=(("timeout", self.timeout, None), ("scanwaitinterval", self.scanwaitinterval, 3),),
+            kwargs=(
+                ("timeout", self.timeout, None),
+                ("scanwaitinterval", self.scanwaitinterval, 3),
+                ("msgdefs", self._msgdefs, None),
+            ),
         )
 
     @property
@@ -60,7 +65,9 @@ class Ebus:
         self.msgdecoder.msgdefs = msgdefs
 
     def __copy__(self):
-        return Ebus(self.host, self.port, timeout=self.timeout, scanwaitinterval=self.scanwaitinterval)
+        return Ebus(
+            self.host, self.port, timeout=self.timeout, scanwaitinterval=self.scanwaitinterval, msgdefs=self.msgdefs
+        )
 
     async def wait_scancompleted(self):
         """Wait until scan is completed."""
