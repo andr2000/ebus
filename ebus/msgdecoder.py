@@ -4,6 +4,7 @@ from .msg import Field
 from .msg import Msg
 from .na import NA
 from .na import NotAvailable
+from .util import repr_
 
 
 class MsgDecoder:
@@ -38,9 +39,12 @@ class MsgDecoder:
 
     def decode_value(self, msgdef, valuestr, circuit=None):
         """Decode message `msgdef` valuestr `valuestr`."""
-        if valuestr and valuestr != "no data stored" and "ERR: " not in valuestr:
-            fields = tuple(self._decodefields(msgdef, valuestr.split(";")))
+        values = valuestr.split(";")
+        if (valuestr or len(values) == len(msgdef.fields)) and valuestr != "no data stored" and "ERR: " not in valuestr:
+            fields = tuple(self._decodefields(msgdef, values))
             return Msg(msgdef, fields)
+        else:
+            return BrokenMsg(msgdef, valuestr.strip())
 
     def _decodefields(self, msgdef, values):
         fields = []
@@ -63,3 +67,17 @@ class MsgDecoder:
 class UnknownMsgError(RuntimeError):
 
     """Exception raised in case of unknown Message."""
+
+
+class BrokenMsg:
+    def __init__(self, msgdef, error):
+        """
+        Broken Message.
+
+        .. note: In a boolean context this instance evaluates to `False`.
+        """
+        self.msgdef = msgdef
+        self.error = error
+
+    def __repr__(self):
+        return repr_(self, (self.msgdef.ident, self.error))

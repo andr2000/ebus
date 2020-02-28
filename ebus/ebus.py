@@ -5,6 +5,7 @@ import logging
 from .connection import CommandError
 from .connection import Connection
 from .connection import ConnectionTimeout
+from .msg import Msg
 from .msg import filter_msg
 from .msgdecoder import MsgDecoder
 from .msgdecoder import UnknownMsgError
@@ -164,11 +165,11 @@ class Ebus:
         for msgdef in msgdefs:
             if msgdef.read:
                 msg = await self.read(msgdef, prio=prio, ttl=ttl)
-                if msg:
+                if isinstance(msg, Msg):  # skip BrokenMsg
                     msg = filter_msg(msg, msgdefs)
-                if msg:
-                    yield msg
+                if isinstance(msg, Msg):  # skip BrokenMsg
                     data[msgdef] = msg
+                yield msg
             elif msgdef.update:
                 data[msgdef] = None
 
@@ -196,7 +197,10 @@ class Ebus:
         try:
             lines = tuple([line async for line in self._request("state")])
             state = lines[0].split(",")[0]
-            return state
+            if state == "signal acquired":
+                return "ok"
+            else:
+                return state
         except ConnectionTimeout:
             return "no ebusd connection"
 

@@ -67,8 +67,12 @@ async def load_msgdefs(e, args):
     print(f"{e.msgdefs.summary()} DONE.")
 
 
-def format_field(field):
-    """Format Field Value."""
-    comment = field.fielddef.comment
-    details = f" [{comment}]" if comment else ""
-    return f"{field.ident:<40s} {field.fielddef.msgdef.type_} {field.unitvalue}{details}"
+def print_msg(msg):
+    """Formatted output."""
+    if isinstance(msg, ebus.Msg):
+        for field in msg.fields:
+            comment = field.fielddef.comment
+            details = f" [{comment}]" if comment else ""
+            print(f"{field.ident:<40s} {field.fielddef.msgdef.type_} {field.unitvalue}{details}")
+    else:
+        print(f"{msg.msgdef.ident:<40s}      {msg.error}")

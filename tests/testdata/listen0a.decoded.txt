@@ -123,3 +123,4 @@ mc.4 Status = 0;off;36.62;24
   mc.4 Status ("temp0.0='0°C'", "onoff='off'", "temp='36.62°C'", "temp0.1='24°C'")
 
 hc FlowTempMax no data stored
+  BrokenMsg('hc/FlowTempMax', 'no data stored')
