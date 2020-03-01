@@ -25,6 +25,7 @@ def add_read_args(parser, ttl=None):
 
 
 def add_patterns_arg(parser, opt=False):
+    """Add patterns option."""
     if not opt:
         parser.add_argument("patterns", help="Message patterns separated by ';' (i.e. 'ui/OutsideTemp')")
     else:
