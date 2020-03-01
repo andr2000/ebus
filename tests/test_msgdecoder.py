@@ -49,7 +49,7 @@ def _test(deffilepath, basepath, num):
                 try:
                     outfile.write(f"\n{line}\n")
                     msg = decoder.decode_line(line)
-                    if isinstance(msg, ebus.Msg):
+                    if msg.valid:
                         values = tuple(f"{field.fielddef.name}={field.unitvalue!r}" for field in msg.fields)
                         outfile.write(f"  {msg.msgdef.circuit} {msg.msgdef.name} {values}\n")
                     else:

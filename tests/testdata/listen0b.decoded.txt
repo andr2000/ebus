@@ -45,7 +45,7 @@ bai DateTime = nosignal;-:-:-;-.-.-;-
   bai DateTime ("dcfstate='nosignal'", 'btime=None', 'bdate=None', 'temp2=None', '+bdate+btime+dcfstate=None')
 
 bai dcfState = nosignal
-  bai dcfState ("dcfstate='nosignal'",)
+  bai dcfState ('dcfstate=NA',)
 
 bai DCFTimeDate = 20:53:00;30.01.2020
   bai DCFTimeDate ('.0=ShortTime(20, 53)', '.1=datetime.date(2020, 1, 30)', '+.1+.0=datetime.datetime(2020, 1, 30, 20, 53)')

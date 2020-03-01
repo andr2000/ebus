@@ -1,5 +1,6 @@
 import re
 
+from .msg import BrokenMsg
 from .msg import Field
 from .msg import Msg
 from .na import NA
@@ -39,25 +40,29 @@ class MsgDecoder:
 
     def decode_value(self, msgdef, valuestr, circuit=None):
         """Decode message `msgdef` valuestr `valuestr`."""
-        values = valuestr.split(";")
-        if (valuestr or len(values) == len(msgdef.fields)) and valuestr != "no data stored" and "ERR: " not in valuestr:
-            fields = tuple(self._decodefields(msgdef, values))
+        if valuestr and "ERR: " not in valuestr:
+            fields = tuple(self._decodefields(msgdef, valuestr.strip()))
             return Msg(msgdef, fields)
         else:
             return BrokenMsg(msgdef, valuestr.strip())
 
-    def _decodefields(self, msgdef, values):
-        fields = []
-        for fielddef in msgdef.fields:
-            if fielddef.idx is None:
-                continue
-            try:
-                value = values[fielddef.idx].strip()
-            except IndexError:
-                fieldvalue = NA
-            else:
-                fieldvalue = fielddef.type_.decode(value)
-            fields.append(Field(fielddef, fieldvalue))
+    def _decodefields(self, msgdef, valuestr):
+        if valuestr not in ("no data stored", "nosignal"):
+            values = valuestr.split(";")
+            fields = []
+            for fielddef in msgdef.fields:
+                if fielddef.idx is None:
+                    continue
+                try:
+                    value = values[fielddef.idx].strip()
+                except IndexError:
+                    fieldvalue = NA
+                else:
+                    fieldvalue = fielddef.type_.decode(value)
+                fields.append(Field(fielddef, fieldvalue))
+        else:
+            fields = [Field(fielddef, NA) for fielddef in msgdef.fields]
+        # virtual fields
         for virtfielddef in msgdef.virtfields:
             virtfieldvalue = virtfielddef.func(fields)
             fields.append(Field(virtfielddef, virtfieldvalue))
@@ -67,17 +72,3 @@ class MsgDecoder:
 class UnknownMsgError(RuntimeError):
 
     """Exception raised in case of unknown Message."""
-
-
-class BrokenMsg:
-    def __init__(self, msgdef, error):
-        """
-        Broken Message.
-
-        .. note: In a boolean context this instance evaluates to `False`.
-        """
-        self.msgdef = msgdef
-        self.error = error
-
-    def __repr__(self):
-        return repr_(self, (self.msgdef.ident, self.error))

@@ -1,6 +1,7 @@
 import datetime
 
 from .msgdef import VirtFieldDef
+from .na import NA
 from .types import DateTimeType
 from .types import DateType
 from .types import TimeType
@@ -44,7 +45,10 @@ def iter_virtfielddefs(fielddefs):
 def _merge_date_time(date, time, state=None):
     if date is not None and time is not None:
         if state in (None, "valid"):
-            return datetime.datetime(date.year, date.month, date.day, time.hour, time.minute, time.second)
+            if date and time:
+                return datetime.datetime(date.year, date.month, date.day, time.hour, time.minute, time.second)
+            else:
+                return NA
         else:
             return state
 

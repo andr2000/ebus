@@ -14,6 +14,7 @@ from .circuitmap import CircuitMap  # noqa
 from .connection import CommandError  # noqa
 from .connection import Connection  # noqa
 from .ebus import Ebus  # noqa
+from .msg import BrokenMsg  # noqa
 from .msg import Error  # noqa
 from .msg import Field  # noqa
 from .msg import Msg  # noqa
@@ -23,3 +24,5 @@ from .msgdef import FieldDef  # noqa
 from .msgdef import MsgDef  # noqa
 from .msgdefdecoder import decode_msgdef  # noqa
 from .msgdefs import MsgDefs  # noqa
+from .na import NA  # noqa
+from .na import NotAvailable  # noqa

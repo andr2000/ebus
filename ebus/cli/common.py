@@ -62,7 +62,7 @@ async def load_msgdefs(e, args):
 
 def print_msg(msg):
     """Formatted output."""
-    if isinstance(msg, ebus.Msg):
+    if msg.valid:
         for field in msg.fields:
             comment = field.fielddef.comment
             details = f" [{comment}]" if comment else ""

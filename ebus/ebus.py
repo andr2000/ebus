@@ -165,9 +165,9 @@ class Ebus:
         for msgdef in msgdefs:
             if msgdef.read:
                 msg = await self.read(msgdef, prio=prio, ttl=ttl)
-                if isinstance(msg, Msg):  # skip BrokenMsg
+                if msg.valid:
                     msg = filter_msg(msg, msgdefs)
-                if isinstance(msg, Msg):  # skip BrokenMsg
+                if msg.valid:
                     data[msgdef] = msg
                 yield msg
             elif msgdef.update:
