@@ -2,7 +2,6 @@ import asyncio
 
 import ebus
 
-from .common import add_ebus_args
 from .common import create_ebus
 
 
@@ -15,7 +14,6 @@ def parse_args(subparsers):
             "See https://github.com/john30/ebusd/wiki/3.1.-TCP-client-commands for reference."
         ),
     )
-    add_ebus_args(parser)
     parser.add_argument(
         "--infinite", "-i", default=False, action="store_true", help="Do not abort command processing on empty line."
     )

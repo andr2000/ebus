@@ -1,4 +1,3 @@
-from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import create_ebus
 from .common import disable_stdout_buffering
@@ -8,7 +7,6 @@ from .common import load_msgdefs
 def parse_args(subparsers):
     """Parse Arguments."""
     parser = subparsers.add_parser("write", help="Write value to the bus")
-    add_ebus_args(parser)
     add_msgdef_args(parser)
     parser.add_argument("field", help="Field (i.e. 'ui/OutsideTemp/temp')")
     parser.add_argument("value", help="Value to apply (i.e. '5'). 'NONE' is reserved for no value.")

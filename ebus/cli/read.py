@@ -1,4 +1,3 @@
-from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import add_patterns_arg
 from .common import add_read_args
@@ -11,7 +10,6 @@ from .common import print_msg
 def parse_args(subparsers):
     """Parse Arguments."""
     parser = subparsers.add_parser("read", help="Read values from the bus, decode and print")
-    add_ebus_args(parser)
     add_msgdef_args(parser)
     add_read_args(parser, ttl=0)
     add_patterns_arg(parser, opt=True)

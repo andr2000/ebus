@@ -17,6 +17,11 @@ from . import write
 def argvhandler(argv):
     """Command Line Interface."""
     parser = argparse.ArgumentParser(prog="ebustool")
+
+    parser.add_argument("--host", "-H", default="127.0.0.1", help="EBUSD address. Default is '172.0.0.1'.")
+    parser.add_argument("--port", "-P", default=8888, type=int, help="EBUSD port. Default is 8888.")
+    parser.add_argument("--timeout", "-T", default=10, type=int, help="EBUSD connection timeout. Default is 10.")
+
     parser.add_argument("--version", action="version", version=__version__)
     parser.add_argument("--debug", action="store_true", default=False)
     parser.set_defaults(main=lambda args: _print_help(parser))
@@ -51,6 +56,6 @@ def main():  # pragma: no cover
     """Command Line Hookup."""
     try:
         argvhandler(sys.argv[1:])
-    except (RuntimeError, ValueError) as e:
+    except Exception as e:
         print("ERROR: %r" % e)
         sys.exit(1)

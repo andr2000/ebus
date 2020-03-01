@@ -1,7 +1,6 @@
 import asyncio
 
 from ..msgdefdecoder import decodetype
-from .common import add_ebus_args
 from .common import add_msgdef_args
 from .common import add_patterns_arg
 from .common import create_ebus
@@ -12,7 +11,6 @@ from .common import load_msgdefs
 def parse_args(subparsers):
     """Parse Arguments."""
     parser = subparsers.add_parser("ls", help="List all messages")
-    add_ebus_args(parser)
     add_msgdef_args(parser)
     add_patterns_arg(parser, opt=True)
     parser.add_argument(
