@@ -18,7 +18,7 @@ def argvhandler(argv):
     """Command Line Interface."""
     parser = argparse.ArgumentParser(prog="ebustool")
 
-    parser.add_argument("--host", "-H", default="127.0.0.1", help="EBUSD address. Default is '172.0.0.1'.")
+    parser.add_argument("--host", "-H", default="127.0.0.1", help="EBUSD address. Default is '127.0.0.1'.")
     parser.add_argument("--port", "-P", default=8888, type=int, help="EBUSD port. Default is 8888.")
     parser.add_argument("--timeout", "-T", default=10, type=int, help="EBUSD connection timeout. Default is 10.")
 
